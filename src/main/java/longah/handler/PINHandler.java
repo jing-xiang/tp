@@ -191,4 +191,22 @@ public class PINHandler {
             UI.showMessage("Authentication is already disabled.");
         }
     }
+
+    /**
+     * Returns the saved PIN.
+     *
+     * @return The saved PIN.
+     */
+    public static String getSavedPin() {
+        return savedPin;
+    }
+
+    /**
+     * Returns the authentication status.
+     *
+     * @return The authentication status.
+     */
+    public static boolean getAuthenticationStatus() {
+        return authenticationEnabled;
+    }
 }
