@@ -19,7 +19,7 @@ public class PINHandlerTest {
      * Tests the successful file creation when the PINHandler is constructed.
      */
     @Test
-    public void PINHandlerConstructor_fileCreationSuccess() {
+    public void pinHandlerConstructor_fileCreationSuccess() {
         try {
             File f = new File("./data/pin.txt");
             System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
@@ -82,26 +82,24 @@ public class PINHandlerTest {
         }
     }
 
-    /**
-     * Tests the successful reset of a PIN with a valid entered PIN.
-     */
-//    @Test
-//    public void resetPin_validPIN_success() {
-//        try {
-//            File f = new File("./data/pin.txt");
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            new PINHandler();
-//            System.setIn(new ByteArrayInputStream("123456\n111111\n".getBytes(StandardCharsets.UTF_8)));
-//            //System.setIn(new ByteArrayInputStream("111111\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.resetPin();
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            byte[] hashedPin = md.digest("111111".getBytes(StandardCharsets.UTF_8));
-//            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-//            assertEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
-//        } catch (Exception e) {
-//            fail();
-//        }
-//    }
+
+    //    @Test
+    //    public void resetPin_validPIN_success() {
+    //        try {
+    //            File f = new File("./data/pin.txt");
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            new PINHandler();
+    //            System.setIn(new ByteArrayInputStream("123456\n111111\n".getBytes(StandardCharsets.UTF_8)));
+    //            //System.setIn(new ByteArrayInputStream("111111\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.resetPin();
+    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
+    //            byte[] hashedPin = md.digest("111111".getBytes(StandardCharsets.UTF_8));
+    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
+    //            assertEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
+    //        } catch (Exception e) {
+    //            fail();
+    //        }
+    //    }
 
     /**
      * Tests the unsuccessful creation of a PIN with an invalid entered PIN.
@@ -121,48 +119,43 @@ public class PINHandlerTest {
         }
     }
 
-    /**
-     * Tests the unsuccessful reset of a PIN with invalid current PIN entered.
-     */
-//    @Test
-//    public void resetPin_invalidPIN_failure() {
-//        try {
-//            File f = new File("./data/pin.txt");
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            new PINHandler();
-//            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-//            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.resetPin();
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            byte[] hashedPin = md.digest("1234567".getBytes(StandardCharsets.UTF_8));
-//            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-//            assertNotEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
-//        } catch (Exception e) {
-//            fail();
-//        }
-//    }
 
-    /**
-     * Tests the unsuccessful reset of a PIN with invalid new PIN entered.
-     */
-//    @Test
-//    public void resetPin_invalidNewPIN_failure() {
-//        try {
-//            File f = new File("./data/pin.txt");
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.createPin();
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.resetPin();
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            byte[] hashedPin = md.digest("123456".getBytes(StandardCharsets.UTF_8));
-//            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-//            assertNotEquals((hashedEnteredPinHex), "1234567");
-//        } catch (Exception e) {
-//            fail();
-//        }
-//    }
+    //    @Test
+    //    public void resetPin_invalidPIN_failure() {
+    //        try {
+    //            File f = new File("./data/pin.txt");
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            new PINHandler();
+    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
+    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.resetPin();
+    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
+    //            byte[] hashedPin = md.digest("1234567".getBytes(StandardCharsets.UTF_8));
+    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
+    //            assertNotEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
+    //        } catch (Exception e) {
+    //            fail();
+    //        }
+    //    }
+
+    //    @Test
+    //    public void resetPin_invalidNewPIN_failure() {
+    //        try {
+    //            File f = new File("./data/pin.txt");
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.createPin();
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.resetPin();
+    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
+    //            byte[] hashedPin = md.digest("123456".getBytes(StandardCharsets.UTF_8));
+    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
+    //            assertNotEquals((hashedEnteredPinHex), "1234567");
+    //        } catch (Exception e) {
+    //            fail();
+    //        }
+    //    }
 
     /**
      * Tests the successful enabling of PIN authentication with valid login.
@@ -197,22 +190,19 @@ public class PINHandlerTest {
         }
     }
 
-    /**
-     * Tests the successful saving of PIN and authentication status with a valid PIN en.
-     */
-//    @Test
-//    public void savePinAndAuthenticationEnabled_validPIN_success() {
-//        try {
-//            File f = new File("./data/pin.txt");
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.createPin();
-//            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-//            PINHandler.enablePin();
-//            PINHandler.savePinAndAuthenticationEnabled();
-//            assertTrue(f.exists());
-//        } catch (Exception e) {
-//            fail();
-//        }
-//    }
+    //    @Test
+    //    public void savePinAndAuthenticationEnabled_validPIN_success() {
+    //        try {
+    //            File f = new File("./data/pin.txt");
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.createPin();
+    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
+    //            PINHandler.enablePin();
+    //            PINHandler.savePinAndAuthenticationEnabled();
+    //            assertTrue(f.exists());
+    //        } catch (Exception e) {
+    //            fail();
+    //        }
+    //    }
 }
