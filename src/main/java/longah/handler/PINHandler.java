@@ -8,14 +8,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
 import java.math.BigInteger;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 
 /**
  * Handles the creation, loading, authentication, and resetting of the PIN.
  */
 public class PINHandler {
-    private static final Logger logger = Logger.getLogger("PIN Logger");
     private static final String PIN_FILE_PATH = "./data/pin.txt";
     private static String savedPin;
     private static boolean authenticationEnabled;
@@ -45,6 +42,7 @@ public class PINHandler {
             if (data.length > 1) {
                 authenticationEnabled = Boolean.parseBoolean(data[1].trim());
             }
+            Logging.logInfo("User loaded successfully.");
         } catch (IOException | ArrayIndexOutOfBoundsException e) {
             UI.showMessage("Error reading saved PIN and authentication enabled state.");
         }
@@ -57,6 +55,7 @@ public class PINHandler {
         try {
             String data = savedPin + "\n" + authenticationEnabled;
             Files.write(Paths.get(PIN_FILE_PATH), data.getBytes());
+            Logging.logInfo("PIN saved successfully.");
         } catch (IOException e) {
             UI.showMessage("Error saving PIN and authentication enabled state.");
         }
@@ -100,7 +99,7 @@ public class PINHandler {
             savedPin = hashedPinHex;
             savePinAndAuthenticationEnabled();
             UI.showMessage("PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.");
-            logger.log(Level.INFO, "PIN saved successfully!");
+            Logging.logInfo("PIN saved successfully!");
         } catch (NoSuchAlgorithmException e) {
             UI.showMessage("Error saving PIN. Please try again.");
         }
@@ -135,7 +134,7 @@ public class PINHandler {
                 hashedEnteredPin = md.digest(enteredPin.getBytes(StandardCharsets.UTF_8));
                 hashedEnteredPinHex = new BigInteger(1, hashedEnteredPin).toString(16);
             }
-            logger.log(Level.INFO, "Login successful!");
+            Logging.logInfo("Login successful!");
         } catch (NoSuchAlgorithmException e) {
             UI.showMessage("Error authenticating PIN. Please try again.");
         }
@@ -158,6 +157,7 @@ public class PINHandler {
             if (hashedEnteredPinHex.equals(savedPin)) {
                 // If the entered PIN is correct, allow the user to create a new PIN
                 createPin();
+                Logging.logInfo("PIN reset successful!");
             } else {
                 UI.showMessage("Invalid PIN. Please try again later.");
             }
