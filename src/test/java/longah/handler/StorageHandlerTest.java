@@ -2,9 +2,10 @@ package longah.handler;
 
 import org.junit.jupiter.api.Test;
 
-import longah.exception.ExceptionMessage;
 import longah.util.MemberList;
 import longah.util.TransactionList;
+import longah.exception.LongAhException;
+import longah.exception.ExceptionMessage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +35,7 @@ public class StorageHandlerTest {
     @Test
     public void storageHandlerConstructor_fileCreationSuccess() {
         try {
-            File f = new File("./data");
+            File f = new File("./data/test_grp1");
             deleteDir(f);
             MemberList members = new MemberList();
             TransactionList transactions = new TransactionList();
@@ -43,6 +44,8 @@ public class StorageHandlerTest {
             assertTrue(f.exists());
             f = new File("./data/test_grp1/transactions.txt");
             assertTrue(f.exists());
+            // Delete test folders after completion
+            deleteDir(f);
         } catch (Exception e) {
             fail();
         }
@@ -54,7 +57,7 @@ public class StorageHandlerTest {
     @Test
     public void loadMembersData_dataLoaded_success() {
         try {
-            File f = new File("./data");
+            File f = new File("./data/test_grp2");
             deleteDir(f);
             MemberList members1 = new MemberList();
             TransactionList transactions1 = new TransactionList();
@@ -67,6 +70,8 @@ public class StorageHandlerTest {
             new StorageHandler(members2, transactions2, "test_grp2");
             String expected = "Alice: $10.0\nBob: -$10.0\n";
             assertEquals(expected, members2.listMembers());
+            // Delete test folders after completion
+            deleteDir(f);
         } catch (Exception e) {
             fail();
         }
@@ -77,8 +82,8 @@ public class StorageHandlerTest {
      */
     @Test
     public void loadMembersData_invalidMembersData_exceptionThrown() {
+        File f = new File("./data/test_grp3");
         try {
-            File f = new File("./data");
             deleteDir(f);
             MemberList members1 = new MemberList();
             TransactionList transactions1 = new TransactionList();
@@ -89,9 +94,11 @@ public class StorageHandlerTest {
             TransactionList transactions2 = new TransactionList();
             new StorageHandler(members2, transactions2, "test_grp3");
             fail();
-        } catch (Exception e) {
-            String expected = ExceptionMessage.STORAGE_FILE_CORRUPTED.getMessage();
-            assertEquals(expected, e.getMessage());
+        } catch (LongAhException e) {
+            boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.STORAGE_FILE_CORRUPTED);
+            assertTrue(isMessage);
+            // Delete test folders after completion
+            deleteDir(f);
         }
     }
 
@@ -100,8 +107,8 @@ public class StorageHandlerTest {
      */
     @Test
     public void loadMembersData_invalidTransactionData_exceptionThrown() {
+        File f = new File("./data/test_grp4");
         try {
-            File f = new File("./data");
             deleteDir(f);
             MemberList members1 = new MemberList();
             TransactionList transactions1 = new TransactionList();
@@ -114,9 +121,14 @@ public class StorageHandlerTest {
             TransactionList transactions2 = new TransactionList();
             new StorageHandler(members2, transactions2, "test_grp4");
             fail();
+        } catch (LongAhException e) {
+            boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.INVALID_STORAGE_CONTENT);
+            assertTrue(isMessage);
+            // Delete test folders after completion
+            deleteDir(f);
         } catch (Exception e) {
-            String expected = ExceptionMessage.INVALID_STORAGE_CONTENT.getMessage();
-            assertEquals(expected, e.getMessage());
+            // Filewriter error
+            fail();
         }
     }
 }
