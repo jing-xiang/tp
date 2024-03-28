@@ -7,39 +7,6 @@ least transaction method of settling these debts. It is optimized for busy peopl
 among friends.
 
 ## Table of Contents
-- [Starting LongAh!](#quick-start)
-- [Features](#features)
-  - [Member Management](#member-management)
-  - [Expense Tracking](#expense-tracking)
-  - [Debt Simplification](#debt-simplification)
-  - [Security](#security)
-  - [Saving the data](#saving-the-data)
-  - [Editing the data file](#editing-the-data-file)
-- [Command Format](#command-format)
-  - [Viewing help: `help`](#viewing-help-help)
-  - [Adding a member: `add member`](#adding-a-member-add-member)
-  - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
-  - [Listing all members: `list members`](#listing-all-members-list-members)
-  - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
-  - [Listing all debts: `list debts`](#listing-all-debts-list-debts)
-  - [Find Transactions: `find transactions`](#find-transactions-find-transactions)
-  - [Find Lender `find lender`](#find-lender-find-lender)
-  - [Find Borrower `find borrower`](#find-borrower-find-borrower)
-  - [Find debts `find debts`](#find-debts-find-debts)
-  - [Deleting a member: `delete member`](#deleting-a-member-delete-member)
-  - [Deleting a transaction: `delete transaction`](#deleting-a-transaction-delete-transaction)
-  - [Editing a member: `edit member`](#editing-a-member-edit-member)
-  - [Editing a transaction: `edit transaction`](#editing-a-transaction-edit-transaction)
-  - [Enabling the user PIN: `pin enable`](#enabling-the-user-pin-pin-enable)
-  - [Disabling the user PIN: `pin disable`](#disabling-the-user-pin-pin-disable)
-  - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
-  - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
-  - [Settle a user's debts: `settleup`](#settle-a-users-debts-settleup)
-  - [Exiting the application: `exit`](#exiting-the-application-exit)
-  - 
-- [FAQ](#faq)
-- [Known Issues](#known-issues)
-- [Command Summary](#command-summary)
 
 
 ## Quick Start
@@ -51,14 +18,45 @@ among friends.
 ```dtd
 java -jar tp.jar
 ```
+5. Upon starting the application, you will be prompted to enter your PIN. The PIN is required to access the application.
+The app will prompt you to create your own PIN if it is your first time using the application.
+6. You can now start using LongAh! by entering commands into the command terminal.
+
+
+## Quick Command Reference
+| Command                | Parameters                                                                                            |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| Help menu              | `help`                                                                                                |
+| Add member             | `add member [name]`                                                                                   |
+| Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
+| List members           | `list members`                                                                                        |
+| List transactions      | `list transactions`                                                                                   |
+| List debts             | `list debts`                                                                                          |
+| Find transactions      | `find transactions [member]`                                                                          |
+| Find lender            | `find lender [member]`                                                                                |
+| Find borrower          | `find borrower [member]`                                                                              |
+| Find debts             | `find debts [member]`                                                                                 |
+| Delete member          | `delete member [member]`                                                                              |
+| Delete transaction     | `delete transaction [transaction_index]`                                                              |
+| Edit member            | `edit member [old_name] [new_name]`                                                                   |
+| Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` |
+| Enable PIN             | `pin enable`                                                                                          |
+| Disable PIN            | `pin disable`                                                                                         |
+| Reset PIN              | `pin reset`                                                                                           |
+| Clear all transactions | `clear`                                                                                               |
+| Settle up              | `settleup [member]`                                                                                   |
+| Exit                   | `exit`                                                                                                |
+
+
 ## Features
 LongAh! comes with many features for you to manage your group expenses.
 
 ### Member Management
 You can add, delete, and edit members in LongAh! to keep track of who is involved in the transactions.
 
-### Expense Tracking
-You can add transactions between members to keep track of who owes who.
+### Group Balances & Expense Tracking
+You can add transactions between members to keep track of who owes who. LongAh! can also display group balances and expenses at a glance.
+
 
 ### Debt Simplification
 LongAh! calculates the simplest way to settle all debts between members and shows a list of all debts, reducing the amount of transanctions
@@ -71,7 +69,6 @@ is enabled by default.
 ### Saving the data
 LongAh! data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 The file is also created automatically if it does not exist.
-
 
 ### Editing the data file
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
@@ -117,19 +114,42 @@ Example of usage:
 
 
 ### Listing all members: `list members`
-Shows a list of all current members in LongAh!.
+Shows a list of all current members in LongAh! along with their current balances.
+* Positive balance indicate that the member is owed money by member(s) in the group.
+* Negative balance indicate that the member owes money to other member(s).
+* A balance of 0 indicates that the member neither owes nor is owed money.
 
 Format: `list members`
 
-Example of usage: `list members`
+Example of usage:
+```dtd
+add member alice
+add member bob
+add transaction alice p/bob a/5
+list members
+    alice: $5.0
+    bob: -$5.0
+```
 
 
 ### Listing all transactions: `list transactions`
 Shows a list of all transactions in LongAh!.
 
+* Each transaction is indexed for easy reference and use in other commands.
+
 Format: `list transactions`
 
-Example of usage: `list transactions`
+Example of usage:
+```dtd
+add member alice
+add member bob
+add transaction alice p/bob a/5
+list transactions
+    1.
+    Lender: alice
+    Borrower 1: bob Owed amount: 5.00
+```
+
 
 
 ### Listing all debts: `list debts`
@@ -137,9 +157,18 @@ Calculates the simplest way to repay all debts between all members and shows a l
 
 Format: `list debts`
 
-Example of usage: `list debts`
-
-
+Example of usage:
+```dtd
+add member alice
+add member bob
+add member charlie
+add transaction alice p/bob a/3 p/charlie a/4
+add transaction charlie p/alice a/5 p/bob a/1
+list debts
+    Best Way to Solve Debts:
+    bob owes alice $2.0
+    bob owes charlie $2.0
+```
 ### Find Transactions: `find transactions`
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
 
@@ -275,28 +304,3 @@ Example of usage: `exit`
 
 ## Known Issues
 * (to be added)
-
-## Command Summary
-
-* Help menu `help`
-* Add member `add member [name]`
-* Add transaction `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`
-* List members `list members`
-* List transactions `list transactions`
-* List debts `list debts`
-* Find transactions `find transactions [member]`
-* Find lender `find lender [member]`
-* Find borrower `find borrower [member]`
-* Find debts `find debts [member]`
-* Delete member `delete member [member]`
-* Delete transaction `delete transaction [transaction_index]`
-* Edit member `edit member [old_name] [new_name]`
-* Edit transaction `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`
-* Enable PIN `pin enable`
-* Disable PIN `pin disable`
-* Reset PIN `pin reset`
-* Clear all transactions `clear`
-* Settle up `settleup [member]`
-* Exit `exit`
-```
-
