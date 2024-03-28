@@ -51,7 +51,7 @@ among friends.
 ```dtd
 java -jar tp.jar
 ```
-## Features 
+## Features
 LongAh! comes with many features for you to manage your group expenses.
 
 ### Member Management
