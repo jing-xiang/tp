@@ -82,25 +82,6 @@ public class PINHandlerTest {
         }
     }
 
-
-    //    @Test
-    //    public void resetPin_validPIN_success() {
-    //        try {
-    //            File f = new File("./data/pin.txt");
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            new PINHandler();
-    //            System.setIn(new ByteArrayInputStream("123456\n111111\n".getBytes(StandardCharsets.UTF_8)));
-    //            //System.setIn(new ByteArrayInputStream("111111\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.resetPin();
-    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
-    //            byte[] hashedPin = md.digest("111111".getBytes(StandardCharsets.UTF_8));
-    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-    //            assertEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
-    //        } catch (Exception e) {
-    //            fail();
-    //        }
-    //    }
-
     /**
      * Tests the unsuccessful creation of a PIN with an invalid entered PIN.
      */
@@ -118,44 +99,6 @@ public class PINHandlerTest {
             fail();
         }
     }
-
-
-    //    @Test
-    //    public void resetPin_invalidPIN_failure() {
-    //        try {
-    //            File f = new File("./data/pin.txt");
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            new PINHandler();
-    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.resetPin();
-    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
-    //            byte[] hashedPin = md.digest("1234567".getBytes(StandardCharsets.UTF_8));
-    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-    //            assertNotEquals((hashedEnteredPinHex), PINHandler.getSavedPin());
-    //        } catch (Exception e) {
-    //            fail();
-    //        }
-    //    }
-
-    //    @Test
-    //    public void resetPin_invalidNewPIN_failure() {
-    //        try {
-    //            File f = new File("./data/pin.txt");
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.createPin();
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            System.setIn(new ByteArrayInputStream("1234567\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.resetPin();
-    //            MessageDigest md = MessageDigest.getInstance("SHA-256");
-    //            byte[] hashedPin = md.digest("123456".getBytes(StandardCharsets.UTF_8));
-    //            String hashedEnteredPinHex = new BigInteger(1, hashedPin).toString(16);
-    //            assertNotEquals((hashedEnteredPinHex), "1234567");
-    //        } catch (Exception e) {
-    //            fail();
-    //        }
-    //    }
 
     /**
      * Tests the successful enabling of PIN authentication with valid login.
@@ -189,20 +132,4 @@ public class PINHandlerTest {
             fail();
         }
     }
-
-    //    @Test
-    //    public void savePinAndAuthenticationEnabled_validPIN_success() {
-    //        try {
-    //            File f = new File("./data/pin.txt");
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.createPin();
-    //            System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
-    //            PINHandler.enablePin();
-    //            PINHandler.savePinAndAuthenticationEnabled();
-    //            assertTrue(f.exists());
-    //        } catch (Exception e) {
-    //            fail();
-    //        }
-    //    }
 }
