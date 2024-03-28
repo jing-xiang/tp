@@ -50,6 +50,13 @@ public class Transaction {
         this.subtransactions = subtransactions;
     }
 
+    /**
+     * Parses the user input to create a transaction.
+     *
+     * @param expression The user input for the transaction.
+     * @param members The list of members in the group.
+     * @throws LongAhException If the user input is in an invalid format or value.
+     */
     public void parseTransaction(String expression, MemberList members) throws LongAhException {
         // User input format: [Lender] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ...
         String[] splitInput = expression.split("p/");
