@@ -235,7 +235,7 @@ public class Transaction {
             double amount = subtransaction.getAmount();
             borrower += delimiter + borrowerName + delimiter + amount;
         }
-        return lender + borrower + time;
+        return lender + time + borrower;
     }
 
     /**
