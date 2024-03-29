@@ -190,6 +190,11 @@ public class Transaction {
     @Override
     public String toString() {
         String lender = "Lender: " + this.lender.getName() + "\n";
+        String time = "";
+        if (this.haveTime()) {
+            assert transactionTime != null : "Invalid printouts for transactions without a transaction time";
+            time = this.transactionTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mma")) + "\n";
+        }
         String borrower = "";
         int borrowerNo = 1;
         for (Subtransaction subtransaction : subtransactions) {
@@ -199,7 +204,7 @@ public class Transaction {
                     borrowerNo, member.getName(), amount);
             borrowerNo++;
         }
-        return lender + borrower;
+        return lender + time + borrower;
     }
 
     /**
@@ -211,12 +216,17 @@ public class Transaction {
     public String toStorageString(String delimiter) {
         String lender = this.lender.getName();
         String borrower = "";
+        String time = "";
+        if (this.haveTime()) {
+            assert transactionTime != null : "Invalid storage for transactions without a transaction time";
+            time = delimiter + this.transactionTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+        }
         for (Subtransaction subtransaction : this.subtransactions) {
             String borrowerName = subtransaction.getBorrower().getName();
             double amount = subtransaction.getAmount();
             borrower += delimiter + borrowerName + delimiter + amount;
         }
-        return lender + borrower;
+        return lender + borrower + time;
     }
 
     /**
