@@ -18,7 +18,7 @@ among friends.
 ```dtd
 java -jar tp.jar
 ```
-5. Upon starting the application, you will be prompted to enter your PIN. The PIN is required to access the application.
+5. Upon starting the application, you will be prompted to enter your PIN. The user PIN is required to access the application.
 The app will prompt you to create your own PIN if it is your first time using the application.
 6. You can now start using LongAh! by entering commands into the command terminal.
 
@@ -95,7 +95,7 @@ Adds a new member to the list of members in LongAh!
 
 Format: `add member [NAME]`
 
-* Should not be a duplicate of an existing member.
+* Name of new member should not be a duplicate of an existing member.
 
 Example of usage:
 `add member Alice`
@@ -110,12 +110,14 @@ Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOU
 * The `LENDER` and `BORROWER(s)` should be an existing member.
 
 Example of usage:
+`add transaction Alice p/Bob a/10`
+OR
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
 
 
 ### Listing all members: `list members`
 Shows a list of all current members in LongAh! along with their current balances.
-* Positive balance indicate that the member is owed money by member(s) in the group.
+* Positive balance indicate that the member is owed money by other member(s) in the group.
 * Negative balance indicate that the member owes money to other member(s).
 * A balance of 0 indicates that the member neither owes nor is owed money.
 
@@ -193,7 +195,7 @@ Format: `find borrower [MEMBER]`
 
 Example of usage: `find borrower Alice`
 
-### Find debts `find debts`
+### Find Debts `find debts`
 Finds all debts that the specified member has with other members.
 
 Format: `find debts [MEMBER]`
@@ -216,9 +218,10 @@ Example of usage: `delete member Alice`
 Deletes a transaction from the list of transactions in LongAh!.
 
 Format: `delete transaction [TRANSACTION_INDEX]`
-* The `TRANSACTION_NO` should be an existing transaction number.
+* The `TRANSACTION_INDEX` should be an existing transaction number.
 * All debts involving the transaction will be recalculated.
-* The transaction number can be found by using the `list transactions` command and taking the corresponding index.
+* The transaction number can be found by using the `list transactions` command and taking the corresponding index of 
+the transaction that you want to delete.
 
 Example of usage: `delete transaction 3`
 
@@ -265,12 +268,13 @@ Example of usage: `pin disable`
 Resets the user PIN for the application. Follow the instructions as prompted to reset the PIN.
 
 Format: `pin reset`
+* The new PIN should only contain numbers (0-9).
 
 Example of usage: `pin reset`
 
 
 ### Clearing all transactions `clear`
-Clears all transactions in LongAh!.
+Clear all previous transactions logged in LongAh!. Members balances will be reset to 0.
 
 Format: `clear`
 
@@ -279,13 +283,34 @@ Example of usage: `clear`
 
 ### Settle a user's debts: `settleup`
 Settles all debts of the specified member with all other members. A transaction will be created to settle the debts and reset
-the debt balance of the specified member to 0.
+the debt balance of the specified member to 0, while updating the balance(s) of all relevant lender(s).
 
 Format: `settleup [MEMBER]`
 * The `MEMBER` should be an existing member.
+* The `MEMBER` should be a valid debtor in the group (i.e. the member should owe money to other members).
 
-Example of usage: `settleup Alice`
+Example of usage:
+```dtd
+add member alice
+add member bob
+add member charlie
+add transaction alice p/bob a/3 p/charlie a/4
+add transaction charlie p/alice a/6 p/bob a/1
+list debts
+    Best Way to Solve Debts:
+    bob owes alice $1.0
+    bob owes charlie $3.0
 
+settleup bob
+    bob has repaid alice $1.0
+    bob has repaid charlie $3.0
+    bob has no more debts!
+
+list members
+    alice: $0.0
+    bob: $0.0
+    charlie: $0.0
+``` 
 
 ### Exiting the application: `exit`
 Exits the application.
@@ -299,8 +324,8 @@ Example of usage: `exit`
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction file it creates with the file containing your data.
+**A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction TXT files it creates with the files containing your data.
 
 
 ## Known Issues
-* (to be added)
+
