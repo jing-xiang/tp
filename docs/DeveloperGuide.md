@@ -105,6 +105,115 @@ Given below is an example usage scenario and how StorageHandler behaves at each 
 ### Member and MemberList
 
 ### Transaction and TransactionList
+<ins>Transaction Overview</ins>
+
+The Transaction class is responsible for representing a single transaction in the LongAh application between 2 members.
+It contains information about the lender, borrowers, and the amount involved in the transaction.
+
+
+<ins>Class Fields</ins>
+* lender: Represents the member who lent the money.
+* subtransactions: An ArrayList of Subtransaction objects, representing individual borrowings within the transaction.
+
+<ins>Transaction Constructor</ins>
+
+`Transaction(Member lender, ArrayList<Member> borrowers, double amount)`
+* Parses the given user input and creates a new Transaction object with the specified lender, borrowers, and amount.
+* Called whenever a new transaction is added to the transaction list.
+
+`Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
+MemberList members)`
+* Constructs a transaction instance using specified lender, subtransactions, and member list.
+* This constructor is used for storage methods only.
+
+<ins>Transaction Methods</ins>
+
+- *parseTransaction*: Parses the user input to extract lender and borrowers, then adds them to the transaction.
+
+- *addBorrower*: Adds a borrower to the transaction.
+
+- *getLender*: Returns the lender of the transaction.
+
+- *isLender*: Checks if a given member is the lender of the transaction.
+
+- *isborrower*: Checks if a given member is a borrower in the transaction.
+
+- *isInvolved*: Checks if a given member is involved in the transaction.
+
+- *toStorageString*: Converts the transaction to a string format for storage.
+
+- *getSubtransactions*: Returns the list of subtransactions in the transaction.
+
+- *editTransaction*: Edits the transaction based on new user input.
+
+- *deleteMember*: Deletes a member from the transaction and returns true if transaction needs to be removed.
+
+
+<ins>TransactionList Overview</ins>
+
+The TransactionList class is responsible for managing a list of transactions in the LongAh application. It provides methods to add, delete, and retrieve transactions from the list.
+
+<ins>Class Fields</ins>
+
+- *transactions*: An ArrayList of Transaction objects representing the list of transactions in LongAh!.
+
+<ins>TransactionList Methods</ins>
+
+- *addTransaction*: Parses user input and adds a new transaction to the list.
+
+- *getTransactionListSize*: Returns the size of the transaction list.
+
+- *remove*: Removes a transaction from the list based on the index.
+
+- *clear*: Clears all transactions from the list.
+
+- *getTransaction*: Returns the list of transactions.
+
+- *listTransactions*: Lists all transactions in the transaction list.
+
+- *findLender*: Finds all transaction where a specified member is the lender.
+
+- *findBorrower*: Finds all transaction where a specified member is a borrower.
+
+- *findTransactions*: Finds a transaction based on member name.
+
+- *editTransactionList*: Edits a transaction in the list based on user input.
+
+- *findDebts*: Finds all debts owed by a specified member.
+
+- *deleteMember*: Deletes a member from all transactions in the list.
+
+<ins>Usage Example</ins>
+
+Adding a new transaction:
+![addTransaction.png](diagrams%2FaddTransaction.png)
+
+Given below is an example usage scenario and how the Transaction class behaves at each step:
+
+
+1. The user enters a new transaction using the 'add transaction' command with the lender, borrower(s), and amount(s) specified.
+2. The TransactionList class takes in the user input and creates a new Transaction object with the specified details for the specified memberList.
+3. The Transaction class parses the user input to extract the lender and borrower(s) and adds them to the transaction.
+4. The Transaction object is added to the TransactionList, which stores the list of transactions.
+5. The Logger class logs the new transaction for information tracking, and logs a warning if an invalid transaction format is entered.
+6. The Group class then updates the best transaction settlement solution and member balances based on the new transaction.
+7. The StorageHandler class saves the updated data to the relevant files for future reference.
+
+Code Snippet
+```
+MemberList members = group.getMemberList();
+TransactionList transactions = group.getTransactionList();
+transactions.addTransaction(taskExpression, members);
+group.updateTransactionSolution();
+group.saveAllData();
+```
+<ins>Conclusion</ins>
+
+The Transaction class provides functionality for managing transactions between
+facilitates the lending of money and ensures data integrity by validating input and managing member interactions.
+
+The TransactionList class provides essential functionalities for managing a list of transactions.
+Its methods facilitate the addition, removal, editing, and retrieval of transactions, ensuring efficient management of transactions within a group.
 
 ### PIN
 
@@ -112,7 +221,7 @@ Given below is an example usage scenario and how StorageHandler behaves at each 
 
 The PINHandler class is responsible for managing the creation, loading, authentication, and resetting of a
 Personal Identification Number (PIN) used for authentication in the LongAh application. It uses SHA-256 hashing to
-securely store and compare PINs. The PINHandler class interacts with the StorageHandler class to save and load the PIN 
+securely store and compare PINs. The PINHandler class interacts with the StorageHandler class to save and load the PIN
 and authentication status.
 
 Note: PIN is enabled by default and needs to be set upon first startup.
@@ -212,11 +321,11 @@ PINHandler.authenticate();
 
 <ins> Design Considerations </ins>
 
-Resetting PIN: The resetPin() method allows users to change their PIN by first verifying their current PIN. This adds 
+Resetting PIN: The resetPin() method allows users to change their PIN by first verifying their current PIN. This adds
 an extra layer of security to prevent unauthorized PIN changes.
 
 Authentication Management: Users have the option to enable or disable authentication upon startup using the 'pin enable'
-and 'pin disable' commands. This flexibility allows users to customize their authentication preferences based on their 
+and 'pin disable' commands. This flexibility allows users to customize their authentication preferences based on their
 security needs and convenience.
 
 ### Exceptions and Logging
