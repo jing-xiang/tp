@@ -61,7 +61,7 @@ public class TransactionTest {
             MemberList memberList = new MemberList();
             memberList.addMember("Jack");
             memberList.addMember("Jane");
-            new Transaction("Jack p/Jane a/200 t/2359", memberList);
+            new Transaction("Jack t/2359 p/Jane a/200", memberList);
             fail();
         } catch (LongAhException e) {
             String expected = ExceptionMessage.INVALID_TIME_FORMAT.getMessage();
