@@ -76,9 +76,9 @@ public class Transaction {
         try {
             this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
                     DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
-            } catch (DateTimeParseException e) {
-                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-            }
+        } catch (DateTimeParseException e) {
+            throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+        }
         this.lender = lender;
         this.subtransactions = subtransactions;
     }
