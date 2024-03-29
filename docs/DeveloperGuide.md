@@ -58,7 +58,7 @@ The StorageHandler class is responsible for managing the loading and saving of d
 Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
 
 * `members.txt` - NAME | BALANCE
-* `transactions.txt` - LENDER NAME | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+* `transactions.txt` - LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
 
 <ins>Class Structure</ins>
 
@@ -123,9 +123,14 @@ It contains information about the lender, borrowers, and the amount involved in 
 * Called whenever a new transaction is added to the transaction list.
 
 `Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
+MemberList members)`
+* Constructs a transaction instance using specified lender, subtransactions, member list.
+* This constructor is used for storage methods only.
+
+`Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
 MemberList members, String transactionTime)`
 * Constructs a transaction instance using specified lender, subtransactions, member list and transaction time.
-* This constructor is used for storage methods only.
+* This constructor is used for storage methods only on entries with transaction time.
 
 <ins>Transaction Methods</ins>
 
