@@ -1,17 +1,21 @@
 package longah.node;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import longah.util.MemberList;
 import longah.exception.LongAhException;
 import longah.exception.ExceptionMessage;
 import longah.util.Subtransaction;
+import java.time.LocalDateTime;
 
 /**
  * Represents a transaction between two members.
  */
 public class Transaction {
     private Member lender;
+    private LocalDateTime transactionTime = null;
     private ArrayList<Subtransaction> subtransactions = new ArrayList<>();
 
     /**
@@ -58,7 +62,7 @@ public class Transaction {
      * @throws LongAhException If the user input is in an invalid format or value.
      */
     public void parseTransaction(String expression, MemberList members) throws LongAhException {
-        // User input format: [Lender] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ...
+        // User input format: [Lender] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ... t/[transactionTime(opt)]
         String[] splitInput = expression.split("p/");
         if (splitInput.length < 2 || splitInput[0].isEmpty()) {
             // Minimum of 2 people as part of a transaction
@@ -69,8 +73,22 @@ public class Transaction {
         // Check for existence of all parties involved in the transaction in the group.
         String lenderName = splitInput[0].trim();
         this.lender = members.getMember(lenderName);
+        String borrowNameAmount;
         for (int i = 1; i < splitInput.length; i++) {
-            String borrowNameAmount = splitInput[i].trim();
+
+            if (i == splitInput.length - 1) {
+                String[] inputWithDateTime = splitInput[i].split("t/");
+                if (inputWithDateTime.length == 2) {
+                    this.transactionTime = LocalDateTime.parse(inputWithDateTime[1].trim(),
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+                }
+                borrowNameAmount = inputWithDateTime[0].trim();
+            }
+
+            else {
+                assert i < splitInput.length - 1 : "Wrong operation used for the last element with date time";
+                borrowNameAmount = splitInput[i].trim();
+            }
             addBorrower(borrowNameAmount, members, this.lender);
         }
     }
@@ -240,5 +258,14 @@ public class Transaction {
 
         // Delete transaction if no more subtransactions
         return subtransactions.isEmpty();
+    }
+
+    /**
+     * Returns true if the transaction has a transaction time
+     *
+     * @return True if the transaction has a time, false otherwise
+     */
+    public boolean haveTime() {
+        return transactionTime != null;
     }
 }
