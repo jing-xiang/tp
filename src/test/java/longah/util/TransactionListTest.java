@@ -368,7 +368,7 @@ public class TransactionListTest {
      * Test the successful addition and listing of transactions with transaction time
      */
     @Test
-    public void add_list_transactionsWithTime_success() {
+    public void list_transactionsWithTime_success() {
         try {
             MemberList memberList = new MemberList();
             TransactionList transactionList = new TransactionList();
