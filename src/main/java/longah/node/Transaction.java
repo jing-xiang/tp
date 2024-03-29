@@ -2,6 +2,7 @@ package longah.node;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import longah.util.MemberList;
@@ -79,8 +80,12 @@ public class Transaction {
             if (i == splitInput.length - 1) {
                 String[] inputWithDateTime = splitInput[i].split("t/");
                 if (inputWithDateTime.length == 2) {
-                    this.transactionTime = LocalDateTime.parse(inputWithDateTime[1].trim(),
-                            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+                    try {
+                        this.transactionTime = LocalDateTime.parse(inputWithDateTime[1].trim(),
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+                    } catch (DateTimeParseException e) {
+                        throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
+                    }
                 }
                 borrowNameAmount = inputWithDateTime[0].trim();
             }
