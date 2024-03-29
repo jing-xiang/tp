@@ -24,7 +24,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 
 
 ## Quick Command Reference
-| Command                | Parameters                                                                                            |
+| Task                   | Command Expression                                                                                    |
 |------------------------|-------------------------------------------------------------------------------------------------------|
 | Help menu              | `help`                                                                                                |
 | Add member             | `add member [name]`                                                                                   |
@@ -80,7 +80,7 @@ A command has the general structure:
 ```dtd
 [COMMAND] [SUBCOMMAND] [EXPRESSION]
 ```
-There are 5 main group of commands: 'add', 'delete', 'edit', 'find', 'list'.
+There are 5 main group of commands: 'add', 'delete', 'edit', 'find', 'list', along with other commands.
 
 ### Viewing help: `help`
 Shows a help message containing all the commands available in LongAh!.
@@ -128,6 +128,7 @@ Example of usage:
 add member alice
 add member bob
 add transaction alice p/bob a/5
+
 list members
     alice: $5.0
     bob: -$5.0
@@ -146,6 +147,7 @@ Example of usage:
 add member alice
 add member bob
 add transaction alice p/bob a/5
+
 list transactions
     1.
     Lender: alice
@@ -166,6 +168,7 @@ add member bob
 add member charlie
 add transaction alice p/bob a/3 p/charlie a/4
 add transaction charlie p/alice a/5 p/bob a/1
+
 list debts
     Best Way to Solve Debts:
     bob owes alice $2.0
@@ -296,6 +299,7 @@ add member bob
 add member charlie
 add transaction alice p/bob a/3 p/charlie a/4
 add transaction charlie p/alice a/6 p/bob a/1
+
 list debts
     Best Way to Solve Debts:
     bob owes alice $1.0
