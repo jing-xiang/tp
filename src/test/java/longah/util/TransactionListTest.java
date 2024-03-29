@@ -363,4 +363,30 @@ public class TransactionListTest {
             assertEquals(expected, e.getMessage());
         }
     }
+
+    /**
+     * Test the successful addition and listing of transactions with transaction time
+     */
+    @Test
+    public void add_list_transactionsWithTime_success() {
+        try {
+            MemberList memberList = new MemberList();
+            TransactionList transactionList = new TransactionList();
+            memberList.addMember("Jack");
+            memberList.addMember("Jane");
+            transactionList.addTransaction("Jack p/Jane a/200 t/2024-11-29 2359", memberList);
+
+            String printedOutput = transactionList.listTransactions();;
+
+            assertTrue(printedOutput.contains("Lender: Jack"));
+            assertTrue(printedOutput.contains("Transaction time: Nov 29 2024 11:59PM"));
+            assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
+
+        } catch (LongAhException e) {
+            fail();
+        }
+
+    }
+
+
 }

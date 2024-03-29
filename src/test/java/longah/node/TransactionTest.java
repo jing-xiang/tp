@@ -53,6 +53,23 @@ public class TransactionTest {
     }
 
     /**
+     * Tests the unsuccessful creation of a transaction with invalid Date Time format.
+     */
+    @Test
+    public void addTransactionTime_invalidTransactionFormat_exceptionThrown() {
+        try {
+            MemberList memberList = new MemberList();
+            memberList.addMember("Jack");
+            memberList.addMember("Jane");
+            new Transaction("Jack p/Jane a/200 t/2359", memberList);
+            fail();
+        } catch (LongAhException e) {
+            String expected = ExceptionMessage.INVALID_TIME_FORMAT.getMessage();
+            assertEquals(expected, e.getMessage());
+        }
+    }
+
+    /**
      * Tests the unsuccessful creation of a transaction with an invalid command to denote amount.
      */
     @Test
@@ -110,4 +127,5 @@ public class TransactionTest {
             assertEquals(expectedString, e.getMessage());
         }
     }
+
 }
