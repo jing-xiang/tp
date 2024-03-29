@@ -92,37 +92,35 @@ public class Transaction {
      * @throws LongAhException If the user input is in an invalid format or value.
      */
     public void parseTransaction(String expression, MemberList members) throws LongAhException {
-        // User input format: [Lender] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ... t/[transactionTime(opt)]
+        // User input format: [Lender] t/[transactionTime(opt)] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ...
+
         String[] splitInput = expression.split("p/");
         if (splitInput.length < 2 || splitInput[0].isEmpty()) {
             // Minimum of 2 people as part of a transaction
             throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
         }
         assert splitInput.length >= 2 : "Invalid transaction.";
+        String lenderName;
+
+        if (expression.contains("t/")) { //presence of time component in expression
+            String[] splitLenderTime = splitInput[0].split("t/");
+            lenderName = splitLenderTime[0].trim();
+            try {
+                this.transactionTime = LocalDateTime.parse(splitLenderTime[1].trim(),
+                        DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
+            } catch (DateTimeParseException e) {
+                throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
+            }
+        } else {
+            lenderName = splitInput[0].trim();
+        }
+        this.lender = members.getMember(lenderName);
 
         // Check for existence of all parties involved in the transaction in the group.
-        String lenderName = splitInput[0].trim();
-        this.lender = members.getMember(lenderName);
         String borrowNameAmount;
+
         for (int i = 1; i < splitInput.length; i++) {
-
-            if (i == splitInput.length - 1) {
-                String[] inputWithDateTime = splitInput[i].split("t/");
-                if (inputWithDateTime.length == 2) {
-                    try {
-                        this.transactionTime = LocalDateTime.parse(inputWithDateTime[1].trim(),
-                                DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
-                    } catch (DateTimeParseException e) {
-                        throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
-                    }
-                }
-                borrowNameAmount = inputWithDateTime[0].trim();
-            }
-
-            else {
-                assert i < splitInput.length - 1 : "Wrong operation used for the last element with date time";
-                borrowNameAmount = splitInput[i].trim();
-            }
+            borrowNameAmount = splitInput[i].trim();
             addBorrower(borrowNameAmount, members, this.lender);
         }
     }

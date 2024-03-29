@@ -374,7 +374,7 @@ public class TransactionListTest {
             TransactionList transactionList = new TransactionList();
             memberList.addMember("Jack");
             memberList.addMember("Jane");
-            transactionList.addTransaction("Jack p/Jane a/200 t/29-11-2024 2359", memberList);
+            transactionList.addTransaction("Jack t/29-11-2024 2359 p/Jane a/200", memberList);
 
             String printedOutput = transactionList.listTransactions();;
 
