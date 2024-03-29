@@ -28,6 +28,9 @@ public class PINCommand extends Command {
      * @throws LongAhException If unexpected additional parameters are found.
      */
     public void execute() throws LongAhException {
+        if (this.taskExpression.isEmpty()) {
+            throw new LongAhException(ExceptionMessage.INVALID_PIN_COMMAND);
+        }
         switch (this.taskExpression) {
         case "reset":
             PINHandler.resetPin();
