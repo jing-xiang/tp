@@ -29,6 +29,7 @@ It contains information about the lender, borrowers, and the amount involved in 
 
 `Transaction(Member lender, ArrayList<Member> borrowers, double amount)`
 * Parses the given user input and creates a new Transaction object with the specified lender, borrowers, and amount.
+* Called whenever a new transaction is added to the transaction list.
 
 `Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
 MemberList members)`
@@ -37,78 +38,77 @@ MemberList members)`
 
 <ins>Transaction Methods</ins>
 
-*parseTransaction*: Parses the user input to extract lender and borrowers, then adds them to the transaction.
+- *parseTransaction*: Parses the user input to extract lender and borrowers, then adds them to the transaction.
 
-*addBorrower*: Adds a borrower to the transaction.
+- *addBorrower*: Adds a borrower to the transaction.
 
-*getLender*: Returns the lender of the transaction.
+- *getLender*: Returns the lender of the transaction.
 
-*isLender*: Checks if a given member is the lender of the transaction.
+- *isLender*: Checks if a given member is the lender of the transaction.
 
-*isborrower*: Checks if a given member is a borrower in the transaction.
+- *isborrower*: Checks if a given member is a borrower in the transaction.
 
-*isInvolved*: Checks if a given member is involved in the transaction.
+- *isInvolved*: Checks if a given member is involved in the transaction.
 
-*toStorageString*: Converts the transaction to a string format for storage.
+- *toStorageString*: Converts the transaction to a string format for storage.
 
-*getSubtransactions*: Returns the list of subtransactions in the transaction.
+- *getSubtransactions*: Returns the list of subtransactions in the transaction.
 
-*editTransaction*: Edits the transaction based on new user input.
+- *editTransaction*: Edits the transaction based on new user input.
 
-*deleteMember*: Deletes a member from the transaction and returns true if transaction needs to be removed.
+- *deleteMember*: Deletes a member from the transaction and returns true if transaction needs to be removed.
 
 
 <ins>TransactionList Overview</ins>
 
 The TransactionList class is responsible for managing a list of transactions in the LongAh application. It provides methods to add, delete, and retrieve transactions from the list.
-<ins>Usage Example</ins>
 
 <ins>Class Fields</ins>
 
-*transactions*: An ArrayList of Transaction objects representing the list of transactions in LongAh!.
+- *transactions*: An ArrayList of Transaction objects representing the list of transactions in LongAh!.
 
 <ins>TransactionList Methods</ins>
 
-*addTransaction*: Parses user input and adds a new transaction to the list.
+- *addTransaction*: Parses user input and adds a new transaction to the list.
 
-*getTransactionListSize*: Returns the size of the transaction list.
+- *getTransactionListSize*: Returns the size of the transaction list.
 
-*remove*: Removes a transaction from the list based on the index.
+- *remove*: Removes a transaction from the list based on the index.
 
-*clear*: Clears all transactions from the list.
+- *clear*: Clears all transactions from the list.
 
-*getTransaction*: Returns the list of transactions.
+- *getTransaction*: Returns the list of transactions.
 
-*listTransactions*: Lists all transactions in the transaction list.
+- *listTransactions*: Lists all transactions in the transaction list.
 
-*findLender*: Finds all transaction where a specified member is the lender.
+- *findLender*: Finds all transaction where a specified member is the lender.
 
-*findBorrower*: Finds all transaction where a specified member is a borrower.
+- *findBorrower*: Finds all transaction where a specified member is a borrower.
 
-*findTransactions*: Finds a transaction based on member name.
+- *findTransactions*: Finds a transaction based on member name.
 
-*editTransactionList*: Edits a transaction in the list based on user input.
+- *editTransactionList*: Edits a transaction in the list based on user input.
 
-*findDebts*: Finds all debts owed by a specified member.
+- *findDebts*: Finds all debts owed by a specified member.
 
-*deleteMember*: Deletes a member from all transactions in the list.
+- *deleteMember*: Deletes a member from all transactions in the list.
 
-<ins>Example Usage</ins>
+<ins>Usage Example</ins>
 
 Adding a new transaction:
-![addTransaction.png](diagrams%2Faddtransaction.png)
+![addTransaction.png](diagrams%2FaddTransaction.png)
 
 Given below is an example usage scenario and how the Transaction class behaves at each step:
 
-```
-Step 1. The user enters a new transaction using the 'add transaction' command with the lender, borrower(s), and amount(s) specified.
-Step 2. The TransactionList class takes in the user input and creates a new Transaction object with the specified details for the specified memberList.
-Step 3. The Transaction class parses the user input to extract the lender and borrower(s) and adds them to the transaction.
-Step 4. The Transaction object is added to the TransactionList, which stores the list of transactions.
-Step 5: The Logger class logs the new transaction for information tracking, and logs a warning if an invalid transaction format is entered.
-Step 6: The Group class then updates the best transaction solution and member balances based on the new transaction.
-Step 7: The StorageHandler class saves the updated transaction list to the file for future reference.
-```
+
+1. The user enters a new transaction using the 'add transaction' command with the lender, borrower(s), and amount(s) specified.
+2. The TransactionList class takes in the user input and creates a new Transaction object with the specified details for the specified memberList.
+3. The Transaction class parses the user input to extract the lender and borrower(s) and adds them to the transaction.
+4. The Transaction object is added to the TransactionList, which stores the list of transactions.
+5. The Logger class logs the new transaction for information tracking, and logs a warning if an invalid transaction format is entered.
+6. The Group class then updates the best transaction settlement solution and member balances based on the new transaction.
+7. The StorageHandler class saves the updated data to the relevant files for future reference.
+
 Code Snippet
 ```
 MemberList members = group.getMemberList();
