@@ -39,7 +39,7 @@ public class Transaction {
      * @throws LongAhException If the lender does not exist in the group.
      */
     public Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
-            MemberList members, String transactionTime) throws LongAhException {
+            MemberList members) throws LongAhException {
         // Exception is thrown if any of the members do not exist in the group
         if (!members.isMember(lender)) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
@@ -49,19 +49,40 @@ public class Transaction {
                 throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
             }
         }
-
-        if (transactionTime != null) {
-            try {
-                this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
-                        DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
-            } catch (DateTimeParseException e) {
-                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-            }
-        }
-
         this.lender = lender;
         this.subtransactions = subtransactions;
     }
+
+    /**
+     * Constructs a new Transaction instance with the given lender, subtransactions, member list, and transaction time.
+     * Used for storage methods and for transaction records with time only.
+     *
+     * @param lender The member who lent the money in the transaction.
+     * @param subtransactions The list of subtransactions in the transaction.
+     * @param members The list of members in the group.
+     * @throws LongAhException If the lender does not exist in the group.
+     */
+    public Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
+                       MemberList members, String transactionTime) throws LongAhException {
+        // Exception is thrown if any of the members do not exist in the group
+        if (!members.isMember(lender)) {
+            throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+        }
+        for (Subtransaction subtransaction : subtransactions) {
+            if (!members.isMember(subtransaction.getBorrower())) {
+                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+            }
+        }
+        try {
+            this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
+            } catch (DateTimeParseException e) {
+                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+            }
+        this.lender = lender;
+        this.subtransactions = subtransactions;
+    }
+
 
     /**
      * Parses the user input to create a transaction.
@@ -90,7 +111,7 @@ public class Transaction {
                 if (inputWithDateTime.length == 2) {
                     try {
                         this.transactionTime = LocalDateTime.parse(inputWithDateTime[1].trim(),
-                                DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+                                DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
                     } catch (DateTimeParseException e) {
                         throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
                     }
@@ -201,7 +222,7 @@ public class Transaction {
         String time = "";
         if (this.haveTime()) {
             assert transactionTime != null : "Invalid printouts for transactions without a transaction time";
-            time = "Transaction time: " + this.transactionTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mma"))
+            time = "Transaction time: " + this.transactionTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy h:mma"))
                     + "\n";
         }
         String borrower = "";
@@ -228,7 +249,7 @@ public class Transaction {
         String time = "";
         if (this.haveTime()) {
             assert transactionTime != null : "Invalid storage for transactions without a transaction time";
-            time = delimiter + this.transactionTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+            time = delimiter + this.transactionTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
         }
         for (Subtransaction subtransaction : this.subtransactions) {
             String borrowerName = subtransaction.getBorrower().getName();

@@ -374,12 +374,12 @@ public class TransactionListTest {
             TransactionList transactionList = new TransactionList();
             memberList.addMember("Jack");
             memberList.addMember("Jane");
-            transactionList.addTransaction("Jack p/Jane a/200 t/2024-11-29 2359", memberList);
+            transactionList.addTransaction("Jack p/Jane a/200 t/29-11-2024 2359", memberList);
 
             String printedOutput = transactionList.listTransactions();;
 
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Transaction time: Nov 29 2024 11:59PM"));
+            assertTrue(printedOutput.contains("Transaction time: 29 Nov 2024 11:59PM"));
             assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
 
         } catch (LongAhException e) {
