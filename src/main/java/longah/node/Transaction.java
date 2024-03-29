@@ -40,13 +40,22 @@ public class Transaction {
      * @throws LongAhException If the lender does not exist in the group.
      */
     public Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
-            MemberList members) throws LongAhException {
+            MemberList members, String transactionTime) throws LongAhException {
         // Exception is thrown if any of the members do not exist in the group
         if (!members.isMember(lender)) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
         for (Subtransaction subtransaction : subtransactions) {
             if (!members.isMember(subtransaction.getBorrower())) {
+                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+            }
+        }
+
+        if (transactionTime != null) {
+            try {
+                this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+            } catch (DateTimeParseException e) {
                 throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
             }
         }
@@ -193,7 +202,8 @@ public class Transaction {
         String time = "";
         if (this.haveTime()) {
             assert transactionTime != null : "Invalid printouts for transactions without a transaction time";
-            time = this.transactionTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mma")) + "\n";
+            time = "Transaction time: " + this.transactionTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mma"))
+                    + "\n";
         }
         String borrower = "";
         int borrowerNo = 1;
