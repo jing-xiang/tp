@@ -58,7 +58,7 @@ The StorageHandler class is responsible for managing the loading and saving of d
 Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
 
 * `members.txt` - NAME | BALANCE
-* `transactions.txt` - LENDER NAME | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+* `transactions.txt` - LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
 
 <ins>Class Structure</ins>
 
@@ -113,18 +113,24 @@ It contains information about the lender, borrowers, and the amount involved in 
 
 <ins>Class Fields</ins>
 * lender: Represents the member who lent the money.
+* transaction time (optional): Represents the time at which the transaction took place.
 * subtransactions: An ArrayList of Subtransaction objects, representing individual borrowings within the transaction.
 
 <ins>Transaction Constructor</ins>
 
-`Transaction(Member lender, ArrayList<Member> borrowers, double amount)`
+`Transaction(String userInput, MemberList members)`
 * Parses the given user input and creates a new Transaction object with the specified lender, borrowers, and amount.
 * Called whenever a new transaction is added to the transaction list.
 
 `Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
 MemberList members)`
-* Constructs a transaction instance using specified lender, subtransactions, and member list.
+* Constructs a transaction instance using specified lender, subtransactions, member list.
 * This constructor is used for storage methods only.
+
+`Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
+MemberList members, String transactionTime)`
+* Constructs a transaction instance using specified lender, subtransactions, member list and transaction time.
+* This constructor is used for storage methods only on entries with transaction time.
 
 <ins>Transaction Methods</ins>
 
@@ -147,6 +153,8 @@ MemberList members)`
 - *editTransaction*: Edits the transaction based on new user input.
 
 - *deleteMember*: Deletes a member from the transaction and returns true if transaction needs to be removed.
+
+- *haveTime*: Checks if a given transaction has a corresponding time component.
 
 
 <ins>TransactionList Overview</ins>
@@ -191,7 +199,7 @@ Adding a new transaction:
 Given below is an example usage scenario and how the Transaction class behaves at each step:
 
 
-1. The user enters a new transaction using the 'add transaction' command with the lender, borrower(s), and amount(s) specified.
+1. The user enters a new transaction using the 'add transaction' command with the lender, borrower(s), amount(s) and time specified.
 2. The TransactionList class takes in the user input and creates a new Transaction object with the specified details for the specified memberList.
 3. The Transaction class parses the user input to extract the lender and borrower(s) and adds them to the transaction.
 4. The Transaction object is added to the TransactionList, which stores the list of transactions.
@@ -476,3 +484,4 @@ Warning: Text UI Testing has been configured to clear all past data records to s
 1. Inclusion of anomaly detection algorithms to flag out potentially erroneous transactions.
 2. Adding of further details tagged to each transaction and allow for searching of transactions based on these details.
 3. Create a reminder system to inform users of upcoming events or to warn them to settle payments.
+4. Allow the setting up of recurring transactions such as credit is deducted periodically.

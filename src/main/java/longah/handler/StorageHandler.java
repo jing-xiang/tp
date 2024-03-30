@@ -141,16 +141,30 @@ public class StorageHandler {
 
                 String[] transactionData = data.split(SEPARATOR);
                 String lenderName = transactionData[0];
+                String transactionTime = null;
                 Member lender = members.getMember(lenderName);
+                Transaction transaction = null;
                 ArrayList<Subtransaction> subtransactions = new ArrayList<>();
+                int startOfSubtransactions = 1;
 
-                for (int i = 1; i < transactionData.length; i += 2) {
-                    Subtransaction subtransaction = parseSubtransaction(transactionData[i],
-                            transactionData[i + 1], lender, members);
-                    subtransactions.add(subtransaction);
+                if (transactionData[1].contains("-")) {
+                    transactionTime = transactionData[1];
+                    startOfSubtransactions = 2;
                 }
 
-                Transaction transaction = new Transaction(lender, subtransactions, members);
+                for (int i = startOfSubtransactions; i < transactionData.length; i += 2) {
+                    if (!transactionData[i].contains("-")){ //Subtransaction handling should not handle time component
+                        Subtransaction subtransaction = parseSubtransaction(transactionData[i],
+                                transactionData[i + 1], lender, members);
+                        subtransactions.add(subtransaction);
+                    }
+                }
+
+                if (startOfSubtransactions == 1) {
+                    transaction = new Transaction(lender, subtransactions, members);
+                } else {
+                    transaction = new Transaction(lender, subtransactions, members, transactionTime);
+                }
                 this.transactions.addTransaction(transaction);
 
             } catch (LongAhException | NumberFormatException e) {

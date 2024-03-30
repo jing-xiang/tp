@@ -13,6 +13,7 @@ public enum ExceptionMessage {
 
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
+    INVALID_TIME_FORMAT ("Invalid time format.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
     INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
     NO_TRANSACTION_FOUND ("Transaction list is empty.", ExceptionType.INFO),
