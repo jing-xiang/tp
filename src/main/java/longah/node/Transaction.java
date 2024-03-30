@@ -104,6 +104,9 @@ public class Transaction {
 
         if (splitInput[0].contains("t/")) { //presence of time component in expression
             String[] splitLenderTime = splitInput[0].split("t/");
+            if (splitLenderTime[0].contains("t/")) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
+            }
             lenderName = splitLenderTime[0].trim();
             try {
                 this.transactionTime = LocalDateTime.parse(splitLenderTime[1].trim(),
