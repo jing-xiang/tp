@@ -9,11 +9,11 @@ cd ..
 cd text-ui-test
 rm -rf ./data/
 
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input.txt > ACTUAL.TXT
+java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input1.txt > ACTUAL1.TXT
 
-cp EXPECTED.TXT EXPECTED-UNIX.TXT
-dos2unix EXPECTED-UNIX.TXT ACTUAL.TXT
-diff EXPECTED-UNIX.TXT ACTUAL.TXT
+cp EXPECTED1.TXT EXPECTED1-UNIX.TXT
+dos2unix EXPECTED1-UNIX.TXT ACTUAL1.TXT
+diff EXPECTED1-UNIX.TXT ACTUAL1.TXT
 if [ $? -eq 0 ]
 then
     echo "Test passed!"
