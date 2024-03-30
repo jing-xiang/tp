@@ -6,8 +6,8 @@ cd "${0%/*}"
 cd ..
 ./gradlew clean shadowJar
 
-rm -rf ./data/
 cd text-ui-test
+rm -rf ./data/
 
 java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input.txt > ACTUAL.TXT
 
