@@ -25,14 +25,6 @@ public class ExitCommand extends Command {
         if (!this.taskExpression.isEmpty()) {
             throw new LongAhException(ExceptionMessage.INVALID_EXIT_COMMAND);
         }
-    }
-
-    /**
-     * Returns whether the current command is an exit comamnd or not.
-     * 
-     * @return True if the command is an exit command, false otherwise.
-     */
-    public boolean isExit() {
-        return true;
+        System.exit(0);
     }
 }
