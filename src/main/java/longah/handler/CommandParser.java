@@ -11,6 +11,7 @@ import longah.commands.list.ListCommand;
 import longah.commands.PINCommand;
 import longah.commands.SettleCommand;
 import longah.commands.ClearCommand;
+import longah.commands.ViewCommand;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
 
@@ -43,6 +44,8 @@ public class CommandParser {
             return new ExitCommand(commandString, taskExpression);
         case "pin":
             return new PINCommand(commandString, taskExpression);
+        case "view":
+            return new ViewCommand(commandString, taskExpression);
 
         case "help":
             return new HelpCommand(commandString, taskExpression);
