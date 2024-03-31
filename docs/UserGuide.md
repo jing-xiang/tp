@@ -6,11 +6,24 @@ LongAh! is a CLI-based application designed to help users track debts within fri
 least transaction method of settling these debts. It is optimized for busy people with large transaction quantities 
 among friends.
 
+## Quick Start
+
+1. Ensure that you have Java 11 or above installed. 
+2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases)
+3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
+4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
+```dtd
+java -jar tp.jar
+```
+5. Upon starting the application, you will be prompted to enter your PIN. The user PIN is required to access the application.
+The app will prompt you to create your own PIN if it is your first time using the application.
+6. You can now start using LongAh! by entering commands into the command terminal.
+
 ## Table of Contents
 - [LongAh! User Guide](#longah-user-guide)
   - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
   - [Quick Start](#quick-start)
+  - [Table of Contents](#table-of-contents)
   - [Quick Command Reference](#quick-command-reference)
   - [Features](#features)
     - [Member Management](#member-management)
@@ -43,27 +56,13 @@ among friends.
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
 
-
-## Quick Start
-
-1. Ensure that you have Java 11 or above installed. 
-2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases)
-3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
-4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
-```dtd
-java -jar tp.jar
-```
-5. Upon starting the application, you will be prompted to enter your PIN. The user PIN is required to access the application.
-The app will prompt you to create your own PIN if it is your first time using the application.
-6. You can now start using LongAh! by entering commands into the command terminal.
-
-
 ## Quick Command Reference
 | Task                   | Command Expression                                                                                    |
 |------------------------|-------------------------------------------------------------------------------------------------------|
 | Help menu              | `help`                                                                                                |
 | Add member             | `add member [name]`                                                                                   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      |
 | List members           | `list members`                                                                                        |
 | List transactions      | `list transactions`                                                                                   |
 | List debts             | `list debts`                                                                                          |
