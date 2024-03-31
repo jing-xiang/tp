@@ -58,7 +58,7 @@ public class InputHandler {
         case "pin":
             return new PINCommand(commandString, taskExpression);
         case "view":
-                return new ViewCommand(commandString, taskExpression);    
+            return new ViewCommand(commandString, taskExpression);
         case "help":
             return new HelpCommand(commandString, taskExpression);
             
