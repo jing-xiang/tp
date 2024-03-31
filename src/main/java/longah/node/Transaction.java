@@ -95,15 +95,18 @@ public class Transaction {
         // User input format: [Lender] t/[transactionTime(opt)] p/[Borrower1] a/[amount1] p/[Borrower2] a/[amount2] ...
 
         String[] splitInput = expression.split("p/");
-        if (splitInput.length < 2 || splitInput[0].isEmpty()) {
+        if (splitInput.length < 2 || splitInput[0].isEmpty() || splitInput[1].contains(("t/"))) {
             // Minimum of 2 people as part of a transaction
             throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
         }
         assert splitInput.length >= 2 : "Invalid transaction.";
         String lenderName;
 
-        if (expression.contains("t/")) { //presence of time component in expression
+        if (splitInput[0].contains("t/")) { //presence of time component in expression
             String[] splitLenderTime = splitInput[0].split("t/");
+            if (splitLenderTime[0].contains("t/")) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
+            }
             lenderName = splitLenderTime[0].trim();
             try {
                 this.transactionTime = LocalDateTime.parse(splitLenderTime[1].trim(),
