@@ -27,6 +27,8 @@ import longah.exception.ExceptionMessage;
 public class StorageHandler {
     // ASCII Defined Separator
     private static final String SEPARATOR = String.valueOf(Character.toChars(31));
+    private static final String MEMBERS_FILE_STRING = "members.txt";
+    private static final String TRANSACTIONS_FILE_STRING = "transactions.txt";
 
     // Storage Directory Constants
     private String storageFolderPath = "./data";
@@ -57,8 +59,8 @@ public class StorageHandler {
         }
 
         // Create data files if they do not exist
-        this.storageMembersFilePath = this.storageFolderPath + "/members.txt";
-        this.storageTransactionsFilePath = this.storageFolderPath + "/transactions.txt";
+        this.storageMembersFilePath = this.storageFolderPath + MEMBERS_FILE_STRING;
+        this.storageTransactionsFilePath = this.storageFolderPath + TRANSACTIONS_FILE_STRING;
         this.membersFile = new File(this.storageMembersFilePath);
         this.transactionsFile = new File(this.storageTransactionsFilePath);
 
@@ -153,7 +155,8 @@ public class StorageHandler {
                 }
 
                 for (int i = startOfSubtransactions; i < transactionData.length; i += 2) {
-                    if (!transactionData[i].contains("-")){ //Subtransaction handling should not handle time component
+                    // Subtransaction handling should not handle time component
+                    if (!transactionData[i].contains("-")) { 
                         Subtransaction subtransaction = parseSubtransaction(transactionData[i],
                                 transactionData[i + 1], lender, members);
                         subtransactions.add(subtransaction);
@@ -171,6 +174,7 @@ public class StorageHandler {
                 throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
             }
         }
+        
         boolean checksum = checkTransactions(members);
         if (!checksum) {
             throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
