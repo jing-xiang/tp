@@ -59,8 +59,8 @@ public class StorageHandler {
         }
 
         // Create data files if they do not exist
-        this.storageMembersFilePath = this.storageFolderPath + MEMBERS_FILE_STRING;
-        this.storageTransactionsFilePath = this.storageFolderPath + TRANSACTIONS_FILE_STRING;
+        this.storageMembersFilePath = this.storageFolderPath + "/" + MEMBERS_FILE_STRING;
+        this.storageTransactionsFilePath = this.storageFolderPath + "/" + TRANSACTIONS_FILE_STRING;
         this.membersFile = new File(this.storageMembersFilePath);
         this.transactionsFile = new File(this.storageTransactionsFilePath);
 
