@@ -13,6 +13,7 @@ public enum ExceptionMessage {
 
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
+    INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
     INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
     NO_TRANSACTION_FOUND ("Transaction list is empty.", ExceptionType.INFO),
@@ -25,7 +26,8 @@ public enum ExceptionMessage {
     STORAGE_FILE_NOT_READ ("File not read.", ExceptionType.WARNING),
     STORAGE_FILE_NOT_WRITTEN ("File not written.", ExceptionType.WARNING),
     INVALID_STORAGE_CONTENT ("Invalid content in storage file, line ignored.", ExceptionType.WARNING),
-    STORAGE_FILE_CORRUPTED ("Storage file is corrupted.", ExceptionType.WARNING),
+    STORAGE_FILE_CORRUPTED ("Storage file is corrupted." + 
+                "We recommend running 'clear' or manually resolving the error data.", ExceptionType.WARNING),
 
     // Ui exceptions
     INVALID_COMMAND ("Invalid command. Use 'help' to see the list of commands.",

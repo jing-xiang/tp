@@ -39,6 +39,46 @@ public class InputHandler {
     public static Command parseCommand(String commandString, String taskExpression)
             throws LongAhException {
         switch (commandString) {
+        case "add":
+            return new AddCommand(commandString, taskExpression);
+        case "list":
+            return new ListCommand(commandString, taskExpression);
+        case "find":
+            return new FindCommand(commandString, taskExpression);
+        case "delete":
+            return new DeleteCommand(commandString, taskExpression);
+        case "clear":
+            return new ClearCommand(commandString, taskExpression);
+        case "settleup":
+            return new SettleCommand(commandString, taskExpression);
+        case "edit":
+            return new EditCommand(commandString, taskExpression);
+        case "exit":
+            return new ExitCommand(commandString, taskExpression);
+        case "pin":
+            return new PINCommand(commandString, taskExpression);
+        case "view":
+                return new ViewCommand(commandString, taskExpression);    
+        case "help":
+            return new HelpCommand(commandString, taskExpression);
+            
+        case "group":
+            // Fallthrough
+        default:
+            throw new LongAhException(ExceptionMessage.INVALID_COMMAND);
+        }
+    }
+
+    /**
+     * Parses the command string and returns the corresponding command.
+     *
+     * @param commandString The command string.
+     * @param taskExpression The task expression.
+     * @return The corresponding command of type {@link Command}.
+     */
+    public static Command parseCommand(String commandString, String taskExpression)
+            throws LongAhException {
+        switch (commandString) {
             case "add":
                 return new AddCommand(commandString, taskExpression);
             case "list":
