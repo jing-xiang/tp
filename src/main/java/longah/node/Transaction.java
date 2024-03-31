@@ -40,17 +40,7 @@ public class Transaction {
      */
     public Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
             MemberList members) throws LongAhException {
-        // Exception is thrown if any of the members do not exist in the group
-        if (!members.isMember(lender)) {
-            throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-        }
-        for (Subtransaction subtransaction : subtransactions) {
-            if (!members.isMember(subtransaction.getBorrower())) {
-                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-            }
-        }
-        this.lender = lender;
-        this.subtransactions = subtransactions;
+        parseTransaction(lender, subtransactions, members);
     }
 
     /**
@@ -64,23 +54,13 @@ public class Transaction {
      */
     public Transaction(Member lender, ArrayList<Subtransaction> subtransactions,
                        MemberList members, String transactionTime) throws LongAhException {
-        // Exception is thrown if any of the members do not exist in the group
-        if (!members.isMember(lender)) {
-            throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-        }
-        for (Subtransaction subtransaction : subtransactions) {
-            if (!members.isMember(subtransaction.getBorrower())) {
-                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
-            }
-        }
+        parseTransaction(lender, subtransactions, members);
         try {
             this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
                     DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
         } catch (DateTimeParseException e) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
-        this.lender = lender;
-        this.subtransactions = subtransactions;
     }
 
 
@@ -126,6 +106,29 @@ public class Transaction {
             borrowNameAmount = splitInput[i].trim();
             addBorrower(borrowNameAmount, members, this.lender);
         }
+    }
+
+    /**
+     * Parses the transaction for storage purposes. Used for reading from storage.
+     * 
+     * @param lender The member who lent the money in the transaction.
+     * @param subtransactions The list of subtransactions in the transaction.
+     * @param members The list of members in the group.
+     * @throws LongAhException If any of the members do not exist in the group.
+     */
+    public void parseTransaction(Member lender, ArrayList<Subtransaction> subtransactions, 
+            MemberList members) throws LongAhException {
+        // Exception is thrown if any of the members do not exist in the group
+        if (!members.isMember(lender)) {
+            throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+        }
+        for (Subtransaction subtransaction : subtransactions) {
+            if (!members.isMember(subtransaction.getBorrower())) {
+                throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
+            }
+        }
+        this.lender = lender;
+        this.subtransactions = subtransactions;
     }
 
     /**

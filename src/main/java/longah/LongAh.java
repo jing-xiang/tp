@@ -45,11 +45,6 @@ public class LongAh {
                 }
                 Command c = InputHandler.parseInput(command);
                 c.execute(group);
-
-                // Check will not be reached if exception is thrown
-                if (c.isExit()) {
-                    System.exit(0);
-                }
             } catch (LongAhException e) {
                 LongAhException.printException(e);
             }

@@ -26,15 +26,6 @@ public abstract class Command {
     public abstract void execute(Group group) throws LongAhException;
 
     /**
-     * Returns whether the current command is an exit comamnd or not.
-     * 
-     * @return True if the command is an exit command, false otherwise.
-     */
-    public boolean isExit() {
-        return false;
-    }
-
-    /**
      * Returns the command string.
      * 
      * @return The command string.

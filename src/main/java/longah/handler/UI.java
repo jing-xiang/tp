@@ -42,7 +42,7 @@ public class UI {
      */
     public static String getUserInput() {
         if (!scanner.hasNextLine()) {
-            return null;
+            System.exit(0);
         }
         return scanner.nextLine().trim();
     }
