@@ -367,7 +367,6 @@ public class TransactionListTest {
     /**
      * Test the successful addition and listing of transactions with transaction time
      */
-    /*
     @Test
     public void list_transactionsWithTime_success() {
         try {
@@ -386,5 +385,4 @@ public class TransactionListTest {
             fail();
         }
     }
-    */
 }
