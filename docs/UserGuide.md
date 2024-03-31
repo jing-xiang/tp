@@ -1,16 +1,5 @@
 # LongAh! User Guide
 
-## Table of Contents
-- [User Guide](#user-guide)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Quick Start](#quick-start)
-  - [Features](#features)
-    - [Adding a todo: `todo`](#adding-a-todo-todo)
-  - [FAQ](#faq)
-  - [Command Summary](#command-summary)
-
-
 ## Introduction
 
 LongAh! is a CLI-based application designed to help users track debts within friend groups and determine the 
@@ -18,6 +7,41 @@ least transaction method of settling these debts. It is optimized for busy peopl
 among friends.
 
 ## Table of Contents
+- [LongAh! User Guide](#longah-user-guide)
+  - [Introduction](#introduction)
+  - [Table of Contents](#table-of-contents)
+  - [Quick Start](#quick-start)
+  - [Quick Command Reference](#quick-command-reference)
+  - [Features](#features)
+    - [Member Management](#member-management)
+    - [Group Balances \& Expense Tracking](#group-balances--expense-tracking)
+    - [Debt Simplification](#debt-simplification)
+    - [Security](#security)
+    - [Saving the data](#saving-the-data)
+    - [Editing the data file](#editing-the-data-file)
+  - [Command Format](#command-format)
+    - [Viewing help: `help`](#viewing-help-help)
+    - [Adding a member: `add member`](#adding-a-member-add-member)
+    - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
+    - [Listing all members: `list members`](#listing-all-members-list-members)
+    - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
+    - [Listing all debts: `list debts`](#listing-all-debts-list-debts)
+    - [Find Transactions: `find transactions`](#find-transactions-find-transactions)
+    - [Find Lender `find lender`](#find-lender-find-lender)
+    - [Find Borrower `find borrower`](#find-borrower-find-borrower)
+    - [Find Debts `find debts`](#find-debts-find-debts)
+    - [Deleting a member: `delete member`](#deleting-a-member-delete-member)
+    - [Deleting a transaction: `delete transaction`](#deleting-a-transaction-delete-transaction)
+    - [Editing a member: `edit member`](#editing-a-member-edit-member)
+    - [Editing a transaction: `edit transaction`](#editing-a-transaction-edit-transaction)
+    - [Enabling the user PIN: `pin enable`](#enabling-the-user-pin-pin-enable)
+    - [Disabling the user PIN: `pin disable`](#disabling-the-user-pin-pin-disable)
+    - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
+    - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
+    - [Settle a user's debts: `settleup`](#settle-a-users-debts-settleup)
+    - [Exiting the application: `exit`](#exiting-the-application-exit)
+  - [FAQ](#faq)
+  - [Known Issues](#known-issues)
 
 
 ## Quick Start
