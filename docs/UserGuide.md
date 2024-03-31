@@ -327,6 +327,31 @@ list members
     charlie: $0.0
 ``` 
 
+### Views the balances of all members in the form of a chart: `view chart`
+Shows a chart of the balances of all members in the group.
+
+Format: `view chart`
+
+Example of usage: `view chart`
+```dtd
+add member alice
+add member bob
+add member charlie
+add transaction alice p/bob a/100
+add transaction charlie p/alice a/6 p/bob a/1
+
+view chart
+        Loading balances chart...
+```
+
+A separate window will pop up displaying the balances of all members in the group in the form of a category chart.
+
+They are color-coded to show the balance status of each member.
+
+A separate tooltip will show the exact balance of each member.
+
+![viewChart.png](diagrams%2FviewChart.png)
+
 ### Exiting the application: `exit`
 Exits the application.
 
