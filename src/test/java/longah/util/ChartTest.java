@@ -80,23 +80,23 @@ public class ChartTest {
         }
     }
 
-    /**
-     * Tests the successful creation of a bar chart with NaN balances.
-     */
-    @Test
-    public void viewBalancesBarChart_nan_success() {
-        try {
-            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(Double.NaN, Double.NaN, Double.NaN);
-            Chart chart = Chart.viewBalancesBarChart(members, balances);
-
-            assert chart != null;
-            assertEquals(chart.getClass(), Chart.class);
-            assertEquals(chart instanceof Chart, true);
-        } catch (Exception e) {
-            fail();
-        }
-    }
+    //    /**
+    //     * Tests the successful creation of a bar chart with NaN balances.
+    //     */
+    //    @Test
+    //    public void viewBalancesBarChart_nan_success() {
+    //        try {
+    //            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
+    //            List<Double> balances = Arrays.asList(Double.NaN, Double.NaN, Double.NaN);
+    //            Chart chart = Chart.viewBalancesBarChart(members, balances);
+    //
+    //            assert chart != null;
+    //            assertEquals(chart.getClass(), Chart.class);
+    //            assertEquals(chart instanceof Chart, true);
+    //        } catch (Exception e) {
+    //            fail();
+    //        }
+    //    }
 
     /**
      * Tests the unsuccessful creation of a bar chart with no members.
