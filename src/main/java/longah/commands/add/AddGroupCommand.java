@@ -2,9 +2,7 @@ package longah.commands.add;
 
 import longah.commands.Command;
 import longah.node.Group;
-import longah.handler.GroupListHandler;
 import longah.exception.LongAhException;
-import longah.exception.ExceptionMessage;
 import longah.util.GroupList;
 
 public class AddGroupCommand extends Command {
@@ -21,14 +19,10 @@ public class AddGroupCommand extends Command {
     /**
      * Executes the add group command.
      *
-     * @param group The group to execute the command on.
+     * @param group The group current group.
      */
     public void execute(Group group) throws LongAhException {
-        String groupName = this.taskExpression;
-        if (GroupList.isGroup(groupName)) {
-            throw new LongAhException(ExceptionMessage.DUPLICATE_GROUP);
-        }
-        Group newGroup = new Group(groupName);
-        GroupListHandler.addGroup(newGroup);
+        Group newGroup = new Group(this.taskExpression);
+        GroupList.addGroup(newGroup);
     }
 }

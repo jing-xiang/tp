@@ -59,8 +59,7 @@ public class InputHandler {
             return new PINCommand(commandString, taskExpression);
         case "help":
             return new HelpCommand(commandString, taskExpression);
-            
-        case "switchgroup":
+        case "group":
             return new SwitchCommand(commandString, taskExpression);
         case "chart":
             throw new LongAhException(ExceptionMessage.COMMAND_NOT_IMPLEMENTED);

@@ -33,7 +33,7 @@ public enum ExceptionMessage {
     INVALID_STORAGE_CONTENT ("Invalid content in storage file, line ignored.", ExceptionType.WARNING),
     STORAGE_FILE_CORRUPTED ("Storage file is corrupted." + 
                 "We recommend running 'clear' or manually resolving the error data.", ExceptionType.WARNING),
-
+    IO_EXCEPTION ("An error occurred while reading/writing to the file.", ExceptionType.WARNING),
     // Ui exceptions
     INVALID_COMMAND ("Invalid command. Use 'help' to see the list of commands.",
             ExceptionType.INFO),
@@ -72,7 +72,7 @@ public enum ExceptionMessage {
     INVALID_HELP_COMMAND ("Invalid command format." +
             " Use 'help'", ExceptionType.INFO),
     INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +
-            " Use 'switch GROUP_NAME'", ExceptionType.INFO);
+            " Use 'switchgroup GROUP_NAME'", ExceptionType.INFO);
 
     private final String message;
     private final ExceptionType type;

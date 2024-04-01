@@ -1,6 +1,6 @@
 package longah;
 
-import longah.handler.GroupListHandler;
+import longah.util.GroupList;
 import longah.handler.Logging;
 import longah.handler.PINHandler;
 import longah.handler.UI;
@@ -30,7 +30,7 @@ public class LongAh {
         Logging.logInfo("Starting Pre-program preparations.");
         try {
             new PINHandler();
-            new GroupListHandler();
+            new GroupList();
         } catch (LongAhException e) {
             LongAhException.printException(e);
         }
@@ -44,7 +44,7 @@ public class LongAh {
                     continue;
                 }
                 Command c = InputHandler.parseInput(command);
-                c.execute(GroupListHandler.getActiveGroup());
+                c.execute(GroupList.getActiveGroup());
             } catch (LongAhException e) {
                 LongAhException.printException(e);
             }

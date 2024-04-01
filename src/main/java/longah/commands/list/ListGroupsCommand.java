@@ -1,9 +1,10 @@
 package longah.commands.list;
 
 import longah.commands.Command;
-import longah.handler.GroupListHandler;
+import longah.handler.UI;
 import longah.node.Group;
 import longah.exception.LongAhException;
+import longah.util.GroupList;
 
 public class ListGroupsCommand extends Command {
     /**
@@ -22,6 +23,7 @@ public class ListGroupsCommand extends Command {
      * @param group The group to execute the command on.
      */
     public void execute(Group group) throws LongAhException {
-        GroupListHandler.printGroupList();
+        String output = GroupList.getGroupList();
+        UI.showMessage(output);
     }
 }
