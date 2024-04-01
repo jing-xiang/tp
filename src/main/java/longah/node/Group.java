@@ -160,7 +160,7 @@ public class Group {
      * @throws LongAhException If there are no debts to be solved
      */
     public String listDebts() throws LongAhException {
-        if (this.transactionSolution.size() == 0) {
+        if (this.transactionSolution.isEmpty()) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
 

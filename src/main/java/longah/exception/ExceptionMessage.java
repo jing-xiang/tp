@@ -11,6 +11,11 @@ public enum ExceptionMessage {
     MEMBER_NOT_FOUND ("Member not found.", ExceptionType.INFO),
     NO_MEMBERS_FOUND ("Member list is empty.", ExceptionType.INFO),
 
+    // Group List Exceptions
+    DUPLICATE_GROUP ("Duplicate group.", ExceptionType.INFO),
+    EMPTY_GROUP_LIST ("Group list is empty.", ExceptionType.INFO),
+    GROUP_NOT_FOUND ("Group not found.", ExceptionType.INFO),
+
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
     INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
@@ -35,7 +40,8 @@ public enum ExceptionMessage {
     COMMAND_NOT_IMPLEMENTED ("This feature has yet to be implemented.",
             ExceptionType.INFO),
     INVALID_ADD_COMMAND ("Invalid command format." +
-            " Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...",
+            " Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...\n" +
+            "or 'add group GROUP_NAME'",
             ExceptionType.INFO),
     INVALID_LIST_COMMAND ("Invalid command format." +
             " Use 'list members', 'list transactions', or 'list debts'",
@@ -64,7 +70,9 @@ public enum ExceptionMessage {
     INVALID_EXIT_COMMAND ("Invalid command format." +
             " Use 'exit'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +
-            " Use 'help'", ExceptionType.INFO);
+            " Use 'help'", ExceptionType.INFO),
+    INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +
+            " Use 'switch GROUP_NAME'", ExceptionType.INFO);
 
     private final String message;
     private final ExceptionType type;

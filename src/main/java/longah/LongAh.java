@@ -1,18 +1,18 @@
 package longah;
 
-import longah.handler.PINHandler;
-import longah.node.Group;
-import longah.exception.LongAhException;
-import longah.handler.InputHandler;
+import longah.handler.GroupListHandler;
 import longah.handler.Logging;
+import longah.handler.PINHandler;
 import longah.handler.UI;
+import longah.handler.InputHandler;
+
+import longah.exception.LongAhException;
 import longah.commands.Command;
 
 /**
  * LongAh class manages debts between members.
  */
 public class LongAh {
-    private static Group group;
 
     public static void init() {
         new Logging();
@@ -29,8 +29,8 @@ public class LongAh {
 
         Logging.logInfo("Starting Pre-program preparations.");
         try {
-            group = new Group("group"); // Give a temporary name for now
             new PINHandler();
+            new GroupListHandler();
         } catch (LongAhException e) {
             LongAhException.printException(e);
         }
@@ -44,7 +44,7 @@ public class LongAh {
                     continue;
                 }
                 Command c = InputHandler.parseInput(command);
-                c.execute(group);
+                c.execute(GroupListHandler.getActiveGroup());
             } catch (LongAhException e) {
                 LongAhException.printException(e);
             }
