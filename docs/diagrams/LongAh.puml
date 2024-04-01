@@ -1,0 +1,362 @@
+@startuml
+class longah.commands.delete.DeleteTransactionCommand {
++ <<Create>> DeleteTransactionCommand(String,String)
++ void execute(Group)
+}
+
+class longah.handler.Logging {
+- {static} Logger longAhLogger
++ <<Create>> Logging()
++ {static} void log(Level,String)
++ {static} void logInfo(String)
++ {static} void logWarning(String)
+}
+
+
+class longah.commands.list.ListMemberCommand {
++ <<Create>> ListMemberCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.find.FindBorrowerCommand {
++ <<Create>> FindBorrowerCommand(String,String)
++ void execute(Group)
+}
+
+class longah.node.Transaction {
+- Member lender
+- LocalDateTime transactionTime
+- ArrayList<Subtransaction> subtransactions
++ <<Create>> Transaction(String,MemberList)
++ <<Create>> Transaction(Member,ArrayList<Subtransaction>,MemberList)
++ <<Create>> Transaction(Member,ArrayList<Subtransaction>,MemberList,String)
++ void parseTransaction(String,MemberList)
++ void parseTransaction(Member,ArrayList<Subtransaction>,MemberList)
++ void addBorrower(String,MemberList,Member)
++ Member getLender()
++ boolean isLender(String)
++ boolean isBorrower(String)
++ boolean isInvolved(String)
++ String toString()
++ String toStorageString(String)
++ ArrayList<Subtransaction> getSubtransactions()
++ void editTransaction(String,MemberList)
++ boolean deleteMember(Member)
++ boolean haveTime()
+}
+
+
+class longah.util.TransactionList {
+- ArrayList<Transaction> transactions
++ void addTransaction(Transaction)
++ void addTransaction(String,MemberList)
++ int getTransactionListSize()
++ void remove(String)
++ void clear(MemberList)
++ ArrayList<Transaction> getTransactions()
++ String listTransactions()
++ String findLender(String)
++ String findBorrower(String)
++ String findTransactions(String)
++ void editTransactionList(String,MemberList)
++ String findDebts(String)
++ void deleteMember(String,MemberList)
+}
+
+
+class longah.commands.delete.DeleteCommand {
+- String subCommand
++ <<Create>> DeleteCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.commands.add.AddCommand {
+- String subCommand
++ <<Create>> AddCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.util.MemberList {
+- ArrayList<Member> members
++ <<Create>> MemberList()
++ void addMember(Member)
++ void addMember(String)
++ void addMember(String,double)
++ boolean isMember(String)
++ boolean isMember(Member)
++ Member getMember(String)
++ void editMemberName(String)
++ String listMembers()
++ void updateMembersBalance(TransactionList)
++ ArrayList<ArrayList<Member>> classifyMembers()
++ ArrayList<Subtransaction> solveTransactions()
++ int getMemberListSize()
++ ArrayList<Member> getMembers()
++ double getMemberBalance(String)
++ void clearBalances()
++ void deleteMember(String)
+}
+
+
+class longah.commands.add.AddMemberCommand {
++ <<Create>> AddMemberCommand(String,String)
++ void execute(Group)
+}
+
+class longah.util.Subtransaction {
+- Member lender
+- Member borrower
+- double amount
++ <<Create>> Subtransaction(Member,Member,double)
++ Member getLender()
++ Member getBorrower()
++ double getAmount()
++ boolean isInvolved(String)
++ String toString()
+}
+
+
+class longah.commands.HelpCommand {
++ <<Create>> HelpCommand(String,String)
++ void execute(Group)
++ {static} void listAllCommands()
+}
+
+class longah.commands.delete.DeleteMemberCommand {
++ <<Create>> DeleteMemberCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.edit.EditMemberCommand {
++ <<Create>> EditMemberCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.edit.EditCommand {
+- String subCommand
++ <<Create>> EditCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.commands.find.FindLenderCommand {
++ <<Create>> FindLenderCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.add.AddTransactionCommand {
++ <<Create>> AddTransactionCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.list.ListDebtCommand {
++ <<Create>> ListDebtCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.handler.UI {
+- {static} Scanner scanner
+- {static} String SEPARATOR
++ {static} void showWelcomeMessage()
++ {static} void showCommandPrompt()
++ {static} String getUserInput()
++ {static} void showMessage(String)
++ {static} void showMessage(String,boolean)
++ {static} boolean hasNextLine()
++ {static} void printSeparator()
+}
+
+
+class longah.commands.find.FindTransactionCommand {
++ <<Create>> FindTransactionCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.commands.list.ListCommand {
+- String subCommand
++ <<Create>> ListCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.commands.edit.EditTransactionCommand {
++ <<Create>> EditTransactionCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.ExitCommand {
++ <<Create>> ExitCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.ClearCommand {
++ <<Create>> ClearCommand(String,String)
++ void execute(Group)
+}
+
+class longah.node.Member {
+- String name
+- double balance
++ <<Create>> Member(String)
++ <<Create>> Member(String,double)
++ void setName(String)
++ void addToBalance(double)
++ void subtractFromBalance(double)
++ double getBalance()
++ String toString()
++ String toStorageString(String)
++ String getName()
++ boolean isName(String)
++ void clearBalance()
++ void resetBalance()
+}
+
+
+class longah.commands.list.ListTransactionCommand {
++ <<Create>> ListTransactionCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.PINCommand {
++ <<Create>> PINCommand(String,String)
++ void execute(Group)
++ void execute()
+}
+
+class longah.handler.PINHandler {
+- {static} String PIN_FILE_PATH
+- {static} String savedPin
+- {static} boolean authenticationEnabled
++ <<Create>> PINHandler()
++ {static} void loadPinAndAuthenticationEnabled()
++ {static} void savePinAndAuthenticationEnabled()
++ {static} String getPinFilePath()
++ {static} void createPin()
++ {static} void authenticate()
++ {static} void resetPin()
++ {static} void enablePin()
++ {static} void disablePin()
++ {static} String getSavedPin()
++ {static} boolean getAuthenticationStatus()
+}
+
+
+class longah.LongAh {
+- {static} Group group
++ {static} void init()
++ {static} void main(String[])
+}
+
+
+abstract class longah.commands.Command {
+# String commandString
+# String taskExpression
++ <<Create>> Command(String,String)
++ {abstract}void execute(Group)
++ String getCommandString()
++ String getTaskExpression()
+}
+
+
+class longah.node.Group {
+- {static} Logger logger
+- MemberList members
+- TransactionList transactions
+- StorageHandler storage
+- String groupName
+- ArrayList<Subtransaction> transactionSolution
++ <<Create>> Group(String)
++ void setGroupName(String)
++ String getGroupName()
++ void setMemberList(MemberList)
++ MemberList getMemberList()
++ void setTransactionList(TransactionList)
++ TransactionList getTransactionList()
++ void updateTransactionSolution()
++ void settleUp(String)
++ void saveMembersData()
++ void saveTransactionsData()
++ void saveAllData()
++ String listDebts()
++ String listIndivDebt(String)
+}
+
+
+class longah.handler.InputHandler {
++ {static} Command parseInput(String)
++ {static} Command parseCommand(String,String)
+}
+
+class longah.handler.StorageHandler {
+- {static} String SEPARATOR
+- {static} String MEMBERS_FILE_STRING
+- {static} String TRANSACTIONS_FILE_STRING
+- String storageFolderPath
+- String storageMembersFilePath
+- String storageTransactionsFilePath
+- File membersFile
+- File transactionsFile
+- MemberList members
+- TransactionList transactions
+- Scanner[] scanners
++ <<Create>> StorageHandler(MemberList,TransactionList,String)
++ void initStorageScanners()
++ {static} void initDir()
++ void loadMembersData()
++ void loadTransactionsData()
++ {static} Subtransaction parseSubtransaction(String,String,Member,MemberList)
++ boolean checkTransactions(MemberList)
++ void loadAllData()
++ void saveMembersData()
++ void saveTransactionsData()
++ void saveAllData()
+}
+
+
+class longah.commands.SettleCommand {
++ <<Create>> SettleCommand(String,String)
++ void execute(Group)
+}
+
+class longah.commands.find.FindCommand {
+- String subCommand
++ <<Create>> FindCommand(String,String)
++ void execute(Group)
+}
+
+
+class longah.commands.find.FindDebtCommand {
++ <<Create>> FindDebtCommand(String,String)
++ void execute(Group)
+}
+
+
+
+longah.commands.Command <|-- longah.commands.delete.DeleteTransactionCommand
+longah.commands.Command <|-- longah.commands.list.ListMemberCommand
+longah.commands.Command <|-- longah.commands.find.FindBorrowerCommand
+longah.commands.Command <|-- longah.commands.delete.DeleteCommand
+longah.commands.Command <|-- longah.commands.add.AddCommand
+longah.commands.Command <|-- longah.commands.add.AddMemberCommand
+longah.commands.Command <|-- longah.commands.HelpCommand
+longah.commands.Command <|-- longah.commands.delete.DeleteMemberCommand
+longah.commands.Command <|-- longah.commands.edit.EditMemberCommand
+longah.commands.Command <|-- longah.commands.edit.EditCommand
+longah.commands.Command <|-- longah.commands.find.FindLenderCommand
+longah.commands.Command <|-- longah.commands.add.AddTransactionCommand
+longah.commands.Command <|-- longah.commands.list.ListDebtCommand
+longah.commands.Command <|-- longah.commands.find.FindTransactionCommand
+longah.commands.Command <|-- longah.commands.list.ListCommand
+longah.commands.Command <|-- longah.commands.edit.EditTransactionCommand
+longah.commands.Command <|-- longah.commands.ExitCommand
+longah.commands.Command <|-- longah.commands.ClearCommand
+longah.commands.Command <|-- longah.commands.list.ListTransactionCommand
+longah.commands.Command <|-- longah.commands.PINCommand
+longah.commands.Command <|-- longah.commands.SettleCommand
+longah.commands.Command <|-- longah.commands.find.FindCommand
+longah.commands.Command <|-- longah.commands.find.FindDebtCommand
+@enduml
