@@ -38,7 +38,7 @@ public class GroupList {
      * @param group The group to be removed.
      */
     public void removeGroup(Group group) {
-        this.groupList.remove(group);
+        groupList.remove(group);
     }
 
     /**
@@ -47,7 +47,7 @@ public class GroupList {
      * @return The list of groups.
      */
     public ArrayList<Group> getGroupList() {
-        return this.groupList;
+        return groupList;
     }
 
     /**
@@ -82,7 +82,7 @@ public class GroupList {
      * Lists all the groups in the group list.
      *
      * @return A string representation of all the groups in the group list.
-     * @throws LongAhException
+     * @throws LongAhException If the group list is empty.
      */
     public String listGroups() throws LongAhException {
         if (groupList.isEmpty()) {
