@@ -151,7 +151,7 @@ public class GroupList {
      * @return The group at the specified index.
      */
     public Group getGroup(int index) {
-        return this.groupList.get(index);
+        return groupList.get(index);
     }
 
     /**
