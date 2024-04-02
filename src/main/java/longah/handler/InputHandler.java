@@ -11,13 +11,14 @@ import longah.commands.delete.DeleteCommand;
 import longah.commands.edit.EditCommand;
 import longah.commands.find.FindCommand;
 import longah.commands.list.ListCommand;
+import longah.commands.ViewCommand;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
 
 public class InputHandler {
     /**
      * Parses the user input and returns the corresponding command.
-     * 
+     *
      * @param userInput The user input.
      * @return The corresponding command.
      */
@@ -56,13 +57,13 @@ public class InputHandler {
             return new ExitCommand(commandString, taskExpression);
         case "pin":
             return new PINCommand(commandString, taskExpression);
+        case "view":
+            return new ViewCommand(commandString, taskExpression);
         case "help":
             return new HelpCommand(commandString, taskExpression);
             
         case "group":
             // Fallthrough
-        case "chart":
-            throw new LongAhException(ExceptionMessage.COMMAND_NOT_IMPLEMENTED);
         default:
             throw new LongAhException(ExceptionMessage.INVALID_COMMAND);
         }
