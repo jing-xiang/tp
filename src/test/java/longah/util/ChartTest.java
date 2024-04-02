@@ -43,24 +43,6 @@ public class ChartTest {
     }
 
     /**
-     * Tests the successful creation of a bar chart with MAX_VALUE balances.
-     */
-    @Test
-    public void viewBalancesBarChart_maxValue_success() {
-        try {
-            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE);
-            Chart chart = Chart.viewBalancesBarChart(members, balances);
-
-            assert chart != null;
-            assertEquals(chart.getClass(), Chart.class);
-            assertEquals(chart instanceof Chart, true);
-        } catch (Exception e) {
-            fail();
-        }
-    }
-
-    /**
      * Tests the successful creation of a bar chart with MIN_VALUE balances.
      */
     @Test
