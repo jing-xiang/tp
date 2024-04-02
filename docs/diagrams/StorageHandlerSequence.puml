@@ -1,0 +1,35 @@
+@startuml
+participant User
+participant LongAh
+participant Group
+participant MemberList
+participant TransactionList
+participant StorageHandler
+
+User -> LongAh: Launch LongAh
+activate LongAh
+LongAh -> Group: Create group
+activate Group
+Group -> MemberList: Create members
+activate MemberList
+Group -> TransactionList: Create transactions
+activate TransactionList
+Group -> StorageHandler: Create storage
+activate StorageHandler
+MemberList -> StorageHandler: Parse MemberList
+TransactionList -> StorageHandler: Parse TransactionList
+StorageHandler -> StorageHandler: Initialise 
+loop until file is fully read
+StorageHandler -> StorageHandler: Read Data from Files
+StorageHandler -> MemberList: Member Data
+StorageHandler -> TransactionList: Transaction Data
+end
+User -> LongAh: Sample Command
+LongAh -> Group: Execute Command
+Group -> TransactionList: Execute Command
+TransactionList -> MemberList: Update Balance
+MemberList --> Group
+TransactionList --> Group
+Group -> StorageHandler: Save Data
+StorageHandler -> StorageHandler: Write Data to Local File
+@enduml
