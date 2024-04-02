@@ -107,4 +107,40 @@ public class ChartTest {
             assertEquals("Y-Axis data cannot be empty!!!", e.getMessage());
         }
     }
+
+    /**
+     * Tests the successful creation of a bar chart with negative balances.
+     */
+    @Test
+    public void viewBalancesBarChart_negativeBalances_success() {
+        try {
+            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
+            List<Double> balances = Arrays.asList(-10.0, -20.0, -30.0);
+            Chart chart = Chart.viewBalancesBarChart(members, balances);
+
+            assert chart != null;
+            assertEquals(chart.getClass(), Chart.class);
+            assertEquals(chart instanceof Chart, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Tests the successful creation of a bar chart with zero balances.
+     */
+    @Test
+    public void viewBalancesBarChart_zeroBalances_success() {
+        try {
+            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
+            List<Double> balances = Arrays.asList(0.0, 0.0, 0.0);
+            Chart chart = Chart.viewBalancesBarChart(members, balances);
+
+            assert chart != null;
+            assertEquals(chart.getClass(), Chart.class);
+            assertEquals(chart instanceof Chart, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
