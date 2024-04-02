@@ -145,7 +145,7 @@ public class TransactionList {
      */
     public String findTransactions(String name) throws LongAhException {
         int index = 1;
-        String outString = String.format("%s owns the following list of transactions.", name) + "\n";
+        String outString = String.format("%s is involved in the following list of transactions.", name) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.isInvolved(name)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";

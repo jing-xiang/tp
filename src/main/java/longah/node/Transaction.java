@@ -234,7 +234,7 @@ public class Transaction {
         for (Subtransaction subtransaction : subtransactions) {
             Member member = subtransaction.getBorrower();
             double amount = subtransaction.getAmount();
-            borrower += String.format("Borrower %d: %s Owed amount: %,.2f\n",
+            borrower += String.format("Borrower %d: %s owed amount: $%,.2f\n",
                     borrowerNo, member.getName(), amount);
             borrowerNo++;
         }
