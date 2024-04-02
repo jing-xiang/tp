@@ -69,6 +69,8 @@ public enum ExceptionMessage {
             ExceptionType.INFO),
     INVALID_EXIT_COMMAND ("Invalid command format." +
             " Use 'exit'", ExceptionType.INFO),
+    INVALID_VIEW_COMMAND ("Invalid command format." +
+            " Use 'view chart'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +
             " Use 'help'", ExceptionType.INFO),
     INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +

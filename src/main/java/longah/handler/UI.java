@@ -14,17 +14,17 @@ public class UI {
      * Displays the welcome message along with ASCII art.
      */
     public static void showWelcomeMessage() {
-        UI.showMessage(" /$$                                      /$$$$$$  /$$       /$$    ");
-        UI.showMessage("| $$                                     /$$__  $$| $$      | $$    ");
-        UI.showMessage("| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \\ $$| $$$$$$$ | $$    ");
-        UI.showMessage("| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$    ");
-        UI.showMessage("| $$      | $$  \\ $$| $$  \\ $$| $$  \\ $$| $$__  $$| $$  \\ $$|__/    ");
-        UI.showMessage("| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$        ");
-        UI.showMessage("| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$    ");
-        UI.showMessage("|________/ \\______/ |__/  |__/ \\____  $$|__/  |__/|__/  |__/|__/    ");
-        UI.showMessage("                               /$$  \\ $$                            ");
-        UI.showMessage("                              |  $$$$$$/                            ");
-        UI.showMessage("                               \\______/                             ");
+        UI.showMessage(" /$$                                      /$$$$$$  /$$       /$$");
+        UI.showMessage("| $$                                     /$$__  $$| $$      | $$");
+        UI.showMessage("| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \\ $$| $$$$$$$ | $$");
+        UI.showMessage("| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$");
+        UI.showMessage("| $$      | $$  \\ $$| $$  \\ $$| $$  \\ $$| $$__  $$| $$  \\ $$|__/");
+        UI.showMessage("| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$");
+        UI.showMessage("| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$");
+        UI.showMessage("|________/ \\______/ |__/  |__/ \\____  $$|__/  |__/|__/  |__/|__/");
+        UI.showMessage("                               /$$  \\ $$");
+        UI.showMessage("                              |  $$$$$$/");
+        UI.showMessage("                               \\______/");
         UI.showMessage("Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!");
     }
 
