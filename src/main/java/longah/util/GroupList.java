@@ -28,7 +28,7 @@ public class GroupList {
     public GroupList() throws LongAhException {
         StorageHandler.initDir();
         if (!Files.exists(Paths.get(GROUP_LIST_FILE_PATH)) || groupList == null) {
-            checkGroupExists();
+            createGroup();
         } else {
             loadGroupList();
             getGroupList();
@@ -60,7 +60,7 @@ public class GroupList {
      * Checks if there is at least 1 valid group in the group list.
      * If there is no group, prompt user to create a new group.
      */
-    public static void checkGroupExists() throws LongAhException {
+    public static void createGroup() throws LongAhException {
         if (groupList.isEmpty()) {
             UI.showMessage("No groups found. Please give a name for your first group.");
             String groupName = UI.getUserInput();
@@ -73,23 +73,6 @@ public class GroupList {
             }
             activeGroup = newGroup;
         }
-    }
-
-    /**
-     * Loops until a valid group is found.
-     *
-     * @throws LongAhException If an invalid group is entered.
-     */
-    public static void loopCheckGroupExists() throws LongAhException {
-        boolean validGroup = false;
-        do {
-            try {
-                checkGroupExists();
-                validGroup = true;
-            } catch (LongAhException e) {
-                LongAhException.printException(e);
-            }
-        } while (!validGroup);
     }
 
     /**
@@ -176,7 +159,7 @@ public class GroupList {
         // if there is only group that was left is deleted
         if (groupList.isEmpty()) {
             UI.showMessage("Deleted all groups.");
-            checkGroupExists();
+            createGroup();
         } else if (activeGroup.getGroupName().equals(groupName)) {
             activeGroup = groupList.get(0);
             UI.showMessage("You have deleted the active group that you are managing.");
@@ -198,6 +181,10 @@ public class GroupList {
             }
         }
         throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
+    }
+
+    public static boolean isEmpty() {
+        return groupList.isEmpty();
     }
 
     /**

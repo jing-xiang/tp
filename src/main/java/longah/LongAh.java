@@ -20,6 +20,16 @@ public class LongAh {
         UI.showWelcomeMessage();
     }
 
+    public static void loop() throws LongAhException {
+        if (GroupList.isEmpty()) {
+            GroupList.createGroup();
+        } else {
+            UI.showCommandPrompt();
+            String command = UI.getUserInput();
+            Command c = InputHandler.parseInput(command);
+            c.execute(GroupList.getActiveGroup());
+        }
+    }
     /**
      * The main method to run the LongAh application.
      *
@@ -35,18 +45,10 @@ public class LongAh {
         } catch (LongAhException e) {
             LongAhException.printException(e);
         }
-
         Logging.logInfo("Entering main program body. Begin accepting user commands.");
         while (true) {
             try {
-                GroupList.loopCheckGroupExists();
-                UI.showCommandPrompt();
-                String command = UI.getUserInput();
-                if (command == null) {
-                    continue;
-                }
-                Command c = InputHandler.parseInput(command);
-                c.execute(GroupList.getActiveGroup());
+                loop();
             } catch (LongAhException e) {
                 LongAhException.printException(e);
             }
