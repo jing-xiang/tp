@@ -17,7 +17,7 @@ import longah.node.Group;
  */
 public class GroupList {
     private static final String GROUP_LIST_FILE_PATH = "./data/groupList.txt";
-    private static Group activeGroup;
+    private static Group activeGroup = null;
     private static ArrayList<Group> groupList = new ArrayList<>();
 
     /**
@@ -69,7 +69,7 @@ public class GroupList {
         try {
             Files.write(Paths.get(GROUP_LIST_FILE_PATH), groupName.getBytes());
         } catch (IOException e) {
-            throw new LongAhException(ExceptionMessage.IO_EXCEPTION);
+            throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
         }
         activeGroup = newGroup;
     }
@@ -102,13 +102,15 @@ public class GroupList {
     public static String getGroupList() throws LongAhException {
         // did not use exceptions here as I want to return an empty string
         if (groupList.isEmpty()) {
-            UI.showMessage("Group list is empty");
+            return "Group list is empty.";
         }
         try {
+            int index = 1;
             String[] data = new String(Files.readAllBytes(Paths.get(GROUP_LIST_FILE_PATH))).split("\n");
             String groupListString = "";
             for (String groupName : data) {
-                groupListString += groupName + "\n";
+                groupListString += index + ". "  + groupName + "\n";
+                index++;
             }
             return groupListString;
         } catch (IOException e) {
@@ -141,9 +143,6 @@ public class GroupList {
             throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
         }
         Group group = getGroup(groupName);
-        if (group == null) {
-            throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
-        }
         groupList.remove(group);
         saveGroupList();
         UI.showMessage("Remaining groups:");
@@ -153,7 +152,6 @@ public class GroupList {
             Files.deleteIfExists(Paths.get("./data/" + groupName + "/members.txt"));
             Files.deleteIfExists(Paths.get("./data/" + groupName + "/transactions.txt"));
             Files.deleteIfExists(Paths.get("./data/" + groupName));
-            UI.showMessage("Group folder deleted.");
         } catch (IOException e) {
             throw new LongAhException(ExceptionMessage.IO_EXCEPTION);
         }
@@ -175,13 +173,13 @@ public class GroupList {
      * @param name The name of the group.
      * @return The group with a specified name.
      */
-    public static Group getGroup(String name) {
+    public static Group getGroup(String name) throws LongAhException {
         for (Group group : groupList) {
             if (group.getGroupName().equals(name)) {
                 return group;
             }
         }
-        return null;
+        throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
     }
 
     /**

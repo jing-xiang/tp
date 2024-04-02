@@ -29,8 +29,8 @@ public class SwitchCommand extends Command {
         if (!GroupList.isGroup(this.taskExpression)) {
             throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
         }
-        Group newGroup = new Group(this.taskExpression);
+        Group newGroup = GroupList.getGroup(this.taskExpression);
         GroupList.switchActiveGroup(newGroup);
-        UI.showMessage("Switching to group: " + this.taskExpression);
+        UI.showMessage("Switching to group: " + newGroup.getGroupName());
     }
 }
