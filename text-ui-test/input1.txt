@@ -1,5 +1,5 @@
 123456
-test_group
+testGroup
 123456
 add member Amy
 add member Brandon
