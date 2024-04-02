@@ -17,6 +17,7 @@ public class LongAh {
     public static void init() {
         new Logging();
         UI.showMessage("Welcome to LongAh!");
+        UI.showWelcomeMessage();
     }
 
     /**
