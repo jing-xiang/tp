@@ -14,12 +14,20 @@ import longah.commands.Command;
  */
 public class LongAh {
 
+    /**
+     * Initializes the LongAh application.
+     */
     public static void init() {
         new Logging();
         UI.showMessage("Welcome to LongAh!");
         UI.showWelcomeMessage();
     }
 
+    /**
+     * The main loop of the LongAh application.
+     *
+     * @throws LongAhException If an invalid group name or command is entered
+     */
     public static void loop() throws LongAhException {
         if (GroupList.isEmpty()) {
             GroupList.createGroup();
