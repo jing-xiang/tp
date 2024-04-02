@@ -45,11 +45,35 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 ### Commands
 
+<ins>Overview</ins>
+
+The abstract `Command` class has been implemented to introduce an additional layer of abstraction between I/O and command execution, allowing for separation of handling command keywords and executing commands.
+
+<ins>Implementation Details</ins>
+
+![Command Inheritance Diagram](diagrams/CommandInheritance.png)
+
+<ins>Class Structure</ins>
+
+The abstract `Command` class and its related children classes have the following attributes:
+
+* *CommandString*: String indicating the command being parsed
+* *TaskExpression*: String containing details for the command to effect
+
+<ins>Constructor</ins>
+
+The Command constructor updates the attributes based on the input arguments.
+
+<ins>Methods</ins>
+
+The abstract `Command` class and its related children classes have the following method:
+* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`
+
 ### Storage
 
 <ins>Overview</ins>
 
-The StorageHandler class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each group calls its own StorageHandler object such that they maintain distinct storage directories.
+The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each group calls its own `StorageHandler` object such that they maintain distinct storage directories.
 
 <ins>Implementation Details</ins>
 
@@ -89,7 +113,8 @@ Key arguments for the constructor are a `MemberList` object, a `TransactionList`
 Data loading methods are merged in the *loadAllData* method while data saving methods are merged in the *saveAllData* method.
 
 <ins>Usage Example</ins>
-![StorageHandler Sequence Diagram](diagrams/StorageHandler%20Sequence%20Diagram.png)
+
+![StorageHandler Sequence Diagram](diagrams/StorageHandlerSequenceDiagram.png)
 
 Given below is an example usage scenario and how StorageHandler behaves at each step:
 
