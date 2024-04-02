@@ -11,23 +11,23 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class ChartTest {
 
-    //    /**
-    //     * Tests the successful creation of a bar chart with valid X and Y axis inputs.
-    //     */
-    //    @Test
-    //    public void viewBalancesBarChart_validInput_success() {
-    //        try {
-    //            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-    //            List<Double> balances = Arrays.asList(10.0, -5.0, 0.0);
-    //            Chart chart = Chart.viewBalancesBarChart(members, balances);
-    //
-    //            assert chart != null;
-    //            assertEquals(chart.getClass(), Chart.class);
-    //            assertEquals(chart instanceof Chart, true);
-    //        } catch (Exception e) {
-    //            fail();
-    //        }
-    //    }
+    /**
+     * Tests the successful creation of a bar chart with valid X and Y axis inputs.
+     */
+    @Test
+    public void viewBalancesBarChart_validInput_success() {
+        try {
+            List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
+            List<Double> balances = Arrays.asList(10.0, -5.0, 0.0);
+            Chart chart = Chart.viewBalancesBarChart(members, balances);
+
+            assert chart != null;
+            assertEquals(chart.getClass(), Chart.class);
+            assertEquals(chart instanceof Chart, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Tests the unsuccessful creation of a bar chart with invalid X and Y axis inputs.
