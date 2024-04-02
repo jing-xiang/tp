@@ -135,6 +135,9 @@ longah.util.Subtransaction --> longah.node.Member
 longah.util.TransactionList --> longah.node.Transaction
 longah.util.TransactionList --> longah.util.MemberList
 
-
+longah.util.MemberList "1" --> "0..*" longah.node.Member
+longah.util.TransactionList "1" --> "0..*" longah.node.Transaction
+longah.util.TransactionList "1" --> "0..*" longah.util.MemberList
+longah.node.Transaction "1" --> "0..*" longah.util.Subtransaction
 
 @enduml
