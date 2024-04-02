@@ -48,7 +48,7 @@ public class ViewCommand extends Command {
                 Chart.viewBalancesBarChart(memberNames, memberBalances);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new LongAhException("Unable to generate chart!");
         }
     }
 }
