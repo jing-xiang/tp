@@ -28,7 +28,7 @@ public class GroupList {
     public GroupList() throws LongAhException {
         StorageHandler.initDir();
         if (!Files.exists(Paths.get(GROUP_LIST_FILE_PATH)) || groupList == null) {
-            createGroupList();
+            checkGroupExists();
         } else {
             loadGroupList();
             getGroupList();
@@ -57,21 +57,39 @@ public class GroupList {
     }
 
     /**
-     * Creates a new group list.
-     * @throws LongAhException If an I/O exception occurs.
+     * Checks if there is at least 1 valid group in the group list.
+     * If there is no group, prompt user to create a new group.
      */
-    public static void createGroupList() throws LongAhException {
-        groupList = new ArrayList<>();
-        UI.showMessage("No groups found. Please give a name for your first group.");
-        String groupName = UI.getUserInput();
-        Group newGroup = new Group(groupName);
-        groupList.add(newGroup);
-        try {
-            Files.write(Paths.get(GROUP_LIST_FILE_PATH), groupName.getBytes());
-        } catch (IOException e) {
-            throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
+    public static void checkGroupExists() throws LongAhException {
+        if (groupList.isEmpty()) {
+            UI.showMessage("No groups found. Please give a name for your first group.");
+            String groupName = UI.getUserInput();
+            Group newGroup = new Group(groupName);
+            groupList.add(newGroup);
+            try {
+                Files.write(Paths.get(GROUP_LIST_FILE_PATH), groupName.getBytes());
+            } catch (IOException e) {
+                UI.showMessage(ExceptionMessage.STORAGE_FILE_CORRUPTED.getMessage());
+            }
+            activeGroup = newGroup;
         }
-        activeGroup = newGroup;
+    }
+
+    /**
+     * Loops until a valid group is found.
+     *
+     * @throws LongAhException If an invalid group is entered.
+     */
+    public static void loopCheckGroupExists() throws LongAhException {
+        boolean validGroup = false;
+        do {
+            try {
+                checkGroupExists();
+                validGroup = true;
+            } catch (LongAhException e) {
+                LongAhException.printException(e);
+            }
+        } while (!validGroup);
     }
 
     /**
@@ -158,7 +176,7 @@ public class GroupList {
         // if there is only group that was left is deleted
         if (groupList.isEmpty()) {
             UI.showMessage("Deleted all groups.");
-            createGroupList();
+            checkGroupExists();
         } else if (activeGroup.getGroupName().equals(groupName)) {
             activeGroup = groupList.get(0);
             UI.showMessage("You have deleted the active group that you are managing.");

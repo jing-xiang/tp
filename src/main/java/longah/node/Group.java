@@ -24,8 +24,15 @@ public class Group {
 
     /**
      * Constructs a new Group instance with an empty member list and transaction list.
+     *
+     * @param groupName The name of the group
+     * @throws LongAhException If the group name is invalid
      */
     public Group(String groupName) throws LongAhException {
+        // Check if group name is fully alphanumeric
+        if (!groupName.matches("[A-Za-z0-9]+")) {
+            throw new LongAhException(ExceptionMessage.INVALID_GROUP_NAME);
+        }
         this.groupName = groupName;
         this.members = new MemberList();
         this.transactions = new TransactionList();

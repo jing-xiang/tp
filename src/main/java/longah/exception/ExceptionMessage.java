@@ -11,7 +11,8 @@ public enum ExceptionMessage {
     MEMBER_NOT_FOUND ("Member not found.", ExceptionType.INFO),
     NO_MEMBERS_FOUND ("Member list is empty.", ExceptionType.INFO),
 
-    // Group List Exceptions
+    // Group and Group List Exceptions
+    INVALID_GROUP_NAME ("Invalid group name.", ExceptionType.INFO),
     DUPLICATE_GROUP ("Duplicate group.", ExceptionType.INFO),
     EMPTY_GROUP_LIST ("Group list is empty.", ExceptionType.INFO),
     GROUP_NOT_FOUND ("Group not found.", ExceptionType.INFO),

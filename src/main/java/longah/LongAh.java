@@ -38,6 +38,7 @@ public class LongAh {
         Logging.logInfo("Entering main program body. Begin accepting user commands.");
         while (true) {
             try {
+                GroupList.loopCheckGroupExists();
                 UI.showCommandPrompt();
                 String command = UI.getUserInput();
                 if (command == null) {

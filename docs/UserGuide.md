@@ -137,6 +137,7 @@ Adds a new member to the list of members in LongAh!
 Format: `add member [NAME]`
 
 * Name of new member should not be a duplicate of an existing member.
+* The entered name should only contain alphanumeric characters, no spaces are allowed.
 
 Example of usage:
 `add member Alice`
@@ -161,8 +162,9 @@ Adds a new group to LongAh! for you to manage expenses and debts separately.
 Format: `add group [GROUP_NAME]`
 
 * The Application will automatically prompt you to create a new group if this is your first time using LongAh!.
-* The entered group name should not be a duplicate of an existing group.
 * The Application will not automatically switch to the new group after adding. You can switch to the new group using the `group` command.
+* The entered group name should not be a duplicate of an existing group.
+* The entered group name should only contain alphanumeric characters, no spaces are allowed.
 
 Example of usage: `add group Tiktok SWEs`
 
@@ -235,11 +237,13 @@ Format: `list groups`
 
 Example of usage:
 ```dtd
-// assume that the group Tiktok SWEs already exists
-add group Tiktok Interns
+// assume that the group 'Tiktok' already exists
+add group Friends
+add group Family
 list groups
-    1. Tiktok SWEs
-    2. Tiktok Interns
+    1. Tiktok
+    2. Friends
+    3. Family
 ```
 ### Find Transactions: `find transactions`
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
@@ -306,11 +310,11 @@ Format: `delete group [GROUP_NAME]`
 
 Example of usage:
 ```dtd
-add group Tiktok SWEs
-add group Tiktok Interns
-delete group Tiktok Interns
+// assume that the group 'Tiktok' already exits
+add group friends
+delete group friends
 list groups
-    1. Tiktok SWEs
+    1. Tiktok
 ```
 
 ### Editing a member: `edit member`
@@ -408,10 +412,10 @@ Format: `group [GROUP_NAME]`
 
 Example of usage:
 ```dtd
-// assume that the user is managing group 'Tiktok Interns'
-add group Tiktok SWEs
-group Tiktok SWEs
-    Switching to group: Tiktok SWEs
+// assume that the user is currently managing group 'Tiktok'
+add group friends
+group friends
+    Switching to group: friends
 ```
 
 
