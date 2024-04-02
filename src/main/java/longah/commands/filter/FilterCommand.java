@@ -29,13 +29,13 @@ public class FilterCommand extends Command {
     public void execute(Group group) throws LongAhException {
         String fullCommandString = this.commandString + " " + this.subCommand;
         switch (this.subCommand) {
-            case "datetime":
-                FilterDateTimeCommand filterDateTimeCommand =
-                        new FilterDateTimeCommand(fullCommandString, this.taskExpression);
-                filterDateTimeCommand.execute(group);
-                break;
-            default:
-                throw new LongAhException(ExceptionMessage.INVALID_FILTER_COMMAND);
+        case "datetime":
+            FilterDateTimeCommand filterDateTimeCommand =
+                    new FilterDateTimeCommand(fullCommandString, this.taskExpression);
+            filterDateTimeCommand.execute(group);
+            break;
+        default:
+            throw new LongAhException(ExceptionMessage.INVALID_FILTER_COMMAND);
         }
     }
 }

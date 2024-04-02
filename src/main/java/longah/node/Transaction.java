@@ -1,7 +1,6 @@
 package longah.node;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import longah.util.MemberList;
 import longah.exception.LongAhException;

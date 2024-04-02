@@ -234,8 +234,7 @@ public class TransactionList {
      * @param fromDateTime String expression of the earlier bound of the date time period to filter
      * @param toDateTime String expression of the later bound of the date time to filter
      * @return String representation of the list of transactions before the input transaction time
-     * @throws LongAhException If the date time filter is invalid such that the to date is before the from date or
-     * if there are no matching transactions
+     * @throws LongAhException If the date time filter is invalid or there is no transaction found
      */
     public String filterTransactionsBetweenDateTime(String fromDateTime, String toDateTime) throws LongAhException {
         DateTime fromDateTimeToCompare = new DateTime(fromDateTime);
