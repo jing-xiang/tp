@@ -81,7 +81,6 @@ public class GroupList {
     public static void loadGroupList() throws LongAhException {
         try {
             String[] data = new String(Files.readAllBytes(Paths.get(GROUP_LIST_FILE_PATH))).split("\n");
-            System.out.println(data.length);
             if (data.length == 0) {
                 throw new LongAhException(ExceptionMessage.EMPTY_GROUP_LIST);
             }
@@ -101,8 +100,9 @@ public class GroupList {
      * @throws LongAhException If an I/O exception occurs.
      */
     public static String getGroupList() throws LongAhException {
+        // did not use exceptions here as I want to return an empty string
         if (groupList.isEmpty()) {
-            throw new LongAhException(ExceptionMessage.EMPTY_GROUP_LIST);
+            UI.showMessage("Group list is empty");
         }
         try {
             String[] data = new String(Files.readAllBytes(Paths.get(GROUP_LIST_FILE_PATH))).split("\n");
@@ -133,25 +133,55 @@ public class GroupList {
     /**
      * Deletes a group from the group list and saves to the txt file.
      *
-     * @param group The group to delete.
-     * @throws LongAhException If the group is not found.
+     * @param groupName The group to delete.
+     * @throws LongAhException If the group is not found or if error occurs when deleting group folder
      */
-    public static void deleteGroup(Group group) throws LongAhException {
-        if (!GroupList.isGroup(group.getGroupName())) {
+    public static void deleteGroup(String groupName) throws LongAhException {
+        if (!GroupList.isGroup(groupName)) {
+            throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
+        }
+        Group group = getGroup(groupName);
+        if (group == null) {
             throw new LongAhException(ExceptionMessage.GROUP_NOT_FOUND);
         }
         groupList.remove(group);
         saveGroupList();
+        UI.showMessage("Remaining groups:");
+        UI.showMessage(getGroupList());
+        // delete the group folder
+        try {
+            Files.deleteIfExists(Paths.get("./data/" + groupName + "/members.txt"));
+            Files.deleteIfExists(Paths.get("./data/" + groupName + "/transactions.txt"));
+            Files.deleteIfExists(Paths.get("./data/" + groupName));
+            UI.showMessage("Group folder deleted.");
+        } catch (IOException e) {
+            throw new LongAhException(ExceptionMessage.IO_EXCEPTION);
+        }
+        // if there is only group that was left is deleted
+        if (groupList.isEmpty()) {
+            UI.showMessage("Deleted all groups.");
+            createGroupList();
+        } else if (activeGroup.getGroupName().equals(groupName)) {
+            activeGroup = groupList.get(0);
+            UI.showMessage("You have deleted the active group that you are managing.");
+            UI.showMessage("Defaulting back to the first group in the list. You are now managing: "
+                    + activeGroup.getGroupName());
+        }
     }
 
 
     /**
-     * Returns the group at the specified index.
-     * @param index The index of the group.
-     * @return The group at the specified index.
+     * Returns the group with a specified name.
+     * @param name The name of the group.
+     * @return The group with a specified name.
      */
-    public Group getGroup(int index) {
-        return groupList.get(index);
+    public static Group getGroup(String name) {
+        for (Group group : groupList) {
+            if (group.getGroupName().equals(name)) {
+                return group;
+            }
+        }
+        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package longah.commands.delete;
 
 import longah.commands.Command;
 import longah.exception.LongAhException;
+import longah.handler.UI;
 import longah.node.Group;
 import longah.util.GroupList;
 
@@ -23,7 +24,7 @@ public class DeleteGroupCommand extends Command {
      *
      */
     public void execute(Group group) throws LongAhException {
-        Group newGroup = new Group(this.taskExpression);
-        GroupList.deleteGroup(newGroup);
+        UI.showMessage("Deleting group: " + this.taskExpression);
+        GroupList.deleteGroup(this.taskExpression);
     }
 }

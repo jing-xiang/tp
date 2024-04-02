@@ -53,7 +53,7 @@ public enum ExceptionMessage {
             " Use 'settleup PERSON'",
             ExceptionType.INFO),
     INVALID_DELETE_COMMAND ("Invalid command format." +
-            " Use 'delete transaction INDEX'",
+            " Use 'delete transaction INDEX' or 'delete member NAME' or 'delete group GROUP_NAME'",
             ExceptionType.INFO),
     INVALID_CLEAR_COMMAND ("Invalid command format." +
             " Use 'clear'",
@@ -72,7 +72,7 @@ public enum ExceptionMessage {
     INVALID_HELP_COMMAND ("Invalid command format." +
             " Use 'help'", ExceptionType.INFO),
     INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +
-            " Use 'switchgroup GROUP_NAME'", ExceptionType.INFO);
+            " Use 'group GROUP_NAME'", ExceptionType.INFO);
 
     private final String message;
     private final ExceptionType type;
