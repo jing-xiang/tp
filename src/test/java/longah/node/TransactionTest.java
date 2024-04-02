@@ -17,7 +17,7 @@ public class TransactionTest {
     @Test
     public void transactionConstructor_transaction_success() {
         try {
-            Group group = new Group("");
+            Group group = new Group("testGroup");
             MemberList memberList = group.getMemberList();
             TransactionList transactionList = group.getTransactionList();
             memberList.addMember("Alice");

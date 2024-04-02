@@ -46,6 +46,10 @@ public class AddCommand extends Command {
                     new AddTransactionCommand(fullCommandString, this.taskExpression);
             addTransactionCommand.execute(group);
             break;
+        case "group":
+            AddGroupCommand addGroupCommand = new AddGroupCommand(fullCommandString, this.taskExpression);
+            addGroupCommand.execute(group);
+            break;
         default:
             throw new LongAhException(ExceptionMessage.INVALID_ADD_COMMAND);
         }

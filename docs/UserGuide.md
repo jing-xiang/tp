@@ -57,29 +57,34 @@ The app will prompt you to create your own PIN if it is your first time using th
   - [Known Issues](#known-issues)
 
 ## Quick Command Reference
-| Task                   | Command Expression                                                                                    |
-|------------------------|-------------------------------------------------------------------------------------------------------|
-| Help menu              | `help`                                                                                                |
-| Add member             | `add member [name]`                                                                                   |
-| Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
-| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      |
-| List members           | `list members`                                                                                        |
-| List transactions      | `list transactions`                                                                                   |
-| List debts             | `list debts`                                                                                          |
-| Find transactions      | `find transactions [member]`                                                                          |
-| Find lender            | `find lender [member]`                                                                                |
-| Find borrower          | `find borrower [member]`                                                                              |
-| Find debts             | `find debts [member]`                                                                                 |
-| Delete member          | `delete member [member]`                                                                              |
-| Delete transaction     | `delete transaction [transaction_index]`                                                              |
-| Edit member            | `edit member [old_name] [new_name]`                                                                   |
-| Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` |
-| Enable PIN             | `pin enable`                                                                                          |
-| Disable PIN            | `pin disable`                                                                                         |
-| Reset PIN              | `pin reset`                                                                                           |
-| Clear all transactions | `clear`                                                                                               |
-| Settle up              | `settleup [member]`                                                                                   |
-| Exit                   | `exit`                                                                                                |
+| Task                    | Command Expression                                                                                     |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Help menu               | `help`                                                                                                 |
+| Add member              | `add member [name]`                                                                                    |
+| Add transaction         | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                       |
+| Add dated transaction   | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`       |
+| Add group               | `add group [name]`                                                                                     |
+| List members            | `list members`                                                                                         |
+| List transactions       | `list transactions`                                                                                    |
+| List debts              | `list debts`                                                                                           |
+| List groups             | `list groups`                                                                                          |
+| Find transactions       | `find transactions [member]`                                                                           |
+| Find lender             | `find lender [member]`                                                                                 |
+| Find borrower           | `find borrower [member]`                                                                               |
+| Find debts              | `find debts [member]`                                                                                  |
+| Delete member           | `delete member [member]`                                                                               |
+| Delete transaction      | `delete transaction [transaction_index]`                                                               |
+| Delete group            | `delete group [name]`                                                                                  |
+| Edit member             | `edit member [old_name] [new_name]`                                                                    |
+| Edit transaction        | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`  |
+| Enable PIN              | `pin enable`                                                                                           |
+| Disable PIN             | `pin disable`                                                                                          |
+| Reset PIN               | `pin reset`                                                                                            |
+| Clear all transactions  | `clear`                                                                                                |
+| Settle up debts         | `settleup [member]`                                                                                    |
+| Switch groups           | `switch [group_name]`                                                                                  |
+| View chart              | `view chart`                                                                                           |
+| Exit                    | `exit`                                                                                                 |
 
 
 ## Features
@@ -88,9 +93,11 @@ LongAh! comes with many features for you to manage your group expenses.
 ### Member Management
 You can add, delete, and edit members in LongAh! to keep track of who is involved in the transactions.
 
+### Group Management
+You can create and delete groups in LongAh! to keep track of different groups of friends. You can also switch between groups to view the balances and transactions of each group.
+
 ### Group Balances & Expense Tracking
 You can add transactions between members to keep track of who owes who. LongAh! can also display group balances and expenses at a glance.
-
 
 ### Debt Simplification
 LongAh! calculates the simplest way to settle all debts between members and shows a list of all debts, reducing the amount of transanctions
@@ -130,6 +137,7 @@ Adds a new member to the list of members in LongAh!
 Format: `add member [NAME]`
 
 * Name of new member should not be a duplicate of an existing member.
+* The entered name should only contain alphanumeric characters, no spaces are allowed.
 
 Example of usage:
 `add member Alice`
@@ -148,14 +156,27 @@ Example of usage:
 OR
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
 
+### Adding a new group `add group`
+Adds a new group to LongAh! for you to manage expenses and debts separately.
+
+Format: `add group [GROUP_NAME]`
+
+* The Application will automatically prompt you to create a new group if this is your first time using LongAh!.
+* The Application will not automatically switch to the new group after adding. You can switch to the new group using the `group` command.
+* The entered group name should not be a duplicate of an existing group.
+* The entered group name should only contain alphanumeric characters, no spaces are allowed.
+
+Example of usage: `add group Tiktok SWEs`
 
 ### Listing all members: `list members`
 Shows a list of all current members in LongAh! along with their current balances.
+
+Format: `list members`
+
 * Positive balance indicate that the member is owed money by other member(s) in the group.
 * Negative balance indicate that the member owes money to other member(s).
 * A balance of 0 indicates that the member neither owes nor is owed money.
 
-Format: `list members`
 
 Example of usage:
 ```dtd
@@ -207,6 +228,22 @@ list debts
     Best Way to Solve Debts:
     bob owes alice $2.0
     bob owes charlie $2.0
+```
+
+### Listing all groups: `list groups`
+Shows a list of all groups in LongAh!.
+
+Format: `list groups`
+
+Example of usage:
+```dtd
+// assume that the group 'Tiktok' already exists
+add group Friends
+add group Family
+list groups
+    1. Tiktok
+    2. Friends
+    3. Family
 ```
 ### Find Transactions: `find transactions`
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
@@ -262,6 +299,23 @@ the transaction that you want to delete.
 
 Example of usage: `delete transaction 3`
 
+### Deleting a group `delete group`
+Deletes a group from LongAh!.
+
+Format: `delete group [GROUP_NAME]`
+* The `GROUP_NAME` should be an existing group.
+* All transactions and members in the group will be deleted, and the group will be removed from the list of groups.
+* The Application will automatically switch to the first group in the list if the current group that you are managing is deleted.
+* If all groups are deleted, the Application will automatically prompt you to create a new group.
+
+Example of usage:
+```dtd
+// assume that the group 'Tiktok' already exits
+add group friends
+delete group friends
+list groups
+    1. Tiktok
+```
 
 ### Editing a member: `edit member`
 Edits the name of a member in the list of members in LongAh!.
@@ -349,6 +403,21 @@ list members
     bob: $0.0
     charlie: $0.0
 ``` 
+
+### Switching groups: `group`
+Switches to the specified group in LongAh!.
+
+Format: `group [GROUP_NAME]`
+* The `GROUP_NAME` should be an existing group that has been added to LongAh!.
+
+Example of usage:
+```dtd
+// assume that the user is currently managing group 'Tiktok'
+add group friends
+group friends
+    Switching to group: friends
+```
+
 
 ### Views the balances of all members in the form of a chart: `view chart`
 Shows a chart of the balances of all members in the group.

@@ -11,6 +11,12 @@ public enum ExceptionMessage {
     MEMBER_NOT_FOUND ("Member not found.", ExceptionType.INFO),
     NO_MEMBERS_FOUND ("Member list is empty.", ExceptionType.INFO),
 
+    // Group and Group List Exceptions
+    INVALID_GROUP_NAME ("Invalid group name.", ExceptionType.INFO),
+    DUPLICATE_GROUP ("Duplicate group.", ExceptionType.INFO),
+    EMPTY_GROUP_LIST ("Group list is empty.", ExceptionType.INFO),
+    GROUP_NOT_FOUND ("Group not found.", ExceptionType.INFO),
+
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
     INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
@@ -28,14 +34,15 @@ public enum ExceptionMessage {
     INVALID_STORAGE_CONTENT ("Invalid content in storage file, line ignored.", ExceptionType.WARNING),
     STORAGE_FILE_CORRUPTED ("Storage file is corrupted." + 
                 "We recommend running 'clear' or manually resolving the error data.", ExceptionType.WARNING),
-
+    IO_EXCEPTION ("An error occurred while reading/writing to the file.", ExceptionType.WARNING),
     // Ui exceptions
     INVALID_COMMAND ("Invalid command. Use 'help' to see the list of commands.",
             ExceptionType.INFO),
     COMMAND_NOT_IMPLEMENTED ("This feature has yet to be implemented.",
             ExceptionType.INFO),
     INVALID_ADD_COMMAND ("Invalid command format." +
-            " Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...",
+            " Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...\n" +
+            "or 'add group GROUP_NAME'",
             ExceptionType.INFO),
     INVALID_LIST_COMMAND ("Invalid command format." +
             " Use 'list members', 'list transactions', or 'list debts'",
@@ -47,7 +54,7 @@ public enum ExceptionMessage {
             " Use 'settleup PERSON'",
             ExceptionType.INFO),
     INVALID_DELETE_COMMAND ("Invalid command format." +
-            " Use 'delete transaction INDEX'",
+            " Use 'delete transaction INDEX' or 'delete member NAME' or 'delete group GROUP_NAME'",
             ExceptionType.INFO),
     INVALID_CLEAR_COMMAND ("Invalid command format." +
             " Use 'clear'",
@@ -66,7 +73,9 @@ public enum ExceptionMessage {
     INVALID_VIEW_COMMAND ("Invalid command format." +
             " Use 'view chart'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +
-            " Use 'help'", ExceptionType.INFO);
+            " Use 'help'", ExceptionType.INFO),
+    INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +
+            " Use 'group GROUP_NAME'", ExceptionType.INFO);
 
     private final String message;
     private final ExceptionType type;

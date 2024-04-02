@@ -46,6 +46,11 @@ public class DeleteCommand extends Command {
                     new DeleteTransactionCommand(fullCommandString, this.taskExpression);
             deleteTransactionCommand.execute(group);
             break;
+        case "group":
+            DeleteGroupCommand deleteGroupCommand =
+                    new DeleteGroupCommand(fullCommandString, this.taskExpression);
+            deleteGroupCommand.execute(group);
+            break;
         default:
             throw new LongAhException(ExceptionMessage.INVALID_DELETE_COMMAND);
         }

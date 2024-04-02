@@ -51,6 +51,11 @@ public class ListCommand extends Command {
                     new ListDebtCommand(fullCommandString, this.taskExpression);
             listDebtCommand.execute(group);
             break;
+        case "groups":
+            ListGroupsCommand listGroupsCommand =
+                    new ListGroupsCommand(fullCommandString, this.taskExpression);
+            listGroupsCommand.execute(group);
+            break;
         default:
             throw new LongAhException(ExceptionMessage.INVALID_LIST_COMMAND);
         }

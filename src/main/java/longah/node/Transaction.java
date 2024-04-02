@@ -196,7 +196,7 @@ public class Transaction {
      * @param memberName String representation of member name to check
      * @return a boolean value determining whether the input name is a borrower in the transaction
      */
-    public boolean isBorrower(String memberName) {
+    public boolean checkIsBorrower(String memberName) {
         for (Subtransaction subtransaction : this.subtransactions) {
             if (subtransaction.getBorrower().isName(memberName)) {
                 return true;
@@ -212,7 +212,7 @@ public class Transaction {
      * @return a boolean value determining whether the input name is involved in the transaction
      */
     public boolean isInvolved(String memberName) {
-        return isLender(memberName) || isBorrower(memberName);
+        return isLender(memberName) || checkIsBorrower(memberName);
     }
 
     /**

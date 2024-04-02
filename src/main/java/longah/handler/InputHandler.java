@@ -1,16 +1,17 @@
 package longah.handler;
 
-import longah.commands.ClearCommand;
 import longah.commands.Command;
-import longah.commands.ExitCommand;
-import longah.commands.HelpCommand;
-import longah.commands.PINCommand;
-import longah.commands.SettleCommand;
 import longah.commands.add.AddCommand;
 import longah.commands.delete.DeleteCommand;
 import longah.commands.edit.EditCommand;
 import longah.commands.find.FindCommand;
 import longah.commands.list.ListCommand;
+import longah.commands.ClearCommand;
+import longah.commands.SettleCommand;
+import longah.commands.ExitCommand;
+import longah.commands.PINCommand;
+import longah.commands.HelpCommand;
+import longah.commands.SwitchCommand;
 import longah.commands.ViewCommand;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
@@ -61,9 +62,8 @@ public class InputHandler {
             return new ViewCommand(commandString, taskExpression);
         case "help":
             return new HelpCommand(commandString, taskExpression);
-            
         case "group":
-            // Fallthrough
+            return new SwitchCommand(commandString, taskExpression);
         default:
             throw new LongAhException(ExceptionMessage.INVALID_COMMAND);
         }
