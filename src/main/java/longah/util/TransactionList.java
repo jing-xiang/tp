@@ -2,6 +2,7 @@ package longah.util;
 
 import java.util.ArrayList;
 
+import longah.node.DateTime;
 import longah.node.Member;
 import longah.node.Transaction;
 import longah.exception.LongAhException;
@@ -154,6 +155,106 @@ public class TransactionList {
         }
         if (index == 1) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
+        }
+        return outString;
+    }
+
+    /**
+     * Filters and return the list of transactions matching the input transaction time
+     *
+     * @param dateTime String expression of the date time to filter
+     * @return String representation of the list of transactions matching the input transaction time
+     * @throws LongAhException If there are no matching transactions
+     */
+    public String filterTransactionsEqualToDateTime(String dateTime) throws LongAhException {
+        DateTime dateTimeToCompare = new DateTime(dateTime);
+        int index = 1;
+        String outString = "The following list of transactions matches with the time " + dateTimeToCompare + ".\n";
+        for (Transaction transaction : this.transactions) {
+            if (transaction.getTransactionTime().isEqual(dateTimeToCompare)) {
+                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                index++;
+            }
+        }
+        if (index == 1) {
+            throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
+        }
+        return outString;
+    }
+
+    /**
+     * Filters and return the list of transactions before the input transaction time
+     *
+     * @param dateTime String expression of the date time to filter
+     * @return String representation of the list of transactions before the input transaction time
+     * @throws LongAhException If there are no matching transactions
+     */
+    public String filterTransactionsBeforeDateTime(String dateTime) throws LongAhException {
+        DateTime dateTimeToCompare = new DateTime(dateTime);
+        int index = 1;
+        String outString = "The following list of transactions is before the time " + dateTimeToCompare + ".\n";
+        for (Transaction transaction : this.transactions) {
+            if (transaction.getTransactionTime().isBefore(dateTimeToCompare)) {
+                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                index++;
+            }
+        }
+        if (index == 1) {
+            throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
+        }
+        return outString;
+    }
+
+    /**
+     * Filters and return the list of transactions after the input transaction time
+     *
+     * @param dateTime String expression of the date time to filter
+     * @return String representation of the list of transactions before the input transaction time
+     * @throws LongAhException If there are no matching transactions
+     */
+    public String filterTransactionsAfterDateTime(String dateTime) throws LongAhException {
+        DateTime dateTimeToCompare = new DateTime(dateTime);
+        int index = 1;
+        String outString = "The following list of transactions is after the time " + dateTimeToCompare + ".\n";
+        for (Transaction transaction : this.transactions) {
+            if (transaction.getTransactionTime().isAfter(dateTimeToCompare)) {
+                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                index++;
+            }
+        }
+        if (index == 1) {
+            throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
+        }
+        return outString;
+    }
+
+    /**
+     * Filters and return the list of transactions between two date times
+     *
+     * @param fromDateTime String expression of the earlier bound of the date time period to filter
+     * @param toDateTime String expression of the later bound of the date time to filter
+     * @return String representation of the list of transactions before the input transaction time
+     * @throws LongAhException If the date time filter is invalid such that the to date is before the from date or
+     * if there are no matching transactions
+     */
+    public String filterTransactionsBetweenDateTime(String fromDateTime, String toDateTime) throws LongAhException {
+        DateTime fromDateTimeToCompare = new DateTime(fromDateTime);
+        DateTime toDateTimeToCompare = new DateTime(toDateTime);
+        if (toDateTimeToCompare.isBefore(fromDateTimeToCompare)) {
+            throw new LongAhException(ExceptionMessage.INVALID_DATE_TIME_FILTER);
+        }
+        int index = 1;
+        String outString = "The following list of transactions is between the time " + fromDateTimeToCompare +
+                " and " + toDateTimeToCompare + ".\n";
+        for (Transaction transaction : this.transactions) {
+            if (transaction.getTransactionTime().isAfter(fromDateTimeToCompare)
+                    && transaction.getTransactionTime().isBefore(toDateTimeToCompare)) {
+                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                index++;
+            }
+        }
+        if (index == 1) {
+            throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
         return outString;
     }

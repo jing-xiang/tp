@@ -59,7 +59,7 @@ public class DateTime {
      * @return true if the input DateTime object has a date equal to the current object. false otherwise.
      */
     public boolean isEqual(DateTime dateTimeToCompare) {
-        return this.dateTime.isAfter(dateTimeToCompare.getDateTime());
+        return this.dateTime.isEqual(dateTimeToCompare.getDateTime());
     }
 
     /**

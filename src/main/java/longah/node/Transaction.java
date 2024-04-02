@@ -1,6 +1,7 @@
 package longah.node;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import longah.util.MemberList;
 import longah.exception.LongAhException;
@@ -173,6 +174,15 @@ public class Transaction {
      */
     public Member getLender() {
         return this.lender;
+    }
+
+    /**
+     * Gets the transaction time of the current transaction.
+     *
+     * @return The DateTime object representing the current transaction time
+     */
+    public DateTime getTransactionTime() {
+        return this.transactionTime;
     }
 
     /**
