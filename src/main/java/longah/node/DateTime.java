@@ -28,6 +28,40 @@ public class DateTime {
         }
     }
 
+    private LocalDateTime getDateTime() {
+        return this.dateTime;
+    }
+
+    /**
+     * Determines whether the input DateTime object has a date that is before the current object
+     *
+     * @param dateTimeToCompare the reference DateTime object to be compared with
+     * @return true if the input DateTime object has a date before the current object. false otherwise.
+     */
+    public boolean isBefore(DateTime dateTimeToCompare) {
+        return this.dateTime.isBefore(dateTimeToCompare.getDateTime());
+    }
+
+    /**
+     * Determines whether the input DateTime object has a date that is after the current object
+     *
+     * @param dateTimeToCompare the reference DateTime object to be compared with
+     * @return true if the input DateTime object has a date after the current object. false otherwise.
+     */
+    public boolean isAfter(DateTime dateTimeToCompare) {
+        return this.dateTime.isAfter(dateTimeToCompare.getDateTime());
+    }
+
+    /**
+     * Determines whether the input DateTime object has a date that is equal to the current object
+     *
+     * @param dateTimeToCompare the reference DateTime object to be compared with
+     * @return true if the input DateTime object has a date equal to the current object. false otherwise.
+     */
+    public boolean isEqual(DateTime dateTimeToCompare) {
+        return this.dateTime.isAfter(dateTimeToCompare.getDateTime());
+    }
+
     /**
      * Converts the date time object into a String expression suitable for storage
      *
