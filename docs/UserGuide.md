@@ -36,6 +36,7 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Viewing help: `help`](#viewing-help-help)
     - [Adding a member: `add member`](#adding-a-member-add-member)
     - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
+    - [Adding a dated transaction: `add transaction`](#adding-a-dated-transaction-add-transaction)
     - [Listing all members: `list members`](#listing-all-members-list-members)
     - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
     - [Listing all debts: `list debts`](#listing-all-debts-list-debts)
@@ -110,6 +111,36 @@ is enabled by default.
 ### Saving the data
 LongAh! data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 The file is also created automatically if it does not exist.
+
+If all is well, LongAh will save the files in the following data structure during execution.
+  ```
+<Your created directory>
+│
+├─data
+│  │  groupList.txt
+│  │  members.txt
+│  │  pin.txt
+│  │  transactions.txt
+│  │
+│  ├─<group 1 name>
+│  │      members.txt
+│  │      transactions.txt
+│  │
+│  ├─<group 2 name>
+│  │      members.txt
+│  │      transactions.txt
+│   .
+│   .
+│   .
+│
+├─log
+│      LongAh.log
+│
+└─tp.jar
+        
+
+   ```
+
 
 ### Editing the data file
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
