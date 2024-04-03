@@ -156,6 +156,15 @@ Example of usage:
 OR
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
 
+### Adding a dated transaction: `add transaction`
+Adds a new dated transaction to the list of transactions in LongAh!
+
+Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+* The behavior for the lender and borrower portion of dated transactions is the same as normal transactions.
+* `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
+
+Example of usage: `add transaction Alice t/11-11-2000 2359 p/Bob a/10`
+
 ### Adding a new group `add group`
 Adds a new group to LongAh! for you to manage expenses and debts separately.
 
