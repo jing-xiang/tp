@@ -20,6 +20,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 6. You can now start using LongAh! by entering commands into the command terminal.
 
 ## Command Reference
+
 | Task                   | Command Expression                                                                                    |
 | ---------------------- | ----------------------------------------------------------------------------------------------------- |
 | Help menu              | `help`                                                                                                |
