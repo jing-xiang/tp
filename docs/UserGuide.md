@@ -19,14 +19,45 @@ java -jar tp.jar
 The app will prompt you to create your own PIN if it is your first time using the application.
 6. You can now start using LongAh! by entering commands into the command terminal.
 
+## Command Reference
+| Task                   | Command Expression                                                                                    |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| Help menu              | `help`                                                                                                |
+| Add member             | `add member [name]`                                                                                   |
+| Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      |
+| Add group              | `add group [name]`                                                                                    |
+| List members           | `list members`                                                                                        |
+| List transactions      | `list transactions`                                                                                   |
+| List debts             | `list debts`                                                                                          |
+| List groups            | `list groups`                                                                                         |
+| Find transactions      | `find transactions [member]`                                                                          |
+| Find lender            | `find lender [member]`                                                                                |
+| Find borrower          | `find borrower [member]`                                                                              |
+| Find debts             | `find debts [member]`                                                                                 |
+| Delete member          | `delete member [member]`                                                                              |
+| Delete transaction     | `delete transaction [transaction_index]`                                                              |
+| Delete group           | `delete group [name]`                                                                                 |
+| Edit member            | `edit member [old_name] [new_name]`                                                                   |
+| Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` |
+| Enable PIN             | `pin enable`                                                                                          |
+| Disable PIN            | `pin disable`                                                                                         |
+| Reset PIN              | `pin reset`                                                                                           |
+| Clear all transactions | `clear`                                                                                               |
+| Settle up debts        | `settleup [member]`                                                                                   |
+| Switch groups          | `switch [group_name]`                                                                                 |
+| View chart             | `view chart`                                                                                          |
+| Exit                   | `exit`                                                                                                |
+
 ## Table of Contents
 - [LongAh! User Guide](#longah-user-guide)
   - [Introduction](#introduction)
   - [Quick Start](#quick-start)
+  - [Command Reference](#command-reference)
   - [Table of Contents](#table-of-contents)
-  - [Quick Command Reference](#quick-command-reference)
   - [Features](#features)
-    - [Member Management](#member-management)
+    - [Group Management](#group-management)
+    - [Member and Transaction Management](#member-and-transaction-management)
     - [Group Balances \& Expense Tracking](#group-balances--expense-tracking)
     - [Debt Simplification](#debt-simplification)
     - [Security](#security)
@@ -37,15 +68,18 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Adding a member: `add member`](#adding-a-member-add-member)
     - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
     - [Adding a dated transaction: `add transaction`](#adding-a-dated-transaction-add-transaction)
+    - [Adding a new group `add group`](#adding-a-new-group-add-group)
     - [Listing all members: `list members`](#listing-all-members-list-members)
     - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
     - [Listing all debts: `list debts`](#listing-all-debts-list-debts)
+    - [Listing all groups: `list groups`](#listing-all-groups-list-groups)
     - [Find Transactions: `find transactions`](#find-transactions-find-transactions)
     - [Find Lender `find lender`](#find-lender-find-lender)
     - [Find Borrower `find borrower`](#find-borrower-find-borrower)
     - [Find Debts `find debts`](#find-debts-find-debts)
     - [Deleting a member: `delete member`](#deleting-a-member-delete-member)
     - [Deleting a transaction: `delete transaction`](#deleting-a-transaction-delete-transaction)
+    - [Deleting a group `delete group`](#deleting-a-group-delete-group)
     - [Editing a member: `edit member`](#editing-a-member-edit-member)
     - [Editing a transaction: `edit transaction`](#editing-a-transaction-edit-transaction)
     - [Enabling the user PIN: `pin enable`](#enabling-the-user-pin-pin-enable)
@@ -53,49 +87,20 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
     - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
     - [Settle a user's debts: `settleup`](#settle-a-users-debts-settleup)
+    - [Switching groups: `group`](#switching-groups-group)
+    - [Views the balances of all members in the form of a chart: `view chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-view-chart)
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
 
-## Quick Command Reference
-| Task                    | Command Expression                                                                                     |
-|-------------------------|--------------------------------------------------------------------------------------------------------|
-| Help menu               | `help`                                                                                                 |
-| Add member              | `add member [name]`                                                                                    |
-| Add transaction         | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                       |
-| Add dated transaction   | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`       |
-| Add group               | `add group [name]`                                                                                     |
-| List members            | `list members`                                                                                         |
-| List transactions       | `list transactions`                                                                                    |
-| List debts              | `list debts`                                                                                           |
-| List groups             | `list groups`                                                                                          |
-| Find transactions       | `find transactions [member]`                                                                           |
-| Find lender             | `find lender [member]`                                                                                 |
-| Find borrower           | `find borrower [member]`                                                                               |
-| Find debts              | `find debts [member]`                                                                                  |
-| Delete member           | `delete member [member]`                                                                               |
-| Delete transaction      | `delete transaction [transaction_index]`                                                               |
-| Delete group            | `delete group [name]`                                                                                  |
-| Edit member             | `edit member [old_name] [new_name]`                                                                    |
-| Edit transaction        | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`  |
-| Enable PIN              | `pin enable`                                                                                           |
-| Disable PIN             | `pin disable`                                                                                          |
-| Reset PIN               | `pin reset`                                                                                            |
-| Clear all transactions  | `clear`                                                                                                |
-| Settle up debts         | `settleup [member]`                                                                                    |
-| Switch groups           | `switch [group_name]`                                                                                  |
-| View chart              | `view chart`                                                                                           |
-| Exit                    | `exit`                                                                                                 |
-
-
 ## Features
 LongAh! comes with many features for you to manage your group expenses.
 
-### Member Management
-You can add, delete, and edit members in LongAh! to keep track of who is involved in the transactions.
-
 ### Group Management
 You can create and delete groups in LongAh! to keep track of different groups of friends. You can also switch between groups to view the balances and transactions of each group.
+
+### Member and Transaction Management
+You can add, delete, and edit members and/or transactions in groups within LongAh! to keep track of who is involved in the transactions.
 
 ### Group Balances & Expense Tracking
 You can add transactions between members to keep track of who owes who. LongAh! can also display group balances and expenses at a glance.
@@ -113,7 +118,7 @@ LongAh! data is saved in the hard disk automatically after any command that chan
 The file is also created automatically if it does not exist.
 
 If all is well, LongAh will save the files in the following data structure during execution.
-  ```
+```
 <Your created directory>
 │
 ├─data
@@ -135,32 +140,32 @@ If all is well, LongAh will save the files in the following data structure durin
 │      LongAh.log
 │
 └─tp.jar
-        
-
-   ```
-
+```
 
 ### Editing the data file
+
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
 The PIN TXT file contains the pin hash of each user's PIN for security purposes. It is not recommended to edit this file directly.
 
-
 ## Command Format
+
 A command has the general structure:
 ```dtd
 [COMMAND] [SUBCOMMAND] [EXPRESSION]
 ```
+
 There are 5 main group of commands: 'add', 'delete', 'edit', 'find', 'list', along with other commands.
 
 ### Viewing help: `help`
+
 Shows a help message containing all the commands available in LongAh!.
 
 Format: `help`
 
 Example of usage: `help`
 
-
 ### Adding a member: `add member`
+
 Adds a new member to the list of members in LongAh!
 
 Format: `add member [NAME]`
@@ -172,6 +177,7 @@ Example of usage:
 `add member Alice`
 
 ### Adding a transaction: `add transaction`
+
 Adds a new transaction to the list of transactions in LongAh!
 
 Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
@@ -182,19 +188,22 @@ Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOU
 
 Example of usage:
 `add transaction Alice p/Bob a/10`
-OR
+or for transactions involving multiple people
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
 
 ### Adding a dated transaction: `add transaction`
+
 Adds a new dated transaction to the list of transactions in LongAh!
 
 Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+
 * The behavior for the lender and borrower portion of dated transactions is the same as normal transactions.
 * `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
 
 Example of usage: `add transaction Alice t/11-11-2000 2359 p/Bob a/10`
 
 ### Adding a new group `add group`
+
 Adds a new group to LongAh! for you to manage expenses and debts separately.
 
 Format: `add group [GROUP_NAME]`
@@ -207,6 +216,7 @@ Format: `add group [GROUP_NAME]`
 Example of usage: `add group Tiktok SWEs`
 
 ### Listing all members: `list members`
+
 Shows a list of all current members in LongAh! along with their current balances.
 
 Format: `list members`
@@ -214,7 +224,6 @@ Format: `list members`
 * Positive balance indicate that the member is owed money by other member(s) in the group.
 * Negative balance indicate that the member owes money to other member(s).
 * A balance of 0 indicates that the member neither owes nor is owed money.
-
 
 Example of usage:
 ```dtd
@@ -227,8 +236,8 @@ list members
     bob: -$5.0
 ```
 
-
 ### Listing all transactions: `list transactions`
+
 Shows a list of all transactions in LongAh!.
 
 * Each transaction is indexed for easy reference and use in other commands.
@@ -247,9 +256,8 @@ list transactions
     Borrower 1: bob Owed amount: 5.00
 ```
 
-
-
 ### Listing all debts: `list debts`
+
 Calculates the simplest way to repay all debts between all members and shows a list of all debts in LongAh!.
 
 Format: `list debts`
@@ -269,6 +277,7 @@ list debts
 ```
 
 ### Listing all groups: `list groups`
+
 Shows a list of all groups in LongAh!.
 
 Format: `list groups`
@@ -283,7 +292,9 @@ list groups
     2. Friends
     3. Family
 ```
+
 ### Find Transactions: `find transactions`
+
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
 
 Format: `find transactions [MEMBER]`
@@ -292,6 +303,7 @@ Format: `find transactions [MEMBER]`
 Example of usage: `find transactions Alice`
 
 ### Find Lender `find lender`
+
 Finds all transactions where the specified member is the lender.
 
 Format: `find lender [MEMBER]`
@@ -300,6 +312,7 @@ Format: `find lender [MEMBER]`
 Example of usage: `find lender Alice`
 
 ### Find Borrower `find borrower`
+
 Finds all transactions where the specified member is a borrower.
 
 Format: `find borrower [MEMBER]`
@@ -308,6 +321,7 @@ Format: `find borrower [MEMBER]`
 Example of usage: `find borrower Alice`
 
 ### Find Debts `find debts`
+
 Finds all debts that the specified member has with other members.
 
 Format: `find debts [MEMBER]`
@@ -316,6 +330,7 @@ Format: `find debts [MEMBER]`
 Example of usage: `find debts Alice`
 
 ### Deleting a member: `delete member`
+
 Deletes a member from the list of members in LongAh!.
 
 Format: `delete member [MEMBER]`
@@ -325,8 +340,8 @@ Format: `delete member [MEMBER]`
 
 Example of usage: `delete member Alice`
 
-
 ### Deleting a transaction: `delete transaction`
+
 Deletes a transaction from the list of transactions in LongAh!.
 
 Format: `delete transaction [TRANSACTION_INDEX]`
@@ -338,6 +353,7 @@ the transaction that you want to delete.
 Example of usage: `delete transaction 3`
 
 ### Deleting a group `delete group`
+
 Deletes a group from LongAh!.
 
 Format: `delete group [GROUP_NAME]`
@@ -356,6 +372,7 @@ list groups
 ```
 
 ### Editing a member: `edit member`
+
 Edits the name of a member in the list of members in LongAh!.
 
 Format: `edit member [OLD_NAME] [NEW_NAME]`
@@ -366,6 +383,7 @@ Format: `edit member [OLD_NAME] [NEW_NAME]`
 Example of usage: `edit member Alice Bob`
 
 ### Editing a transaction: `edit transaction`
+
 Edits the details of a transaction in the list of transactions in LongAh!.
 
 Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
@@ -378,6 +396,7 @@ Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] 
 Example of usage: `edit transaction 3 Charlie p/Bob a/3 p/Alice a/5`
 
 ### Enabling the user PIN: `pin enable`
+
 Enables the user to set a PIN for the application. (enabled by default)
 
 Format: `pin enable`
@@ -386,6 +405,7 @@ Example of usage: `pin enable`
 
 
 ### Disabling the user PIN: `pin disable`
+
 Disables the user PIN for the application. 
 
 Format: `pin disable`
@@ -394,6 +414,7 @@ Example of usage: `pin disable`
 
 
 ### Resetting user PIN: `pin reset`
+
 Resets the user PIN for the application. Follow the instructions as prompted to reset the PIN.
 
 Format: `pin reset`
@@ -403,6 +424,7 @@ Example of usage: `pin reset`
 
 
 ### Clearing all transactions `clear`
+
 Clear all previous transactions logged in LongAh!. Members balances will be reset to 0.
 
 Format: `clear`
@@ -411,6 +433,7 @@ Example of usage: `clear`
 
 
 ### Settle a user's debts: `settleup`
+
 Settles all debts of the specified member with all other members. A transaction will be created to settle the debts and reset
 the debt balance of the specified member to 0, while updating the balance(s) of all relevant lender(s).
 
@@ -443,6 +466,7 @@ list members
 ``` 
 
 ### Switching groups: `group`
+
 Switches to the specified group in LongAh!.
 
 Format: `group [GROUP_NAME]`
@@ -456,8 +480,8 @@ group friends
     Switching to group: friends
 ```
 
-
 ### Views the balances of all members in the form of a chart: `view chart`
+
 Shows a chart of the balances of all members in the group.
 
 Format: `view chart`
@@ -483,12 +507,12 @@ A separate tooltip will show the exact balance of each member.
 ![viewChart.png](diagrams%2FviewChart.png)
 
 ### Exiting the application: `exit`
+
 Exits the application.
 
 Format: `exit`
 
 Example of usage: `exit`
-
 
 ## FAQ
 
@@ -496,6 +520,4 @@ Example of usage: `exit`
 
 **A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction TXT files it creates with the files containing your data.
 
-
 ## Known Issues
-

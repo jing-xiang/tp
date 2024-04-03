@@ -38,6 +38,7 @@ public class LongAh {
             c.execute(GroupList.getActiveGroup());
         }
     }
+    
     /**
      * The main method to run the LongAh application.
      *
