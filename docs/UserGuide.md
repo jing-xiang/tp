@@ -118,9 +118,7 @@ If all is well, LongAh will save the files in the following data structure durin
 │
 ├─data
 │  │  groupList.txt
-│  │  members.txt
 │  │  pin.txt
-│  │  transactions.txt
 │  │
 │  ├─<group 1 name>
 │  │      members.txt
