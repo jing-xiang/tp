@@ -19,6 +19,8 @@ java -jar tp.jar
 The app will prompt you to create your own PIN if it is your first time using the application.
 6. You can now start using LongAh! by entering commands into the command terminal.
 
+<div style="page-break-after: always;"></div>
+
 ## Command Reference
 
 | Task                   | Command Expression                                                                                    |
@@ -94,6 +96,8 @@ The app will prompt you to create your own PIN if it is your first time using th
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 LongAh! comes with many features for you to manage your group expenses.
 
@@ -147,6 +151,8 @@ If all is well, LongAh will save the files in the following data structure durin
 
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
 The PIN TXT file contains the pin hash of each user's PIN for security purposes. It is not recommended to edit this file directly.
+
+<div style="page-break-after: always;"></div>
 
 ## Command Format
 
@@ -514,6 +520,8 @@ Exits the application.
 Format: `exit`
 
 Example of usage: `exit`
+
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
