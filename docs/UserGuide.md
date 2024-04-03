@@ -22,7 +22,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 ## Command Reference
 
 | Task                   | Command Expression                                                                                    |
-| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| ---------------------- |-------------------------------------------------------------------------------------------------------|
 | Help menu              | `help`                                                                                                |
 | Add member             | `add member [name]`                                                                                   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
@@ -46,7 +46,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 | Reset PIN              | `pin reset`                                                                                           |
 | Clear all transactions | `clear`                                                                                               |
 | Settle up debts        | `settleup [member]`                                                                                   |
-| Switch groups          | `switch [group_name]`                                                                                 |
+| Switch groups          | `group [group_name]`                                                                                  |
 | View chart             | `view chart`                                                                                          |
 | Exit                   | `exit`                                                                                                |
 
@@ -214,7 +214,7 @@ Format: `add group [GROUP_NAME]`
 * The entered group name should not be a duplicate of an existing group.
 * The entered group name should only contain alphanumeric characters, no spaces are allowed.
 
-Example of usage: `add group Tiktok SWEs`
+Example of usage: `add group Tiktok`
 
 ### Listing all members: `list members`
 

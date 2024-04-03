@@ -1,15 +1,5 @@
 # Developer Guide
 
-## Acknowledgements
-
-LongAh uses the following libraries:
-
-1. [XChart](https://knowm.org/open-source/xchart/) - Used for generating charts to visualize data.
-
-LongAh uses the following tools for development:
-
-1. [JUnit 5](https://junit.org/junit5/) - Used for testing.
-2. [Gradle](https://gradle.org/) - Used for build automation.
 
 ## Table of Contents
 - [Developer Guide](#developer-guide)
@@ -34,6 +24,19 @@ LongAh uses the following tools for development:
   - [Instructions for JUnit Testing](#instructions-for-junit-testing)
   - [Instructions for text-ui-testing](#instructions-for-text-ui-testing)
   - [Future Enhancements](#future-enhancements)
+
+
+## Acknowledgements
+
+LongAh uses the following libraries:
+
+1. [XChart](https://knowm.org/open-source/xchart/) - Used for generating charts to visualize data.
+
+LongAh uses the following tools for development:
+
+1. [JUnit 5](https://junit.org/junit5/) - Used for testing.
+2. [Gradle](https://gradle.org/) - Used for build automation.
+
 
 ## Design & Implementation
 
