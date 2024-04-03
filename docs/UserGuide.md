@@ -99,24 +99,30 @@ The app will prompt you to create your own PIN if it is your first time using th
 <div style="page-break-after: always;"></div>
 
 ## Features
-LongAh! comes with many features for you to manage your group expenses.
+
+LongAh! offers robust group management capabilities, allowing users to effortlessly create and delete groups to categorize and organize their expenses. With the ability to seamlessly switch between groups, users can conveniently monitor the financial activities of various social circles or projects.
 
 ### Group Management
-You can create and delete groups in LongAh! to keep track of different groups of friends. You can also switch between groups to view the balances and transactions of each group.
+
+Within each group, LongAh! provides comprehensive member and transaction management functionalities. Users can easily add, remove, or modify group members and transactions, ensuring accurate and up-to-date records of all financial engagements.
 
 ### Member and Transaction Management
-You can add, delete, and edit members and/or transactions in groups within LongAh! to keep track of who is involved in the transactions.
+
+Within each group, LongAh! provides comprehensive member and transaction management functionalities. Users can easily add, remove, or modify group members and transactions, ensuring accurate and up-to-date records of all financial engagements.
 
 ### Group Balances & Expense Tracking
-You can add transactions between members to keep track of who owes who. LongAh! can also display group balances and expenses at a glance.
+
+Tracking group balances and expenses has never been easier with LongAh! Users can log transactions between members, facilitating transparent and equitable expense distribution. LongAh! also offers intuitive visualizations, allowing users to quickly assess group financial dynamics at a glance.
 
 ### Debt Simplification
-LongAh! calculates the simplest way to settle all debts between members and shows a list of all debts, reducing the amount of transanctions
-needed to settle all debts between members.
+
+LongAh! streamlines debt settlement processes by automatically computing the optimal repayment strategy. By presenting users with a simplified list of debts and transactions, LongAh! minimizes the effort required to settle financial obligations within the group, fostering smoother financial interactions.
 
 ### Security
-LongAh! allows you to set a PIN to protect your data from unauthorized access. The PIN is required to access the application. This feature
-is enabled by default.
+
+Protecting sensitive financial data is paramount, which is why LongAh! prioritizes security. With the option to set a personalized PIN, users can safeguard their LongAh! accounts against unauthorized access. This additional layer of security ensures peace of mind, knowing that financial information remains confidential and secure. Additionally, users have the flexibility to enable, disable, or modify their PIN settings according to their preferences and needs.
+
+<div style="page-break-after: always;"></div>
 
 ### Saving the data
 LongAh! data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
