@@ -36,6 +36,7 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Viewing help: `help`](#viewing-help-help)
     - [Adding a member: `add member`](#adding-a-member-add-member)
     - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
+    - [Adding a dated transaction: `add transaction`](#adding-a-dated-transaction-add-transaction)
     - [Listing all members: `list members`](#listing-all-members-list-members)
     - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
     - [Listing all debts: `list debts`](#listing-all-debts-list-debts)
@@ -111,6 +112,34 @@ is enabled by default.
 LongAh! data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 The file is also created automatically if it does not exist.
 
+If all is well, LongAh will save the files in the following data structure during execution.
+  ```
+<Your created directory>
+│
+├─data
+│  │  groupList.txt
+│  │  pin.txt
+│  │
+│  ├─<group 1 name>
+│  │      members.txt
+│  │      transactions.txt
+│  │
+│  ├─<group 2 name>
+│  │      members.txt
+│  │      transactions.txt
+│   .
+│   .
+│   .
+│
+├─log
+│      LongAh.log
+│
+└─tp.jar
+        
+
+   ```
+
+
 ### Editing the data file
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
 The PIN TXT file contains the pin hash of each user's PIN for security purposes. It is not recommended to edit this file directly.
@@ -155,6 +184,15 @@ Example of usage:
 `add transaction Alice p/Bob a/10`
 OR
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
+
+### Adding a dated transaction: `add transaction`
+Adds a new dated transaction to the list of transactions in LongAh!
+
+Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+* The behavior for the lender and borrower portion of dated transactions is the same as normal transactions.
+* `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
+
+Example of usage: `add transaction Alice t/11-11-2000 2359 p/Bob a/10`
 
 ### Adding a new group `add group`
 Adds a new group to LongAh! for you to manage expenses and debts separately.
