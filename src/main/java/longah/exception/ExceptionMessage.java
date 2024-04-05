@@ -52,7 +52,7 @@ public enum ExceptionMessage {
             " Use 'list members', 'list transactions', or 'list debts'",
             ExceptionType.INFO),
     INVALID_FIND_COMMAND ("Invalid command format." +
-            " Use 'find transactions NAME' or 'find debts NAME'",
+            " Use 'find transactions', 'find lender', 'find borrower', or 'find debts'",
             ExceptionType.INFO),
 
     INVALID_FILTER_COMMAND ("Invalid filter command." +

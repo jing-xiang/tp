@@ -23,34 +23,34 @@ The app will prompt you to create your own PIN if it is your first time using th
 
 ## Command Reference
 
-| Task                   | Command Expression                                                                                    |
-| ---------------------- |-------------------------------------------------------------------------------------------------------|
-| Help menu              | `help`                                                                                                |
-| Add member             | `add member [name]`                                                                                   |
-| Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      |
-| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      |
-| Add group              | `add group [name]`                                                                                    |
-| List members           | `list members`                                                                                        |
-| List transactions      | `list transactions`                                                                                   |
-| List debts             | `list debts`                                                                                          |
-| List groups            | `list groups`                                                                                         |
-| Find transactions      | `find transactions [member]`                                                                          |
-| Find lender            | `find lender [member]`                                                                                |
-| Find borrower          | `find borrower [member]`                                                                              |
-| Find debts             | `find debts [member]`                                                                                 |
-| Delete member          | `delete member [member]`                                                                              |
-| Delete transaction     | `delete transaction [transaction_index]`                                                              |
-| Delete group           | `delete group [name]`                                                                                 |
-| Edit member            | `edit member [old_name] [new_name]`                                                                   |
-| Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` |
-| Enable PIN             | `pin enable`                                                                                          |
-| Disable PIN            | `pin disable`                                                                                         |
-| Reset PIN              | `pin reset`                                                                                           |
-| Clear all transactions | `clear`                                                                                               |
-| Settle up debts        | `settleup [member]`                                                                                   |
-| Switch groups          | `group [group_name]`                                                                                  |
-| View chart             | `view chart`                                                                                          |
-| Exit                   | `exit`                                                                                                |
+| Task                   | Command Expression                                                                                    | Command Shortcut |
+| ---------------------- |-------------------------------------------------------------------------------------------------------|------------------|
+| Help menu              | `help`                                                                                                |                  |
+| Add member             | `add member [name]`                                                                                   | `addm` or `am`   |
+| Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      | `addt` or `at`   |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
+| Add group              | `add group [name]`                                                                                    | `addg` or `ag`   |
+| List members           | `list members`                                                                                        | `listm` or `lm`  |
+| List transactions      | `list transactions`                                                                                   | `listt` or `lt`  |
+| List debts             | `list debts`                                                                                          | `listd` or `ld`  |
+| List groups            | `list groups`                                                                                         | `listg` or `lg`  |
+| Find transactions      | `find transactions [member]`                                                                          | `findt` or `ft`  |
+| Find lender            | `find lender [member]`                                                                                | `findl` or `fl`  |
+| Find borrower          | `find borrower [member]`                                                                              | `findb` or `fb`  |
+| Find debts             | `find debts [member]`                                                                                 | `findd` or `fd`  |
+| Delete member          | `delete member [member]`                                                                              | `deletem` or `dm`|
+| Delete transaction     | `delete transaction [transaction_index]`                                                              | `deletet` or `dt`|
+| Delete group           | `delete group [name]`                                                                                 | `deleteg` or `dg`|
+| Edit member            | `edit member [old_name] [new_name]`                                                                   | `editm` or `em`  |
+| Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` | `editt` or `et`  |
+| Enable PIN             | `pin enable`                                                                                          |                  |
+| Disable PIN            | `pin disable`                                                                                         |                  |
+| Reset PIN              | `pin reset`                                                                                           |                  |
+| Clear all transactions | `clear`                                                                                               |                  |
+| Settle up debts        | `settle [member]` OR `settleup [member]                                                               |                  |
+| Switch groups          | `group [group_name]`                                                                                  |                  |
+| View chart             | `view chart`                                                                                          |                  |
+| Exit                   | `exit`                                                                                                |                  |
 
 ## Table of Contents
 - [LongAh! User Guide](#longah-user-guide)
