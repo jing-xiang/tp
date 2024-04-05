@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Wu Hao Wern - Project Portfolio Page
 
 ## Overview
 

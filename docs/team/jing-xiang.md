@@ -1,3 +1,4 @@
+
 # Jing Xiang - Project Portfolio Page
 
 ## Project: LongAh!
@@ -61,3 +62,4 @@ Given below are my contributions to the project.
   - Integrated the `XChart` library for the `view chart` feature [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86).
 
 Overall, I have contributed significantly to the project in terms of new features, enhancements, project management, documentation, and community contributions. I have gained valuable experience in software development and project management through this project.
+
