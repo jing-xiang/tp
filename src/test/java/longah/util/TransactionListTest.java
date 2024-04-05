@@ -137,7 +137,7 @@ public class TransactionListTest {
             String name = "Jack";
             String printedOutput = transactionList.findTransactions(name);
 
-            assertTrue(printedOutput.contains("Jack owns the following list of transactions."));
+            assertTrue(printedOutput.contains("Jack is a part of the following list of transaction(s)."));
             assertTrue(printedOutput.contains("Lender: Jack"));
             assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
             assertTrue(printedOutput.contains("James Owed amount: 100.00"));
