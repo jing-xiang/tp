@@ -89,9 +89,9 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Disabling the user PIN: `pin disable`](#disabling-the-user-pin-pin-disable)
     - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
     - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
-    - [Settle a user's debts: `settleup`](#settle-a-users-debts-settleup)
+    - [Settle a user's debts: `settle` OR `settleup`](#settle-a-users-debts-settle-or-settleup)
     - [Switching groups: `group`](#switching-groups-group)
-    - [Views the balances of all members in the form of a chart: `view chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-view-chart)
+    - [Views the balances of all members in the form of a chart: `chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-chart)
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
@@ -153,6 +153,8 @@ If all is well, LongAh will save the files in the following data structure durin
 └─tp.jar
 ```
 
+Note: It it not recommended to edit any data files manually. Corrupt lines of data will be ignored and overwritten over the course of the use of the application.
+
 ### Editing the data file
 
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
@@ -168,41 +170,55 @@ A command has the general structure:
 ```
 
 There are 5 main group of commands: 'add', 'delete', 'edit', 'find', 'list', along with other commands.
+Command shortcuts are available for certain commands and are detailed below in the "format" section for relevant commands.
 
 ### Viewing help: `help`
 
 Shows a help message containing all the commands available in LongAh!.
 
-Format: `help`
+Format: `help` OR `?`
 
-Example of usage: `help`
+Example of usage:
+```
+help
+```
 
 ### Adding a member: `add member`
 
 Adds a new member to the list of members in LongAh!
 
-Format: `add member [NAME]`
+Format: `add member [NAME]` OR `addm` OR `am`
 
 * Name of new member should not be a duplicate of an existing member.
 * The entered name should only contain alphanumeric characters, no spaces are allowed.
 
 Example of usage:
-`add member Alice`
+```
+add member Alice
+addm Bob
+am Charlie
+```
 
 ### Adding a transaction: `add transaction`
 
 Adds a new transaction to the list of transactions in LongAh!
 
-Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `addt` OR `at`
 * The transaction supports 1 or more borrower(s), each with custom borrowed amounts.
 * `p/` is the prefix for the borrower's name, and should be followed by the name of the borrower.
 * `a/` is the prefix for the amount borrowed, and should be followed by the amount borrowed by that borrower from the lender.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
 
 Example of usage:
-`add transaction Alice p/Bob a/10`
+```
+add transaction Alice p/Bob a/10
+addt Bob p/Alice a/5
+at Alice p/Bob a/7
+```
 or for transactions involving multiple people
-`add transaction Alice p/Bob a/10 p/Charlie a/20`
+```
+add transaction Alice p/Bob a/10 p/Charlie a/20
+```
 
 ### Adding a dated transaction: `add transaction`
 
@@ -213,26 +229,32 @@ Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[A
 * The behavior for the lender and borrower portion of dated transactions is the same as normal transactions.
 * `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
 
-Example of usage: `add transaction Alice t/11-11-2000 2359 p/Bob a/10`
+Example of usage: 
+```
+add transaction Alice t/11-11-2000 2359 p/Bob a/10
+```
 
 ### Adding a new group `add group`
 
 Adds a new group to LongAh! for you to manage expenses and debts separately.
 
-Format: `add group [GROUP_NAME]`
+Format: `add group [GROUP_NAME]` OR `addg` OR `ag`
 
 * The Application will automatically prompt you to create a new group if this is your first time using LongAh!.
 * The Application will not automatically switch to the new group after adding. You can switch to the new group using the `group` command.
 * The entered group name should not be a duplicate of an existing group.
 * The entered group name should only contain alphanumeric characters, no spaces are allowed.
 
-Example of usage: `add group Tiktok`
+Example of usage:
+```
+add group Tiktok
+```
 
 ### Listing all members: `list members`
 
 Shows a list of all current members in LongAh! along with their current balances.
 
-Format: `list members`
+Format: `list members` OR `listm` OR `lm`
 
 * Positive balance indicate that the member is owed money by other member(s) in the group.
 * Negative balance indicate that the member owes money to other member(s).
@@ -255,7 +277,7 @@ Shows a list of all transactions in LongAh!.
 
 * Each transaction is indexed for easy reference and use in other commands.
 
-Format: `list transactions`
+Format: `list transactions` OR `listt` OR `lt`
 
 Example of usage:
 ```dtd
@@ -273,7 +295,7 @@ list transactions
 
 Calculates the simplest way to repay all debts between all members and shows a list of all debts in LongAh!.
 
-Format: `list debts`
+Format: `list debts` OR `listd` OR `ld`
 
 Example of usage:
 ```dtd
@@ -293,13 +315,14 @@ list debts
 
 Shows a list of all groups in LongAh!.
 
-Format: `list groups`
+Format: `list groups` OR `listg` OR `lg`
 
 Example of usage:
 ```dtd
 // assume that the group 'Tiktok' already exists
 add group Friends
 add group Family
+
 list groups
     1. Tiktok
     2. Friends
@@ -310,66 +333,118 @@ list groups
 
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
 
-Format: `find transactions [MEMBER]`
+Format: `find transactions [MEMBER]` OR `findt` OR `ft`
 * The `MEMBER` should be an existing member.
 
-Example of usage: `find transactions Alice`
+Example of usage: 
+```dtd
+add member Alice
+addm Bob
+at Alice p/Bob a/5
+at Bob p/Alice a/3
+
+find transactions Alice
+Alice is a part of the following list of transaction(s).
+1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 5.00
+
+2.
+Lender: Bob
+Borrower 1: Alice Owed amount: 3.00
+```
 
 ### Find Lender `find lender`
 
 Finds all transactions where the specified member is the lender.
 
-Format: `find lender [MEMBER]`
+Format: `find lender [MEMBER]` OR `findl` OR `fl`
 * The `MEMBER` should be an existing member.
 
-Example of usage: `find lender Alice`
+Example of usage:
+```dtd
+// Continuing from above example
+find lender Alice
+Alice is a lender in the following list of transaction(s).
+1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 5.00
+```
 
 ### Find Borrower `find borrower`
 
 Finds all transactions where the specified member is a borrower.
 
-Format: `find borrower [MEMBER]`
+Format: `find borrower [MEMBER]` OR `findb` OR `fb`
 * The `MEMBER` should be an existing member.
 
-Example of usage: `find borrower Alice`
+Example of usage:
+```dtd
+// Continuing from above example
+find borrower Alice
+Alice is a borrower in the following list of transaction(s).
+1.
+Lender: Bob
+Borrower 1: Alice Owed amount: 3.00
+```
 
 ### Find Debts `find debts`
 
 Finds all debts that the specified member has with other members.
 
-Format: `find debts [MEMBER]`
+Format: `find debts [MEMBER]` OR `findd` OR `fd`
 * The `MEMBER` should be an existing member.
 
-Example of usage: `find debts Alice`
+Example of usage:
+```dtd
+// Continuing from above example
+am Charlie
+at Alice p/Charlie a/3
+
+find debts Alice
+Bob owes Alice $2.0
+Charlie owes Alice $3.0
+
+at Charlie p/Alice a/10
+
+findd Alice
+Alice owes Charlie $5.0
+```
 
 ### Deleting a member: `delete member`
 
 Deletes a member from the list of members in LongAh!.
 
-Format: `delete member [MEMBER]`
+Format: `delete member [MEMBER]` OR `deletem` OR `dm`
 * The `MEMBER` should be an existing member.
 * All transactions involving the member will be deleted.
 * All debts involving the member will be recalculated.
 
-Example of usage: `delete member Alice`
+Example of usage:
+```
+delete member Alice
+```
 
 ### Deleting a transaction: `delete transaction`
 
 Deletes a transaction from the list of transactions in LongAh!.
 
-Format: `delete transaction [TRANSACTION_INDEX]`
+Format: `delete transaction [TRANSACTION_INDEX]` OR `deletet` OR `dt`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
 * All debts involving the transaction will be recalculated.
 * The transaction number can be found by using the `list transactions` command and taking the corresponding index of 
 the transaction that you want to delete.
 
-Example of usage: `delete transaction 3`
+Example of usage: 
+```
+delete transaction 3
+```
 
 ### Deleting a group `delete group`
 
 Deletes a group from LongAh!.
 
-Format: `delete group [GROUP_NAME]`
+Format: `delete group [GROUP_NAME]` OR `deleteg` OR `dg`
 * The `GROUP_NAME` should be an existing group.
 * All transactions and members in the group will be deleted, and the group will be removed from the list of groups.
 * The Application will automatically switch to the first group in the list if the current group that you are managing is deleted.
@@ -388,25 +463,31 @@ list groups
 
 Edits the name of a member in the list of members in LongAh!.
 
-Format: `edit member [OLD_NAME] [NEW_NAME]`
+Format: `edit member [OLD_NAME] [NEW_NAME]` OR `editm` OR `em`
 * The `OLD_NAME` should be an existing member.
 * The `NEW_NAME` should not be a duplicate of an existing member.
 * All transactions involving the member will be updated.
 
-Example of usage: `edit member Alice Bob`
+Example of usage:
+```
+edit member Alice Bob
+```
 
 ### Editing a transaction: `edit transaction`
 
 Edits the details of a transaction in the list of transactions in LongAh!.
 
-Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `editt` OR `et`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
 * Allows for edits to the lender and the borrowers involved in the transaction, as well as the amount.
 * The transaction number can be found by using the `list transactions` command and taking the corresponding index.
 * All debts involving the transaction will be recalculated.
 
-Example of usage: `edit transaction 3 Charlie p/Bob a/3 p/Alice a/5`
+Example of usage:
+```
+edit transaction 3 Charlie p/Bob a/3 p/Alice a/5
+```
 
 ### Enabling the user PIN: `pin enable`
 
@@ -414,8 +495,10 @@ Enables the user to set a PIN for the application. (enabled by default)
 
 Format: `pin enable`
 
-Example of usage: `pin enable`
-
+Example of usage: 
+```
+pin enable
+```
 
 ### Disabling the user PIN: `pin disable`
 
@@ -423,8 +506,10 @@ Disables the user PIN for the application.
 
 Format: `pin disable`
 
-Example of usage: `pin disable`
-
+Example of usage:
+```
+pin disable
+```
 
 ### Resetting user PIN: `pin reset`
 
@@ -433,8 +518,10 @@ Resets the user PIN for the application. Follow the instructions as prompted to 
 Format: `pin reset`
 * The new PIN should only contain numbers (0-9).
 
-Example of usage: `pin reset`
-
+Example of usage:
+```
+pin reset
+```
 
 ### Clearing all transactions `clear`
 
@@ -442,15 +529,28 @@ Clear all previous transactions logged in LongAh!. Members balances will be rese
 
 Format: `clear`
 
-Example of usage: `clear`
+Example of usage:
+```
+am Alice
+am Bob
+at Bob p/Alice a/3
 
+lt
+1.
+Lender: Bob
+Borrower 1: Alice Owed amount: 3.00
 
-### Settle a user's debts: `settleup`
+clear
+lt
+No transactions found.
+```
+
+### Settle a user's debts: `settle` OR `settleup`
 
 Settles all debts of the specified member with all other members. A transaction will be created to settle the debts and reset
 the debt balance of the specified member to 0, while updating the balance(s) of all relevant lender(s).
 
-Format: `settleup [MEMBER]`
+Format: `settle [MEMBER]` OR `settleup [MEMBER]`
 * The `MEMBER` should be an existing member.
 * The `MEMBER` should be a valid debtor in the group (i.e. the member should owe money to other members).
 
@@ -493,13 +593,13 @@ group friends
     Switching to group: friends
 ```
 
-### Views the balances of all members in the form of a chart: `view chart`
+### Views the balances of all members in the form of a chart: `chart`
 
 Shows a chart of the balances of all members in the group.
 
-Format: `view chart`
+Format: `chart`
 
-Example of usage: `view chart`
+Example of usage:
 ```dtd
 add member alice
 add member bob
@@ -507,8 +607,8 @@ add member charlie
 add transaction alice p/bob a/100
 add transaction charlie p/alice a/6 p/bob a/1
 
-view chart
-        Loading balances chart...
+chart
+    Loading balances chart...
 ```
 
 A separate window will pop up displaying the balances of all members in the group in the form of a category chart.
@@ -525,7 +625,10 @@ Exits the application.
 
 Format: `exit`
 
-Example of usage: `exit`
+Example of usage:
+```
+exit
+```
 
 <div style="page-break-after: always;"></div>
 

@@ -102,7 +102,7 @@ public class TransactionList {
      */
     public String findLender(String lenderName) throws LongAhException {
         int index = 1;
-        String outString = String.format("%s owns the following list of transactions.", lenderName) + "\n";
+        String outString = String.format("%s is a lender in the following list of transaction(s).", lenderName) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.isLender(lenderName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
@@ -124,7 +124,7 @@ public class TransactionList {
      */
     public String findBorrower(String borrowerName) throws LongAhException {
         int index = 1;
-        String outString = String.format("%s owns the following list of transactions.", borrowerName) + "\n";
+        String outString = String.format("%s is a borrower in the following list of transaction(s).", borrowerName) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.checkIsBorrower(borrowerName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
@@ -146,7 +146,7 @@ public class TransactionList {
      */
     public String findTransactions(String name) throws LongAhException {
         int index = 1;
-        String outString = String.format("%s owns the following list of transactions.", name) + "\n";
+        String outString = String.format("%s is a part of the following list of transaction(s).", name) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.isInvolved(name)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";

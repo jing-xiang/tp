@@ -29,7 +29,7 @@ import longah.commands.ExitCommand;
 import longah.commands.PINCommand;
 import longah.commands.HelpCommand;
 import longah.commands.SwitchCommand;
-import longah.commands.ViewCommand;
+import longah.commands.ChartCommand;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
 
@@ -152,8 +152,8 @@ public class InputHandler {
             return new ClearCommand(commandString, taskExpression);
         case "pin":
             return new PINCommand(commandString, taskExpression);
-        case "view":
-            return new ViewCommand(commandString, taskExpression);
+        case "chart":
+            return new ChartCommand(commandString, taskExpression);
         case "group":
             return new SwitchCommand(commandString, taskExpression);
 
