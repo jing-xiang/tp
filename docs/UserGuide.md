@@ -25,7 +25,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 
 | Task                   | Command Expression                                                                                    | Command Shortcut |
 | ---------------------- |-------------------------------------------------------------------------------------------------------|------------------|
-| Help menu              | `help`                                                                                                |                  |
+| Help menu              | `help`                                                                                                | N/A              |
 | Add member             | `add member [name]`                                                                                   | `addm` or `am`   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      | `addt` or `at`   |
 | Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
@@ -43,14 +43,14 @@ The app will prompt you to create your own PIN if it is your first time using th
 | Delete group           | `delete group [name]`                                                                                 | `deleteg` or `dg`|
 | Edit member            | `edit member [old_name] [new_name]`                                                                   | `editm` or `em`  |
 | Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` | `editt` or `et`  |
-| Enable PIN             | `pin enable`                                                                                          |                  |
-| Disable PIN            | `pin disable`                                                                                         |                  |
-| Reset PIN              | `pin reset`                                                                                           |                  |
-| Clear all transactions | `clear`                                                                                               |                  |
-| Settle up debts        | `settle [member]` OR `settleup [member]                                                               |                  |
-| Switch groups          | `group [group_name]`                                                                                  |                  |
-| View chart             | `view chart`                                                                                          |                  |
-| Exit                   | `exit`                                                                                                |                  |
+| Enable PIN             | `pin enable`                                                                                          | N/A              |
+| Disable PIN            | `pin disable`                                                                                         | N/A              |
+| Reset PIN              | `pin reset`                                                                                           | N/A              |
+| Clear all transactions | `clear`                                                                                               | N/A              |
+| Settle up debts        | `settle [member]` OR `settleup [member]                                                               | N/A              |
+| Switch groups          | `group [group_name]`                                                                                  | N/A              |
+| View chart             | `view chart`                                                                                          | N/A              |
+| Exit                   | `exit`                                                                                                | N/A              |
 
 ## Table of Contents
 - [LongAh! User Guide](#longah-user-guide)
