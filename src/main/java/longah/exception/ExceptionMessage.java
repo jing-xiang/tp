@@ -19,9 +19,9 @@ public enum ExceptionMessage {
 
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
+    INVALID_TRANSACTION_MEMBER ("Borrower is already the lender.", ExceptionType.WARNING),
     INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
-    INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
 
     // TransactionList Exceptions
     NO_TRANSACTION_FOUND ("No transactions found.", ExceptionType.INFO),

@@ -103,7 +103,7 @@ public class TransactionTest {
             transaction.addBorrower("Bob a/five", memberList, lender);
             fail();
         } catch (LongAhException e) {
-            String expectedString = ExceptionMessage.INVALID_VALUE_FORMAT.getMessage();
+            String expectedString = ExceptionMessage.INVALID_TRANSACTION_VALUE.getMessage();
             assertEquals(expectedString, e.getMessage());
         }
     }
