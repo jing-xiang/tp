@@ -7,6 +7,7 @@ import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.style.Styler;
 
 
+import javax.swing.JFrame;
 import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
@@ -20,7 +21,10 @@ public class Chart {
      * @param chart The chart to be displayed.
      */
     public Chart(CategoryChart chart) {
-        new SwingWrapper(chart).displayChart();
+        JFrame frame = new SwingWrapper(chart).displayChart();
+        javax.swing.SwingUtilities.invokeLater(
+                ()->frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE)
+        );
     }
 
     /**
