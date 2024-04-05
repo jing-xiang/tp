@@ -124,7 +124,8 @@ public class TransactionList {
      */
     public String findBorrower(String borrowerName) throws LongAhException {
         int index = 1;
-        String outString = String.format("%s is a borrower in the following list of transaction(s).", borrowerName) + "\n";
+        String outString =
+                String.format("%s is a borrower in the following list of transaction(s).", borrowerName) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.checkIsBorrower(borrowerName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
