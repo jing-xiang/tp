@@ -22,9 +22,13 @@ public enum ExceptionMessage {
     INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
     INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
-    NO_TRANSACTION_FOUND ("Transaction list is empty.", ExceptionType.INFO),
+
+    // TransactionList Exceptions
+    NO_TRANSACTION_FOUND ("No transactions found.", ExceptionType.INFO),
     NO_DEBTS_FOUND ("No debts found.", ExceptionType.INFO),
     TRANSACTIONS_SUMMED_UP ("No pending payments.", ExceptionType.INFO),
+    INVALID_DATE_TIME_FILTER ("Invalid datetime filter. The to date your are searching for " +
+            "is before the from date.", ExceptionType.INFO),
 
     // Data Storage Exceptions
     STORAGE_FILE_NOT_FOUND ("File not found.", ExceptionType.WARNING),
@@ -49,6 +53,14 @@ public enum ExceptionMessage {
             ExceptionType.INFO),
     INVALID_FIND_COMMAND ("Invalid command format." +
             " Use 'find transactions NAME' or 'find debts NAME'",
+            ExceptionType.INFO),
+
+    INVALID_FILTER_COMMAND ("Invalid filter command." +
+            "Use 'filter CRITERIA'",
+            ExceptionType.INFO),
+    INVALID_FILTER_DATETIME_COMMAND("Invalid filter datetime command." +
+            " Use 'filter datetime b/DateTime' or 'filter datetime a/DateTime' or " +
+            "'filter datetime a/Datetime b/Datetime' or 'filter datetime Datetime",
             ExceptionType.INFO),
     INVALID_SETTLEUP_COMMAND ("Invalid command format." +
             " Use 'settleup PERSON'",

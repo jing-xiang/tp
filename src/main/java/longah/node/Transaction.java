@@ -1,21 +1,18 @@
 package longah.node;
 
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import longah.util.MemberList;
 import longah.exception.LongAhException;
 import longah.exception.ExceptionMessage;
 import longah.util.Subtransaction;
-import java.time.LocalDateTime;
 
 /**
  * Represents a transaction between two members.
  */
 public class Transaction {
     private Member lender;
-    private LocalDateTime transactionTime = null;
+    private DateTime transactionTime;
     private ArrayList<Subtransaction> subtransactions = new ArrayList<>();
 
     /**
@@ -56,9 +53,8 @@ public class Transaction {
                        MemberList members, String transactionTime) throws LongAhException {
         parseTransaction(lender, subtransactions, members);
         try {
-            this.transactionTime = LocalDateTime.parse(transactionTime.trim(),
-                    DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
-        } catch (DateTimeParseException e) {
+            this.transactionTime = new DateTime(transactionTime);
+        } catch (LongAhException e) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
     }
@@ -89,10 +85,9 @@ public class Transaction {
             }
             lenderName = splitLenderTime[0].trim();
             try {
-                this.transactionTime = LocalDateTime.parse(splitLenderTime[1].trim(),
-                        DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
-            } catch (DateTimeParseException e) {
-                throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
+                this.transactionTime = new DateTime(splitLenderTime[1]);
+            } catch (LongAhException e) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
             }
         } else {
             lenderName = splitInput[0].trim();
@@ -181,6 +176,15 @@ public class Transaction {
     }
 
     /**
+     * Gets the transaction time of the current transaction.
+     *
+     * @return The DateTime object representing the current transaction time
+     */
+    public DateTime getTransactionTime() {
+        return this.transactionTime;
+    }
+
+    /**
      * Checks whether the input member name is the lender of a transaction.
      *
      * @param memberName String representation of member name to check
@@ -226,8 +230,7 @@ public class Transaction {
         String time = "";
         if (this.haveTime()) {
             assert transactionTime != null : "Invalid printouts for transactions without a transaction time";
-            time = "Transaction time: " + this.transactionTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy h:mma"))
-                    + "\n";
+            time = "Transaction time: " + this.transactionTime + "\n";
         }
         String borrower = "";
         int borrowerNo = 1;
@@ -253,7 +256,7 @@ public class Transaction {
         String time = "";
         if (this.haveTime()) {
             assert transactionTime != null : "Invalid storage for transactions without a transaction time";
-            time = delimiter + this.transactionTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
+            time = delimiter + transactionTime.toStorageString();
         }
         for (Subtransaction subtransaction : this.subtransactions) {
             String borrowerName = subtransaction.getBorrower().getName();

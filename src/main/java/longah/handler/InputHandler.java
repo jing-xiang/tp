@@ -4,6 +4,7 @@ import longah.commands.Command;
 import longah.commands.add.AddCommand;
 import longah.commands.delete.DeleteCommand;
 import longah.commands.edit.EditCommand;
+import longah.commands.filter.FilterCommand;
 import longah.commands.find.FindCommand;
 import longah.commands.list.ListCommand;
 import longah.commands.ClearCommand;
@@ -46,6 +47,8 @@ public class InputHandler {
             return new ListCommand(commandString, taskExpression);
         case "find":
             return new FindCommand(commandString, taskExpression);
+        case "filter":
+            return new FilterCommand(commandString, taskExpression);
         case "delete":
             return new DeleteCommand(commandString, taskExpression);
         case "clear":
