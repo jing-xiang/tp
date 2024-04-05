@@ -134,9 +134,8 @@ public class TransactionListTest {
 
             transactionList.addTransaction("Jack p/James a/100 p/Jane a/200", memberList);
             transactionList.addTransaction("Jack p/Jane a/150 p/James a/250", memberList);
-            String command = "findtransaction Jack";
-            String[] parts = command.split(" ", 2);
-            String printedOutput = transactionList.findTransactions(parts[1]);
+            String name = "Jack";
+            String printedOutput = transactionList.findTransactions(name);
 
             assertTrue(printedOutput.contains("Jack owns the following list of transactions."));
             assertTrue(printedOutput.contains("Lender: Jack"));
