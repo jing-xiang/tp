@@ -138,13 +138,16 @@ public class InputHandler {
         case "et":
             return new EditTransactionCommand("edit transaction", taskExpression);
         
+        case "?":
+            // Fallthrough
+        case "help":
+            return new HelpCommand(commandString, taskExpression);
+
         case "settle":
             // Fallthrough
         case "settleup":
             return new SettleCommand(commandString, taskExpression);
 
-        case "help":
-            return new HelpCommand(commandString, taskExpression);
         case "clear":
             return new ClearCommand(commandString, taskExpression);
         case "pin":
