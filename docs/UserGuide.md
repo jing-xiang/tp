@@ -339,9 +339,9 @@ Format: `find transactions [MEMBER]` OR `findt` OR `ft`
 Example of usage: 
 ```dtd
 add member Alice
-addm Bob
-at Alice p/Bob a/5
-at Bob p/Alice a/3
+add member Bob
+add transaction Alice p/Bob a/5
+add transaction Bob p/Alice a/3
 
 find transactions Alice
 Alice is a part of the following list of transaction(s).
@@ -398,14 +398,14 @@ Format: `find debts [MEMBER]` OR `findd` OR `fd`
 Example of usage:
 ```dtd
 // Continuing from above example
-am Charlie
-at Alice p/Charlie a/3
+add member Charlie
+add transaction Alice p/Charlie a/3
 
 find debts Alice
 Bob owes Alice $2.0
 Charlie owes Alice $3.0
 
-at Charlie p/Alice a/10
+add transaction Charlie p/Alice a/10
 
 findd Alice
 Alice owes Charlie $5.0
@@ -531,17 +531,17 @@ Format: `clear`
 
 Example of usage:
 ```
-am Alice
-am Bob
-at Bob p/Alice a/3
+add member Alice
+add member Bob
+add transaction Bob p/Alice a/3
 
-lt
+list transactions
 1.
 Lender: Bob
 Borrower 1: Alice Owed amount: 3.00
 
 clear
-lt
+list transactions
 No transactions found.
 ```
 
