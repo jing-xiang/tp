@@ -111,7 +111,7 @@ public class TransactionListTest {
 
             String command = "findtransaction James";
             String[] parts = command.split(" ", 2);
-            transactionList.findTransactions(parts[1]);
+            transactionList.findTransactions(parts[1], memberList);
             fail();
 
         } catch (LongAhException e) {
@@ -135,7 +135,7 @@ public class TransactionListTest {
             transactionList.addTransaction("Jack p/James a/100 p/Jane a/200", memberList);
             transactionList.addTransaction("Jack p/Jane a/150 p/James a/250", memberList);
             String name = "Jack";
-            String printedOutput = transactionList.findTransactions(name);
+            String printedOutput = transactionList.findTransactions(name, memberList);
 
             assertTrue(printedOutput.contains("Jack is a part of the following list of transaction(s)."));
             assertTrue(printedOutput.contains("Lender: Jack"));

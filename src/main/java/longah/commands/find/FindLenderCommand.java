@@ -2,6 +2,7 @@ package longah.commands.find;
 
 import longah.commands.Command;
 import longah.node.Group;
+import longah.util.MemberList;
 import longah.util.TransactionList;
 import longah.exception.LongAhException;
 import longah.handler.UI;
@@ -24,6 +25,7 @@ public class FindLenderCommand extends Command {
      */
     public void execute(Group group) throws LongAhException {
         TransactionList transactions = group.getTransactionList();
-        UI.showMessage(transactions.findLender(taskExpression));
+        MemberList members = group.getMemberList();
+        UI.showMessage(transactions.findLender(taskExpression, members));
     }
 }
