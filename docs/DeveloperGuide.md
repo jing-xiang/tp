@@ -3,8 +3,8 @@
 
 ## Table of Contents
 - [Developer Guide](#developer-guide)
-  - [Acknowledgements](#acknowledgements)
   - [Table of Contents](#table-of-contents)
+  - [Acknowledgements](#acknowledgements)
   - [Design \& Implementation](#design--implementation)
     - [UI and I/O](#ui-and-io)
     - [Commands](#commands)
@@ -63,7 +63,11 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 The abstract `Command` class has been implemented to introduce an additional layer of abstraction between I/O and command execution, allowing for separation of handling command keywords and executing commands.
 
+The `Command` class has been subdivided into further packages for similar commands, such as `AddCommand` and `EditCommand`. There are other more niche children classes that have not been aggregated into a package as well.
+
 <ins>Implementation Details</ins>
+
+The following diagram has been heavily simplified and only shows the key commands.
 
 ![Command Inheritance Diagram](diagrams/CommandInheritance.png)
 
