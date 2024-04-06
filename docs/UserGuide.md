@@ -210,6 +210,7 @@ Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOU
 * `p/` is the prefix for the borrower's name, and should be followed by the name of the borrower.
 * `a/` is the prefix for the amount borrowed, and should be followed by the amount borrowed by that borrower from the lender.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
+* The `LENDER` AND `BORROWER` should not be the same person.
 
 Example of usage:
 ```
