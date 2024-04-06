@@ -110,11 +110,11 @@ public class MemberList {
      */
     public void editMemberName(String expression) throws LongAhException {
         try {
-            String[] oldNewName = expression.split(" ", 2);
+            String[] oldNewName = expression.split("p/", 2);
             if (oldNewName.length != 2) {
                 throw new LongAhException(ExceptionMessage.INVALID_EDIT_COMMAND);
             }
-            String oldName = oldNewName[0];
+            String oldName = oldNewName[0].trim();
             String newName = oldNewName[1];
             Member member = getMember(oldName);
             member.setName(newName);

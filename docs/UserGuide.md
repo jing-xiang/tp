@@ -464,7 +464,7 @@ list groups
 
 Edits the name of a member in the list of members in LongAh!.
 
-Format: `edit member [OLD_NAME] [NEW_NAME]` OR `editm` OR `em`
+Format: `edit member [OLD_NAME] p/[NEW_NAME]` OR `editm` OR `em`
 * The `OLD_NAME` should be an existing member.
 * The `NEW_NAME` should not be a duplicate of an existing member.
 * All transactions involving the member will be updated.

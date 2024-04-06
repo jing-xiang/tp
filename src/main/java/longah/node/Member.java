@@ -20,10 +20,9 @@ public class Member {
      */
     public Member(String name) throws LongAhException {
         // Check if name is fully alphanumeric
-        if (!Pattern.matches("[A-Za-z0-9]+", name)) {
+        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
             throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
         }
-
         this.name = name;
         this.balance = 0.0;
     }
@@ -38,10 +37,9 @@ public class Member {
      */
     public Member(String name, double balance) throws LongAhException {
         // Check if name is fully alphanumeric
-        if (!Pattern.matches("[A-Za-z0-9]+", name)) {
+        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
             throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
         }
-
         this.name = name;
         this.balance = balance;
     }
@@ -50,8 +48,13 @@ public class Member {
      * Sets the name of the member.
      * 
      * @param name The name of the member.
+     * @throws LongAhException If the name is invalid.
      */
-    public void setName(String name) {
+    public void setName(String name) throws LongAhException {
+        // Check if name is fully alphanumeric
+        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
+            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
+        }
         this.name = name;
     }
 

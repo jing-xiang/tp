@@ -183,7 +183,7 @@ public class MemberListTest {
             memberList.addMember("Alice", 5);
             String expected = "Alice: $5.0\n";
             assertEquals(expected, memberList.listMembers());
-            memberList.editMemberName("Alice Bob");
+            memberList.editMemberName("Alice p/Bob");
             expected = "Bob: $5.0\n";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
@@ -199,7 +199,7 @@ public class MemberListTest {
         try {
             MemberList memberList = new MemberList();
             memberList.addMember("Alice", 5);
-            memberList.editMemberName("Charlie Bob");
+            memberList.editMemberName("Charlie p/Bob");
             fail();
         } catch (LongAhException e) {
             boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.MEMBER_NOT_FOUND);
