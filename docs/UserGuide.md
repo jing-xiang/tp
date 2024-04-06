@@ -9,7 +9,7 @@ among friends.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed. 
-2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases)
+2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases).
 3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
 4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
 ```dtd
@@ -129,6 +129,7 @@ LongAh! data is saved in the hard disk automatically after any command that chan
 The file is also created automatically if it does not exist.
 
 If all is well, LongAh will save the files in the following data structure during execution.
+
 ```
 <Your created directory>
 │
@@ -177,6 +178,8 @@ Format: `help`
 
 Example of usage: `help`
 
+***
+
 ### Adding a member: `add member`
 
 Adds a new member to the list of members in LongAh!
@@ -189,12 +192,16 @@ Format: `add member [NAME]`
 Example of usage:
 `add member Alice`
 
+***
+
 ### Adding a transaction: `add transaction`
 
 Adds a new transaction to the list of transactions in LongAh!
 
-Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
+Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
 * The transaction supports 1 or more borrower(s), each with custom borrowed amounts.
+* The date function is optional and can be omitted.
+* `t` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
 * `p/` is the prefix for the borrower's name, and should be followed by the name of the borrower.
 * `a/` is the prefix for the amount borrowed, and should be followed by the amount borrowed by that borrower from the lender.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
@@ -204,16 +211,7 @@ Example of usage:
 or for transactions involving multiple people
 `add transaction Alice p/Bob a/10 p/Charlie a/20`
 
-### Adding a dated transaction: `add transaction`
-
-Adds a new dated transaction to the list of transactions in LongAh!
-
-Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
-
-* The behavior for the lender and borrower portion of dated transactions is the same as normal transactions.
-* `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
-
-Example of usage: `add transaction Alice t/11-11-2000 2359 p/Bob a/10`
+***
 
 ### Adding a new group `add group`
 
@@ -227,6 +225,8 @@ Format: `add group [GROUP_NAME]`
 * The entered group name should only contain alphanumeric characters, no spaces are allowed.
 
 Example of usage: `add group Tiktok`
+
+***
 
 ### Listing all members: `list members`
 
@@ -249,6 +249,8 @@ list members
     bob: -$5.0
 ```
 
+***
+
 ### Listing all transactions: `list transactions`
 
 Shows a list of all transactions in LongAh!.
@@ -268,6 +270,8 @@ list transactions
     Lender: alice
     Borrower 1: bob Owed amount: 5.00
 ```
+
+***
 
 ### Listing all debts: `list debts`
 
@@ -289,6 +293,8 @@ list debts
     bob owes charlie $2.0
 ```
 
+***
+
 ### Listing all groups: `list groups`
 
 Shows a list of all groups in LongAh!.
@@ -306,6 +312,8 @@ list groups
     3. Family
 ```
 
+***
+
 ### Find Transactions: `find transactions`
 
 Finds all transactions that involves the specified member. The member can be involved as a lender or a borrower in the transaction(s).
@@ -314,6 +322,8 @@ Format: `find transactions [MEMBER]`
 * The `MEMBER` should be an existing member.
 
 Example of usage: `find transactions Alice`
+
+***
 
 ### Find Lender `find lender`
 
@@ -324,6 +334,8 @@ Format: `find lender [MEMBER]`
 
 Example of usage: `find lender Alice`
 
+***
+
 ### Find Borrower `find borrower`
 
 Finds all transactions where the specified member is a borrower.
@@ -333,6 +345,8 @@ Format: `find borrower [MEMBER]`
 
 Example of usage: `find borrower Alice`
 
+***
+
 ### Find Debts `find debts`
 
 Finds all debts that the specified member has with other members.
@@ -341,6 +355,8 @@ Format: `find debts [MEMBER]`
 * The `MEMBER` should be an existing member.
 
 Example of usage: `find debts Alice`
+
+***
 
 ### Deleting a member: `delete member`
 
@@ -353,6 +369,8 @@ Format: `delete member [MEMBER]`
 
 Example of usage: `delete member Alice`
 
+***
+
 ### Deleting a transaction: `delete transaction`
 
 Deletes a transaction from the list of transactions in LongAh!.
@@ -364,6 +382,8 @@ Format: `delete transaction [TRANSACTION_INDEX]`
 the transaction that you want to delete.
 
 Example of usage: `delete transaction 3`
+
+***
 
 ### Deleting a group `delete group`
 
@@ -384,6 +404,8 @@ list groups
     1. Tiktok
 ```
 
+***
+
 ### Editing a member: `edit member`
 
 Edits the name of a member in the list of members in LongAh!.
@@ -394,6 +416,8 @@ Format: `edit member [OLD_NAME] [NEW_NAME]`
 * All transactions involving the member will be updated.
 
 Example of usage: `edit member Alice Bob`
+
+***
 
 ### Editing a transaction: `edit transaction`
 
@@ -408,6 +432,8 @@ Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] 
 
 Example of usage: `edit transaction 3 Charlie p/Bob a/3 p/Alice a/5`
 
+***
+
 ### Enabling the user PIN: `pin enable`
 
 Enables the user to set a PIN for the application. (enabled by default)
@@ -416,6 +442,7 @@ Format: `pin enable`
 
 Example of usage: `pin enable`
 
+***
 
 ### Disabling the user PIN: `pin disable`
 
@@ -425,6 +452,7 @@ Format: `pin disable`
 
 Example of usage: `pin disable`
 
+***
 
 ### Resetting user PIN: `pin reset`
 
@@ -435,6 +463,7 @@ Format: `pin reset`
 
 Example of usage: `pin reset`
 
+***
 
 ### Clearing all transactions `clear`
 
@@ -444,6 +473,7 @@ Format: `clear`
 
 Example of usage: `clear`
 
+***
 
 ### Settle a user's debts: `settleup`
 
@@ -478,6 +508,8 @@ list members
     charlie: $0.0
 ``` 
 
+***
+
 ### Switching groups: `group`
 
 Switches to the specified group in LongAh!.
@@ -492,6 +524,8 @@ add group friends
 group friends
     Switching to group: friends
 ```
+
+***
 
 ### Views the balances of all members in the form of a chart: `view chart`
 
@@ -519,6 +553,8 @@ A separate tooltip will show the exact balance of each member.
 
 ![viewChart.png](diagrams%2FviewChart.png)
 
+***
+
 ### Exiting the application: `exit`
 
 Exits the application.
@@ -529,10 +565,14 @@ Example of usage: `exit`
 
 <div style="page-break-after: always;"></div>
 
+***
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction TXT files it creates with the files containing your data.
+
+***
 
 ## Known Issues
