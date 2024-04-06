@@ -100,8 +100,11 @@ The `StorageHandler` class is responsible for managing the loading and saving of
 Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
 
 * `members.txt`
+  
 | NAME | BALANCE |
+
 * `transactions.txt`
+  
 | LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME... |
 
 <ins>Class Structure</ins>
