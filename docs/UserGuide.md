@@ -190,7 +190,8 @@ Adds a new member to the list of members in LongAh!
 Format: `add member [NAME]` OR `addm` OR `am`
 
 * Name of new member should not be a duplicate of an existing member.
-* The entered name should only contain alphanumeric characters, no spaces are allowed.
+* The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
+  * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`
 
 Example of usage:
 ```

@@ -110,10 +110,14 @@ public class MemberList {
      */
     public void editMemberName(String expression) throws LongAhException {
         try {
-            String[] indexNameSplice = expression.split(" ", 2);
-            int index = Integer.parseInt(indexNameSplice[0]) - 1;
-            String name = indexNameSplice[1];
-            members.get(index).setName(name);
+            String[] oldNewName = expression.split(" ", 2);
+            if (oldNewName.length != 2) {
+                throw new LongAhException(ExceptionMessage.INVALID_EDIT_COMMAND);
+            }
+            String oldName = oldNewName[0];
+            String newName = oldNewName[1];
+            Member member = getMember(oldName);
+            member.setName(newName);
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
