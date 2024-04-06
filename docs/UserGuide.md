@@ -481,13 +481,20 @@ Edits the details of a transaction in the list of transactions in LongAh!.
 Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `editt` OR `et`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
+* Transaction date and time can similarly be editted or added through the same format as per [add dated transaction](#adding-a-dated-transaction-add-transaction)
 * Allows for edits to the lender and the borrowers involved in the transaction, as well as the amount.
 * The transaction number can be found by using the `list transactions` command and taking the corresponding index.
 * All debts involving the transaction will be recalculated.
 
 Example of usage:
-```
-edit transaction 3 Charlie p/Bob a/3 p/Alice a/5
+```dtd
+add member Alice
+add member Bob
+add member Charlie
+add transaction Alice p/Bob a/1
+
+edit transaction 1 Charlie p/Bob a/3 p/Alice a/5
+editt 1 Bob 19-02-2024 1400 p/Charlie a/3
 ```
 
 ### Enabling the user PIN: `pin enable`
