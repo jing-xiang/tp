@@ -70,7 +70,6 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Viewing help: `help`](#viewing-help-help)
     - [Adding a member: `add member`](#adding-a-member-add-member)
     - [Adding a transaction: `add transaction`](#adding-a-transaction-add-transaction)
-    - [Adding a dated transaction: `add transaction`](#adding-a-dated-transaction-add-transaction)
     - [Adding a new group `add group`](#adding-a-new-group-add-group)
     - [Listing all members: `list members`](#listing-all-members-list-members)
     - [Listing all transactions: `list transactions`](#listing-all-transactions-list-transactions)
