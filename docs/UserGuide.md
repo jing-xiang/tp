@@ -9,7 +9,7 @@ among friends.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed. 
-2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases)
+2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases).
 3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
 4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
 ```dtd
@@ -28,7 +28,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 | Help menu              | `help`                                                                                                | `?`              |
 | Add member             | `add member [name]`                                                                                   | `addm` or `am`   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      | `addt` or `at`   |
-| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YYYY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
 | Add group              | `add group [name]`                                                                                    | `addg` or `ag`   |
 | List members           | `list members`                                                                                        | `listm` or `lm`  |
 | List transactions      | `list transactions`                                                                                   | `listt` or `lt`  |
@@ -95,6 +95,7 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
+  - [Future Improvements](#future-improvements)
 
 <div style="page-break-after: always;"></div>
 
@@ -185,13 +186,13 @@ help
 
 ### Adding a member: `add member`
 
-Adds a new member to the list of members in LongAh!
+Adds a new member to the list of members in LongAh!.
 
 Format: `add member [NAME]` OR `addm` OR `am`
 
 * Name of new member should not be a duplicate of an existing member.
 * The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
-  * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`
+  * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`.
 
 Example of usage:
 ```
@@ -202,7 +203,7 @@ am Charlie
 
 ### Adding a transaction: `add transaction`
 
-Adds a new transaction to the list of transactions in LongAh!
+Adds a new transaction to the list of transactions in LongAh!.
 
 Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `addt` OR `at`
 * The transaction supports 1 or more borrower(s), each with custom borrowed amounts.
@@ -215,15 +216,13 @@ Example of usage:
 add transaction Alice p/Bob a/10
 addt Bob p/Alice a/5
 at Alice p/Bob a/7
-```
-or for transactions involving multiple people
-```
+// Multiple Borrowers
 add transaction Alice p/Bob a/10 p/Charlie a/20
 ```
 
 ### Adding a dated transaction: `add transaction`
 
-Adds a new dated transaction to the list of transactions in LongAh!
+Adds a new dated transaction to the list of transactions in LongAh!.
 
 Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
 
@@ -640,3 +639,10 @@ exit
 **A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction TXT files it creates with the files containing your data.
 
 ## Known Issues
+
+## Future Improvements
+
+The following quality of life improvements have been taken into consideration and will be implemented in future versions of LongAh!
+
+1. Edit Group Names
+2. Settle with Reference to Specific Lender Only
