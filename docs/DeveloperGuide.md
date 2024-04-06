@@ -63,7 +63,7 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 The abstract `Command` class has been implemented to introduce an additional layer of abstraction between I/O and command execution, allowing for separation of handling command keywords and executing commands.
 
-The `Command` class has been subdivided into further packages for similar commands, such as `AddCommand` and `EditCommand`. There are other more niche children classes that have not been aggregated into a package as well.
+The `Command` class has been subdivided into further packages for similar commands, such as `AddCommand` and `EditCommand`. There are other niche children classes that have not been aggregated into a package as well.
 
 <ins>Implementation Details</ins>
 
@@ -132,7 +132,7 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-![StorageHandler Sequence Diagram](diagrams/StorageHandlerSequenceDiagram.png)
+![StorageHandler Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
 Given below is an example usage scenario and how StorageHandler behaves at each step:
 

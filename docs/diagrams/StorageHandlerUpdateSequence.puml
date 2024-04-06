@@ -1,0 +1,8 @@
+User -> LongAh: Sample Command
+LongAh -> Group: Execute Command
+Group -> TransactionList: Execute Command
+TransactionList -> MemberList: Update Balance
+MemberList --> Group
+TransactionList --> Group
+Group -> StorageHandler: Save Data
+StorageHandler -> StorageHandler: Write Data to Local File
