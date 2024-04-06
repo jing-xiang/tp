@@ -12,7 +12,7 @@ among friends.
 2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases).
 3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
 4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
-```dtd
+```
 java -jar tp.jar
 ```
 5. Upon starting the application, you will be prompted to enter your PIN. The user PIN is required to access the application.
@@ -166,7 +166,7 @@ The PIN TXT file contains the pin hash of each user's PIN for security purposes.
 ## Command Format
 
 A command has the general structure:
-```dtd
+```
 [COMMAND] [SUBCOMMAND] [EXPRESSION]
 ```
 
@@ -262,7 +262,7 @@ Format: `list members` OR `listm` OR `lm`
 * A balance of 0 indicates that the member neither owes nor is owed money.
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add transaction alice p/bob a/5
@@ -281,7 +281,7 @@ Shows a list of all transactions in LongAh!.
 Format: `list transactions` OR `listt` OR `lt`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add transaction alice p/bob a/5
@@ -299,7 +299,7 @@ Calculates the simplest way to repay all debts between all members and shows a l
 Format: `list debts` OR `listd` OR `ld`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
@@ -319,7 +319,7 @@ Shows a list of all groups in LongAh!.
 Format: `list groups` OR `listg` OR `lg`
 
 Example of usage:
-```dtd
+```
 // assume that the group 'Tiktok' already exists
 add group Friends
 add group Family
@@ -338,7 +338,7 @@ Format: `find transactions [MEMBER]` OR `findt` OR `ft`
 * The `MEMBER` should be an existing member.
 
 Example of usage: 
-```dtd
+```
 add member Alice
 add member Bob
 add transaction Alice p/Bob a/5
@@ -363,7 +363,7 @@ Format: `find lender [MEMBER]` OR `findl` OR `fl`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 find lender Alice
 Alice is a lender in the following list of transaction(s).
@@ -380,7 +380,7 @@ Format: `find borrower [MEMBER]` OR `findb` OR `fb`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 find borrower Alice
 Alice is a borrower in the following list of transaction(s).
@@ -397,7 +397,7 @@ Format: `find debts [MEMBER]` OR `findd` OR `fd`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 add member Charlie
 add transaction Alice p/Charlie a/3
@@ -452,7 +452,7 @@ Format: `delete group [GROUP_NAME]` OR `deleteg` OR `dg`
 * If all groups are deleted, the Application will automatically prompt you to create a new group.
 
 Example of usage:
-```dtd
+```
 // assume that the group 'Tiktok' already exits
 add group friends
 delete group friends
@@ -487,7 +487,7 @@ Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] 
 * All debts involving the transaction will be recalculated.
 
 Example of usage:
-```dtd
+```
 add member Alice
 add member Bob
 add member Charlie
@@ -563,7 +563,7 @@ Format: `settle [MEMBER]` OR `settleup [MEMBER]`
 * The `MEMBER` should be a valid debtor in the group (i.e. the member should owe money to other members).
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
@@ -594,7 +594,7 @@ Format: `group [GROUP_NAME]`
 * The `GROUP_NAME` should be an existing group that has been added to LongAh!.
 
 Example of usage:
-```dtd
+```
 // assume that the user is currently managing group 'Tiktok'
 add group friends
 group friends
@@ -608,7 +608,7 @@ Shows a chart of the balances of all members in the group.
 Format: `chart`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
