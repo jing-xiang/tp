@@ -21,9 +21,10 @@
   - [User Stories](#user-stories)
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Glossary](#glossary)
-  - [Instructions for manual testing](#instructions-for-manual-testing)
-  - [Instructions for JUnit Testing](#instructions-for-junit-testing)
-  - [Instructions for text-ui-testing](#instructions-for-text-ui-testing)
+  - [Instructions for Testing](#instructions-for-testing)
+    - [Manual Testing](#manual-testing)
+  - [JUnit Testing](#junit-testing)
+  - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
 
 
@@ -618,15 +619,17 @@ Busy people with large transaction quantities among friends
 * Group - Discrete units each containing their respective lists of Member and Transaction.
 * Separator - "|" has been used to denote separator within this document but within the Storage related classes, the ASCII Unit Separator as denoted by ASCII 31 is used instead. This is defined within `StorageHandler`.
 
-## Instructions for manual testing
+## Instructions for Testing
+
+### Manual Testing
 
 View the [User Guide](UserGuide.md) for the full list of UI commands and their related use case and expected outcomes.
 
-## Instructions for JUnit Testing
+## JUnit Testing
 
 JUnit tests are written in the [`test directory`](../src/test/java/longah/) and serve to test key methods part of the application.
 
-## Instructions for text-ui-testing
+## Text UI Testing
 
 Files relating to Text UI Testing can be found [here](../text-ui-test/).
 
