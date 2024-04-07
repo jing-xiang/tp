@@ -42,7 +42,7 @@ LongAh uses the following tools for development:
 
 The UML diagram below provides an overview of the classes and their interactions within the LongAh application.
 
-![main.png](diagrams%2Fmain.png)
+![main.png](diagrams/main.png)
 
 Design and Implementation has been broken down into the subsequent sections, each tagged for ease of reference:
 
@@ -79,8 +79,8 @@ The following diagram is a sequence diagram for execution of `Command`.
 
 The abstract `Command` class and its related children classes have the following attributes:
 
-* *CommandString*: String indicating the command being parsed
-* *TaskExpression*: String containing details for the command to effect
+* *CommandString*: String indicating the command being parsed.
+* *TaskExpression*: String containing details for the command to effect.
 
 <ins>Constructor</ins>
 
@@ -89,7 +89,7 @@ The Command constructor updates the attributes based on the input arguments.
 <ins>Methods</ins>
 
 The abstract `Command` class and its related children classes have the following method:
-* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`
+* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`.
 
 ### Storage
 
