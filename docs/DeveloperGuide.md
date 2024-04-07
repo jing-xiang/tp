@@ -57,6 +57,20 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 ### UI and I/O
 
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins>
+
 ### Commands
 
 <ins>Overview</ins>
@@ -155,6 +169,20 @@ The following diagram is a sequence diagram of the initialisation of `StorageHan
 * *checkTransactions* - Methods are provided to have a quick check to ensure that data from data storage is not corrupted.
 
 ### Member and MemberList
+
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>
