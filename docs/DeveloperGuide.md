@@ -23,8 +23,8 @@
   - [Glossary](#glossary)
   - [Instructions for Testing](#instructions-for-testing)
     - [Manual Testing](#manual-testing)
-  - [JUnit Testing](#junit-testing)
-  - [Text UI Testing](#text-ui-testing)
+    - [JUnit Testing](#junit-testing)
+    - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
 
 
@@ -625,11 +625,11 @@ Busy people with large transaction quantities among friends
 
 View the [User Guide](UserGuide.md) for the full list of UI commands and their related use case and expected outcomes.
 
-## JUnit Testing
+### JUnit Testing
 
 JUnit tests are written in the [`test directory`](../src/test/java/longah/) and serve to test key methods part of the application.
 
-## Text UI Testing
+### Text UI Testing
 
 Files relating to Text UI Testing can be found [here](../text-ui-test/).
 
