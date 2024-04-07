@@ -1,12 +1,10 @@
 @startuml
-participant User
 participant LongAh
 participant Group
 participant MemberList
 participant TransactionList
 participant StorageHandler
 
-User -> LongAh: Launch LongAh
 LongAh -> Group: Get group
 Group -> MemberList: Create members
 MemberList --> Group: Members
@@ -23,5 +21,4 @@ StorageHandler -> TransactionList: Get Transaction Data
 TransactionList --> StorageHandler : Transaction Data
 end
 StorageHandler --> LongAh
-LongAh --> User
 @enduml

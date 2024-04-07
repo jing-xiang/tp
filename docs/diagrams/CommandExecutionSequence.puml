@@ -1,4 +1,5 @@
 @startuml
+actor User
 User -> LongAh: Sample Command
 LongAh -> Group: Get group
 Group --> LongAh: group
