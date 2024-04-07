@@ -7,12 +7,13 @@ participant TransactionList
 participant StorageHandler
 
 User -> LongAh: Launch LongAh
-LongAh -> Group: Create group
+LongAh -> Group: Get group
 Group -> MemberList: Create members
 MemberList --> Group: Members
 Group -> TransactionList: Create transactions
 TransactionList --> Group: Transactions
-Group -> StorageHandler: Members, Transactions, Name
+Group --> LongAh: group
+LongAh -> StorageHandler: Members, Transactions, Name
 StorageHandler -> StorageHandler: Initialise 
 loop until file is fully read
 StorageHandler -> StorageHandler: Read Data from Files
@@ -21,7 +22,6 @@ MemberList --> StorageHandler : Member Data
 StorageHandler -> TransactionList: Get Transaction Data
 TransactionList --> StorageHandler : Transaction Data
 end
-StorageHandler --> Group
-Group --> LongAh
+StorageHandler --> LongAh
 LongAh --> User
 @enduml

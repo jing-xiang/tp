@@ -67,9 +67,13 @@ The `Command` class has been subdivided into further packages for similar comman
 
 <ins>Implementation Details</ins>
 
-The following diagram has been heavily simplified and only shows the key commands.
+The following diagram is a inheritance diagram for `Command` and its children classes. This has been heavily simplified and only shows the key commands.
 
 ![Command Inheritance Diagram](diagrams/CommandInheritance.png)
+
+The following diagram is a sequence diagram for execution of `Command`.
+
+![Command Execution Sequence Diagram](diagrams/CommandExecutionSequenceDiagram.png)
 
 <ins>Class Structure</ins>
 
@@ -91,13 +95,13 @@ The abstract `Command` class and its related children classes have the following
 
 <ins>Overview</ins>
 
-The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each group calls its own `StorageHandler` object such that they maintain distinct storage directories.
+The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each `Group` calls its own `StorageHandler` object such that they maintain distinct storage directories.
 
 <ins>Implementation Details</ins>
 
 *Data Storage:*
 
-Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
+Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows.
 
 * `members.txt`
 
@@ -141,13 +145,9 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-![StorageHandler Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
 
-Given below is an example usage scenario and how StorageHandler behaves at each step:
-
-1. The user launches the application for the first time. Group is initialized, creating an instance of StorageHandler. StorageHandler creates relevant storage directories if they do not yet exist.
-2. StorageHandler reads data from the 2 data storage files and creates Member and Transaction objects in the associated utility list objects.
-3. When a command which would alter the data within MemberList or TransactionList is invoked, the method to save data to the storage files is called by Group. This updates the information within the storage files.
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
 <ins>Design Considerations</ins>
 
