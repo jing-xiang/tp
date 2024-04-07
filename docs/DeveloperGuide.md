@@ -9,6 +9,7 @@
     - [UI and I/O](#ui-and-io)
     - [Commands](#commands)
     - [Storage](#storage)
+    - [Group and GroupList](#group-and-grouplist)
     - [Member and MemberList](#member-and-memberlist)
     - [Transaction and TransactionList](#transaction-and-transactionlist)
     - [PIN](#pin)
@@ -49,6 +50,7 @@ Design and Implementation has been broken down into the subsequent sections, eac
 * [UI and I/O](#ui-and-io)
 * [Commands](#commands)
 * [Storage](#storage)
+* [Group and GroupList](#group-and-grouplist)
 * [Member and MemberList](#member-and-memberlist)
 * [Transaction and TransactionList](#transaction-and-transactionlist)
 * [PIN](#pin)
@@ -167,6 +169,22 @@ The following diagram is a sequence diagram of the initialisation of `StorageHan
 
 * Update upon change, not upon exit - This allows for data to be saved even if the application exits ungracefully.
 * *checkTransactions* - Methods are provided to have a quick check to ensure that data from data storage is not corrupted.
+
+### Group and GroupList
+
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins>
 
 ### Member and MemberList
 
