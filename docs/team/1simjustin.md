@@ -33,6 +33,8 @@ Given below are my contributions to the project.
 * **Code Contributed**: [RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=1simjustin&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Project Management**
+  * Maintained issues and managed milestones.
+  * In charge of issues assignee allocation.
 
 * **Documentation**
   * User Guide
