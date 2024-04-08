@@ -81,7 +81,7 @@ public enum ExceptionMessage {
             " Use 'pin edit' or 'pin enable' or 'pin disable'",
             ExceptionType.INFO),
     INVALID_EXIT_COMMAND ("Invalid command format." +
-            " Use 'exit'", ExceptionType.INFO),
+            " Use 'exit' or 'clear'", ExceptionType.INFO),
     INVALID_VIEW_COMMAND ("Invalid command format." +
             " Use 'view chart'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +
