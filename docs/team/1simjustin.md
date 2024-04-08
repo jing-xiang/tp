@@ -44,6 +44,7 @@ Given below are my contributions to the project.
     * Added implementation details for StorageHandler, Exception and Logging. Added instructions for testing. [#71](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/71)
     * Add inheritance diagram for `Command`. [#92](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/92)
     * Update overall class diagram. [#154](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/154)
+    * Add section on `UI and I/O`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
   
 * **Community**
   * PRs reviewed (with non-trivial review comments): [#31](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/31), [#32](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/32), [#40](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/40), [#49](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/49), [#53](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/53), [#55](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/55), [#61](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/61), [#77](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/77), [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86), [#89](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/89)
