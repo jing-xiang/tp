@@ -62,17 +62,31 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 <ins>Overview</ins>
 
-<ins>Implementation Details</ins>
+The UI and I/O functionalities act as the interface between the user and the application. They are managed by the `UI` and `InputHandler` classes, respectively, with `UI` handling displaying messages to the user and reading user input, while `InputHandler` is responsible for parsing user input and returning the corresponding `Command` object.
 
 <ins>Class Structure</ins>
 
-<ins>Constructor</ins>
+The UI class has the following static attributes:
+
+* *SEPARATOR*: A constant string representing a straight line to be printed to the console.
+* *scanner*: A `Scanner` object used for reading from `System.in` I/O.
+
+The InputHandler class itself does not have any attributes.
 
 <ins>Methods</ins>
 
-<ins>Usage Example</ins>
+The UI class has the following key methods:
+
+* *getUserInput*: Reads the user input from the console and returns it as a String.
+* *showMessage*: Displays the provided message to the user. This is overloaded to take either a String or a String and a boolean. The latter is used to define whether a newline should be printed at the end of the String. Newline is printed by default. 
+
+The InputHandler class has the following key method:
+
+* *paseInput*: Parses the user input and returns the corresponding `Command` object.
 
 <ins>Design Considerations</ins>
+
+* UI class is used as part of exception handling for displaying of error messages to the user for feedback.
 
 ### Commands
 
