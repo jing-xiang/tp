@@ -118,7 +118,7 @@ The `StorageHandler` class is responsible for managing the loading and saving of
 
 *Data Storage:*
 
-Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows.
+Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows, with samples provided.
 
 * `members.txt`
 
@@ -126,11 +126,15 @@ Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in t
 NAME | BALANCE
 ```
 
+![Sample Members File](diagrams/MembersFileSample.png)
+
 * `transactions.txt`
   
 ```
 LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
 ```
+
+![Sample Transactions File](diagrams/TransactionsFileSample.png)
 
 <ins>Class Structure</ins>
 
