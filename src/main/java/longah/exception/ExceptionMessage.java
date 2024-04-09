@@ -30,7 +30,8 @@ public enum ExceptionMessage {
             "is before the from date.", ExceptionType.INFO),
 
     // Date Time Exceptions
-    INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
+    INVALID_TIME_FORMAT ("Invalid DateTime format. Please format " +
+            "you date and time inputs in the form of DD-MM-YYYY HHmm", ExceptionType.WARNING),
     INVALID_TIME_INPUT ("Invalid DateTime input. Dates of the future are not allowed.", ExceptionType.WARNING),
 
     // Data Storage Exceptions
