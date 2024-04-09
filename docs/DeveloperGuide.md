@@ -207,26 +207,54 @@ The `Member` class is used to represent a discrete person object, while the `Mem
 
 <ins>Class Structure</ins>
 
-The `Member` class has the following attributes:
+The `Member` class has the following attributes.
 
-* *Name*: A string representing the name of a person within the group. Used for visual identification of each member. Name of the member is strictly alphanumeric and cannot include special characters including the blank character.
-* *Balance*: A double representing the amount loaned/owed by the member. A positive value indicates that the member is owed money while a negative value indicates that the member owes money.
+* *name*: A string representing the name of a person within the group. Used for visual identification of each member. Name of the member is strictly alphanumeric and cannot include special characters including the blank character.
+* *balance*: A double representing the amount loaned/owed by the member. A positive value indicates that the member is owed money while a negative value indicates that the member owes money.
 
-The `MemberList` class has the following attributes:
+The `MemberList` class has the following attribute.
 
-*
+* *members*: An array list collection of Member objects.
 
 <ins>Constructor</ins>
 
-The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name
+The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name is performed here.
 
 Key arguments of the Member constructor are a string `name` and optionally a double `balance`.
 
+The MemberList constructor initializes an empty array list of members for newly created members to be added to.
+
 <ins>Methods</ins>
+
+The Member class has the following key methods.
+
+* *setName*: Updates the name of a member. Used when edit member command is invoked.
+* *addToBalance*: Adds the value of a transaction to a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *subtractFromBalance*: Subtracts the value of a transaction from a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *clearBalance*: Resets the current balance of a member to zero. Used then the clear command is invoked.
+
+The MemberList class has the following key methods.
+
+* *addMember*: Adds a member object to the current array list of members. This method is overloaded to allow for appending an exisiting member object or appending a newly created member object.
+* *isMember*: Checks if a member object is already a part of the current array list of members.
+* *getMember*: Returns the member object representation given the name of a member.
+* *editMemberName*: Updates the name of an existing member based on their current name.
+* *listMembers*: Returns a string representation of the current array list of members.
+* *updateMembersBalance*: Updates the current balance of all members in the group based on a passed in `TransactionList` object.
+* *solveTransactions*: Returns an array list of `Subtransaction` representing the least transactions solution to solving all debts in the group.
+* *deleteMember*: Removes a member from the current array list of members.
 
 <ins>Usage Example</ins>
 
-<ins>Design Considerations</ins
+<ins>Design Considerations</ins>
+
+The Member class takes the following into consideration.
+
+* 
+
+The MemberList class takes the following into consideration.
+
+* updateMembersBalance clears current balances at the start of invokation. This removes any transactions that are not captured within the `TransactionList` object passed into the method.
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>
