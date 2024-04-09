@@ -144,6 +144,10 @@ NAME | BALANCE
 LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
 ```
 
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
+
 <ins>Class Structure</ins>
 
 The StorageHandler has the following attributes:
@@ -174,9 +178,27 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+The following code segment outlines the use of `StorageHandler`.
 
-![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
+```
+import longah.util.MemberList;
+import longah.util.TransactionList;
+
+// Initialization and loading from storage
+MemberList members = new MemberList();
+TransactionList transactions = new TransactionList();
+String name = "foo";
+StorageHandler storage = new StorageHandler(members, transactions, name);
+
+/*
+At this point a subdirectory "foo" will be created if it did not previously exist
+Data is loaded from "foo" to members and transactions
+Assume functions modifying members and transactions are called following that.
+*/
+
+// Writing to storage
+storage.saveAllData();
+```
 
 <ins>Design Considerations</ins>
 
