@@ -19,10 +19,7 @@ public class Member {
      * @throws LongAhException If the name is invalid.
      */
     public Member(String name) throws LongAhException {
-        // Check if name is fully alphanumeric
-        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
-            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
-        }
+        checkNameValidity(name);
         this.name = name;
         this.balance = 0.0;
     }
@@ -36,12 +33,22 @@ public class Member {
      * @throws LongAhException If the name is invalid.
      */
     public Member(String name, double balance) throws LongAhException {
-        // Check if name is fully alphanumeric
-        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
-            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
-        }
+        checkNameValidity(name);
         this.name = name;
         this.balance = balance;
+    }
+
+    /**
+     * Checks if the name is valid.
+     * 
+     * @param name The name to check.
+     * @throws LongAhException If the name is not alphanumeric.
+     */
+    public void checkNameValidity(String name) throws LongAhException {
+        // Check if name is fully alphanumeric
+        if (!Pattern.matches("[A-Za-z0-9]+", name)) {
+            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
+        }
     }
 
     /**
@@ -51,10 +58,7 @@ public class Member {
      * @throws LongAhException If the name is invalid.
      */
     public void setName(String name) throws LongAhException {
-        // Check if name is fully alphanumeric
-        if (!(Pattern.matches("[A-Za-z0-9]+", name)) || name.isBlank()) {
-            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
-        }
+        checkNameValidity(name);
         this.name = name;
     }
 
@@ -125,6 +129,7 @@ public class Member {
 
     /**
      * Used to check whether the input String matches the name of a member.
+     * 
      * @param memberName String representation of a member name
      * @return A boolean value checking whether the input matches with name.
      */
