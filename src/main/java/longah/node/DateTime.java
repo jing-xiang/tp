@@ -89,6 +89,7 @@ public class DateTime {
      *
      * @return A string representation of the date time object suitable for printing
      */
+    @Override
     public String toString() {
         return this.dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
     }
