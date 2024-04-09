@@ -130,8 +130,6 @@ The `StorageHandler` class is responsible for managing the loading and saving of
 
 <ins>Implementation Details</ins>
 
-*Data Storage:*
-
 Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows.
 
 * `members.txt`
@@ -205,11 +203,24 @@ The following diagram is a sequence diagram of the initialisation of `StorageHan
 
 <ins>Overview</ins>
 
-<ins>Implementation Details</ins>
+The `Member` class is used to represent a discrete person object, while the `MemberList` class is used to represent the aggregation members within a group.
 
 <ins>Class Structure</ins>
 
+The `Member` class has the following attributes:
+
+* *Name*: A string representing the name of a person within the group. Used for visual identification of each member. Name of the member is strictly alphanumeric and cannot include special characters including the blank character.
+* *Balance*: A double representing the amount loaned/owed by the member. A positive value indicates that the member is owed money while a negative value indicates that the member owes money.
+
+The `MemberList` class has the following attributes:
+
+*
+
 <ins>Constructor</ins>
+
+The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name
+
+Key arguments of the Member constructor are a string `name` and optionally a double `balance`.
 
 <ins>Methods</ins>
 
