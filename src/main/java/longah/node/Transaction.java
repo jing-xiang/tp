@@ -84,11 +84,7 @@ public class Transaction {
                 throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
             }
             lenderName = splitLenderTime[0].trim();
-            try {
-                this.transactionTime = new DateTime(splitLenderTime[1]);
-            } catch (LongAhException e) {
-                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
-            }
+            this.transactionTime = new DateTime(splitLenderTime[1]);
         } else {
             lenderName = splitInput[0].trim();
         }
