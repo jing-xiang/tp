@@ -19,7 +19,6 @@ public enum ExceptionMessage {
 
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
-    INVALID_TIME_FORMAT ("Invalid DateTime format.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
     INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
 
@@ -29,6 +28,11 @@ public enum ExceptionMessage {
     TRANSACTIONS_SUMMED_UP ("No pending payments.", ExceptionType.INFO),
     INVALID_DATE_TIME_FILTER ("Invalid datetime filter. The to date your are searching for " +
             "is before the from date.", ExceptionType.INFO),
+
+    // Date Time Exceptions
+    INVALID_TIME_FORMAT ("Invalid DateTime format. Please format " +
+            "you date and time inputs in the form of DD-MM-YYYY HHmm", ExceptionType.WARNING),
+    INVALID_TIME_INPUT ("Invalid DateTime input. Dates of the future are not allowed.", ExceptionType.WARNING),
 
     // Data Storage Exceptions
     STORAGE_FILE_NOT_FOUND ("File not found.", ExceptionType.WARNING),
