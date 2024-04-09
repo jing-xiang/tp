@@ -105,17 +105,12 @@ public class MemberList {
     /**
      * Changes the name of the member at the specified index.
      * 
-     * @param expression The expression containing the index and new name.
+     * @param oldName The old name of the member.
+     * @param newName The new name of the member.
      * @throws LongAhException If the index is invalid.
      */
-    public void editMemberName(String expression) throws LongAhException {
+    public void editMemberName(String oldName, String newName) throws LongAhException {
         try {
-            String[] oldNewName = expression.split("p/", 2);
-            if (oldNewName.length != 2) {
-                throw new LongAhException(ExceptionMessage.INVALID_EDIT_COMMAND);
-            }
-            String oldName = oldNewName[0].trim();
-            String newName = oldNewName[1];
             Member member = getMember(oldName);
             member.setName(newName);
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
