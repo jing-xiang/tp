@@ -410,7 +410,7 @@ Example of usage: `edit transaction 3 Charlie p/Bob a/3 p/Alice a/5`
 
 ### Enabling the user PIN: `pin enable`
 
-Enables the user to set a PIN for the application. (enabled by default)
+Enables user PIN authentication for the application. (disabled by default)
 
 Format: `pin enable`
 
@@ -419,7 +419,7 @@ Example of usage: `pin enable`
 
 ### Disabling the user PIN: `pin disable`
 
-Disables the user PIN for the application. 
+Disables user PIN authentication for the application. 
 
 Format: `pin disable`
 
@@ -428,7 +428,7 @@ Example of usage: `pin disable`
 
 ### Resetting user PIN: `pin reset`
 
-Resets the user PIN for the application. Follow the instructions as prompted to reset the PIN.
+Resets the user's PIN for the application. Follow the instructions as prompted to reset the PIN.
 
 Format: `pin reset`
 * The new PIN should only contain numbers (0-9).
