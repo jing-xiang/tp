@@ -42,7 +42,11 @@ LongAh uses the following tools for development:
 
 The UML diagram below provides an overview of the classes and their interactions within the LongAh application.
 
-![main.png](diagrams/main.png)
+![Main UML](diagrams/main.png)
+
+The high-level overview of the application is provided in the flowchart below as well.
+
+![Flowchart](diagrams/Flowchart.png)
 
 Design and Implementation has been broken down into the subsequent sections, each tagged for ease of reference:
 
