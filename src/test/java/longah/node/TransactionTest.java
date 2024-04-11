@@ -56,7 +56,7 @@ public class TransactionTest {
      * Tests the unsuccessful creation of a transaction with invalid Date Time format.
      */
     @Test
-    public void addTransactionTime_invalidTransactionFormat_exceptionThrown() {
+    public void addTransactionTime_invalidTimeFormat_exceptionThrown() {
         try {
             MemberList memberList = new MemberList();
             memberList.addMember("Jack");
@@ -64,7 +64,7 @@ public class TransactionTest {
             new Transaction("Jack t/2359 p/Jane a/200", memberList);
             fail();
         } catch (LongAhException e) {
-            String expected = ExceptionMessage.INVALID_TRANSACTION_FORMAT.getMessage();
+            String expected = ExceptionMessage.INVALID_TIME_FORMAT.getMessage();
             assertEquals(expected, e.getMessage());
         }
     }
@@ -103,7 +103,7 @@ public class TransactionTest {
             transaction.addBorrower("Bob a/five", memberList, lender);
             fail();
         } catch (LongAhException e) {
-            String expectedString = ExceptionMessage.INVALID_VALUE_FORMAT.getMessage();
+            String expectedString = ExceptionMessage.INVALID_TRANSACTION_VALUE.getMessage();
             assertEquals(expectedString, e.getMessage());
         }
     }

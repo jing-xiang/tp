@@ -134,11 +134,10 @@ public class TransactionListTest {
 
             transactionList.addTransaction("Jack p/James a/100 p/Jane a/200", memberList);
             transactionList.addTransaction("Jack p/Jane a/150 p/James a/250", memberList);
-            String command = "findtransaction Jack";
-            String[] parts = command.split(" ", 2);
-            String printedOutput = transactionList.findTransactions(parts[1]);
+            String name = "Jack";
+            String printedOutput = transactionList.findTransactions(name);
 
-            assertTrue(printedOutput.contains("Jack owns the following list of transactions."));
+            assertTrue(printedOutput.contains("Jack is a part of the following list of transaction(s)."));
             assertTrue(printedOutput.contains("Lender: Jack"));
             assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
             assertTrue(printedOutput.contains("James Owed amount: 100.00"));
@@ -374,12 +373,12 @@ public class TransactionListTest {
             TransactionList transactionList = new TransactionList();
             memberList.addMember("Jack");
             memberList.addMember("Jane");
-            transactionList.addTransaction("Jack t/29-11-2024 2359 p/Jane a/200", memberList);
+            transactionList.addTransaction("Jack t/29-11-2023 2359 p/Jane a/200", memberList);
 
             String printedOutput = transactionList.listTransactions();
 
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Transaction time: 29 Nov 2024 11:59PM"));
+            assertTrue(printedOutput.contains("Transaction time: 29-11-2023 2359"));
             assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
         } catch (LongAhException e) {
             fail();
