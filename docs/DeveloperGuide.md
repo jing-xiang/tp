@@ -1,6 +1,5 @@
 # Developer Guide
 
-
 ## Table of Contents
 - [Developer Guide](#developer-guide)
   - [Table of Contents](#table-of-contents)
@@ -26,7 +25,6 @@
     - [JUnit Testing](#junit-testing)
     - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
-
 
 ## Acknowledgements
 
@@ -272,15 +270,54 @@ The MemberList class has the following key methods.
 
 <ins>Usage Example</ins>
 
+The following code segment outlines a sample use of `Member`.
+
+```
+import longah.node.Member;
+import longah.handler.UI;
+
+// Init member with balance of 0
+String name = "foo";
+Member member1 = new Member(name);
+
+// Init member with balance of 5
+String name = "bar";
+double balance = 5;
+Member member2 = new Member(name, balance);
+
+// Updating member balance
+member1.addToBalance(5);
+member2.subtractFromBalance(1.30);
+member1.clearBalance();
+
+// Print string representation of member
+UI.showMessage(member1); // Using our UI methods is preferred over System.out calls
+```
+
+The following code segment outlines a sample use of `MemberList`.
+
+```
+import longah.util.MemberList
+
+MemberList members = new MemberList();
+members.addMember("Alice");
+members.editMemberName("Alice", "Bob");
+members.updateMembersBalance(transactions); // Assuming we have a pre-defined TransactionList object
+ArrayList<Subtransaction> solution = members.solveTransactions();
+members.clearBalances();
+members.delete("Bob");
+```
+
 <ins>Design Considerations</ins>
 
 The Member class takes the following into consideration.
 
-* 
+* The class ensures that member names are alphanumeric and does not allow for special characters including blank space.
+* This method is used in conjunction with a `TransactionList` obejct as part of a `Group`.
 
 The MemberList class takes the following into consideration.
 
-* updateMembersBalance clears current balances at the start of invokation. This removes any transactions that are not captured within the `TransactionList` object passed into the method.
+* `updateMembersBalance` clears current balances at the start of invokation. This removes any transactions that are not captured within the `TransactionList` object passed into the method.
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>
