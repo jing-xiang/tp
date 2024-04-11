@@ -1,5 +1,6 @@
 package longah.node;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import longah.util.MemberList;
@@ -59,7 +60,6 @@ public class Transaction {
         }
     }
 
-
     /**
      * Parses the user input to create a transaction.
      *
@@ -78,11 +78,9 @@ public class Transaction {
         assert splitInput.length >= 2 : "Invalid transaction.";
         String lenderName;
 
-        if (splitInput[0].contains("t/")) { //presence of time component in expression
-            String[] splitLenderTime = splitInput[0].split("t/");
-            if (splitLenderTime[0].contains("t/")) {
-                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
-            }
+        if (splitInput[0].contains("t/")) { 
+            // Check presence of time component in expression
+            String[] splitLenderTime = splitInput[0].split("t/", 2);
             lenderName = splitLenderTime[0].trim();
             this.transactionTime = new DateTime(splitLenderTime[1]);
         } else {
@@ -92,7 +90,6 @@ public class Transaction {
 
         // Check for existence of all parties involved in the transaction in the group.
         String borrowNameAmount;
-
         for (int i = 1; i < splitInput.length; i++) {
             borrowNameAmount = splitInput[i].trim();
             addBorrower(borrowNameAmount, members, this.lender);
@@ -142,7 +139,8 @@ public class Transaction {
         // Exception is thrown if the borrower does not exist in the group
         Member borrower = memberList.getMember(borrowerName);
         Double amountBorrowed;
-        
+
+        // Exception is thrown if the borrower is the same as the lender
         if (borrower.equals(lender)) {
             throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
         }
@@ -151,9 +149,15 @@ public class Transaction {
         try {
             amountBorrowed = Double.parseDouble(splitBorrower[1].trim());
         } catch (NumberFormatException e) {
-            throw new LongAhException(ExceptionMessage.INVALID_VALUE_FORMAT);
+            throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
         }
 
+        // Exception is thrown if the amount borrowed has more than 2dp
+        if (BigDecimal.valueOf(amountBorrowed).scale() > 2) {
+            throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+        }
+
+        // Exception is thrown if the amount borrowed is not positive
         if (amountBorrowed <= 0) {
             throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
         }

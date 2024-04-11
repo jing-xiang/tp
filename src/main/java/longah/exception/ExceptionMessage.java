@@ -19,8 +19,8 @@ public enum ExceptionMessage {
 
     // Transaction Exceptions
     INVALID_TRANSACTION_FORMAT ("Invalid transaction format.", ExceptionType.WARNING),
+    INVALID_TRANSACTION_MEMBER ("Borrower is already the lender.", ExceptionType.WARNING),
     INVALID_TRANSACTION_VALUE ("Invalid transaction value.", ExceptionType.WARNING),
-    INVALID_VALUE_FORMAT ("Invalid value format.", ExceptionType.WARNING),
 
     // TransactionList Exceptions
     NO_TRANSACTION_FOUND ("No transactions found.", ExceptionType.INFO),
@@ -56,7 +56,7 @@ public enum ExceptionMessage {
             " Use 'list members', 'list transactions', or 'list debts'",
             ExceptionType.INFO),
     INVALID_FIND_COMMAND ("Invalid command format." +
-            " Use 'find transactions NAME' or 'find debts NAME'",
+            " Use 'find transactions', 'find lender', 'find borrower', or 'find debts'",
             ExceptionType.INFO),
 
     INVALID_FILTER_COMMAND ("Invalid filter command." +
@@ -86,8 +86,8 @@ public enum ExceptionMessage {
             ExceptionType.INFO),
     INVALID_EXIT_COMMAND ("Invalid command format." +
             " Use 'exit'", ExceptionType.INFO),
-    INVALID_VIEW_COMMAND ("Invalid command format." +
-            " Use 'view chart'", ExceptionType.INFO),
+    INVALID_CHART_COMMAND ("Invalid command format." +
+            " Use 'chart'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +
             " Use 'help'", ExceptionType.INFO),
     INVALID_SWITCH_GROUP_COMMAND ("Invalid command format." +
