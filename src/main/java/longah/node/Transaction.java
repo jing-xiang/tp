@@ -82,11 +82,7 @@ public class Transaction {
             // Check presence of time component in expression
             String[] splitLenderTime = splitInput[0].split("t/", 2);
             lenderName = splitLenderTime[0].trim();
-            try {
-                this.transactionTime = new DateTime(splitLenderTime[1]);
-            } catch (LongAhException e) {
-                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
-            }
+            this.transactionTime = new DateTime(splitLenderTime[1]);
         } else {
             lenderName = splitInput[0].trim();
         }

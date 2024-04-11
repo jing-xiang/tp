@@ -3,12 +3,13 @@
 
 ## Table of Contents
 - [Developer Guide](#developer-guide)
-  - [Acknowledgements](#acknowledgements)
   - [Table of Contents](#table-of-contents)
+  - [Acknowledgements](#acknowledgements)
   - [Design \& Implementation](#design--implementation)
     - [UI and I/O](#ui-and-io)
     - [Commands](#commands)
     - [Storage](#storage)
+    - [Group and GroupList](#group-and-grouplist)
     - [Member and MemberList](#member-and-memberlist)
     - [Transaction and TransactionList](#transaction-and-transactionlist)
     - [PIN](#pin)
@@ -20,9 +21,10 @@
   - [User Stories](#user-stories)
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Glossary](#glossary)
-  - [Instructions for manual testing](#instructions-for-manual-testing)
-  - [Instructions for JUnit Testing](#instructions-for-junit-testing)
-  - [Instructions for text-ui-testing](#instructions-for-text-ui-testing)
+  - [Instructions for Testing](#instructions-for-testing)
+    - [Manual Testing](#manual-testing)
+    - [JUnit Testing](#junit-testing)
+    - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
 
 
@@ -42,13 +44,14 @@ LongAh uses the following tools for development:
 
 The UML diagram below provides an overview of the classes and their interactions within the LongAh application.
 
-![main.png](diagrams%2Fmain.png)
+![main.png](diagrams/main.png)
 
 Design and Implementation has been broken down into the subsequent sections, each tagged for ease of reference:
 
 * [UI and I/O](#ui-and-io)
 * [Commands](#commands)
 * [Storage](#storage)
+* [Group and GroupList](#group-and-grouplist)
 * [Member and MemberList](#member-and-memberlist)
 * [Transaction and TransactionList](#transaction-and-transactionlist)
 * [PIN](#pin)
@@ -57,22 +60,44 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 ### UI and I/O
 
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins>
+
 ### Commands
 
 <ins>Overview</ins>
 
 The abstract `Command` class has been implemented to introduce an additional layer of abstraction between I/O and command execution, allowing for separation of handling command keywords and executing commands.
 
+The `Command` class has been subdivided into further packages for similar commands, such as `AddCommand` and `EditCommand`. There are other niche children classes that have not been aggregated into a package as well.
+
 <ins>Implementation Details</ins>
 
+The following diagram is a inheritance diagram for `Command` and its children classes. This has been heavily simplified and only shows the key commands.
+
 ![Command Inheritance Diagram](diagrams/CommandInheritance.png)
+
+The following diagram is a sequence diagram for execution of `Command`.
+
+![Command Execution Sequence Diagram](diagrams/CommandExecutionSequenceDiagram.png)
 
 <ins>Class Structure</ins>
 
 The abstract `Command` class and its related children classes have the following attributes:
 
-* *CommandString*: String indicating the command being parsed
-* *TaskExpression*: String containing details for the command to effect
+* *CommandString*: String indicating the command being parsed.
+* *TaskExpression*: String containing details for the command to effect.
 
 <ins>Constructor</ins>
 
@@ -81,22 +106,35 @@ The Command constructor updates the attributes based on the input arguments.
 <ins>Methods</ins>
 
 The abstract `Command` class and its related children classes have the following method:
-* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`
+* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`.
 
 ### Storage
 
 <ins>Overview</ins>
 
-The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each group calls its own `StorageHandler` object such that they maintain distinct storage directories.
+The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each `Group` calls its own `StorageHandler` object such that they maintain distinct storage directories.
 
 <ins>Implementation Details</ins>
 
 *Data Storage:*
 
-Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
+Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows, with samples provided.
 
-* `members.txt` - NAME | BALANCE
-* `transactions.txt` - LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+* `members.txt`
+
+```
+NAME | BALANCE
+```
+
+![Sample Members File](diagrams/MembersFileSample.png)
+
+* `transactions.txt`
+  
+```
+LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+```
+
+![Sample Transactions File](diagrams/TransactionsFileSample.png)
 
 <ins>Class Structure</ins>
 
@@ -128,20 +166,46 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-![StorageHandler Sequence Diagram](diagrams/StorageHandlerSequenceDiagram.png)
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
 
-Given below is an example usage scenario and how StorageHandler behaves at each step:
-
-1. The user launches the application for the first time. Group is initialized, creating an instance of StorageHandler. StorageHandler creates relevant storage directories if they do not yet exist.
-2. StorageHandler reads data from the 2 data storage files and creates Member and Transaction objects in the associated utility list objects.
-3. When a command which would alter the data within MemberList or TransactionList is invoked, the method to save data to the storage files is called by Group. This updates the information within the storage files.
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
 <ins>Design Considerations</ins>
 
 * Update upon change, not upon exit - This allows for data to be saved even if the application exits ungracefully.
 * *checkTransactions* - Methods are provided to have a quick check to ensure that data from data storage is not corrupted.
 
+### Group and GroupList
+
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins>
+
 ### Member and MemberList
+
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>
@@ -559,15 +623,17 @@ Busy people with large transaction quantities among friends
 * Group - Discrete units each containing their respective lists of Member and Transaction.
 * Separator - "|" has been used to denote separator within this document but within the Storage related classes, the ASCII Unit Separator as denoted by ASCII 31 is used instead. This is defined within `StorageHandler`.
 
-## Instructions for manual testing
+## Instructions for Testing
+
+### Manual Testing
 
 View the [User Guide](UserGuide.md) for the full list of UI commands and their related use case and expected outcomes.
 
-## Instructions for JUnit Testing
+### JUnit Testing
 
 JUnit tests are written in the [`test directory`](../src/test/java/longah/) and serve to test key methods part of the application.
 
-## Instructions for text-ui-testing
+### Text UI Testing
 
 Files relating to Text UI Testing can be found [here](../text-ui-test/).
 

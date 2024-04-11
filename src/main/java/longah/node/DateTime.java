@@ -8,13 +8,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents objects where the time element is concerned
+ * Represents objects where the time element is concerned.
  */
 public class DateTime {
     private LocalDateTime dateTime;
 
     /**
-     * Constructs a new DateTime object based on a String representation of the date time expression
+     * Constructs a new DateTime object based on a String representation of the date time expression.
      *
      * @param dateTimeExpression String representation of a date time expression
      * @throws LongAhException If the date time expression does not follow the intended date time format
@@ -26,6 +26,9 @@ public class DateTime {
         } catch (DateTimeParseException e) {
             throw new LongAhException(ExceptionMessage.INVALID_TIME_FORMAT);
         }
+        if (isFuture()) {
+            throw new LongAhException(ExceptionMessage.INVALID_TIME_INPUT);
+        }
     }
 
     private LocalDateTime getDateTime() {
@@ -33,20 +36,20 @@ public class DateTime {
     }
 
     /**
-     * Determines whether the input DateTime object has a date that is before the current object
+     * Determines whether the input DateTime object has a date that is before the current object.
      *
      * @param dateTimeToCompare the reference DateTime object to be compared with
-     * @return true if the input DateTime object has a date before the current object. false otherwise.
+     * @return true if the input DateTime object has a date before the current object. false otherwise
      */
     public boolean isBefore(DateTime dateTimeToCompare) {
         return this.dateTime.isBefore(dateTimeToCompare.getDateTime());
     }
 
     /**
-     * Determines whether the input DateTime object has a date that is after the current object
+     * Determines whether the input DateTime object has a date that is after the current object.
      *
      * @param dateTimeToCompare the reference DateTime object to be compared with
-     * @return true if the input DateTime object has a date after the current object. false otherwise.
+     * @return true if the input DateTime object has a date after the current object. false otherwise
      */
     public boolean isAfter(DateTime dateTimeToCompare) {
         return this.dateTime.isAfter(dateTimeToCompare.getDateTime());
@@ -56,10 +59,20 @@ public class DateTime {
      * Determines whether the input DateTime object has a date that is equal to the current object
      *
      * @param dateTimeToCompare the reference DateTime object to be compared with
-     * @return true if the input DateTime object has a date equal to the current object. false otherwise.
+     * @return true if the input DateTime object has a date equal to the current object. false otherwise
      */
     public boolean isEqual(DateTime dateTimeToCompare) {
         return this.dateTime.isEqual(dateTimeToCompare.getDateTime());
+    }
+
+    /**
+     * Determines whether the existing object has a future dateTime. This should only be used within the class to
+     * reject invalid time entries.
+     *
+     * @return true if the object has a future dateTime. false otherwise
+     */
+    private boolean isFuture() {
+        return this.dateTime.isAfter(LocalDateTime.now());
     }
 
     /**
@@ -78,7 +91,7 @@ public class DateTime {
      */
     @Override
     public String toString() {
-        return this.dateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy h:mma"));
+        return this.dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HHmm"));
     }
 
 }

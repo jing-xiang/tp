@@ -102,14 +102,16 @@ public class TransactionList {
      */
     public String findLender(String lenderName) throws LongAhException {
         int index = 1;
+        int printCount = 0;
         String outString = String.format("%s is a lender in the following list of transaction(s).", lenderName) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.isLender(lenderName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
         return outString;
@@ -124,15 +126,17 @@ public class TransactionList {
      */
     public String findBorrower(String borrowerName) throws LongAhException {
         int index = 1;
+        int printCount = 0;
         String outString =
                 String.format("%s is a borrower in the following list of transaction(s).", borrowerName) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.checkIsBorrower(borrowerName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
         return outString;
@@ -147,14 +151,16 @@ public class TransactionList {
      */
     public String findTransactions(String name) throws LongAhException {
         int index = 1;
+        int printCount = 0;
         String outString = String.format("%s is a part of the following list of transaction(s).", name) + "\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.isInvolved(name)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
         return outString;
@@ -170,14 +176,16 @@ public class TransactionList {
     public String filterTransactionsEqualToDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
         int index = 1;
+        int printCount = 0;
         String outString = "The following list of transactions matches with the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.getTransactionTime().isEqual(dateTimeToCompare)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
         return outString;
@@ -193,14 +201,16 @@ public class TransactionList {
     public String filterTransactionsBeforeDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
         int index = 1;
+        int printCount = 0;
         String outString = "The following list of transactions is before the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.getTransactionTime().isBefore(dateTimeToCompare)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
         return outString;
@@ -216,14 +226,16 @@ public class TransactionList {
     public String filterTransactionsAfterDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
         int index = 1;
+        int printCount = 0;
         String outString = "The following list of transactions is after the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.getTransactionTime().isAfter(dateTimeToCompare)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
         return outString;
@@ -244,16 +256,18 @@ public class TransactionList {
             throw new LongAhException(ExceptionMessage.INVALID_DATE_TIME_FILTER);
         }
         int index = 1;
+        int printCount = 0;
         String outString = "The following list of transactions is between the time " + fromDateTimeToCompare +
                 " and " + toDateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
             if (transaction.getTransactionTime().isAfter(fromDateTimeToCompare)
                     && transaction.getTransactionTime().isBefore(toDateTimeToCompare)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
         return outString;
@@ -293,13 +307,15 @@ public class TransactionList {
         String outString = String.format("%s is involved as the payee in the following list of transactions."
                 , borrowerName) + "\n";
         int index = 1;
+        int printCount = 0;
         for (Transaction transaction : this.transactions) {
             if (transaction.checkIsBorrower(borrowerName)) {
                 outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                index++;
+                printCount++;
             }
+            index++;
         }
-        if (index == 1) {
+        if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
         return outString;
