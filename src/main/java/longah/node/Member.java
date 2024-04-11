@@ -134,7 +134,7 @@ public class Member {
      */
     public void clearBalance() {
         this.balance = 0;
-    }
+    }   
 
     public void resetBalance() {
         this.balance = 0.0;

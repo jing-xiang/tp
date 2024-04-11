@@ -240,6 +240,12 @@ The `MemberList` class has the following attribute.
 
 * *members*: An array list collection of Member objects.
 
+<ins>Implementation Details</ins>
+
+The detailed class diagram for `Member` and `MemberList` can be found below.
+
+![Member Class Diagram](diagrams/Member.png)
+
 <ins>Constructor</ins>
 
 The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name is performed here.
