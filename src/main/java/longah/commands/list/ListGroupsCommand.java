@@ -24,7 +24,7 @@ public class ListGroupsCommand extends Command {
      * @param group The group to execute the command on.
      */
     public void execute(Group group) throws LongAhException {
-        if (!taskExpression.isEmpty()) {
+        if (!this.taskExpression.isEmpty()) {
             throw new LongAhException(ExceptionMessage.INVALID_LIST_COMMAND);
         }
         String output = GroupList.getGroupList();
