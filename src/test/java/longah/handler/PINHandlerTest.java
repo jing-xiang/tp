@@ -53,7 +53,6 @@ public class PINHandlerTest {
     @Test
     public void authenticate_validPIN_success() {
         try {
-            File f = new File("./data/pin.txt");
             System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
             new PINHandler();
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -88,7 +87,6 @@ public class PINHandlerTest {
     @Test
     public void createPin_invalidPIN_failure() {
         try {
-            File f = new File("./data/pin.txt");
             System.setIn(new ByteArrayInputStream("1234567\n1234567\n".getBytes(StandardCharsets.UTF_8)));
             new PINHandler();
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -106,7 +104,6 @@ public class PINHandlerTest {
     @Test
     public void enablePin_validPIN_success() {
         try {
-            File f = new File("./data/pin.txt");
             System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
             new PINHandler();
             System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
@@ -123,7 +120,6 @@ public class PINHandlerTest {
     @Test
     public void disablePin_validPIN_success() {
         try {
-            File f = new File("./data/pin.txt");
             PINHandler.enablePin();
             System.setIn(new ByteArrayInputStream("123456\n".getBytes(StandardCharsets.UTF_8)));
             PINHandler.disablePin();
