@@ -150,7 +150,7 @@ LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORRO
 
 ![Sample Transactions File](diagrams/TransactionsFileSample.png)
 
-The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
 
 ![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
