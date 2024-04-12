@@ -1,0 +1,137 @@
+Welcome to LongAh!
+ /$$                                      /$$$$$$  /$$       /$$
+| $$                                     /$$__  $$| $$      | $$
+| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \ $$| $$$$$$$ | $$
+| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$
+| $$      | $$  \ $$| $$  \ $$| $$  \ $$| $$__  $$| $$  \ $$|__/
+| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$
+| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$
+|________/ \______/ |__/  |__/ \____  $$|__/  |__/|__/  |__/|__/
+                               /$$  \ $$
+                              |  $$$$$$/
+                               \______/
+Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
+Error reading saved PIN and authentication enabled state.
+Create your 6-digit PIN:
+PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.
+No groups found. Please give a name for your first group.
+Enter command: Here are the full list of commands available:
+
+ADD commands: 
+____________________________________________________________
+1. `add member <NAME>` - Add a new member to the group.
+2. `add transaction <LENDER> p/<BORROWER1> a/<AMOUNT OWED> p/<BORROWER2> a/<AMOUNTED OWED> ...` - Add a new transaction.
+3. 'add group <GROUP NAME>' - Add a new group.
+
+LIST commands: 
+____________________________________________________________
+4. `list members` - List all current members in the group.
+5. `list transactions` - List all transactions in the group.
+6. `list debts` - Simplifies and lists all debts in the group.
+7. `list groups` - List all groups in the application.
+
+DELETE commands: 
+____________________________________________________________
+8. `delete transaction <TRANSACTION NUMBER>` - Delete a transaction.
+9. `delete member <MEMBER NAME>` - Delete a member from the group.
+10. `delete group <GROUP NAME>` - Delete a group from the application.
+
+FIND commands: 
+____________________________________________________________
+11. `find borrower <MEMBER NAME>` - Find all transactions where the member is a borrower.
+12. `find lender <MEMBER NAME>` - Find all transactions where the member is involved as the lender.
+13. `find debts <MEMBER NAME>` - Find all debts of the member.
+14. `find transactions <MEMBER NAME>` - Find all transactions where the member is involved as the lender.
+
+EDIT commands: 
+____________________________________________________________
+15. `edit member <MEMBER NAME> <NEW MEMBER NAME>` - Edit the name of a member.
+16. `edit transaction <TRANSACTION NUMBER> <NEW TRANSACTION>` - Edit the details of a transaction.
+
+PIN commands: 
+____________________________________________________________
+17. `PIN enable` - Enable the use of PIN for the application.
+18. `PIN disable` - Disable the use of PIN for the application.
+19. `PIN reset` - Reset the user PIN.
+
+OTHER commands: 
+____________________________________________________________
+20. `settleup <MEMBER NAME>` - Settle all debts of the member.
+21. `clear` - Clear all transaction data in the group.
+22. 'group <GROUP NAME>' - Switch to another group with specified name.
+23. `exit` - Exit the application.
+24. `help` - Display the list of commands.
+
+Enter command: 1. GroupA
+
+Enter command: Member list is empty.
+Enter command: No transactions found.
+Enter command: No pending payments.
+Enter command: Enter command: Enter command: Enter command: Alice: $0.0
+Bob: $0.0
+Charlie: $0.0
+
+Enter command: Enter command: Enter command: Enter command: Alice: $8.0
+Bob: -$11.549999999999999
+Charlie: $3.55
+
+Enter command: 1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 10.00
+
+2.
+Lender: Bob
+Borrower 1: Charlie Owed amount: 1.55
+
+3.
+Lender: Charlie
+Borrower 1: Alice Owed amount: 2.00
+Borrower 2: Bob Owed amount: 3.10
+
+
+Enter command: Alice: $8.0
+Bob: -$11.549999999999999
+Charlie: $3.55
+
+Enter command: Alice is a part of the following list of transaction(s).
+1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 10.00
+
+3.
+Lender: Charlie
+Borrower 1: Alice Owed amount: 2.00
+Borrower 2: Bob Owed amount: 3.10
+
+
+Enter command: Bob is a part of the following list of transaction(s).
+1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 10.00
+
+2.
+Lender: Bob
+Borrower 1: Charlie Owed amount: 1.55
+
+3.
+Lender: Charlie
+Borrower 1: Alice Owed amount: 2.00
+Borrower 2: Bob Owed amount: 3.10
+
+
+Enter command: Charlie is a part of the following list of transaction(s).
+2.
+Lender: Bob
+Borrower 1: Charlie Owed amount: 1.55
+
+3.
+Lender: Charlie
+Borrower 1: Alice Owed amount: 2.00
+Borrower 2: Bob Owed amount: 3.10
+
+
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Member not found.
+Enter command: 
