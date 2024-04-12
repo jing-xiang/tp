@@ -16,10 +16,10 @@ Create your 6-digit PIN:
 PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.
 No groups found. Please give a name for your first group.
 Enter command: Invalid command. Use 'help' to see the list of commands.
-Enter command: Enter command: Enter command: Amy: $0.0
-Brandon: $0.0
+Enter command: Enter command: Enter command: Amy: $0.00
+Brandon: $0.00
 
 Enter command: Enter command: Best Way to Solve Debts:
 Brandon owes Amy $5.00
 
-Enter command: 
+Enter command: Goodbye! Hope to see you again soon!

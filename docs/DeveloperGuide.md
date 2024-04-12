@@ -1,6 +1,5 @@
 # Developer Guide
 
-
 ## Table of Contents
 - [Developer Guide](#developer-guide)
   - [Table of Contents](#table-of-contents)
@@ -27,7 +26,6 @@
     - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
 
-
 ## Acknowledgements
 
 LongAh uses the following libraries:
@@ -44,7 +42,11 @@ LongAh uses the following tools for development:
 
 The UML diagram below provides an overview of the classes and their interactions within the LongAh application.
 
-![main.png](diagrams/main.png)
+![Main UML](diagrams/main.png)
+
+The high-level overview of the application is provided in the flowchart below as well.
+
+![Flowchart](diagrams/Flowchart.png)
 
 Design and Implementation has been broken down into the subsequent sections, each tagged for ease of reference:
 
@@ -62,17 +64,31 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 <ins>Overview</ins>
 
-<ins>Implementation Details</ins>
+The UI and I/O functionalities act as the interface between the user and the application. They are managed by the `UI` and `InputHandler` classes, respectively, with `UI` handling displaying messages to the user and reading user input, while `InputHandler` is responsible for parsing user input and returning the corresponding `Command` object.
 
 <ins>Class Structure</ins>
 
-<ins>Constructor</ins>
+The UI class has the following static attributes:
+
+* *SEPARATOR*: A constant string representing a straight line to be printed to the console.
+* *scanner*: A `Scanner` object used for reading from `System.in` I/O.
+
+The InputHandler class itself does not have any attributes.
 
 <ins>Methods</ins>
 
-<ins>Usage Example</ins>
+The UI class has the following key methods:
+
+* *getUserInput*: Reads the user input from the console and returns it as a String.
+* *showMessage*: Displays the provided message to the user. This is overloaded to take either a String or a String and a boolean. The latter is used to define whether a newline should be printed at the end of the String. Newline is printed by default. 
+
+The InputHandler class has the following key method:
+
+* *paseInput*: Parses the user input and returns the corresponding `Command` object.
 
 <ins>Design Considerations</ins>
+
+* UI class is used as part of exception handling for displaying of error messages to the user for feedback.
 
 ### Commands
 
@@ -116,8 +132,6 @@ The `StorageHandler` class is responsible for managing the loading and saving of
 
 <ins>Implementation Details</ins>
 
-*Data Storage:*
-
 Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows, with samples provided.
 
 * `members.txt`
@@ -135,6 +149,10 @@ LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORRO
 ```
 
 ![Sample Transactions File](diagrams/TransactionsFileSample.png)
+
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
 <ins>Class Structure</ins>
 
@@ -166,9 +184,27 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads fata from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+The following code segment outlines the use of `StorageHandler`.
 
-![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
+```
+import longah.util.MemberList;
+import longah.util.TransactionList;
+
+// Initialization and loading from storage
+MemberList members = new MemberList();
+TransactionList transactions = new TransactionList();
+String name = "foo";
+StorageHandler storage = new StorageHandler(members, transactions, name);
+
+/*
+At this point a subdirectory "foo" will be created if it did not previously exist
+Data is loaded from "foo" to members and transactions
+Assume functions modifying members and transactions are called following that.
+*/
+
+// Writing to storage
+storage.saveAllData();
+```
 
 <ins>Design Considerations</ins>
 
@@ -195,17 +231,103 @@ The following diagram is a sequence diagram of the initialisation of `StorageHan
 
 <ins>Overview</ins>
 
-<ins>Implementation Details</ins>
+The `Member` class is used to represent a discrete person object, while the `MemberList` class is used to represent the aggregation members within a group.
 
 <ins>Class Structure</ins>
 
+The `Member` class has the following attributes.
+
+* *name*: A string representing the name of a person within the group. Used for visual identification of each member. Name of the member is strictly alphanumeric and cannot include special characters including the blank character.
+* *balance*: A double representing the amount loaned/owed by the member. A positive value indicates that the member is owed money while a negative value indicates that the member owes money.
+
+The `MemberList` class has the following attribute.
+
+* *members*: An array list collection of Member objects.
+
+<ins>Implementation Details</ins>
+
+The detailed class diagram for `Member` and `MemberList` can be found below.
+
+![Member Class Diagram](diagrams/Member.png)
+
 <ins>Constructor</ins>
+
+The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name is performed here.
+
+Key arguments of the Member constructor are a string `name` and optionally a double `balance`.
+
+The MemberList constructor initializes an empty array list of members for newly created members to be added to.
 
 <ins>Methods</ins>
 
+The Member class has the following key methods.
+
+* *setName*: Updates the name of a member. Used when edit member command is invoked.
+* *addToBalance*: Adds the value of a transaction to a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *subtractFromBalance*: Subtracts the value of a transaction from a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *clearBalance*: Resets the current balance of a member to zero. Used then the clear command is invoked.
+
+The MemberList class has the following key methods.
+
+* *addMember*: Adds a member object to the current array list of members. This method is overloaded to allow for appending an exisiting member object or appending a newly created member object.
+* *isMember*: Checks if a member object is already a part of the current array list of members.
+* *getMember*: Returns the member object representation given the name of a member.
+* *editMemberName*: Updates the name of an existing member based on their current name.
+* *listMembers*: Returns a string representation of the current array list of members.
+* *updateMembersBalance*: Updates the current balance of all members in the group based on a passed in `TransactionList` object.
+* *solveTransactions*: Returns an array list of `Subtransaction` representing the least transactions solution to solving all debts in the group.
+* *deleteMember*: Removes a member from the current array list of members.
+
 <ins>Usage Example</ins>
 
-<ins>Design Considerations</ins
+The following code segment outlines a sample use of `Member`.
+
+```
+import longah.node.Member;
+import longah.handler.UI;
+
+// Init member with balance of 0
+String name = "foo";
+Member member1 = new Member(name);
+
+// Init member with balance of 5
+String name = "bar";
+double balance = 5;
+Member member2 = new Member(name, balance);
+
+// Updating member balance
+member1.addToBalance(5);
+member2.subtractFromBalance(1.30);
+member1.clearBalance();
+
+// Print string representation of member
+UI.showMessage(member1); // Using our UI methods is preferred over System.out calls
+```
+
+The following code segment outlines a sample use of `MemberList`.
+
+```
+import longah.util.MemberList
+
+MemberList members = new MemberList();
+members.addMember("Alice");
+members.editMemberName("Alice", "Bob");
+members.updateMembersBalance(transactions); // Assuming we have a pre-defined TransactionList object
+ArrayList<Subtransaction> solution = members.solveTransactions();
+members.clearBalances();
+members.delete("Bob");
+```
+
+<ins>Design Considerations</ins>
+
+The Member class takes the following into consideration.
+
+* The class ensures that member names are alphanumeric and does not allow for special characters including blank space.
+* This method is used in conjunction with a `TransactionList` obejct as part of a `Group`.
+
+The MemberList class takes the following into consideration.
+
+* `updateMembersBalance` clears current balances at the start of invokation. This removes any transactions that are not captured within the `TransactionList` object passed into the method.
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>

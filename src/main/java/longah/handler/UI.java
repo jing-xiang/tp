@@ -6,9 +6,9 @@ import java.util.Scanner;
  * The UI class handles user interaction by displaying messages and reading user input.
  */
 public class UI {
+    private static final String SEPARATOR = "____________________________________________________________";
     private static Scanner scanner = new Scanner(System.in);
 
-    private static final String SEPARATOR = "____________________________________________________________";
     // @@author haowern98
     /**
      * Displays the welcome message along with ASCII art.
@@ -26,6 +26,13 @@ public class UI {
         UI.showMessage("                              |  $$$$$$/");
         UI.showMessage("                               \\______/");
         UI.showMessage("Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!");
+    }
+
+    /**
+     * Displays the exit message.
+     */
+    public static void showGoodbyeMessage() {
+        UI.showMessage("Goodbye! Hope to see you again soon!");
     }
 
     /**

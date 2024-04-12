@@ -16,7 +16,7 @@ public class ChartTest {
     public void viewBalancesBarChart_validInput_success() {
         try {
             List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(10.0, -5.0, 0.0);
+            List<Double> balances = Arrays.asList(10.00, -5.00, 0.00);
             Chart chart = Chart.viewBalancesBarChart(members, balances);
 
             assert chart != null;
@@ -34,7 +34,7 @@ public class ChartTest {
     public void viewBalancesBarChart_invalidInput_exceptionThrown() {
         try {
             List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(10.0, -5.0);
+            List<Double> balances = Arrays.asList(10.00, -5.00);
             Chart.viewBalancesBarChart(members, balances);
             fail();
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class ChartTest {
     public void viewBalancesBarChart_noMembers_exceptionThrown() {
         try {
             List<String> members = Arrays.asList();
-            List<Double> balances = Arrays.asList(10.0, -5.0, 0.0);
+            List<Double> balances = Arrays.asList(10.00, -5.00, 0.00);
             Chart.viewBalancesBarChart(members, balances);
             fail();
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public class ChartTest {
     public void viewBalancesBarChart_negativeBalances_success() {
         try {
             List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(-10.0, -20.0, -30.0);
+            List<Double> balances = Arrays.asList(-10.00, -20.00, -30.00);
             Chart chart = Chart.viewBalancesBarChart(members, balances);
 
             assert chart != null;
@@ -133,7 +133,7 @@ public class ChartTest {
     public void viewBalancesBarChart_zeroBalances_success() {
         try {
             List<String> members = Arrays.asList("Alice", "Bob", "Charlie");
-            List<Double> balances = Arrays.asList(0.0, 0.0, 0.0);
+            List<Double> balances = Arrays.asList(0.00, 0.00, 0.00);
             Chart chart = Chart.viewBalancesBarChart(members, balances);
 
             assert chart != null;

@@ -102,10 +102,15 @@ public class Member {
      */
     @Override
     public String toString() {
+        double rounded = (double)Math.round(this.balance * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+
         if (this.balance >= 0) {
-            return this.name + ": $" + this.balance;
+            return this.name + ": $" + roundedString;
         }
-        return this.name + ": -$" + Math.abs(this.balance);
+        // Remove the negative sign
+        roundedString = roundedString.substring(1);
+        return this.name + ": -$" + roundedString;
     }
 
     /**
@@ -115,7 +120,9 @@ public class Member {
      * @return A string representation of the member for storage.
      */
     public String toStorageString(String delimiter) {
-        return this.name + delimiter + this.balance;
+        double rounded = (double)Math.round(this.balance * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+        return this.name + delimiter + roundedString;
     }
 
     /**

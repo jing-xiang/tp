@@ -3,6 +3,7 @@ package longah.commands;
 import longah.node.Group;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
+import longah.handler.UI;
 
 public class ExitCommand extends Command {
     /**
@@ -25,6 +26,7 @@ public class ExitCommand extends Command {
         if (!this.taskExpression.isEmpty()) {
             throw new LongAhException(ExceptionMessage.INVALID_EXIT_COMMAND);
         }
+        UI.showGoodbyeMessage();
         System.exit(0);
     }
 }

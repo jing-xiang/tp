@@ -68,6 +68,10 @@ public class MemberList {
      * @return True if the member is in the group, false otherwise.
      */
     public boolean isMember(String name) {
+        if (this.members.isEmpty()) {
+            return false;
+        }
+
         for (Member member : this.members) {
             if (member.getName().equals(name)) {
                 return true;
@@ -120,6 +124,7 @@ public class MemberList {
 
     /**
      * Prints the list of members in the group.
+     * 
      * @throws LongAhException If there are no members in the group.
      */
     public String listMembers() throws LongAhException {
