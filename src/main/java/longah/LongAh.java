@@ -54,6 +54,7 @@ public class LongAh {
         } catch (LongAhException e) {
             LongAhException.printException(e);
         }
+        
         Logging.logInfo("Entering main program body. Begin accepting user commands.");
         while (true) {
             try {

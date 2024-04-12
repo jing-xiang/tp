@@ -22,7 +22,7 @@ public class EditCommand extends Command {
         if (subCommandTaskExpSplit.length > 1) {
             this.taskExpression = subCommandTaskExpSplit[1];
         } else {
-            throw new LongAhException(ExceptionMessage.INVALID_DELETE_COMMAND);
+            throw new LongAhException(ExceptionMessage.INVALID_EDIT_COMMAND);
         }
     }
 

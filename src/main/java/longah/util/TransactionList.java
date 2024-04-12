@@ -98,9 +98,13 @@ public class TransactionList {
      * transaction lender
      *
      * @param lenderName User input containing the name of person to search for
+     * @param members The member list to search for the name in
      * @return Returns a String printout of the required list of transactions
      */
-    public String findLender(String lenderName) throws LongAhException {
+    public String findLender(String lenderName, MemberList members) throws LongAhException {
+        if (!members.isMember(lenderName)) {
+            throw new LongAhException(ExceptionMessage.MEMBER_NOT_FOUND);
+        }
         int index = 1;
         int printCount = 0;
         String outString = String.format("%s is a lender in the following list of transaction(s).", lenderName) + "\n";
@@ -122,9 +126,13 @@ public class TransactionList {
      * transaction lender
      *
      * @param borrowerName User input containing the name of person to search for
+     * @param members The member list to search for the name in
      * @return Returns a String printout of the required list of transactions
      */
-    public String findBorrower(String borrowerName) throws LongAhException {
+    public String findBorrower(String borrowerName, MemberList members) throws LongAhException {
+        if (!members.isMember(borrowerName)) {
+            throw new LongAhException(ExceptionMessage.MEMBER_NOT_FOUND);
+        }
         int index = 1;
         int printCount = 0;
         String outString =
@@ -147,9 +155,13 @@ public class TransactionList {
      * transaction lender
      *
      * @param name User input containing the name of person to search for
+     * @param members The member list to search for the name in
      * @return Returns a String printout of the required list of transactions
      */
-    public String findTransactions(String name) throws LongAhException {
+    public String findTransactions(String name, MemberList members) throws LongAhException {
+        if (!members.isMember(name)) {
+            throw new LongAhException(ExceptionMessage.MEMBER_NOT_FOUND);
+        }
         int index = 1;
         int printCount = 0;
         String outString = String.format("%s is a part of the following list of transaction(s).", name) + "\n";

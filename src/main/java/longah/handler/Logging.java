@@ -1,12 +1,17 @@
 package longah.handler;
 
 import java.util.logging.Logger;
+import java.io.File;
 import java.io.IOException;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.Level;
 
 public class Logging {
+    private static final String loggerDir = "./log";
+    private static final String loggerFile = "./log/LongAh.log";
     private static Logger longAhLogger = Logger.getLogger("LongAh");
 
     /**
@@ -16,10 +21,20 @@ public class Logging {
     public Logging() {
         // @@author FeathersRe
         try {
-            FileHandler handler = new FileHandler("./log/LongAh.log");
+            File f = new File(loggerDir);
+            if (!f.exists()) {
+                f.mkdir();
+            }
+            f = new File(loggerFile);
+            if (!f.exists()) {
+                f.createNewFile();
+            }
+            
+            FileHandler handler = new FileHandler(loggerFile);
             handler.setFormatter(new SimpleFormatter());
             longAhLogger.addHandler(handler);
             longAhLogger.setUseParentHandlers(false);
+            disableConsoleLogging();
         } catch (IOException e) {
             longAhLogger.log(Level.WARNING, "Log data may not be saved due to permission.");
         }
@@ -52,5 +67,14 @@ public class Logging {
      */
     public static void logWarning(String message) {
         longAhLogger.log(Level.WARNING, message);
+    }
+
+    public static void disableConsoleLogging() {
+        Handler[] handlers = longAhLogger.getHandlers();
+        for (Handler handler : handlers) {
+            if (handler instanceof ConsoleHandler) {
+                handler.setLevel(Level.OFF);
+            }
+        }
     }
 }
