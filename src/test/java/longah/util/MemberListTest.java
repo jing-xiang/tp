@@ -183,7 +183,7 @@ public class MemberListTest {
             memberList.addMember("Alice", 5);
             String expected = "Alice: $5.0\n";
             assertEquals(expected, memberList.listMembers());
-            memberList.editMemberName("1 Bob");
+            memberList.editMemberName("Alice", "Bob");
             expected = "Bob: $5.0\n";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
@@ -195,30 +195,14 @@ public class MemberListTest {
      * Tests the unsuccessful edit of name of a member in the group when the index is invalid.
      */
     @Test
-    public void editMemberName_invalidIndexValue_exceptionThrown() {
+    public void editMemberName_invalidMemberName_exceptionThrown() {
         try {
             MemberList memberList = new MemberList();
             memberList.addMember("Alice", 5);
-            memberList.editMemberName("2 Bob");
+            memberList.editMemberName("Charlie", "Bob");
             fail();
         } catch (LongAhException e) {
-            boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.INVALID_INDEX);
-            assertTrue(isMessage);
-        }
-    }
-
-    /**
-     * Tests the unsuccessful edit of name of a member in the group when the index is invalid.
-     */
-    @Test
-    public void editMemberName_invalidIndexSyntax_exceptionThrown() {
-        try {
-            MemberList memberList = new MemberList();
-            memberList.addMember("Alice", 5);
-            memberList.editMemberName("Bob");
-            fail();
-        } catch (LongAhException e) {
-            boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.INVALID_INDEX);
+            boolean isMessage = LongAhException.isMessage(e, ExceptionMessage.MEMBER_NOT_FOUND);
             assertTrue(isMessage);
         }
     }

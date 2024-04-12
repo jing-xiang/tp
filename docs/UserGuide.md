@@ -9,10 +9,10 @@ among friends.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed. 
-2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases)
+2. Download the latest version of `LongAh!` from [here](https://github.com/AY2324S2-CS2113-T15-1/tp/releases).
 3. Copy the JAR file to the folder you want to use as the home folder for your LongAh! application.
 4. Open a command terminal, navigate to the folder containing the JAR file and run the command:
-```dtd
+```
 java -jar tp.jar
 ```
 5. Upon starting the application, you will be prompted to enter your PIN. The user PIN is required to access the application.
@@ -23,12 +23,14 @@ The app will prompt you to create your own PIN if it is your first time using th
 
 ## Command Reference
 
+A quick reference table for all commands is presented below. Certain commands have shortcuts which can be used in place of the provided long form commands as well.
+
 | Task                   | Command Expression                                                                                    | Command Shortcut |
 | ---------------------- |-------------------------------------------------------------------------------------------------------|------------------|
 | Help menu              | `help`                                                                                                | `?`              |
 | Add member             | `add member [name]`                                                                                   | `addm` or `am`   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      | `addt` or `at`   |
-| Add dated transaction  | `add transaction lender t/[DD-MM-YY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YYYY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`    | `addt` or `at`   |
 | Add group              | `add group [name]`                                                                                    | `addg` or `ag`   |
 | List members           | `list members`                                                                                        | `listm` or `lm`  |
 | List transactions      | `list transactions`                                                                                   | `listt` or `lt`  |
@@ -47,7 +49,7 @@ The app will prompt you to create your own PIN if it is your first time using th
 | Disable PIN            | `pin disable`                                                                                         | N/A              |
 | Reset PIN              | `pin reset`                                                                                           | N/A              |
 | Clear all transactions | `clear`                                                                                               | N/A              |
-| Settle up debts        | `settle [member]` OR `settleup [member]                                                               | N/A              |
+| Settle up debts        | `settle [member]` OR `settleup [member]`                                                              | N/A              |
 | Switch groups          | `group [group_name]`                                                                                  | N/A              |
 | View chart             | `view chart`                                                                                          | N/A              |
 | Exit                   | `exit`                                                                                                | N/A              |
@@ -95,6 +97,7 @@ The app will prompt you to create your own PIN if it is your first time using th
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
+  - [Future Improvements](#future-improvements)
 
 <div style="page-break-after: always;"></div>
 
@@ -165,7 +168,7 @@ The PIN TXT file contains the pin hash of each user's PIN for security purposes.
 ## Command Format
 
 A command has the general structure:
-```dtd
+```
 [COMMAND] [SUBCOMMAND] [EXPRESSION]
 ```
 
@@ -185,12 +188,13 @@ help
 
 ### Adding a member: `add member`
 
-Adds a new member to the list of members in LongAh!
+Adds a new member to the list of members in LongAh!.
 
 Format: `add member [NAME]` OR `addm` OR `am`
 
 * Name of new member should not be a duplicate of an existing member.
-* The entered name should only contain alphanumeric characters, no spaces are allowed.
+* The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
+  * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`.
 
 Example of usage:
 ```
@@ -201,28 +205,27 @@ am Charlie
 
 ### Adding a transaction: `add transaction`
 
-Adds a new transaction to the list of transactions in LongAh!
+Adds a new transaction to the list of transactions in LongAh!.
 
 Format: `add transaction [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `addt` OR `at`
 * The transaction supports 1 or more borrower(s), each with custom borrowed amounts.
 * `p/` is the prefix for the borrower's name, and should be followed by the name of the borrower.
 * `a/` is the prefix for the amount borrowed, and should be followed by the amount borrowed by that borrower from the lender.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
+* The `LENDER` AND `BORROWER` should not be the same person.
 
 Example of usage:
 ```
 add transaction Alice p/Bob a/10
 addt Bob p/Alice a/5
 at Alice p/Bob a/7
-```
-or for transactions involving multiple people
-```
+// Multiple Borrowers
 add transaction Alice p/Bob a/10 p/Charlie a/20
 ```
 
 ### Adding a dated transaction: `add transaction`
 
-Adds a new dated transaction to the list of transactions in LongAh!
+Adds a new dated transaction to the list of transactions in LongAh!.
 
 Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...`
 
@@ -261,7 +264,7 @@ Format: `list members` OR `listm` OR `lm`
 * A balance of 0 indicates that the member neither owes nor is owed money.
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add transaction alice p/bob a/5
@@ -280,7 +283,7 @@ Shows a list of all transactions in LongAh!.
 Format: `list transactions` OR `listt` OR `lt`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add transaction alice p/bob a/5
@@ -298,7 +301,7 @@ Calculates the simplest way to repay all debts between all members and shows a l
 Format: `list debts` OR `listd` OR `ld`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
@@ -318,7 +321,7 @@ Shows a list of all groups in LongAh!.
 Format: `list groups` OR `listg` OR `lg`
 
 Example of usage:
-```dtd
+```
 // assume that the group 'Tiktok' already exists
 add group Friends
 add group Family
@@ -337,7 +340,7 @@ Format: `find transactions [MEMBER]` OR `findt` OR `ft`
 * The `MEMBER` should be an existing member.
 
 Example of usage: 
-```dtd
+```
 add member Alice
 add member Bob
 add transaction Alice p/Bob a/5
@@ -362,7 +365,7 @@ Format: `find lender [MEMBER]` OR `findl` OR `fl`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 find lender Alice
 Alice is a lender in the following list of transaction(s).
@@ -379,7 +382,7 @@ Format: `find borrower [MEMBER]` OR `findb` OR `fb`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 find borrower Alice
 Alice is a borrower in the following list of transaction(s).
@@ -396,7 +399,7 @@ Format: `find debts [MEMBER]` OR `findd` OR `fd`
 * The `MEMBER` should be an existing member.
 
 Example of usage:
-```dtd
+```
 // Continuing from above example
 add member Charlie
 add transaction Alice p/Charlie a/3
@@ -451,7 +454,7 @@ Format: `delete group [GROUP_NAME]` OR `deleteg` OR `dg`
 * If all groups are deleted, the Application will automatically prompt you to create a new group.
 
 Example of usage:
-```dtd
+```
 // assume that the group 'Tiktok' already exits
 add group friends
 delete group friends
@@ -463,7 +466,7 @@ list groups
 
 Edits the name of a member in the list of members in LongAh!.
 
-Format: `edit member [OLD_NAME] [NEW_NAME]` OR `editm` OR `em`
+Format: `edit member [OLD_NAME] p/[NEW_NAME]` OR `editm` OR `em`
 * The `OLD_NAME` should be an existing member.
 * The `NEW_NAME` should not be a duplicate of an existing member.
 * All transactions involving the member will be updated.
@@ -480,13 +483,20 @@ Edits the details of a transaction in the list of transactions in LongAh!.
 Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `editt` OR `et`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
+* Transaction date and time can similarly be editted or added through the same format as per [add dated transaction](#adding-a-dated-transaction-add-transaction)
 * Allows for edits to the lender and the borrowers involved in the transaction, as well as the amount.
 * The transaction number can be found by using the `list transactions` command and taking the corresponding index.
 * All debts involving the transaction will be recalculated.
 
 Example of usage:
 ```
-edit transaction 3 Charlie p/Bob a/3 p/Alice a/5
+add member Alice
+add member Bob
+add member Charlie
+add transaction Alice p/Bob a/1
+
+edit transaction 1 Charlie p/Bob a/3 p/Alice a/5
+editt 1 Bob 19-02-2024 1400 p/Charlie a/3
 ```
 
 ### Enabling the user PIN: `pin enable`
@@ -555,7 +565,7 @@ Format: `settle [MEMBER]` OR `settleup [MEMBER]`
 * The `MEMBER` should be a valid debtor in the group (i.e. the member should owe money to other members).
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
@@ -586,7 +596,7 @@ Format: `group [GROUP_NAME]`
 * The `GROUP_NAME` should be an existing group that has been added to LongAh!.
 
 Example of usage:
-```dtd
+```
 // assume that the user is currently managing group 'Tiktok'
 add group friends
 group friends
@@ -600,7 +610,7 @@ Shows a chart of the balances of all members in the group.
 Format: `chart`
 
 Example of usage:
-```dtd
+```
 add member alice
 add member bob
 add member charlie
@@ -639,3 +649,10 @@ exit
 **A**: Install LongAh! on the other computer and replace the empty members, pin, and transaction TXT files it creates with the files containing your data.
 
 ## Known Issues
+
+## Future Improvements
+
+The following quality of life improvements have been taken into consideration and will be implemented in future versions of LongAh!
+
+1. Edit Group Names
+2. Settle with Reference to Specific Lender Only

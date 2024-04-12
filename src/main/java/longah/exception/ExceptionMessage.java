@@ -79,13 +79,13 @@ public enum ExceptionMessage {
             " Use 'reset password'",
             ExceptionType.INFO),
     INVALID_EDIT_COMMAND("Invalid command format." +
-            " Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member INDEX NEW_NAME'",
+            " Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'",
             ExceptionType.INFO),
     INVALID_PIN_COMMAND("Invalid command format." +
             " Use 'pin edit' or 'pin enable' or 'pin disable'",
             ExceptionType.INFO),
     INVALID_EXIT_COMMAND ("Invalid command format." +
-            " Use 'exit' or 'clear'", ExceptionType.INFO),
+            " Use 'exit' or 'close'", ExceptionType.INFO),
     INVALID_CHART_COMMAND ("Invalid command format." +
             " Use 'chart'", ExceptionType.INFO),
     INVALID_HELP_COMMAND ("Invalid command format." +

@@ -2,20 +2,16 @@ package longah.node;
 
 import java.util.ArrayList;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 import longah.util.MemberList;
 import longah.util.Subtransaction;
 import longah.util.TransactionList;
+import longah.handler.Logging;
 import longah.handler.StorageHandler;
 import longah.handler.UI;
 import longah.exception.LongAhException;
 import longah.exception.ExceptionMessage;
 
 public class Group {
-    private static Logger logger = Logger.getLogger("Group Logger");
-
     private MemberList members;
     private TransactionList transactions;
     private StorageHandler storage;
@@ -102,7 +98,7 @@ public class Group {
     public void updateTransactionSolution() throws LongAhException {
         this.members.updateMembersBalance(this.transactions);
         this.transactionSolution = this.members.solveTransactions();
-        logger.log(Level.INFO, "Transaction solution updated");
+        Logging.logInfo("Transaction solution updated.");
     }
 
     /**

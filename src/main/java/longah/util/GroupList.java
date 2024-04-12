@@ -77,6 +77,7 @@ public class GroupList {
 
     /**
      * Loads the group list from the file.
+     * 
      * @throws LongAhException If an I/O exception occurs.
      */
     public static void loadGroupList() throws LongAhException {
@@ -97,7 +98,7 @@ public class GroupList {
     /**
      * Returns the group list.
      *
-     * @return The group list.
+     * @return The group list as a string.
      * @throws LongAhException If an I/O exception occurs.
      */
     public static String getGroupList() throws LongAhException {
