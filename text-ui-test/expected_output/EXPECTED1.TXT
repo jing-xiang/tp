@@ -192,4 +192,4 @@ Transaction time: 01-01-2000 1800
 Borrower 1: Charlie Owed amount: 1.00
 
 
-Enter command: 
+Enter command: Goodbye! Hope to see you again soon!

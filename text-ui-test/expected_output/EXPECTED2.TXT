@@ -11,45 +11,29 @@ Welcome to LongAh!
                               |  $$$$$$/
                                \______/
 Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
-Storage file is corrupted.We recommend running 'clear' or manually resolving the error data.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Invalid group name.
-No groups found. Please give a name for your first group.
-Enter command: Member list is empty.
-Enter command: No transactions found.
-Enter command: No pending payments.
-Enter command: 1. list
-
+Defaulting to the first group. You are now managing: GroupA
+Enter command: Invalid command format. Use 'help'
+Enter command: Invalid command format. Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...
+or 'add group GROUP_NAME'
+Enter command: Duplicate member.
+Enter command: Invalid member name.
+Enter command: Invalid member name.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction format.
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: Invalid DateTime input. Dates of the future are not allowed.
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
 Enter command: Invalid command format. Use 'find transactions', 'find lender', 'find borrower', or 'find debts'
 Enter command: Member not found.
 Enter command: Member not found.
@@ -58,9 +42,9 @@ Enter command: Member not found.
 Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
 Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
 Enter command: Invalid index.
-Enter command: Invalid index.
-Enter command: Invalid index.
-Enter command: Invalid index.
-Enter command: Invalid index.
+Enter command: Invalid transaction format.
+Enter command: Invalid transaction value.
+Enter command: Invalid transaction value.
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
 Enter command: Enter command: Authentication enabled upon startup.
-Enter command: 
+Enter command: Goodbye! Hope to see you again soon!
