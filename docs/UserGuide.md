@@ -23,12 +23,14 @@ The app will prompt you to create your own PIN if it is your first time using th
 
 ## Command Reference
 
+A quick reference table for all commands is presented below. Certain commands have shortcuts which can be used in place of the provided long form commands as well.
+
 | Task                   | Command Expression                                                                                    | Command Shortcut |
 | ---------------------- |-------------------------------------------------------------------------------------------------------|------------------|
 | Help menu              | `help`                                                                                                | `?`              |
 | Add member             | `add member [name]`                                                                                   | `addm` or `am`   |
 | Add transaction        | `add transaction [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`                      | `addt` or `at`   |
-| Add dated transaction  | `add transaction lender t/[DD-MM-YYYY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`      | `addt` or `at`   |
+| Add dated transaction  | `add transaction lender t/[DD-MM-YYYY HHMM] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...`    | `addt` or `at`   |
 | Add group              | `add group [name]`                                                                                    | `addg` or `ag`   |
 | List members           | `list members`                                                                                        | `listm` or `lm`  |
 | List transactions      | `list transactions`                                                                                   | `listt` or `lt`  |
