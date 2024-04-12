@@ -49,7 +49,7 @@ A quick reference table for all commands is presented below. Certain commands ha
 | Disable PIN            | `pin disable`                                                                                         | N/A              |
 | Reset PIN              | `pin reset`                                                                                           | N/A              |
 | Clear all transactions | `clear`                                                                                               | N/A              |
-| Settle up debts        | `settle [member]` OR `settleup [member]                                                               | N/A              |
+| Settle up debts        | `settle [member]` OR `settleup [member]`                                                              | N/A              |
 | Switch groups          | `group [group_name]`                                                                                  | N/A              |
 | View chart             | `view chart`                                                                                          | N/A              |
 | Exit                   | `exit`                                                                                                | N/A              |
