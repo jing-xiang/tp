@@ -157,6 +157,8 @@ public class InputHandler {
         case "group":
             return new SwitchCommand(commandString, taskExpression);
 
+        case "close":
+            // Fallthrough
         case "exit":
             return new ExitCommand(commandString, taskExpression);
 

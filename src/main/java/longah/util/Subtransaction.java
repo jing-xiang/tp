@@ -67,6 +67,8 @@ public class Subtransaction {
      */
     @Override
     public String toString() {
-        return borrower.getName() + " owes " + lender.getName() + " $" + amount;
+        double rounded = (double)Math.round(amount * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+        return borrower.getName() + " owes " + lender.getName() + " $" + roundedString;
     }
 }
