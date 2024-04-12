@@ -25,6 +25,9 @@ import longah.exception.ExceptionMessage;
  * [Lender]SEP[Borrower1]SEP[Value]SEP...
  */
 public class StorageHandler {
+    // Constants
+    private static final double EPSILON = 1e-3; // Double Comparison Epsilon
+
     // ASCII Defined Separator
     private static final String SEPARATOR = String.valueOf(Character.toChars(31));
     private static final String MEMBERS_FILE_STRING = "members.txt";
@@ -155,17 +158,15 @@ public class StorageHandler {
                 }
 
                 for (int i = startOfSubtransactions; i < transactionData.length; i += 2) {
-                    // Subtransaction handling should not handle time component
-                    if (!transactionData[i].contains("-")) { 
-                        Subtransaction subtransaction = parseSubtransaction(transactionData[i],
-                                transactionData[i + 1], lender, members);
-                        subtransactions.add(subtransaction);
-                    }
+                    Subtransaction subtransaction = parseSubtransaction(transactionData[i],
+                            transactionData[i + 1], lender, members);
+                    subtransactions.add(subtransaction);
                 }
 
                 if (startOfSubtransactions == 1) {
                     transaction = new Transaction(lender, subtransactions, members);
                 } else {
+                    transactionTime = transactionData[1];
                     transaction = new Transaction(lender, subtransactions, members, transactionTime);
                 }
                 this.transactions.addTransaction(transaction);
@@ -212,11 +213,11 @@ public class StorageHandler {
         if (members.getMemberListSize() == 0) {
             return true;
         }
-        double total = 0;
+        double total = 0.0;
         for (Member member : members.getMembers()) {
             total += member.getBalance();
         }
-        if (total == 0) {
+        if (Math.abs(total) < EPSILON) {
             return true;
         }
         return false;
