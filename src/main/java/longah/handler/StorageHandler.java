@@ -183,7 +183,7 @@ public class StorageHandler {
                 throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
             }
         }
-        
+
         boolean checksum = checkTransactions(members);
         if (!checksum) {
             throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
