@@ -38,14 +38,17 @@ Given below are my contributions to the project.
 
 * **Documentation**
   * User Guide
-    * Update command reference. [#98](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/98)
-    * Paginate v2.0 UG. [#101](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/101), [#102](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/102)
-    * Update application expected behaviour as of v2.0. [#153](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/153)
+    * Updated command reference. [#98](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/98)
+    * Paginated v2.0 UG. [#101](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/101), [#102](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/102)
+    * Updated application expected behaviour as of v2.0. [#153](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/153)
   * Developer Guide
     * Added user stories and glossary. [#70](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/70)
     * Added implementation details for StorageHandler, Exception and Logging. Added instructions for testing. [#71](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/71)
-    * Add inheritance diagram for `Command`. [#92](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/92)
-    * Update overall class diagram. [#154](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/154)
+    * Added inheritance diagram for `Command`. [#92](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/92)
+    * Updated overall class diagram. [#154](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/154)
+    * Added high-level flowchart. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
+    * Added section on `UI and I/O`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
+    * Added section on `Member and MemberList`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
   
 * **Community**
   * PRs reviewed (with non-trivial review comments): [#31](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/31), [#32](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/32), [#40](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/40), [#49](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/49), [#53](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/53), [#55](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/55), [#61](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/61), [#77](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/77), [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86), [#89](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/89)

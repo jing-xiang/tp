@@ -120,7 +120,9 @@ public class Member {
      * @return A string representation of the member for storage.
      */
     public String toStorageString(String delimiter) {
-        return this.name + delimiter + this.balance;
+        double rounded = (double)Math.round(this.balance * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+        return this.name + delimiter + roundedString;
     }
 
     /**
