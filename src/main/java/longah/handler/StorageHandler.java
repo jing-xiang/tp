@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import longah.node.Member;
 import longah.util.MemberList;
@@ -207,8 +208,22 @@ public class StorageHandler {
         try {
             Member borrower = members.getMember(borrowerName);
             double amount = Double.parseDouble(value);
+
+            if (borrower.equals(lender)) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
+            }
+            // Exception is thrown if the amount borrowed has more than 2dp
+            if (BigDecimal.valueOf(amount).scale() > 2) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+            // Exception is thrown if the amount borrowed is not positive
+            if (amount <= 0) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+
             return new Subtransaction(lender, borrower, amount);
-        } catch (NumberFormatException e) {
+
+        } catch (NumberFormatException | LongAhException e) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
     }
