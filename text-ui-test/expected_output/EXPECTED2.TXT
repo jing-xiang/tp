@@ -1,0 +1,66 @@
+Welcome to LongAh!
+ /$$                                      /$$$$$$  /$$       /$$
+| $$                                     /$$__  $$| $$      | $$
+| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \ $$| $$$$$$$ | $$
+| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$
+| $$      | $$  \ $$| $$  \ $$| $$  \ $$| $$__  $$| $$  \ $$|__/
+| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$
+| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$
+|________/ \______/ |__/  |__/ \____  $$|__/  |__/|__/  |__/|__/
+                               /$$  \ $$
+                              |  $$$$$$/
+                               \______/
+Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
+Storage file is corrupted.We recommend running 'clear' or manually resolving the error data.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Invalid group name.
+No groups found. Please give a name for your first group.
+Enter command: Member list is empty.
+Enter command: No transactions found.
+Enter command: No pending payments.
+Enter command: 1. list
+
+Enter command: Invalid command format. Use 'find transactions', 'find lender', 'find borrower', or 'find debts'
+Enter command: Member not found.
+Enter command: Member not found.
+Enter command: Member not found.
+Enter command: Member not found.
+Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
+Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Enter command: Authentication enabled upon startup.
+Enter command: 

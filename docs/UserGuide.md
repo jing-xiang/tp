@@ -43,7 +43,7 @@ A quick reference table for all commands is presented below. Certain commands ha
 | Delete member          | `delete member [member]`                                                                              | `deletem` or `dm`|
 | Delete transaction     | `delete transaction [transaction_index]`                                                              | `deletet` or `dt`|
 | Delete group           | `delete group [name]`                                                                                 | `deleteg` or `dg`|
-| Edit member            | `edit member [old_name] [new_name]`                                                                   | `editm` or `em`  |
+| Edit member            | `edit member [old_name] p/[new_name]`                                                                 | `editm` or `em`  |
 | Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` | `editt` or `et`  |
 | Enable PIN             | `pin enable`                                                                                          | N/A              |
 | Disable PIN            | `pin disable`                                                                                         | N/A              |

@@ -1,6 +1,7 @@
 help a
 add Charlie p/Dane a/1
-am 123456
+am Charlie
+am 123456;
 am 234 567
 at Charlie Dane Esther
 at Charlie p/Dane p/Ester a/5

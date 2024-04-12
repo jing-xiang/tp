@@ -1,0 +1,21 @@
+Welcome to LongAh!
+ /$$                                      /$$$$$$  /$$       /$$
+| $$                                     /$$__  $$| $$      | $$
+| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \ $$| $$$$$$$ | $$
+| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$
+| $$      | $$  \ $$| $$  \ $$| $$  \ $$| $$__  $$| $$  \ $$|__/
+| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$
+| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$
+|________/ \______/ |__/  |__/ \____  $$|__/  |__/|__/  |__/|__/
+                               /$$  \ $$
+                              |  $$$$$$/
+                               \______/
+Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
+Enter your PIN: Defaulting to the first group. You are now managing: list
+Enter command: Authentication is already enabled.
+Enter command: Authentication disabled upon startup.
+Enter command: Authentication is already disabled.
+Enter command: Authentication enabled upon startup.
+Enter command: Enter your current PIN: Create your 6-digit PIN:
+PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.
+Enter command: 

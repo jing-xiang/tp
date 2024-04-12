@@ -18,12 +18,12 @@ lm
 find transactions Alice
 findt Bob
 ft Charlie
-edit member Alice Dane
-editm Dane Esther
+edit member Alice p/Dane
+editm Dane p/Esther
 find borrower Esther
 findb Bob
 fb Charlie
-em Bob Dane
+em Bob p/Dane
 find lender Charlie
 findl Dane
 fl Esther
