@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import longah.node.Member;
 import longah.util.MemberList;
@@ -137,6 +138,7 @@ public class StorageHandler {
      */
     public void loadTransactionsData() throws LongAhException {
         Scanner sc = this.scanners[1];
+        boolean isError = false;
         while (sc.hasNextLine()) {
             try {
                 String data = sc.nextLine();
@@ -148,7 +150,7 @@ public class StorageHandler {
                 String lenderName = transactionData[0];
                 String transactionTime = null;
                 Member lender = members.getMember(lenderName);
-                Transaction transaction = null;
+                Transaction transaction;
                 ArrayList<Subtransaction> subtransactions = new ArrayList<>();
                 int startOfSubtransactions = 1;
 
@@ -158,9 +160,15 @@ public class StorageHandler {
                 }
 
                 for (int i = startOfSubtransactions; i < transactionData.length; i += 2) {
-                    Subtransaction subtransaction = parseSubtransaction(transactionData[i],
-                            transactionData[i + 1], lender, members);
-                    subtransactions.add(subtransaction);
+                    try {
+                        Subtransaction subtransaction = parseSubtransaction(transactionData[i],
+                                transactionData[i + 1], lender, members);
+                        subtransactions.add(subtransaction);
+                    } catch (LongAhException e) {
+                        // Skip the subtransaction if it is invalid
+                        isError = true;
+                        continue;
+                    }
                 }
 
                 if (startOfSubtransactions == 1) {
@@ -180,6 +188,9 @@ public class StorageHandler {
         if (!checksum) {
             throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
         }
+        if (isError) {
+            UI.showMessage("Some transactions are invalid and have been skipped.");
+        }
     }
 
     /**
@@ -197,8 +208,22 @@ public class StorageHandler {
         try {
             Member borrower = members.getMember(borrowerName);
             double amount = Double.parseDouble(value);
+
+            if (borrower.equals(lender)) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
+            }
+            // Exception is thrown if the amount borrowed has more than 2dp
+            if (BigDecimal.valueOf(amount).scale() > 2) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+            // Exception is thrown if the amount borrowed is not positive
+            if (amount <= 0) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+
             return new Subtransaction(lender, borrower, amount);
-        } catch (NumberFormatException e) {
+            
+        } catch (NumberFormatException | LongAhException e) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
     }
