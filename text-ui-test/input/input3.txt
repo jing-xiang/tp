@@ -1,0 +1,37 @@
+123456
+pin disable
+pin enable
+pin reset
+123456
+234567
+group GroupB
+am Alice
+am Bob
+am Charlie
+at Alice p/Bob a/1
+at Alice p/Bob a/2 p/Charlie a/3
+at Bob p/Alice a/4 p/Charlie a/5
+lm
+lt
+delete member Bob
+lm
+lt
+delete transaction 1
+lm
+lt
+at Alice p/Charlie a/3
+clear
+Y
+lm
+lt
+group GroupA
+filter 01-01-2000 1800
+filter a/10-01-2000 1800
+filter b/01-01-2005 1800
+filter a/31-12-1999 0000 b/01-01-2005 0000
+settle Dane
+group GroupB
+delete group GroupB
+lm
+lt
+exit

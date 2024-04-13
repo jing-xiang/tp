@@ -23,5 +23,6 @@ public class DeleteGroupCommand extends Command {
      *
      */
     public void execute(Group group) throws LongAhException {
-        GroupList.deleteGroup(this.taskExpression);}
+        GroupList.deleteGroup(this.taskExpression);
+    }
 }

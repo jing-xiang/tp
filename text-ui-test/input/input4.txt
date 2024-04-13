@@ -1,0 +1,30 @@
+000000
+234567
+filter 01-01-1999 1800
+filter 00-01-2000 1800
+filter a/01-01-2010 1900
+filter b/01-01-2002 0000 a/31-12-1999 0000
+filter
+delete
+delete a
+delete group 123
+delete member Zeta
+delete transaction 0
+delete transaction -1
+clear A
+clear
+N
+clear
+a
+settle
+settle A
+group 123
+pin enable
+pin disable
+pin disable
+pin reset
+123456
+pin
+pin a
+pin enable
+close

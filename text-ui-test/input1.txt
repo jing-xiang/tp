@@ -1,9 +1,0 @@
-123456
-testGroup
-123456
-add member Amy
-add member Brandon
-list members
-add transaction Amy p/Brandon a/5
-list debts
-exit

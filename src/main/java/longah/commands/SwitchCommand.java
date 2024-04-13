@@ -31,6 +31,7 @@ public class SwitchCommand extends Command {
         }
         Group newGroup = GroupList.getGroup(this.taskExpression);
         GroupList.switchActiveGroup(newGroup);
-        UI.showMessage("Switching to group: " + newGroup.getGroupName());
+        UI.showMessage("Switching groups...");
+        UI.showMessage("You are now managing: " + newGroup.getGroupName());
     }
 }

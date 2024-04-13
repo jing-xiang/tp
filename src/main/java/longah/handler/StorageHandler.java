@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import longah.node.Member;
 import longah.util.MemberList;
@@ -25,6 +26,9 @@ import longah.exception.ExceptionMessage;
  * [Lender]SEP[Borrower1]SEP[Value]SEP...
  */
 public class StorageHandler {
+    // Constants
+    private static final double EPSILON = 1e-3; // Double Comparison Epsilon
+
     // ASCII Defined Separator
     private static final String SEPARATOR = String.valueOf(Character.toChars(31));
     private static final String MEMBERS_FILE_STRING = "members.txt";
@@ -134,6 +138,7 @@ public class StorageHandler {
      */
     public void loadTransactionsData() throws LongAhException {
         Scanner sc = this.scanners[1];
+        boolean isError = false;
         while (sc.hasNextLine()) {
             try {
                 String data = sc.nextLine();
@@ -145,7 +150,7 @@ public class StorageHandler {
                 String lenderName = transactionData[0];
                 String transactionTime = null;
                 Member lender = members.getMember(lenderName);
-                Transaction transaction = null;
+                Transaction transaction;
                 ArrayList<Subtransaction> subtransactions = new ArrayList<>();
                 int startOfSubtransactions = 1;
 
@@ -155,17 +160,21 @@ public class StorageHandler {
                 }
 
                 for (int i = startOfSubtransactions; i < transactionData.length; i += 2) {
-                    // Subtransaction handling should not handle time component
-                    if (!transactionData[i].contains("-")) { 
+                    try {
                         Subtransaction subtransaction = parseSubtransaction(transactionData[i],
                                 transactionData[i + 1], lender, members);
                         subtransactions.add(subtransaction);
+                    } catch (LongAhException e) {
+                        // Skip the subtransaction if it is invalid
+                        isError = true;
+                        continue;
                     }
                 }
 
                 if (startOfSubtransactions == 1) {
                     transaction = new Transaction(lender, subtransactions, members);
                 } else {
+                    transactionTime = transactionData[1];
                     transaction = new Transaction(lender, subtransactions, members, transactionTime);
                 }
                 this.transactions.addTransaction(transaction);
@@ -174,10 +183,13 @@ public class StorageHandler {
                 throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
             }
         }
-        
+
         boolean checksum = checkTransactions(members);
         if (!checksum) {
             throw new LongAhException(ExceptionMessage.STORAGE_FILE_CORRUPTED);
+        }
+        if (isError) {
+            UI.showMessage("Some transactions are invalid and have been skipped.");
         }
     }
 
@@ -196,8 +208,22 @@ public class StorageHandler {
         try {
             Member borrower = members.getMember(borrowerName);
             double amount = Double.parseDouble(value);
+
+            if (borrower.equals(lender)) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_FORMAT);
+            }
+            // Exception is thrown if the amount borrowed has more than 2dp
+            if (BigDecimal.valueOf(amount).scale() > 2) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+            // Exception is thrown if the amount borrowed is not positive
+            if (amount <= 0) {
+                throw new LongAhException(ExceptionMessage.INVALID_TRANSACTION_VALUE);
+            }
+
             return new Subtransaction(lender, borrower, amount);
-        } catch (NumberFormatException e) {
+          
+        } catch (NumberFormatException | LongAhException e) {
             throw new LongAhException(ExceptionMessage.INVALID_STORAGE_CONTENT);
         }
     }
@@ -212,11 +238,11 @@ public class StorageHandler {
         if (members.getMemberListSize() == 0) {
             return true;
         }
-        double total = 0;
+        double total = 0.0;
         for (Member member : members.getMembers()) {
             total += member.getBalance();
         }
-        if (total == 0) {
+        if (Math.abs(total) < EPSILON) {
             return true;
         }
         return false;

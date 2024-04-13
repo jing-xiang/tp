@@ -18,7 +18,7 @@ public class EditTransactionCommand extends Command {
     }
     
     /**
-     * Executes the delete transaction command.
+     * Executes the edit transaction command.
      * 
      * @param group The group to execute the command on.
      */
@@ -27,6 +27,5 @@ public class EditTransactionCommand extends Command {
         MemberList members = group.getMemberList();
         transactions.editTransactionList(taskExpression, members);
         group.updateTransactionSolution();
-        group.saveAllData();
-    }
+        group.saveAllData();}
 }
