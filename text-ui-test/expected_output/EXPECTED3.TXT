@@ -102,4 +102,37 @@ Enter command: Remaining groups:
 
 You have deleted the active group that you are managing.
 Defaulting back to the first group in the list. You are now managing: GroupA
+Enter command: Esther: $0.00
+Dane: -$.00
+Charlie: $0.00
+
+Enter command: 1.
+Lender: Esther
+Borrower 1: Dane Owed amount: 9.00
+
+2.
+Lender: Dane
+Borrower 1: Charlie Owed amount: 1.55
+
+3.
+Lender: Charlie
+Borrower 1: Esther Owed amount: 2.00
+Borrower 2: Dane Owed amount: 3.10
+
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: 3.15
+
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: 1.00
+
+6.
+Lender: Dane
+Borrower 1: Esther Owed amount: 3.85
+Borrower 2: Charlie Owed amount: 2.55
+
+
 Enter command: Goodbye! Hope to see you again soon!
