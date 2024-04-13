@@ -30,6 +30,13 @@ Given below are my contributions to the project.
     * *Logging Abstraction*: Encapsulation of logging logic for consistent logging across the application.
   * Justification: Abstraction of commands, exceptions, and logging enhances the overall structure and maintainability of the codebase. It promotes separation of concerns, making it easier to manage and extend different aspects of the application independently.
 
+* **General Contributions**: Improve text UI testing
+  * What it does
+    * Carry out automated testing as if under use by a normal user. Simulates multiple use sessions.
+  * Justification: Helps to catch bugs that may show up over the course of a normal use case.
+  * Impact
+    * Identified and rectified bugs relating to double representation in storage and list commands. [#160](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/160)
+
 * **Code Contributed**: [RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=1simjustin&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Project Management**
