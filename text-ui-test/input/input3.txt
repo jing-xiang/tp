@@ -31,4 +31,6 @@ filter a/10-01-2000 1800
 filter b/01-01-2005 1800
 filter a/31-12-1999 0000 b/01-01-2005 0000
 settle Dane
+group GroupB
+delete group GroupB
 exit

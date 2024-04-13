@@ -96,4 +96,10 @@ Borrower 1: Charlie Owed amount: 1.00
 Enter command: Dane has repaid Esther $3.85
 Dane has repaid Charlie $2.55
 Dane has no more debts!
+Enter command: Switching to group: GroupB
+Enter command: Remaining groups:
+1. GroupA
+
+You have deleted the active group that you are managing.
+Defaulting back to the first group in the list. You are now managing: GroupA
 Enter command: Goodbye! Hope to see you again soon!
