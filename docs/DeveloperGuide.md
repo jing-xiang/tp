@@ -777,7 +777,9 @@ Warning: Text UI Testing has been configured to clear all past data records to s
 
 ## Future Enhancements
 
-1. Inclusion of anomaly detection algorithms to flag out potentially erroneous transactions.
-2. Adding of further details tagged to each transaction and allow for searching of transactions based on these details.
-3. Create a reminder system to inform users of upcoming events or to warn them to settle payments.
-4. Allow the setting up of recurring transactions such as credit is deducted periodically.
+1. Allow methods for undo-ing previous commands.
+2. Add page-scrolling for `list`, `find` and `filter` commands to reduce screen clogging.
+3. Inclusion of anomaly detection algorithms to flag out potentially erroneous transactions.
+4. Adding of further details tagged to each transaction and allow for searching of transactions based on these details.
+5. Create a reminder system to inform users of upcoming events or to warn them to settle payments.
+6. Allow the setting up of recurring transactions such as credit is deducted periodically.

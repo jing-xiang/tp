@@ -13,7 +13,7 @@ Welcome to LongAh!
 Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
 Error reading saved PIN and authentication enabled state.
 Create your 6-digit PIN:
-PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.
+PIN saved successfully! You can enter 'pin enable' to enable authentication upon startup.
 No groups found. Please give a name for your first group.
 Enter command: Here are the full list of commands available:
 

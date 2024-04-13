@@ -38,7 +38,7 @@ Testing Purpose: Unsuccessful execution of `help`, `list`, `add`, `find` and `ed
 
 Consists of `input3.txt` and `EXPECTED3.txt`.
 
-Testing Purpose: Successful execution of `delete`, `clear`, `group` and `pin` commands (cumulatively group-level and account-level commands).
+Testing Purpose: Successful execution of `filter`, `delete`, `clear`, `group` and `pin` commands (cumulatively group-level and account-level commands).
 
 ### Group 4 Files
 
