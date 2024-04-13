@@ -14,6 +14,8 @@ at Esther p/Esther a/1
 at Charlie t/2001-01-01 1800 p/Dane a/1 p/Esther a/2
 at Charlie t/01-01-2099 1800 p/Dane a/1 p/Esther a/2
 at Charlie t/01-01-2000 2500 p/Dane a/1 p/Esther a/2
+at Charlie t/40-01-2000 1800 p/Dane a/1 p/Esther a/2
+at Charlie t/01-15-2000 1800 p/Dane a/1 p/Esther a/2
 list
 lm a
 lt a

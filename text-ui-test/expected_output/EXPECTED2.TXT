@@ -29,6 +29,8 @@ Enter command: Invalid transaction format.
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
 Enter command: Invalid DateTime input. Dates of the future are not allowed.
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
 Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
 Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
 Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'

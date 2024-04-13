@@ -28,6 +28,7 @@ find lender Charlie
 findl Dane
 fl Esther
 edit transaction 1 Esther p/Dane a/9
+addt Dane t/02-02-2000 1000 p/Esther a/3.15
 at Dane t/01-01-2000 1800 p/Charlie a/1.00
 lt
 exit
