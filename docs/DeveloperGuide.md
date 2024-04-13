@@ -773,8 +773,6 @@ When running tests on a UNIX-based system, run the following command from the sp
 ./runtest.sh
 ```
 
-Warning: Text UI Testing has been configured to clear all past data records to simulate a fresh application starting when the above commands are invoked. This WILL result in loss of data from previous runs.
-
 ## Future Enhancements
 
 1. Allow methods for undo-ing previous commands.

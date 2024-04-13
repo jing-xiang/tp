@@ -5,8 +5,6 @@ pushd %~dp0
 cd ..
 call gradlew clean shadowJar
 
-if exist data\ rmdir /s /q data\
-
 cd build\libs
 for /f "tokens=*" %%a in (
     'dir /b *.jar'
@@ -23,6 +21,11 @@ java -jar %jarloc% < ..\..\text-ui-test\input\input2.txt > ..\..\text-ui-test\ac
 java -jar %jarloc% < ..\..\text-ui-test\input\input3.txt > ..\..\text-ui-test\actual_output\ACTUAL3.TXT
 java -jar %jarloc% < ..\..\text-ui-test\input\input4.txt > ..\..\text-ui-test\actual_output\ACTUAL4.TXT
 java -jar %jarloc% < ..\..\text-ui-test\input\input5A.txt > ..\..\text-ui-test\actual_output\ACTUAL5A.TXT
+
+FC data\GroupA\members.txt ..\..\text-ui-test\expected_data\EXPECTED_MEMBER.TXT >NUL && set /a ERROR_COUNT=ERROR_COUNT || (set /a ERROR_COUNT+=1 && set FAILED_TESTS=%FAILED_TESTS% MEMBER)
+FC data\GroupA\transactions.txt ..\..\text-ui-test\expected_data\EXPECTED_TRANSACTION.TXT >NUL && set /a ERROR_COUNT=ERROR_COUNT || (set /a ERROR_COUNT+=1 && set FAILED_TESTS=%FAILED_TESTS% TRANSACTIONS)
+FC data\groupList.txt ..\..\text-ui-test\expected_data\EXPECTED_GRPLIST.TXT >NUL && set /a ERROR_COUNT=ERROR_COUNT || (set /a ERROR_COUNT+=1 && set FAILED_TESTS=%FAILED_TESTS% GRPLIST)
+FC data\pin.txt ..\..\text-ui-test\expected_data\EXPECTED_PIN.TXT >NUL && set /a ERROR_COUNT=ERROR_COUNT || (set /a ERROR_COUNT+=1 && set FAILED_TESTS=%FAILED_TESTS% PIN)
 
 cd ..\..\text-ui-test
 

@@ -51,3 +51,9 @@ Testing Purpose: Unsuccessful execution of `filter`, `delete`, `clear`, `settle`
 Consists of `input5A.txt`, `input5B.txt`, `EXPECTED5A.TXT` and `EXPECTED5B.TXT`.
 
 Testing Purpose: Closure of application during startup sequence. 5A tests for closure during PIN authentication while 5B tests for closure during group creation.
+
+### Data Files
+
+Consists of `EXPECTED_GRPLIST.TXT`, `EXPECTED_MEMBER.TXT`, `EXPECTED_PIN.TXT` and `EXPECTED_TRANSACTION.TXT`.
+
+Testing Purpose: Successful execution of storage-related commands and saving of non-corrupt data to storage.
