@@ -2,7 +2,6 @@ package longah.commands.edit;
 
 import longah.commands.Command;
 import longah.exception.LongAhException;
-import longah.handler.UI;
 import longah.node.Group;
 import longah.util.MemberList;
 import longah.util.TransactionList;
@@ -19,7 +18,7 @@ public class EditTransactionCommand extends Command {
     }
     
     /**
-     * Executes the delete transaction command.
+     * Executes the edit transaction command.
      * 
      * @param group The group to execute the command on.
      */
@@ -28,7 +27,5 @@ public class EditTransactionCommand extends Command {
         MemberList members = group.getMemberList();
         transactions.editTransactionList(taskExpression, members);
         group.updateTransactionSolution();
-        group.saveAllData();
-        UI.showMessage("Transaction edited successfully!");
-    }
+        group.saveAllData();}
 }

@@ -33,7 +33,10 @@ public class TransactionList {
      */
     public void addTransaction(String expression, MemberList memberList)
              throws LongAhException {
-        this.transactions.add(new Transaction(expression, memberList));
+        Transaction toAddTransaction = new Transaction(expression, memberList);
+        this.transactions.add(toAddTransaction);
+        UI.showMessage("Transaction added successfully!");
+        UI.showMessage(toAddTransaction.toString());
     }
 
     /**
@@ -56,8 +59,9 @@ public class TransactionList {
         if (index < 0 || index >= this.transactions.size()) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
-        this.transactions.remove(index);
-        UI.showMessage("Transaction removed successfully.");
+        Transaction removedTransaction = this.transactions.remove(index);
+        UI.showMessage("Transaction #" + indexString + " removed successfully.");
+        UI.showMessage(removedTransaction.toString());
     }
 
     /**
@@ -307,6 +311,8 @@ public class TransactionList {
                 throw new LongAhException(ExceptionMessage.INVALID_INDEX);
             }
             transactions.get(index).editTransaction(indexTransactionSplice[1], memberList);
+            UI.showMessage("Transaction #" + (index + 1) + " edited successfully.");
+            UI.showMessage(transactions.get(index).toString());
         } catch (NumberFormatException e) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
