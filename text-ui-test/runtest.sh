@@ -24,10 +24,7 @@ check_test() {
     dos2unix "$expected_output-UNIX.TXT" "$actual_output"
     diff "$expected_output-UNIX.TXT" "$actual_output" > /dev/null
     
-    if [ $? -eq 0 ]; then
-        echo "Test $test_name passed!"
-    else
-        echo "Test $test_name failed!"
+    if [ $? -ne 0 ]; then
         eval "$error_count_ref+=1"
         eval "$failed_tests_ref+=\" $test_name\""
     fi
