@@ -98,7 +98,7 @@ public class PINHandler {
             String hashedPinHex = new BigInteger(1, hashedPin).toString(16);
             savedPin = hashedPinHex;
             savePinAndAuthenticationEnabled();
-            UI.showMessage("PIN saved successfully! You can enter 'pin disable' to login automatically upon startup.");
+            UI.showMessage("PIN saved successfully! You can enter 'pin enable' to enable authentication upon startup.");
             Logging.logInfo("PIN saved successfully!");
         } catch (NoSuchAlgorithmException e) {
             UI.showMessage("Error saving PIN. Please try again.");

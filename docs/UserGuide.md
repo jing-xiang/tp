@@ -501,7 +501,7 @@ editt 1 Bob 19-02-2024 1400 p/Charlie a/3
 
 ### Enabling the user PIN: `pin enable`
 
-Enables the user to set a PIN for the application. (enabled by default)
+Enables user PIN authentication for the application. (disabled by default)
 
 Format: `pin enable`
 
@@ -512,7 +512,7 @@ pin enable
 
 ### Disabling the user PIN: `pin disable`
 
-Disables the user PIN for the application. 
+Disables user PIN authentication for the application. 
 
 Format: `pin disable`
 
@@ -523,7 +523,7 @@ pin disable
 
 ### Resetting user PIN: `pin reset`
 
-Resets the user PIN for the application. Follow the instructions as prompted to reset the PIN.
+Resets the user's PIN for the application. Follow the instructions as prompted to reset the PIN.
 
 Format: `pin reset`
 * The new PIN should only contain numbers (0-9).
