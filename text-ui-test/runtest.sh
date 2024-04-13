@@ -24,8 +24,9 @@ check_test() {
     # Run the test and generate actual output
     java -jar "$(find ../build/libs/ -mindepth 1 -print -quit)" < "$input_file" > "$actual_output"
 
-    # Compare actual and expected output
-    diff "$expected_output" "$actual_output" > /dev/null
+    cp "$expected_output" "$expected_output-UNIX.TXT"
+    dos2unix "$expected_output-UNIX.TXT" "$actual_output"
+    diff "$expected_output-UNIX.TXT" "$actual_output"
     
     if [ $? -ne 0 ]
     then
