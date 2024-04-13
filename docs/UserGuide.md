@@ -43,7 +43,7 @@ A quick reference table for all commands is presented below. Certain commands ha
 | Delete member          | `delete member [member]`                                                                              | `deletem` or `dm`|
 | Delete transaction     | `delete transaction [transaction_index]`                                                              | `deletet` or `dt`|
 | Delete group           | `delete group [name]`                                                                                 | `deleteg` or `dg`|
-| Edit member            | `edit member [old_name] [new_name]`                                                                   | `editm` or `em`  |
+| Edit member            | `edit member [old_name] p/[new_name]`                                                                 | `editm` or `em`  |
 | Edit transaction       | `edit transaction [transaction_index] [lender] p/[borrower1] a/[amount] p/[borrower2] a/[amount] ...` | `editt` or `et`  |
 | Enable PIN             | `pin enable`                                                                                          | N/A              |
 | Disable PIN            | `pin disable`                                                                                         | N/A              |
@@ -66,8 +66,9 @@ A quick reference table for all commands is presented below. Certain commands ha
     - [Group Balances \& Expense Tracking](#group-balances--expense-tracking)
     - [Debt Simplification](#debt-simplification)
     - [Security](#security)
-    - [Saving the data](#saving-the-data)
-    - [Editing the data file](#editing-the-data-file)
+    - [Data Score](#saving-the-data)
+    - [Data Editing](#editing-the-data-file)
+    - [Chart Visualization](#chart-visualization)
   - [Command Format](#command-format)
     - [Viewing help: `help`](#viewing-help-help)
     - [Adding a member: `add member`](#adding-a-member-add-member)
@@ -127,7 +128,7 @@ Protecting sensitive financial data is paramount, which is why LongAh! prioritiz
 
 <div style="page-break-after: always;"></div>
 
-### Saving the data
+### Data Storage
 LongAh! data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 The file is also created automatically if it does not exist.
 
@@ -158,10 +159,13 @@ If all is well, LongAh will save the files in the following data structure durin
 
 Note: It it not recommended to edit any data files manually. Corrupt lines of data will be ignored and overwritten over the course of the use of the application.
 
-### Editing the data file
+### Data Editing
 
 LongAh! data is saved as a TXT file in the hard disk. Advanced users are welcome to edit the data file directly, but please ensure that the data is in the correct format.
 The PIN TXT file contains the pin hash of each user's PIN for security purposes. It is not recommended to edit this file directly.
+
+### Chart Visualization
+The XChart feature in LongAh! provides a visual representation of the balances of all members in the current group. 
 
 <div style="page-break-after: always;"></div>
 
@@ -350,11 +354,11 @@ find transactions Alice
 Alice is a part of the following list of transaction(s).
 1.
 Lender: Alice
-Borrower 1: Bob Owed amount: 5.00
+Borrower 1: Bob Owed amount: $5.00
 
 2.
 Lender: Bob
-Borrower 1: Alice Owed amount: 3.00
+Borrower 1: Alice Owed amount: $3.00
 ```
 
 ### Find Lender `find lender`
@@ -371,7 +375,7 @@ find lender Alice
 Alice is a lender in the following list of transaction(s).
 1.
 Lender: Alice
-Borrower 1: Bob Owed amount: 5.00
+Borrower 1: Bob Owed amount: $5.00
 ```
 
 ### Find Borrower `find borrower`
@@ -388,7 +392,7 @@ find borrower Alice
 Alice is a borrower in the following list of transaction(s).
 1.
 Lender: Bob
-Borrower 1: Alice Owed amount: 3.00
+Borrower 1: Alice Owed amount: $3.00
 ```
 
 ### Find Debts `find debts`

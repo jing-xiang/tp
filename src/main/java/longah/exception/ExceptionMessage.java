@@ -58,7 +58,7 @@ public enum ExceptionMessage {
             " Use 'find transactions', 'find lender', 'find borrower', or 'find debts'",
             ExceptionType.INFO),
 
-    INVALID_FILTER_COMMAND ("Invalid filter command." +
+    INVALID_FILTER_COMMAND ("Invalid filter command. " +
             "Use 'filter CRITERIA'",
             ExceptionType.INFO),
     INVALID_FILTER_DATETIME_COMMAND("Invalid filter datetime command." +

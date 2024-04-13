@@ -28,12 +28,12 @@ public class FilterDateTimeCommand extends Command {
         TransactionList transactions = group.getTransactionList();
         String message;
         if (taskExpression.contains("b/") && taskExpression.contains("a/")) {
-            String[] splitedExpression = taskExpression.split(" b/");
-            if (splitedExpression.length < 2 || !splitedExpression[0].contains("a/")) {
+            String[] splitExpression = taskExpression.split(" b/");
+            if (splitExpression.length < 2 || !splitExpression[0].contains("a/")) {
                 throw new LongAhException(ExceptionMessage.INVALID_FILTER_DATETIME_COMMAND);
             }
-            String fromDateTimeExpression = splitedExpression[0].replaceAll("a/", "");
-            String toDateTimeExpression = splitedExpression[1].trim();
+            String fromDateTimeExpression = splitExpression[0].replaceAll("a/", "");
+            String toDateTimeExpression = splitExpression[1].trim();
             message = transactions.filterTransactionsBetweenDateTime(fromDateTimeExpression, toDateTimeExpression);
         } else if (taskExpression.contains("a/") && !taskExpression.contains("b/")) {
             message = transactions.filterTransactionsAfterDateTime(taskExpression.replaceAll("a/",""));

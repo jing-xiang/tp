@@ -39,7 +39,7 @@ public class HelpCommand extends Command {
         UI.printSeparator();
         UI.showMessage("1. `add member [NAME]` - Add a new member to the group.");
         UI.showMessage("2. `add transaction [LENDER] [DD-MM-YYYY HHMM] p/[BORROWER1] a/[AMOUNT OWED]\n" +
-                "p/[BORROWER2] a/[AMOUNTED OWED] ...` - Add a new transaction. (dates are optional)");
+                "p/[BORROWER2] a/[AMOUNTED OWED] ...` - Add a new transaction. (date/time inputs are optional)");
         UI.showMessage("3. 'add group [GROUP NAME]' - Add a new group.\n");
         UI.showMessage("LIST commands: ");
         UI.printSeparator();
@@ -77,9 +77,10 @@ public class HelpCommand extends Command {
         UI.showMessage("20. `settleup [MEMBER NAME]` - Settle all debts of the member.");
         UI.showMessage("21. `clear` - Clear all transaction data in the group.");
         UI.showMessage("22. 'group [GROUP NAME]' - Switch to another group with specified name.");
-        UI.showMessage("23. `chart` - Display a chart of debts in the group.");
-        UI.showMessage("24. `exit` - Exit the application.");
-        UI.showMessage("25. `help` - Display the list of commands.\n");
+        UI.showMessage("23. `filter` [TIME PERIOD] - Filter transactions by time period.");
+        UI.showMessage("24. `chart` - Display a chart of debts in the group.");
+        UI.showMessage("25. `exit` - Exit the application.");
+        UI.showMessage("26. `help` - Display the list of commands.\n");
         UI.showMessage("For more information on a specific command, " +
                 "or view command shortcuts, do refer to our user guide.");
     }
