@@ -19,7 +19,7 @@ check_test() {
     local expected_output="$2"
     local actual_output="$3"
     local test_name="$4"
-    local error_count_ref="$5"
+    local -n error_count_ref="$5"
     local failed_tests_ref="$6"
     
     # Run the test and generate actual output
@@ -31,7 +31,7 @@ check_test() {
     
     if [ $? -ne 0 ]
     then
-        eval "$error_count_ref+=1"
+        ((error_count_ref++))
         eval "$failed_tests_ref+=\" $test_name\""
     fi
 }
