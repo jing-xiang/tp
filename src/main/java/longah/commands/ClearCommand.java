@@ -30,7 +30,7 @@ public class ClearCommand extends Command {
         }
         // Additional message to ask user for confirmation
         UI.showMessage("Are you sure you want to clear all transactions? (Y/N)");
-        UI.showMessage("WARNING: This action cannot be undone. All transaction data will be lost.");
+        UI.showMessage("This action cannot be undone. All transaction data will be lost.");
         UI.showMessage("Enter 'N' or any other key to cancel.");
         String confirmation = UI.getUserInput();
         if (confirmation.equalsIgnoreCase("Y")) {
