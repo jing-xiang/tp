@@ -40,8 +40,7 @@ public enum ExceptionMessage {
     STORAGE_FILE_NOT_READ ("File not read.", ExceptionType.WARNING),
     STORAGE_FILE_NOT_WRITTEN ("File not written.", ExceptionType.WARNING),
     INVALID_STORAGE_CONTENT ("Invalid content in storage file, line ignored.", ExceptionType.WARNING),
-    STORAGE_FILE_CORRUPTED ("Storage file is corrupted." + 
-                "We recommend running 'clear' or manually resolving the error data.", ExceptionType.WARNING),
+    STORAGE_FILE_CORRUPTED ("Storage file corrupted, group has been excluded.", ExceptionType.WARNING),
     IO_EXCEPTION ("An error occurred while reading/writing to the file.", ExceptionType.WARNING),
     // Ui exceptions
     INVALID_COMMAND ("Invalid command. Use 'help' to see the list of commands.",
@@ -53,7 +52,7 @@ public enum ExceptionMessage {
             "or 'add group GROUP_NAME'",
             ExceptionType.INFO),
     INVALID_LIST_COMMAND ("Invalid command format." +
-            " Use 'list members', 'list transactions', or 'list debts'",
+            " Use 'list members', 'list transactions', or 'list debts' or 'list groups'",
             ExceptionType.INFO),
     INVALID_FIND_COMMAND ("Invalid command format." +
             " Use 'find transactions', 'find lender', 'find borrower', or 'find debts'",
@@ -82,7 +81,7 @@ public enum ExceptionMessage {
             " Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'",
             ExceptionType.INFO),
     INVALID_PIN_COMMAND("Invalid command format." +
-            " Use 'pin edit' or 'pin enable' or 'pin disable'",
+            " Use 'pin reset' or 'pin enable' or 'pin disable'",
             ExceptionType.INFO),
     INVALID_EXIT_COMMAND ("Invalid command format." +
             " Use 'exit' or 'close'", ExceptionType.INFO),

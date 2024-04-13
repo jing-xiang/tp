@@ -2,6 +2,7 @@ package longah.util;
 
 import java.util.ArrayList;
 
+import longah.handler.UI;
 import longah.node.DateTime;
 import longah.node.Member;
 import longah.node.Transaction;
@@ -56,6 +57,7 @@ public class TransactionList {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
         this.transactions.remove(index);
+        UI.showMessage("Transaction removed successfully.");
     }
 
     /**
@@ -65,6 +67,7 @@ public class TransactionList {
     public void clear(MemberList memberList) {
         this.transactions.clear();
         memberList.clearBalances();
+        UI.showMessage("All transaction records have been cleared.");
     }
 
     /**

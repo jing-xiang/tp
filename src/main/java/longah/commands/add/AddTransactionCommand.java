@@ -1,6 +1,7 @@
 package longah.commands.add;
 
 import longah.commands.Command;
+import longah.handler.UI;
 import longah.node.Group;
 import longah.util.MemberList;
 import longah.util.TransactionList;
@@ -28,5 +29,6 @@ public class AddTransactionCommand extends Command {
         transactions.addTransaction(taskExpression, members);
         group.updateTransactionSolution();
         group.saveAllData();
+        UI.showMessage("Transaction added successfully!");
     }
 }
