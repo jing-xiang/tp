@@ -45,7 +45,7 @@ check_data() {
 
     cp "$expected_output.TXT" "$expected_output-UNIX.TXT"
     dos2unix "$expected_output-UNIX.TXT" "$actual_output"
-    diff "$expected_output-UNIX.TXT" "$actual_output"
+    diff --strip-trailing-cr "$expected_output-UNIX.TXT" "$actual_output"
     
     if [ $? -ne 0 ]
     then
