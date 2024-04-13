@@ -53,6 +53,8 @@ Given below are my contributions to the project.
     * Added section on `UI and I/O`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
     * Added section on `Member and MemberList`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
 
+<div style="page-break-after: always;"></div>
+
 * **Project Management**
   * Maintained issues and managed milestones.
   * In charge of issues assignee allocation.
