@@ -48,7 +48,11 @@ Enter command: Enter command: Alice: $0.00
 Charlie: $0.00
 
 Enter command: No transactions found.
-Enter command: Enter command: Enter command: Alice: $0.00
+Enter command: Enter command: Are you sure you want to clear all transactions? (Y/N)
+WARNING: This action cannot be undone. All transaction data will be lost.
+Enter 'N' or any other key to cancel.
+All transactions have been cleared for this account.
+Enter command: Alice: $0.00
 Charlie: $0.00
 
 Enter command: No transactions found.
