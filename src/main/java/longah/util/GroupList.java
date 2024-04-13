@@ -32,8 +32,8 @@ public class GroupList {
         } else {
             loadGroupList();
             getGroupList();
-            UI.showMessage("Defaulting to the first group. You are now managing: "
-                    + groupList.get(0).getGroupName());
+            UI.showMessage("Defaulting to the first group.");
+            UI.showMessage("You are now managing: " + groupList.get(0).getGroupName());
             activeGroup = groupList.get(0);
         }
     }
@@ -72,6 +72,8 @@ public class GroupList {
                 UI.showMessage(ExceptionMessage.STORAGE_FILE_CORRUPTED.getMessage());
             }
             activeGroup = newGroup;
+            UI.showMessage("Created group: " + groupName);
+            UI.showMessage("You are now managing: " + activeGroup.getGroupName());
         }
     }
 
@@ -81,17 +83,22 @@ public class GroupList {
      * @throws LongAhException If an I/O exception occurs.
      */
     public static void loadGroupList() throws LongAhException {
+        String[] data;
         try {
-            String[] data = new String(Files.readAllBytes(Paths.get(GROUP_LIST_FILE_PATH))).split("\n");
+            data = new String(Files.readAllBytes(Paths.get(GROUP_LIST_FILE_PATH))).split("\n");
             if (data.length == 0) {
                 throw new LongAhException(ExceptionMessage.EMPTY_GROUP_LIST);
             }
-            for (String groupName : data) {
-                Group newGroup = new Group(groupName);
-                groupList.add(newGroup);
-            }
         } catch (IOException e) {
             throw new LongAhException(ExceptionMessage.IO_EXCEPTION);
+        }
+
+        for (String groupName : data) {
+            try {
+                groupList.add(new Group(groupName));
+            } catch (LongAhException e) {
+                UI.showMessage(ExceptionMessage.STORAGE_FILE_CORRUPTED.getMessage());
+            }
         }
     }
 
@@ -132,6 +139,7 @@ public class GroupList {
         }
         groupList.add(group);
         saveGroupList();
+        UI.showMessage("Added group: " + group.getGroupName());
     }
 
     /**
@@ -159,13 +167,15 @@ public class GroupList {
         }
         // if there is only group that was left is deleted
         if (groupList.isEmpty()) {
-            UI.showMessage("Deleted all groups.");
+            UI.showMessage("Deleted group: " + groupName);
             createGroup();
         } else if (activeGroup.getGroupName().equals(groupName)) {
             activeGroup = groupList.get(0);
-            UI.showMessage("You have deleted the active group that you are managing.");
-            UI.showMessage("Defaulting back to the first group in the list. You are now managing: "
-                    + activeGroup.getGroupName());
+            UI.showMessage("You have deleted the active group that you were managing.");
+            UI.showMessage("Defaulting back to the first group in the list.");
+            UI.showMessage("You are now managing: " + activeGroup.getGroupName());
+        } else {
+            UI.showMessage("Deleted group: " + groupName);
         }
     }
 

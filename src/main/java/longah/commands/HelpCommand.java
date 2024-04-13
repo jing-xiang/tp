@@ -37,10 +37,10 @@ public class HelpCommand extends Command {
         UI.showMessage("Here are the full list of commands available:\n");
         UI.showMessage("ADD commands: ");
         UI.printSeparator();
-        UI.showMessage("1. `add member <NAME>` - Add a new member to the group.");
-        UI.showMessage("2. `add transaction <LENDER> p/<BORROWER1> a/<AMOUNT OWED> " +
-                "p/<BORROWER2> a/<AMOUNTED OWED> ...` - Add a new transaction.");
-        UI.showMessage("3. 'add group <GROUP NAME>' - Add a new group.\n");
+        UI.showMessage("1. `add member [NAME]` - Add a new member to the group.");
+        UI.showMessage("2. `add transaction [LENDER] [DD-MM-YYYY HHMM] p/[BORROWER1] a/[AMOUNT OWED]\n" +
+                "p/[BORROWER2] a/[AMOUNTED OWED] ...` - Add a new transaction. (date/time inputs are optional)");
+        UI.showMessage("3. 'add group [GROUP NAME]' - Add a new group.\n");
         UI.showMessage("LIST commands: ");
         UI.printSeparator();
         UI.showMessage("4. `list members` - List all current members in the group.");
@@ -49,35 +49,39 @@ public class HelpCommand extends Command {
         UI.showMessage("7. `list groups` - List all groups in the application.\n");
         UI.showMessage("DELETE commands: ");
         UI.printSeparator();
-        UI.showMessage("8. `delete transaction <TRANSACTION NUMBER>` - Delete a transaction.");
-        UI.showMessage("9. `delete member <MEMBER NAME>` - Delete a member from the group.");
-        UI.showMessage("10. `delete group <GROUP NAME>` - Delete a group from the application.\n");
+        UI.showMessage("8. `delete transaction [TRANSACTION NUMBER]` - Delete a transaction.");
+        UI.showMessage("9. `delete member [MEMBER NAME]` - Delete a member from the group.");
+        UI.showMessage("10. `delete group [GROUP NAME]` - Delete a group from the application.\n");
         UI.showMessage("FIND commands: ");
         UI.printSeparator();
-        UI.showMessage("11. `find borrower <MEMBER NAME>` - Find all transactions where the " +
+        UI.showMessage("11. `find borrower [MEMBER NAME]` - Find all transactions where the " +
                 "member is a borrower.");
-        UI.showMessage("12. `find lender <MEMBER NAME>` - Find all transactions where the member " +
+        UI.showMessage("12. `find lender [MEMBER NAME]` - Find all transactions where the member " +
                 "is involved as the lender.");
-        UI.showMessage("13. `find debts <MEMBER NAME>` - Find all debts of the member.");
-        UI.showMessage("14. `find transactions <MEMBER NAME>` - Find all transactions where " +
-                "the member is involved as the lender.\n");
+        UI.showMessage("13. `find debts [MEMBER NAME]` - Find all debts of the member.");
+        UI.showMessage("14. `find transactions [MEMBER NAME]` - Find all transactions where " +
+                "the member is involved.\n");
         UI.showMessage("EDIT commands: ");
         UI.printSeparator();
-        UI.showMessage("15. `edit member <MEMBER NAME> <NEW MEMBER NAME>` " +
+        UI.showMessage("15. `edit member [MEMBER NAME] p/[NEW MEMBER NAME]` " +
                 "- Edit the name of a member.");
-        UI.showMessage("16. `edit transaction <TRANSACTION NUMBER> <NEW TRANSACTION>`" +
-                " - Edit the details of a transaction.\n");
+        UI.showMessage("16. `edit transaction [TRANSACTION NUMBER] [LENDER] p/[BORROWER1] a/[AMOUNT]\n" +
+                "p/[BORROWER2] a/[AMOUNT]...` - Edit the details of a transaction.\n");
         UI.showMessage("PIN commands: ");
         UI.printSeparator();
-        UI.showMessage("17. `PIN enable` - Enable the use of PIN for the application.");
-        UI.showMessage("18. `PIN disable` - Disable the use of PIN for the application.");
+        UI.showMessage("17. `PIN enable` - Enable PIN authentication for the application.");
+        UI.showMessage("18. `PIN disable` - Disable PIN authentication for the application.");
         UI.showMessage("19. `PIN reset` - Reset the user PIN.\n");
         UI.showMessage("OTHER commands: ");
         UI.printSeparator();
-        UI.showMessage("20. `settleup <MEMBER NAME>` - Settle all debts of the member.");
+        UI.showMessage("20. `settleup [MEMBER NAME]` - Settle all debts of the member.");
         UI.showMessage("21. `clear` - Clear all transaction data in the group.");
-        UI.showMessage("22. 'group <GROUP NAME>' - Switch to another group with specified name.");
-        UI.showMessage("23. `exit` - Exit the application.");
-        UI.showMessage("24. `help` - Display the list of commands.\n");
+        UI.showMessage("22. 'group [GROUP NAME]' - Switch to another group with specified name.");
+        UI.showMessage("23. `filter [TIME PERIOD]` - Filter transactions by time period.");
+        UI.showMessage("24. `chart` - Display a chart of debts in the group.");
+        UI.showMessage("25. `exit` - Exit the application.");
+        UI.showMessage("26. `help` - Display the list of commands.\n");
+        UI.showMessage("For more information on a specific command, " +
+                "or view command shortcuts, do refer to our user guide.");
     }
 }

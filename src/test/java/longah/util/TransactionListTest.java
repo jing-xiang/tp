@@ -86,11 +86,11 @@ public class TransactionListTest {
             String printedOutput = transactionList.listTransactions();
 
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 100.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 200.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $100.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $200.00"));
             assertTrue(printedOutput.contains("Lender: Jane"));
-            assertTrue(printedOutput.contains("Jack Owed amount: 150.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 250.00"));
+            assertTrue(printedOutput.contains("Jack Owed amount: $150.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $250.00"));
 
         } catch (LongAhException e) {
             fail();
@@ -139,11 +139,11 @@ public class TransactionListTest {
 
             assertTrue(printedOutput.contains("Jack is a part of the following list of transaction(s)."));
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 100.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $200.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $100.00"));
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 150.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 250.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $150.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $250.00"));
 
         } catch (LongAhException e) {
             fail();
@@ -194,11 +194,11 @@ public class TransactionListTest {
             String printedOutput = transactionList.findDebts(parts[1]);
 
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 100.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $200.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $100.00"));
             assertTrue(printedOutput.contains("Lender: Jack"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 150.00"));
-            assertTrue(printedOutput.contains("James Owed amount: 200.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $150.00"));
+            assertTrue(printedOutput.contains("James Owed amount: $200.00"));
 
         } catch (LongAhException e) {
             fail();
@@ -221,7 +221,7 @@ public class TransactionListTest {
             String command = "1 Alice p/Bob a/10";
             transactionList.editTransactionList(command, memberList);
             assertEquals(1, transactionList.getTransactionListSize());
-            String expectedString = "1.\nLender: Alice\nBorrower 1: Bob Owed amount: 10.00\n";
+            String expectedString = "1.\nLender: Alice\nBorrower 1: Bob Owed amount: $10.00\n";
             assertEquals(expectedString.trim(), transactionList.listTransactions().trim());
         } catch (LongAhException e) {
             fail();
@@ -288,7 +288,7 @@ public class TransactionListTest {
             assertEquals(1, transactionList.getTransactionListSize());
             transactionList.deleteMember("Bob", memberList);
             assertEquals(1, transactionList.getTransactionListSize());
-            String expected = "1.\nLender: Alice\nBorrower 1: Charlie Owed amount: 10.00\n";
+            String expected = "1.\nLender: Alice\nBorrower 1: Charlie Owed amount: $10.00\n";
             assertEquals(expected.trim(), transactionList.listTransactions().trim());
         } catch (LongAhException e) {
             fail();
@@ -379,7 +379,7 @@ public class TransactionListTest {
 
             assertTrue(printedOutput.contains("Lender: Jack"));
             assertTrue(printedOutput.contains("Transaction time: 29-11-2023 2359"));
-            assertTrue(printedOutput.contains("Jane Owed amount: 200.00"));
+            assertTrue(printedOutput.contains("Jane Owed amount: $200.00"));
         } catch (LongAhException e) {
             fail();
         }

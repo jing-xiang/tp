@@ -135,6 +135,7 @@ public class PINHandler {
                 hashedEnteredPinHex = new BigInteger(1, hashedEnteredPin).toString(16);
             }
             Logging.logInfo("Login successful!");
+            UI.showMessage("Login successful!");
         } catch (NoSuchAlgorithmException e) {
             UI.showMessage("Error authenticating PIN. Please try again.");
         }

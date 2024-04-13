@@ -3,6 +3,7 @@ package longah.commands.edit;
 import longah.commands.Command;
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
+import longah.handler.UI;
 import longah.node.Group;
 import longah.util.MemberList;
 
@@ -33,5 +34,6 @@ public class EditMemberCommand extends Command {
         members.editMemberName(oldName, newName);
         group.updateTransactionSolution();
         group.saveAllData();
+        UI.showMessage("Member name edited successfully! " + oldName + " is renamed to: " + newName);
     }
 }
