@@ -11,4 +11,28 @@ Welcome to LongAh!
                               |  $$$$$$/
                                \______/
 Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
-Enter your PIN: 
+Enter your PIN: Invalid PIN. Please try again. Alternatively, enter 'exit' or 'close' to exit LongAh.
+Enter your PIN: Defaulting to the first group. You are now managing: GroupA
+Enter command: No transactions found.
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: No transactions found.
+Enter command: Invalid filter command. Use 'filter b/DateTime' or 'filter a/DateTime' or 'filter a/Datetime b/Datetime' or 'filter Datetime
+Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+Enter command: Invalid command format. Use 'delete transaction INDEX' or 'delete member NAME' or 'delete group GROUP_NAME'
+Enter command: Invalid command format. Use 'delete transaction INDEX' or 'delete member NAME' or 'delete group GROUP_NAME'
+Enter command: Group not found.
+Enter command: Member not found.
+Enter command: Invalid index.
+Enter command: Invalid index.
+Enter command: Invalid command format. Use 'clear'
+Enter command: Invalid command format. Use 'settleup PERSON'
+Enter command: Member not found.
+Enter command: Group not found.
+Enter command: Authentication is already enabled.
+Enter command: Authentication disabled upon startup.
+Enter command: Authentication is already disabled.
+Enter command: Enter your current PIN: Invalid PIN. Please try again later.
+Enter command: Invalid command format. Use 'pin edit' or 'pin enable' or 'pin disable'
+Enter command: Invalid command format. Use 'pin edit' or 'pin enable' or 'pin disable'
+Enter command: Authentication enabled upon startup.
+Enter command: Goodbye! Hope to see you again soon!

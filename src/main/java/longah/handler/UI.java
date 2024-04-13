@@ -31,8 +31,9 @@ public class UI {
     /**
      * Displays the exit message.
      */
-    public static void showGoodbyeMessage() {
+    public static void exit() {
         UI.showMessage("Goodbye! Hope to see you again soon!");
+        System.exit(0);
     }
 
     /**

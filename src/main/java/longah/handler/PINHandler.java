@@ -125,11 +125,12 @@ public class PINHandler {
             String hashedEnteredPinHex = new BigInteger(1, hashedEnteredPin).toString(16);
 
             while (!hashedEnteredPinHex.equals(savedPin)) {
-                if (Objects.equals(enteredPin, "exit")) {
-                    System.exit(0);
+                if (Objects.equals(enteredPin, "exit") || Objects.equals(enteredPin, "close")) {
+                    UI.exit();
                 }
-                UI.showMessage("Invalid PIN. Please try again. Alternatively, enter 'exit' to exit LongAh.");
-                UI.showMessage("Enter your PIN:");
+                UI.showMessage("Invalid PIN. Please try again. Alternatively, enter 'exit' or 'close' " + 
+                        "to exit LongAh.");
+                UI.showMessage("Enter your PIN: ", false);
                 enteredPin = UI.getUserInput();
                 hashedEnteredPin = md.digest(enteredPin.getBytes(StandardCharsets.UTF_8));
                 hashedEnteredPinHex = new BigInteger(1, hashedEnteredPin).toString(16);

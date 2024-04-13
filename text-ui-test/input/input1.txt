@@ -1,4 +1,3 @@
-123456
 GroupA
 help
 list groups

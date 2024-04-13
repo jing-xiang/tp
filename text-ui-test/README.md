@@ -45,3 +45,9 @@ Testing Purpose: Successful execution of `filter`, `delete`, `clear`, `settle`, 
 Consists of `input4.txt` and `EXPECTED4.txt`.
 
 Testing Purpose: Unsuccessful execution of `filter`, `delete`, `clear`, `settle`, `group` and `pin` commands (cumulatively group-level and account-level commands). Includes incorrect commands.
+
+### Group 5 Files
+
+Consists of `input5A.txt`, `input5B.txt`, `EXPECTED5A.TXT` and `EXPECTED5B.TXT`.
+
+Testing Purpose: Closure of application during startup sequence. 5A tests for closure during PIN authentication while 5B tests for closure during group creation.

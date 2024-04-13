@@ -62,8 +62,12 @@ public class GroupList {
      */
     public static void createGroup() throws LongAhException {
         if (groupList.isEmpty()) {
-            UI.showMessage("No groups found. Please give a name for your first group.");
+            UI.showMessage("No groups found. Please give a name for your first group or enter " + 
+                    "'exit' or 'close' to exit LongAh.");
             String groupName = UI.getUserInput();
+            if (groupName.equals("exit") || groupName.equals("close")) {
+                UI.exit();
+            }
             Group newGroup = new Group(groupName);
             groupList.add(newGroup);
             try {
