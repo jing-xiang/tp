@@ -26,11 +26,11 @@ Enter command: Invalid index.
 Enter command: Invalid index.
 Enter command: Invalid command format. Use 'clear'
 Enter command: Are you sure you want to clear all transactions? (Y/N)
-WARNING: This action cannot be undone. All transaction data will be lost.
+This action cannot be undone. All transaction data will be lost.
 Enter 'N' or any other key to cancel.
 Clear operation cancelled.
 Enter command: Are you sure you want to clear all transactions? (Y/N)
-WARNING: This action cannot be undone. All transaction data will be lost.
+This action cannot be undone. All transaction data will be lost.
 Enter 'N' or any other key to cancel.
 Clear operation cancelled.
 Enter command: Invalid command format. Use 'settleup PERSON'
