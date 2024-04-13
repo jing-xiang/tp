@@ -1,4 +1,4 @@
-package longah.node;
+package longah.util;
 
 import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
@@ -11,6 +11,7 @@ import java.time.format.DateTimeParseException;
  * Represents objects where the time element is concerned.
  */
 public class DateTime {
+    //@@author FeathersRe
     private LocalDateTime dateTime;
 
     /**

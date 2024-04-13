@@ -26,7 +26,6 @@ public class ExitCommand extends Command {
         if (!this.taskExpression.isEmpty()) {
             throw new LongAhException(ExceptionMessage.INVALID_EXIT_COMMAND);
         }
-        UI.showGoodbyeMessage();
-        System.exit(0);
+        UI.exit();
     }
 }

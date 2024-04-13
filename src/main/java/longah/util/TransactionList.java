@@ -3,7 +3,6 @@ package longah.util;
 import java.util.ArrayList;
 
 import longah.handler.UI;
-import longah.node.DateTime;
 import longah.node.Member;
 import longah.node.Transaction;
 import longah.exception.LongAhException;
@@ -97,7 +96,7 @@ public class TransactionList {
             outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
             index++;
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -125,7 +124,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -154,7 +153,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -182,9 +181,10 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
+    //@@author FeathersRe
     /**
      * Filters and return the list of transactions matching the input transaction time
      *
@@ -194,20 +194,25 @@ public class TransactionList {
      */
     public String filterTransactionsEqualToDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
-        int index = 1;
+        int index = 0;
         int printCount = 0;
         String outString = "The following list of transactions matches with the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
-            if (transaction.getTransactionTime().isEqual(dateTimeToCompare)) {
-                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                printCount++;
+            try {
+                index++;
+                if (transaction.getTransactionTime().isEqual(dateTimeToCompare)) {
+                    outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                    printCount++;
+                }
+            } catch (NullPointerException e) {
+                // Skip the transaction if the transaction time is not set
+                continue;
             }
-            index++;
         }
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -219,20 +224,25 @@ public class TransactionList {
      */
     public String filterTransactionsBeforeDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
-        int index = 1;
+        int index = 0;
         int printCount = 0;
         String outString = "The following list of transactions is before the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
-            if (transaction.getTransactionTime().isBefore(dateTimeToCompare)) {
-                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                printCount++;
+            try {
+                index++;
+                if (transaction.getTransactionTime().isBefore(dateTimeToCompare)) {
+                    outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                    printCount++;
+                }
+            } catch (NullPointerException e) {
+                // Skip the transaction if the transaction time is not set
+                continue;
             }
-            index++;
         }
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -244,20 +254,25 @@ public class TransactionList {
      */
     public String filterTransactionsAfterDateTime(String dateTime) throws LongAhException {
         DateTime dateTimeToCompare = new DateTime(dateTime);
-        int index = 1;
+        int index = 0;
         int printCount = 0;
         String outString = "The following list of transactions is after the time " + dateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
-            if (transaction.getTransactionTime().isAfter(dateTimeToCompare)) {
-                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                printCount++;
+            try {
+                index++;
+                if (transaction.getTransactionTime().isAfter(dateTimeToCompare)) {
+                    outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                    printCount++;
+                }
+            } catch (NullPointerException e) {
+                // Skip the transaction if the transaction time is not set
+                continue;
             }
-            index++;
         }
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -274,23 +289,29 @@ public class TransactionList {
         if (toDateTimeToCompare.isBefore(fromDateTimeToCompare)) {
             throw new LongAhException(ExceptionMessage.INVALID_DATE_TIME_FILTER);
         }
-        int index = 1;
+        int index = 0;
         int printCount = 0;
         String outString = "The following list of transactions is between the time " + fromDateTimeToCompare +
                 " and " + toDateTimeToCompare + ".\n";
         for (Transaction transaction : this.transactions) {
-            if (transaction.getTransactionTime().isAfter(fromDateTimeToCompare)
-                    && transaction.getTransactionTime().isBefore(toDateTimeToCompare)) {
-                outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
-                printCount++;
+            try {
+                index++;
+                if (transaction.getTransactionTime().isAfter(fromDateTimeToCompare) &&
+                        transaction.getTransactionTime().isBefore(toDateTimeToCompare)) {
+                    outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
+                    printCount++;
+                }
+            } catch (NullPointerException e) {
+                // Skip the transaction if the transaction time is not set
+                continue;
             }
-            index++;
         }
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
+    //@@author
 
     /**
      * Edits a transaction from the list by index with new expression.
@@ -339,7 +360,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**

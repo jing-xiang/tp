@@ -8,6 +8,7 @@ Never owe people money over Chinese New Year! In the Year of the Dragon, LongAh!
 * [User Guide](UserGuide.md)
 * [Developer Guide](DeveloperGuide.md)
 * [About Us](AboutUs.md)
+* [Project Website](https://ay2324s2-cs2113-t15-1.github.io/tp/)
 
 <ins>PPP Links</ins>
 * Leong Deng Jun: [djleong01](team/djleong01.md)

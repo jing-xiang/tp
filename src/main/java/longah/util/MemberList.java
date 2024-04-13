@@ -137,7 +137,7 @@ public class MemberList {
         for (Member member : members) {
             output += member + "\n";
         }
-        return output;
+        return output.trim();
     }
 
     /**

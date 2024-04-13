@@ -184,6 +184,10 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
+
 The following code segment outlines the use of `StorageHandler`.
 
 ```
@@ -769,11 +773,11 @@ When running tests on a UNIX-based system, run the following command from the sp
 ./runtest.sh
 ```
 
-Warning: Text UI Testing has been configured to clear all past data records to simulate a fresh application starting when the above commands are invoked. This WILL result in loss of data from previous runs.
-
 ## Future Enhancements
 
-1. Inclusion of anomaly detection algorithms to flag out potentially erroneous transactions.
-2. Adding of further details tagged to each transaction and allow for searching of transactions based on these details.
-3. Create a reminder system to inform users of upcoming events or to warn them to settle payments.
-4. Allow the setting up of recurring transactions such as credit is deducted periodically.
+1. Allow methods for undo-ing previous commands.
+2. Add page-scrolling for `list`, `find` and `filter` commands to reduce screen clogging.
+3. Inclusion of anomaly detection algorithms to flag out potentially erroneous transactions.
+4. Adding of further details tagged to each transaction and allow for searching of transactions based on these details.
+5. Create a reminder system to inform users of upcoming events or to warn them to settle payments.
+6. Allow the setting up of recurring transactions such as credit is deducted periodically.

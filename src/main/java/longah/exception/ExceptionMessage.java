@@ -57,13 +57,10 @@ public enum ExceptionMessage {
     INVALID_FIND_COMMAND ("Invalid command format." +
             " Use 'find transactions', 'find lender', 'find borrower', or 'find debts'",
             ExceptionType.INFO),
-
-    INVALID_FILTER_COMMAND ("Invalid filter command. " +
-            "Use 'filter CRITERIA'",
-            ExceptionType.INFO),
-    INVALID_FILTER_DATETIME_COMMAND("Invalid filter datetime command." +
-            " Use 'filter datetime b/DateTime' or 'filter datetime a/DateTime' or " +
-            "'filter datetime a/Datetime b/Datetime' or 'filter datetime Datetime",
+            
+    INVALID_FILTER_DATETIME_COMMAND("Invalid filter command." +
+            " Use 'filter b/DateTime' or 'filter a/DateTime' or " +
+            "'filter a/Datetime b/Datetime' or 'filter Datetime",
             ExceptionType.INFO),
     INVALID_SETTLEUP_COMMAND ("Invalid command format." +
             " Use 'settleup PERSON'",

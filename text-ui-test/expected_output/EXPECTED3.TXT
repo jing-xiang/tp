@@ -1,0 +1,179 @@
+Welcome to LongAh!
+ /$$                                      /$$$$$$  /$$       /$$
+| $$                                     /$$__  $$| $$      | $$
+| $$        /$$$$$$  /$$$$$$$   /$$$$$$ | $$  \ $$| $$$$$$$ | $$
+| $$       /$$__  $$| $$__  $$ /$$__  $$| $$$$$$$$| $$__  $$| $$
+| $$      | $$  \ $$| $$  \ $$| $$  \ $$| $$__  $$| $$  \ $$|__/
+| $$      | $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$
+| $$$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$  | $$ /$$
+|________/ \______/ |__/  |__/ \____  $$|__/  |__/|__/  |__/|__/
+                               /$$  \ $$
+                              |  $$$$$$/
+                               \______/
+Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
+Enter your PIN: Login successful!
+Defaulting to the first group.
+You are now managing: GroupA
+____________________________________________________________
+Enter command: Authentication disabled upon startup.
+____________________________________________________________
+Enter command: Authentication enabled upon startup.
+____________________________________________________________
+Enter command: Enter your current PIN: Create your 6-digit PIN:
+PIN saved successfully! You can enter 'pin enable' to enable authentication upon startup.
+____________________________________________________________
+Enter command: Switching groups...
+You are now managing: GroupB
+____________________________________________________________
+Enter command: Added member: Alice
+____________________________________________________________
+Enter command: Added member: Bob
+____________________________________________________________
+Enter command: Added member: Charlie
+____________________________________________________________
+Enter command: Transaction added successfully!
+Lender: Alice
+Borrower 1: Bob Owed amount: $1.00
+____________________________________________________________
+Enter command: Transaction added successfully!
+Lender: Alice
+Borrower 1: Bob Owed amount: $2.00
+Borrower 2: Charlie Owed amount: $3.00
+____________________________________________________________
+Enter command: Transaction added successfully!
+Lender: Bob
+Borrower 1: Alice Owed amount: $4.00
+Borrower 2: Charlie Owed amount: $5.00
+____________________________________________________________
+Enter command: Alice: $2.00
+Bob: $6.00
+Charlie: -$8.00
+____________________________________________________________
+Enter command: 1.
+Lender: Alice
+Borrower 1: Bob Owed amount: $1.00
+2.
+Lender: Alice
+Borrower 1: Bob Owed amount: $2.00
+Borrower 2: Charlie Owed amount: $3.00
+3.
+Lender: Bob
+Borrower 1: Alice Owed amount: $4.00
+Borrower 2: Charlie Owed amount: $5.00
+____________________________________________________________
+Enter command: Deleted member: Bob
+____________________________________________________________
+Enter command: Alice: $3.00
+Charlie: -$3.00
+____________________________________________________________
+Enter command: 1.
+Lender: Alice
+Borrower 1: Charlie Owed amount: $3.00
+____________________________________________________________
+Enter command: Transaction #1 removed successfully.
+Lender: Alice
+Borrower 1: Charlie Owed amount: $3.00
+____________________________________________________________
+Enter command: Alice: $0.00
+Charlie: $0.00
+____________________________________________________________
+Enter command: No transactions found.
+____________________________________________________________
+Enter command: Transaction added successfully!
+Lender: Alice
+Borrower 1: Charlie Owed amount: $3.00
+____________________________________________________________
+Enter command: Are you sure you want to clear all transactions? (Y/N)
+This action cannot be undone. All transaction data will be lost.
+Enter 'N' or any other key to cancel.
+All transaction records have been cleared.
+All transactions have been cleared for this account.
+____________________________________________________________
+Enter command: Alice: $0.00
+Charlie: $0.00
+____________________________________________________________
+Enter command: No transactions found.
+____________________________________________________________
+Enter command: Switching groups...
+You are now managing: GroupA
+____________________________________________________________
+Enter command: The following list of transactions matches with the time 01-01-2000 1800.
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: $1.00
+____________________________________________________________
+Enter command: The following list of transactions is after the time 10-01-2000 1800.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: $3.15
+____________________________________________________________
+Enter command: The following list of transactions is before the time 01-01-2005 1800.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: $3.15
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: $1.00
+____________________________________________________________
+Enter command: The following list of transactions is between the time 31-12-1999 0000 and 01-01-2005 0000.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: $3.15
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: $1.00
+____________________________________________________________
+Enter command: Transaction added successfully!
+Dane has repaid Esther $3.85
+Transaction added successfully!
+Dane has repaid Charlie $2.55
+Transaction added successfully!
+Lender: Dane
+Borrower 1: Esther Owed amount: $3.85
+Borrower 2: Charlie Owed amount: $2.55
+Dane has no more debts!
+____________________________________________________________
+Enter command: Switching groups...
+You are now managing: GroupB
+____________________________________________________________
+Enter command: Remaining groups:
+1. GroupA
+
+You have deleted the active group that you were managing.
+Defaulting back to the first group in the list.
+You are now managing: GroupA
+____________________________________________________________
+Enter command: Esther: $0.00
+Dane: -$.00
+Charlie: $0.00
+____________________________________________________________
+Enter command: 1.
+Lender: Esther
+Borrower 1: Dane Owed amount: $9.00
+2.
+Lender: Dane
+Borrower 1: Charlie Owed amount: $1.55
+3.
+Lender: Charlie
+Borrower 1: Esther Owed amount: $2.00
+Borrower 2: Dane Owed amount: $3.10
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: $3.15
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: $1.00
+6.
+Lender: Dane
+Borrower 1: Esther Owed amount: $3.85
+Borrower 2: Charlie Owed amount: $2.55
+____________________________________________________________
+Enter command: Goodbye! Hope to see you again soon!
