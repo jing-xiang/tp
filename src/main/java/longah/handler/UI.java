@@ -31,15 +31,16 @@ public class UI {
     /**
      * Displays the exit message.
      */
-    public static void showGoodbyeMessage() {
-        UI.showMessage("Goodbye! Hope to see you again soon!");
+    public static void exit() {
+        showMessage("Goodbye! Hope to see you again soon!");
+        System.exit(0);
     }
 
     /**
      * Displays the command prompt.
      */
     public static void showCommandPrompt() {
-        System.out.print("Enter command: ");
+        showMessage("Enter command: ", false);
     }
 
     /**
@@ -91,7 +92,7 @@ public class UI {
      * Prints a separator.
      */
     public static void printSeparator() {
-        System.out.println(SEPARATOR);
+        showMessage(SEPARATOR);
     }
 
 }

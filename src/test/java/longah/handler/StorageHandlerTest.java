@@ -68,7 +68,7 @@ public class StorageHandlerTest {
             MemberList members2 = new MemberList();
             TransactionList transactions2 = new TransactionList();
             new StorageHandler(members2, transactions2, "test_grp2");
-            String expected = "Alice: $10.00\nBob: -$10.00\n";
+            String expected = "Alice: $10.00\nBob: -$10.00";
             assertEquals(expected, members2.listMembers());
             // Delete test folders after completion
             deleteDir(f);

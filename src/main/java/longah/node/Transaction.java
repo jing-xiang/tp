@@ -3,6 +3,7 @@ package longah.node;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import longah.util.DateTime;
 import longah.util.MemberList;
 import longah.exception.LongAhException;
 import longah.exception.ExceptionMessage;
@@ -13,7 +14,7 @@ import longah.util.Subtransaction;
  */
 public class Transaction {
     private Member lender;
-    private DateTime transactionTime;
+    private DateTime transactionTime = null;
     private ArrayList<Subtransaction> subtransactions = new ArrayList<>();
 
     /**
@@ -237,11 +238,11 @@ public class Transaction {
         for (Subtransaction subtransaction : subtransactions) {
             Member member = subtransaction.getBorrower();
             double amount = subtransaction.getAmount();
-            borrower += String.format("Borrower %d: %s Owed amount: %,.2f\n",
+            borrower += String.format("Borrower %d: %s Owed amount: $%,.2f\n",
                     borrowerNo, member.getName(), amount);
             borrowerNo++;
         }
-        return lender + time + borrower;
+        return (lender + time + borrower).trim();
     }
 
     /**

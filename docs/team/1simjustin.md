@@ -30,11 +30,14 @@ Given below are my contributions to the project.
     * *Logging Abstraction*: Encapsulation of logging logic for consistent logging across the application.
   * Justification: Abstraction of commands, exceptions, and logging enhances the overall structure and maintainability of the codebase. It promotes separation of concerns, making it easier to manage and extend different aspects of the application independently.
 
-* **Code Contributed**: [RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=1simjustin&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
+* **General Contributions**: Improve text UI testing
+  * What it does
+    * Carry out automated testing as if under use by a normal user. Simulates multiple use sessions.
+  * Justification: Helps to catch bugs that may show up over the course of a normal use case.
+  * Impact
+    * Identified and rectified bugs relating to double representation in storage and list commands. [#160](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/160)
 
-* **Project Management**
-  * Maintained issues and managed milestones.
-  * In charge of issues assignee allocation.
+* **Code Contributed**: [RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=1simjustin&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Documentation**
   * User Guide
@@ -49,6 +52,12 @@ Given below are my contributions to the project.
     * Added high-level flowchart. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
     * Added section on `UI and I/O`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
     * Added section on `Member and MemberList`. [#155](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/155)
+
+<div style="page-break-after: always;"></div>
+
+* **Project Management**
+  * Maintained issues and managed milestones.
+  * In charge of issues assignee allocation.
   
 * **Community**
   * PRs reviewed (with non-trivial review comments): [#31](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/31), [#32](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/32), [#40](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/40), [#49](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/49), [#53](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/53), [#55](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/55), [#61](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/61), [#77](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/77), [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86), [#89](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/89)

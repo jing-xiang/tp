@@ -76,7 +76,7 @@ public class MemberListTest {
             MemberList memberList = new MemberList();
             memberList.addMember("Alice");
             memberList.addMember("Bob");
-            String expected = "Alice: $0.00\nBob: $0.00\n";
+            String expected = "Alice: $0.00\nBob: $0.00";
             assertEquals(expected,memberList.listMembers());
         } catch (Exception e) {
             fail();
@@ -126,7 +126,7 @@ public class MemberListTest {
             transactionList.addTransaction("Alice p/Bob a/5", memberList);
             transactionList.addTransaction("Bob p/Alice a/10", memberList);
             memberList.updateMembersBalance(transactionList);
-            String expected = "Alice: -$5.00\nBob: $5.00\n";
+            String expected = "Alice: -$5.00\nBob: $5.00";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
             fail();
@@ -144,7 +144,7 @@ public class MemberListTest {
             memberList.addMember("Bob");
             TransactionList transactionList = new TransactionList();
             memberList.updateMembersBalance(transactionList);
-            String expected = "Alice: $0.00\nBob: $0.00\n";
+            String expected = "Alice: $0.00\nBob: $0.00";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
             fail();
@@ -166,7 +166,7 @@ public class MemberListTest {
             transactionList.addTransaction("Bob p/Charlie a/10", memberList);
             transactionList.addTransaction("Charlie p/Alice a/15", memberList);
             memberList.updateMembersBalance(transactionList);
-            String expected = "Alice: -$10.00\nBob: $5.00\nCharlie: $5.00\n";
+            String expected = "Alice: -$10.00\nBob: $5.00\nCharlie: $5.00";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
             fail();
@@ -181,10 +181,10 @@ public class MemberListTest {
         try {
             MemberList memberList = new MemberList();
             memberList.addMember("Alice", 5);
-            String expected = "Alice: $5.00\n";
+            String expected = "Alice: $5.00";
             assertEquals(expected, memberList.listMembers());
             memberList.editMemberName("Alice", "Bob");
-            expected = "Bob: $5.00\n";
+            expected = "Bob: $5.00";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
             fail();
@@ -218,7 +218,7 @@ public class MemberListTest {
             memberList.addMember("Alice", 5);
             memberList.addMember("Bob", 10);
             memberList.deleteMember("Alice");
-            String expected = "Bob: $10.00\n";
+            String expected = "Bob: $10.00";
             assertEquals(expected, memberList.listMembers());
         } catch (Exception e) {
             fail();
