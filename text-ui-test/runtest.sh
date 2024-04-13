@@ -14,17 +14,21 @@ cd text-ui-test
 
 # Function to check test result
 check_test() {
-    local expected_output="$1"
-    local actual_output="$2"
-    local test_name="$3"
-    local error_count_ref="$4"
-    local failed_tests_ref="$5"
+    local input_file="$1"
+    local expected_output="$2"
+    local actual_output="$3"
+    local test_name="$4"
+    local error_count_ref="$5"
+    local failed_tests_ref="$6"
     
-    cp "$expected_output" "$expected_output-UNIX.TXT"
-    dos2unix "$expected_output-UNIX.TXT" "$actual_output"
-    diff "$expected_output-UNIX.TXT" "$actual_output" > /dev/null
+    # Run the test and generate actual output
+    java -jar "$(find ../build/libs/ -mindepth 1 -print -quit)" < "$input_file" > "$actual_output"
+
+    # Compare actual and expected output
+    diff "$expected_output" "$actual_output" > /dev/null
     
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]
+    then
         eval "$error_count_ref+=1"
         eval "$failed_tests_ref+=\" $test_name\""
     fi
@@ -37,18 +41,18 @@ ERROR_COUNT=0
 FAILED_TESTS=""
 
 # Run tests
-check_test "expected_output/EXPECTED1.TXT" "actual_output/ACTUAL1.TXT" "1" ERROR_COUNT FAILED_TESTS
-check_test "expected_output/EXPECTED2.TXT" "actual_output/ACTUAL2.TXT" "2" ERROR_COUNT FAILED_TESTS
-check_test "expected_output/EXPECTED3.TXT" "actual_output/ACTUAL3.TXT" "3" ERROR_COUNT FAILED_TESTS
-check_test "expected_output/EXPECTED4.TXT" "actual_output/ACTUAL4.TXT" "4" ERROR_COUNT FAILED_TESTS
-check_test "expected_output/EXPECTED5A.TXT" "actual_output/ACTUAL5A.TXT" "5A" ERROR_COUNT FAILED_TESTS
-check_test "expected_output/EXPECTED5B.TXT" "actual_output/ACTUAL5B.TXT" "5B" ERROR_COUNT FAILED_TESTS
+check_test "input/input1.txt" "expected_output/EXPECTED1.TXT" "actual_output/ACTUAL1.TXT" "1" ERROR_COUNT FAILED_TESTS
+check_test "input/input2.txt" "expected_output/EXPECTED2.TXT" "actual_output/ACTUAL2.TXT" "2" ERROR_COUNT FAILED_TESTS
+check_test "input/input3.txt" "expected_output/EXPECTED3.TXT" "actual_output/ACTUAL3.TXT" "3" ERROR_COUNT FAILED_TESTS
+check_test "input/input4.txt" "expected_output/EXPECTED4.TXT" "actual_output/ACTUAL4.TXT" "4" ERROR_COUNT FAILED_TESTS
+check_test "input/input5A.txt" "expected_output/EXPECTED5A.TXT" "actual_output/ACTUAL5A.TXT" "5A" ERROR_COUNT FAILED_TESTS
+check_test "input/input5B.txt" "expected_output/EXPECTED5B.TXT" "actual_output/ACTUAL5B.TXT" "5B" ERROR_COUNT FAILED_TESTS
 
 # Output test results
 if [ $ERROR_COUNT -eq 0 ]; then
     echo "All tests passed!"
 else
-    echo "$ERROR_COUNT tests failed:$FAILED_TESTS"
+    echo "$ERROR_COUNT tests failed: $FAILED_TESTS"
 fi
 
 # Exit with error count
