@@ -119,6 +119,7 @@ public class Group {
                 Member lender = subtransaction.getLender();
                 double amountRepaid = subtransaction.getAmount();
                 transactionExpression += " p/" + lender.getName() + " a/" + amountRepaid;
+                UI.showMessage("Transaction added successfully!");
                 UI.showMessage(borrowerName + " has repaid " + lender.getName() + " $" + amountRepaid);
             }
         }

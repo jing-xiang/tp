@@ -2,6 +2,7 @@ package longah.util;
 
 import java.util.ArrayList;
 
+import longah.handler.UI;
 import longah.node.Member;
 import longah.node.Transaction;
 import longah.exception.LongAhException;
@@ -44,6 +45,7 @@ public class MemberList {
             throw new LongAhException(ExceptionMessage.DUPLICATE_MEMBER);
         }
         this.members.add(new Member(name));
+        UI.showMessage("Added member: " + name);
     }
 
     /**
@@ -312,5 +314,6 @@ public class MemberList {
     public void deleteMember(String name) throws LongAhException {
         Member member = getMember(name);
         members.remove(member);
+        UI.showMessage("Deleted member: " + name);
     }
 }

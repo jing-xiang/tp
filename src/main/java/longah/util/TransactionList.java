@@ -2,6 +2,7 @@ package longah.util;
 
 import java.util.ArrayList;
 
+import longah.handler.UI;
 import longah.node.Member;
 import longah.node.Transaction;
 import longah.exception.LongAhException;
@@ -31,7 +32,10 @@ public class TransactionList {
      */
     public void addTransaction(String expression, MemberList memberList)
              throws LongAhException {
-        this.transactions.add(new Transaction(expression, memberList));
+        Transaction toAddTransaction = new Transaction(expression, memberList);
+        this.transactions.add(toAddTransaction);
+        UI.showMessage("Transaction added successfully!");
+        UI.showMessage(toAddTransaction.toString());
     }
 
     /**
@@ -54,7 +58,9 @@ public class TransactionList {
         if (index < 0 || index >= this.transactions.size()) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
-        this.transactions.remove(index);
+        Transaction removedTransaction = this.transactions.remove(index);
+        UI.showMessage("Transaction #" + indexString + " removed successfully.");
+        UI.showMessage(removedTransaction.toString());
     }
 
     /**
@@ -64,6 +70,7 @@ public class TransactionList {
     public void clear(MemberList memberList) {
         this.transactions.clear();
         memberList.clearBalances();
+        UI.showMessage("All transaction records have been cleared.");
     }
 
     /**
@@ -325,6 +332,8 @@ public class TransactionList {
                 throw new LongAhException(ExceptionMessage.INVALID_INDEX);
             }
             transactions.get(index).editTransaction(indexTransactionSplice[1], memberList);
+            UI.showMessage("Transaction #" + (index + 1) + " edited successfully.");
+            UI.showMessage(transactions.get(index).toString());
         } catch (NumberFormatException e) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
