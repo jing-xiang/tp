@@ -68,6 +68,10 @@ public class MemberList {
      * @return True if the member is in the group, false otherwise.
      */
     public boolean isMember(String name) {
+        if (this.members.isEmpty()) {
+            return false;
+        }
+
         for (Member member : this.members) {
             if (member.getName().equals(name)) {
                 return true;
@@ -105,15 +109,14 @@ public class MemberList {
     /**
      * Changes the name of the member at the specified index.
      * 
-     * @param expression The expression containing the index and new name.
+     * @param oldName The old name of the member.
+     * @param newName The new name of the member.
      * @throws LongAhException If the index is invalid.
      */
-    public void editMemberName(String expression) throws LongAhException {
+    public void editMemberName(String oldName, String newName) throws LongAhException {
         try {
-            String[] indexNameSplice = expression.split(" ", 2);
-            int index = Integer.parseInt(indexNameSplice[0]) - 1;
-            String name = indexNameSplice[1];
-            members.get(index).setName(name);
+            Member member = getMember(oldName);
+            member.setName(newName);
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             throw new LongAhException(ExceptionMessage.INVALID_INDEX);
         }
@@ -121,6 +124,7 @@ public class MemberList {
 
     /**
      * Prints the list of members in the group.
+     * 
      * @throws LongAhException If there are no members in the group.
      */
     public String listMembers() throws LongAhException {

@@ -1,6 +1,7 @@
 package longah.commands.edit;
 
 import longah.commands.Command;
+import longah.exception.ExceptionMessage;
 import longah.exception.LongAhException;
 import longah.node.Group;
 import longah.util.MemberList;
@@ -23,7 +24,13 @@ public class EditMemberCommand extends Command {
      */
     public void execute(Group group) throws LongAhException {
         MemberList members = group.getMemberList();
-        members.editMemberName(taskExpression);
+        String[] namesSplit = taskExpression.split("p/", 2);
+        if (namesSplit.length != 2) {
+            throw new LongAhException(ExceptionMessage.INVALID_EDIT_COMMAND);
+        }
+        String oldName = namesSplit[0].trim();
+        String newName = namesSplit[1].trim();
+        members.editMemberName(oldName, newName);
         group.updateTransactionSolution();
         group.saveAllData();
     }

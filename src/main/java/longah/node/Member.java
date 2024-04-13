@@ -19,11 +19,7 @@ public class Member {
      * @throws LongAhException If the name is invalid.
      */
     public Member(String name) throws LongAhException {
-        // Check if name is fully alphanumeric
-        if (!Pattern.matches("[A-Za-z0-9]+", name)) {
-            throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
-        }
-
+        checkNameValidity(name);
         this.name = name;
         this.balance = 0.0;
     }
@@ -37,21 +33,32 @@ public class Member {
      * @throws LongAhException If the name is invalid.
      */
     public Member(String name, double balance) throws LongAhException {
+        checkNameValidity(name);
+        this.name = name;
+        this.balance = balance;
+    }
+
+    /**
+     * Checks if the name is valid.
+     * 
+     * @param name The name to check.
+     * @throws LongAhException If the name is not alphanumeric.
+     */
+    public void checkNameValidity(String name) throws LongAhException {
         // Check if name is fully alphanumeric
         if (!Pattern.matches("[A-Za-z0-9]+", name)) {
             throw new LongAhException(ExceptionMessage.INVALID_MEMBER_NAME);
         }
-
-        this.name = name;
-        this.balance = balance;
     }
 
     /**
      * Sets the name of the member.
      * 
      * @param name The name of the member.
+     * @throws LongAhException If the name is invalid.
      */
-    public void setName(String name) {
+    public void setName(String name) throws LongAhException {
+        checkNameValidity(name);
         this.name = name;
     }
 
@@ -95,10 +102,15 @@ public class Member {
      */
     @Override
     public String toString() {
+        double rounded = (double)Math.round(this.balance * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+
         if (this.balance >= 0) {
-            return this.name + ": $" + this.balance;
+            return this.name + ": $" + roundedString;
         }
-        return this.name + ": -$" + Math.abs(this.balance);
+        // Remove the negative sign
+        roundedString = roundedString.substring(1);
+        return this.name + ": -$" + roundedString;
     }
 
     /**
@@ -108,7 +120,9 @@ public class Member {
      * @return A string representation of the member for storage.
      */
     public String toStorageString(String delimiter) {
-        return this.name + delimiter + this.balance;
+        double rounded = (double)Math.round(this.balance * 100) / 100;
+        String roundedString = String.format("%.2f", rounded);
+        return this.name + delimiter + roundedString;
     }
 
     /**
@@ -122,6 +136,7 @@ public class Member {
 
     /**
      * Used to check whether the input String matches the name of a member.
+     * 
      * @param memberName String representation of a member name
      * @return A boolean value checking whether the input matches with name.
      */
@@ -134,9 +149,5 @@ public class Member {
      */
     public void clearBalance() {
         this.balance = 0;
-    }
-
-    public void resetBalance() {
-        this.balance = 0.0;
     }
 }

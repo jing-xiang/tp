@@ -1,14 +1,14 @@
 # Developer Guide
 
-
 ## Table of Contents
 - [Developer Guide](#developer-guide)
-  - [Acknowledgements](#acknowledgements)
   - [Table of Contents](#table-of-contents)
+  - [Acknowledgements](#acknowledgements)
   - [Design \& Implementation](#design--implementation)
     - [UI and I/O](#ui-and-io)
     - [Commands](#commands)
     - [Storage](#storage)
+    - [Group and GroupList](#group-and-grouplist)
     - [Member and MemberList](#member-and-memberlist)
     - [Transaction and TransactionList](#transaction-and-transactionlist)
     - [PIN](#pin)
@@ -20,11 +20,11 @@
   - [User Stories](#user-stories)
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Glossary](#glossary)
-  - [Instructions for manual testing](#instructions-for-manual-testing)
-  - [Instructions for JUnit Testing](#instructions-for-junit-testing)
-  - [Instructions for text-ui-testing](#instructions-for-text-ui-testing)
+  - [Instructions for Testing](#instructions-for-testing)
+    - [Manual Testing](#manual-testing)
+    - [JUnit Testing](#junit-testing)
+    - [Text UI Testing](#text-ui-testing)
   - [Future Enhancements](#future-enhancements)
-
 
 ## Acknowledgements
 
@@ -42,13 +42,18 @@ LongAh uses the following tools for development:
 
 The UML diagram below provides an overview of the classes and their interactions within the LongAh application.
 
-![main.png](diagrams%2Fmain.png)
+![Main UML](diagrams/main.png)
+
+The high-level overview of the application is provided in the flowchart below as well.
+
+![Flowchart](diagrams/Flowchart.png)
 
 Design and Implementation has been broken down into the subsequent sections, each tagged for ease of reference:
 
 * [UI and I/O](#ui-and-io)
 * [Commands](#commands)
 * [Storage](#storage)
+* [Group and GroupList](#group-and-grouplist)
 * [Member and MemberList](#member-and-memberlist)
 * [Transaction and TransactionList](#transaction-and-transactionlist)
 * [PIN](#pin)
@@ -57,22 +62,58 @@ Design and Implementation has been broken down into the subsequent sections, eac
 
 ### UI and I/O
 
+<ins>Overview</ins>
+
+The UI and I/O functionalities act as the interface between the user and the application. They are managed by the `UI` and `InputHandler` classes, respectively, with `UI` handling displaying messages to the user and reading user input, while `InputHandler` is responsible for parsing user input and returning the corresponding `Command` object.
+
+<ins>Class Structure</ins>
+
+The UI class has the following static attributes:
+
+* *SEPARATOR*: A constant string representing a straight line to be printed to the console.
+* *scanner*: A `Scanner` object used for reading from `System.in` I/O.
+
+The InputHandler class itself does not have any attributes.
+
+<ins>Methods</ins>
+
+The UI class has the following key methods:
+
+* *getUserInput*: Reads the user input from the console and returns it as a String.
+* *showMessage*: Displays the provided message to the user. This is overloaded to take either a String or a String and a boolean. The latter is used to define whether a newline should be printed at the end of the String. Newline is printed by default. 
+
+The InputHandler class has the following key method:
+
+* *paseInput*: Parses the user input and returns the corresponding `Command` object.
+
+<ins>Design Considerations</ins>
+
+* UI class is used as part of exception handling for displaying of error messages to the user for feedback.
+
 ### Commands
 
 <ins>Overview</ins>
 
 The abstract `Command` class has been implemented to introduce an additional layer of abstraction between I/O and command execution, allowing for separation of handling command keywords and executing commands.
 
+The `Command` class has been subdivided into further packages for similar commands, such as `AddCommand` and `EditCommand`. There are other niche children classes that have not been aggregated into a package as well.
+
 <ins>Implementation Details</ins>
 
+The following diagram is a inheritance diagram for `Command` and its children classes. This has been heavily simplified and only shows the key commands.
+
 ![Command Inheritance Diagram](diagrams/CommandInheritance.png)
+
+The following diagram is a sequence diagram for execution of `Command`.
+
+![Command Execution Sequence Diagram](diagrams/CommandExecutionSequenceDiagram.png)
 
 <ins>Class Structure</ins>
 
 The abstract `Command` class and its related children classes have the following attributes:
 
-* *CommandString*: String indicating the command being parsed
-* *TaskExpression*: String containing details for the command to effect
+* *CommandString*: String indicating the command being parsed.
+* *TaskExpression*: String containing details for the command to effect.
 
 <ins>Constructor</ins>
 
@@ -81,22 +122,37 @@ The Command constructor updates the attributes based on the input arguments.
 <ins>Methods</ins>
 
 The abstract `Command` class and its related children classes have the following method:
-* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`
+* *execute*: Effect the command based on the `CommandString` and the `TaskExpression`.
 
 ### Storage
 
 <ins>Overview</ins>
 
-The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each group calls its own `StorageHandler` object such that they maintain distinct storage directories.
+The `StorageHandler` class is responsible for managing the loading and saving of data regarding members and transactions from and onto the local machine. Each `Group` calls its own `StorageHandler` object such that they maintain distinct storage directories.
 
 <ins>Implementation Details</ins>
 
-*Data Storage:*
+Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective subdirectories based on the name of the `Group`. The file formats are as follows, with samples provided.
 
-Each `StorageHandler` instance creates `members.txt` and `transactions.txt` in their respective folders. The file format is as follows.
+* `members.txt`
 
-* `members.txt` - NAME | BALANCE
-* `transactions.txt` - LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+```
+NAME | BALANCE
+```
+
+![Sample Members File](diagrams/MembersFileSample.png)
+
+* `transactions.txt`
+  
+```
+LENDER NAME | TRANSACTION TIME(if applicable) | BORROWER1 NAME | AMOUNT1 | BORROWER2 NAME...
+```
+
+![Sample Transactions File](diagrams/TransactionsFileSample.png)
+
+The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
+
+![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
 
 <ins>Class Structure</ins>
 
@@ -128,20 +184,150 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-![StorageHandler Sequence Diagram](diagrams/StorageHandlerSequenceDiagram.png)
+The following code segment outlines the use of `StorageHandler`.
 
-Given below is an example usage scenario and how StorageHandler behaves at each step:
+```
+import longah.util.MemberList;
+import longah.util.TransactionList;
 
-1. The user launches the application for the first time. Group is initialized, creating an instance of StorageHandler. StorageHandler creates relevant storage directories if they do not yet exist.
-2. StorageHandler reads data from the 2 data storage files and creates Member and Transaction objects in the associated utility list objects.
-3. When a command which would alter the data within MemberList or TransactionList is invoked, the method to save data to the storage files is called by Group. This updates the information within the storage files.
+// Initialization and loading from storage
+MemberList members = new MemberList();
+TransactionList transactions = new TransactionList();
+String name = "foo";
+StorageHandler storage = new StorageHandler(members, transactions, name);
+
+/*
+At this point a subdirectory "foo" will be created if it did not previously exist
+Data is loaded from "foo" to members and transactions
+Assume functions modifying members and transactions are called following that.
+*/
+
+// Writing to storage
+storage.saveAllData();
+```
 
 <ins>Design Considerations</ins>
 
 * Update upon change, not upon exit - This allows for data to be saved even if the application exits ungracefully.
 * *checkTransactions* - Methods are provided to have a quick check to ensure that data from data storage is not corrupted.
 
+### Group and GroupList
+
+<ins>Overview</ins>
+
+<ins>Implementation Details</ins>
+
+<ins>Class Structure</ins>
+
+<ins>Constructor</ins>
+
+<ins>Methods</ins>
+
+<ins>Usage Example</ins>
+
+<ins>Design Considerations</ins>
+
 ### Member and MemberList
+
+<ins>Overview</ins>
+
+The `Member` class is used to represent a discrete person object, while the `MemberList` class is used to represent the aggregation members within a group.
+
+<ins>Class Structure</ins>
+
+The `Member` class has the following attributes.
+
+* *name*: A string representing the name of a person within the group. Used for visual identification of each member. Name of the member is strictly alphanumeric and cannot include special characters including the blank character.
+* *balance*: A double representing the amount loaned/owed by the member. A positive value indicates that the member is owed money while a negative value indicates that the member owes money.
+
+The `MemberList` class has the following attribute.
+
+* *members*: An array list collection of Member objects.
+
+<ins>Implementation Details</ins>
+
+The detailed class diagram for `Member` and `MemberList` can be found below.
+
+![Member Class Diagram](diagrams/Member.png)
+
+<ins>Constructor</ins>
+
+The Member constructor creates a member object and initialises the current balance of the member, either to 0 or to a specified value. The latter is largely only used as part of storage methods. Checking for validity of the name is performed here.
+
+Key arguments of the Member constructor are a string `name` and optionally a double `balance`.
+
+The MemberList constructor initializes an empty array list of members for newly created members to be added to.
+
+<ins>Methods</ins>
+
+The Member class has the following key methods.
+
+* *setName*: Updates the name of a member. Used when edit member command is invoked.
+* *addToBalance*: Adds the value of a transaction to a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *subtractFromBalance*: Subtracts the value of a transaction from a member. Absolute values are used to reduce complexity of balance update method calls for both the loaner and the borrower.
+* *clearBalance*: Resets the current balance of a member to zero. Used then the clear command is invoked.
+
+The MemberList class has the following key methods.
+
+* *addMember*: Adds a member object to the current array list of members. This method is overloaded to allow for appending an exisiting member object or appending a newly created member object.
+* *isMember*: Checks if a member object is already a part of the current array list of members.
+* *getMember*: Returns the member object representation given the name of a member.
+* *editMemberName*: Updates the name of an existing member based on their current name.
+* *listMembers*: Returns a string representation of the current array list of members.
+* *updateMembersBalance*: Updates the current balance of all members in the group based on a passed in `TransactionList` object.
+* *solveTransactions*: Returns an array list of `Subtransaction` representing the least transactions solution to solving all debts in the group.
+* *deleteMember*: Removes a member from the current array list of members.
+
+<ins>Usage Example</ins>
+
+The following code segment outlines a sample use of `Member`.
+
+```
+import longah.node.Member;
+import longah.handler.UI;
+
+// Init member with balance of 0
+String name = "foo";
+Member member1 = new Member(name);
+
+// Init member with balance of 5
+String name = "bar";
+double balance = 5;
+Member member2 = new Member(name, balance);
+
+// Updating member balance
+member1.addToBalance(5);
+member2.subtractFromBalance(1.30);
+member1.clearBalance();
+
+// Print string representation of member
+UI.showMessage(member1); // Using our UI methods is preferred over System.out calls
+```
+
+The following code segment outlines a sample use of `MemberList`.
+
+```
+import longah.util.MemberList
+
+MemberList members = new MemberList();
+members.addMember("Alice");
+members.editMemberName("Alice", "Bob");
+members.updateMembersBalance(transactions); // Assuming we have a pre-defined TransactionList object
+ArrayList<Subtransaction> solution = members.solveTransactions();
+members.clearBalances();
+members.delete("Bob");
+```
+
+<ins>Design Considerations</ins>
+
+The Member class takes the following into consideration.
+
+* The class ensures that member names are alphanumeric and does not allow for special characters including blank space.
+* This method is used in conjunction with a `TransactionList` obejct as part of a `Group`.
+
+The MemberList class takes the following into consideration.
+
+* `updateMembersBalance` clears current balances at the start of invokation. This removes any transactions that are not captured within the `TransactionList` object passed into the method.
 
 ### Transaction and TransactionList
 <ins>Transaction Overview</ins>
@@ -271,7 +457,7 @@ Personal Identification Number (PIN) used for authentication in the LongAh appli
 securely store and compare PINs. The PINHandler class interacts with the StorageHandler class to save and load the PIN
 and authentication status.
 
-Note: PIN is enabled by default and needs to be set upon first startup.
+Note: PIN is disabled by default and needs to be set upon first startup.
 
 <ins>Implementation Details </ins>
 
@@ -559,15 +745,17 @@ Busy people with large transaction quantities among friends
 * Group - Discrete units each containing their respective lists of Member and Transaction.
 * Separator - "|" has been used to denote separator within this document but within the Storage related classes, the ASCII Unit Separator as denoted by ASCII 31 is used instead. This is defined within `StorageHandler`.
 
-## Instructions for manual testing
+## Instructions for Testing
+
+### Manual Testing
 
 View the [User Guide](UserGuide.md) for the full list of UI commands and their related use case and expected outcomes.
 
-## Instructions for JUnit Testing
+### JUnit Testing
 
 JUnit tests are written in the [`test directory`](../src/test/java/longah/) and serve to test key methods part of the application.
 
-## Instructions for text-ui-testing
+### Text UI Testing
 
 Files relating to Text UI Testing can be found [here](../text-ui-test/).
 
