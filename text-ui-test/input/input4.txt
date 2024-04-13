@@ -12,6 +12,10 @@ delete member Zeta
 delete transaction 0
 delete transaction -1
 clear A
+clear
+N
+clear
+a
 settle
 settle A
 group 123

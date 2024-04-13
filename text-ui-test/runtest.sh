@@ -48,7 +48,7 @@ check_test "expected_output/EXPECTED5B.TXT" "actual_output/ACTUAL5B.TXT" "5B" ER
 if [ $ERROR_COUNT -eq 0 ]; then
     echo "All tests passed!"
 else
-    echo "$ERROR_COUNT tests failed: $FAILED_TESTS"
+    echo "$ERROR_COUNT tests failed:$FAILED_TESTS"
 fi
 
 # Exit with error count

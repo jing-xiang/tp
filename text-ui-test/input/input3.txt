@@ -21,6 +21,7 @@ lm
 lt
 at Alice p/Charlie a/3
 clear
+Y
 lm
 lt
 group GroupA
