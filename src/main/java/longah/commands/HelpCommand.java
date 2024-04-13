@@ -77,7 +77,7 @@ public class HelpCommand extends Command {
         UI.showMessage("20. `settleup [MEMBER NAME]` - Settle all debts of the member.");
         UI.showMessage("21. `clear` - Clear all transaction data in the group.");
         UI.showMessage("22. 'group [GROUP NAME]' - Switch to another group with specified name.");
-        UI.showMessage("23. `filter` [TIME PERIOD] - Filter transactions by time period.");
+        UI.showMessage("23. `filter [TIME PERIOD]` - Filter transactions by time period.");
         UI.showMessage("24. `chart` - Display a chart of debts in the group.");
         UI.showMessage("25. `exit` - Exit the application.");
         UI.showMessage("26. `help` - Display the list of commands.\n");
