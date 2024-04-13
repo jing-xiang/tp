@@ -1,5 +1,7 @@
 # LongAh
 
+![LongAh logo.jpg](diagrams%2FLongAh%20logo.jpg)
+
 Never owe people money over Chinese New Year! In the Year of the Dragon, LongAh! seeks to help students track debts within friend groups and determine the least transactions method of settling these debts.
 
 <ins>Useful links</ins>
