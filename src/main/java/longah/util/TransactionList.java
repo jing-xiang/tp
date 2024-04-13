@@ -177,6 +177,7 @@ public class TransactionList {
         return outString;
     }
 
+    //@@author FeathersRe
     /**
      * Filters and return the list of transactions matching the input transaction time
      *
@@ -303,6 +304,7 @@ public class TransactionList {
         }
         return outString;
     }
+    //@@author
 
     /**
      * Edits a transaction from the list by index with new expression.
