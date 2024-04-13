@@ -110,7 +110,7 @@ public class Member {
         }
         // Remove the negative sign
         roundedString = roundedString.substring(1);
-        return this.name + ": -$" + roundedString;
+        return (this.name + ": -$" + roundedString).trim();
     }
 
     /**

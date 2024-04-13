@@ -96,7 +96,7 @@ public class TransactionList {
             outString = outString + String.format("%d.\n%s", index, transaction) + "\n";
             index++;
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -124,7 +124,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -153,7 +153,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -181,7 +181,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     //@@author FeathersRe
@@ -212,7 +212,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -242,7 +242,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -272,7 +272,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**
@@ -309,7 +309,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.NO_TRANSACTION_FOUND);
         }
-        return outString;
+        return outString.trim();
     }
     //@@author
 
@@ -360,7 +360,7 @@ public class TransactionList {
         if (printCount == 0) {
             throw new LongAhException(ExceptionMessage.TRANSACTIONS_SUMMED_UP);
         }
-        return outString;
+        return outString.trim();
     }
 
     /**

@@ -11,42 +11,82 @@ Welcome to LongAh!
                               |  $$$$$$/
                                \______/
 Thanks for choosing LongAh! Never worry about owing money during the Year of the Dragon!
-Defaulting to the first group. You are now managing: GroupA
+Defaulting to the first group.
+You are now managing: GroupA
+____________________________________________________________
 Enter command: Invalid command format. Use 'help'
+____________________________________________________________
 Enter command: Invalid command format. Use 'add member NAME' or 'add transaction LENDER p/BORRWER1 a/AMOUNT1 ...
 or 'add group GROUP_NAME'
+____________________________________________________________
 Enter command: Duplicate member.
+____________________________________________________________
 Enter command: Invalid member name.
+____________________________________________________________
 Enter command: Invalid member name.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+____________________________________________________________
 Enter command: Invalid DateTime input. Dates of the future are not allowed.
+____________________________________________________________
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+____________________________________________________________
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
+____________________________________________________________
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
-Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
-Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
-Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
-Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
-Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts'
+____________________________________________________________
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts' or 'list groups'
+____________________________________________________________
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts' or 'list groups'
+____________________________________________________________
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts' or 'list groups'
+____________________________________________________________
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts' or 'list groups'
+____________________________________________________________
+Enter command: Invalid command format. Use 'list members', 'list transactions', or 'list debts' or 'list groups'
+____________________________________________________________
 Enter command: Invalid command format. Use 'find transactions', 'find lender', 'find borrower', or 'find debts'
+____________________________________________________________
 Enter command: Member not found.
+____________________________________________________________
 Enter command: Member not found.
+____________________________________________________________
 Enter command: Member not found.
+____________________________________________________________
 Enter command: Member not found.
+____________________________________________________________
 Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
+____________________________________________________________
 Enter command: Invalid command format. Use 'edit transaction INDEX NEW_TRANSACTION' or 'edit member OLD_NAME p/NEW_NAME'
+____________________________________________________________
 Enter command: Invalid index.
+____________________________________________________________
 Enter command: Invalid transaction format.
+____________________________________________________________
 Enter command: Invalid transaction value.
+____________________________________________________________
 Enter command: Invalid transaction value.
+____________________________________________________________
 Enter command: Invalid DateTime format. Please format you date and time inputs in the form of DD-MM-YYYY HHmm
-Enter command: Enter command: Authentication enabled upon startup.
+____________________________________________________________
+Enter command: Added group: GroupB
+____________________________________________________________
+Enter command: Authentication enabled upon startup.
+____________________________________________________________
 Enter command: Goodbye! Hope to see you again soon!

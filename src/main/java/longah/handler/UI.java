@@ -32,7 +32,7 @@ public class UI {
      * Displays the exit message.
      */
     public static void exit() {
-        UI.showMessage("Goodbye! Hope to see you again soon!");
+        showMessage("Goodbye! Hope to see you again soon!");
         System.exit(0);
     }
 
@@ -40,7 +40,7 @@ public class UI {
      * Displays the command prompt.
      */
     public static void showCommandPrompt() {
-        System.out.print("Enter command: ");
+        showMessage("Enter command: ", false);
     }
 
     /**
@@ -92,7 +92,7 @@ public class UI {
      * Prints a separator.
      */
     public static void printSeparator() {
-        System.out.println(SEPARATOR);
+        showMessage(SEPARATOR);
     }
 
 }

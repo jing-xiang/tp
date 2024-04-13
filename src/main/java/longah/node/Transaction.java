@@ -242,7 +242,7 @@ public class Transaction {
                     borrowerNo, member.getName(), amount);
             borrowerNo++;
         }
-        return lender + time + borrower;
+        return (lender + time + borrower).trim();
     }
 
     /**
