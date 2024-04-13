@@ -1,87 +1,79 @@
 #!/usr/bin/env bash
 
-# change to script directory
+# Change to script directory
 cd "${0%/*}"
 
+# Change directory to project root
 cd ..
+
+# Build project
 ./gradlew clean shadowJar
 
+# Change directory to text-ui-test
 cd text-ui-test
-rm -rf ./data/
 
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input5B.txt > actual_output/ACTUAL5B.TXT
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input1.txt > actual_output/ACTUAL1.TXT
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input2.txt > actual_output/ACTUAL2.TXT
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input3.txt > actual_output/ACTUAL3.TXT
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input4.txt > actual_output/ACTUAL4.TXT
-java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input/input5A.txt > actual_output/ACTUAL5A.TXT
+# Function to check test result
+check_test() {
+    local expected_output="$1"
+    local actual_output="$2"
+    local test_name="$3"
+    
+    cp "$expected_output" "$expected_output-UNIX.TXT"
+    dos2unix "$expected_output-UNIX.TXT" "$actual_output"
+    diff "$expected_output-UNIX.TXT" "$actual_output"
+    
+    return $?
+}
 
+# Initialize error count variable
 ERROR_COUNT=0
 
-cp expected_output/EXPECTED1.TXT expected_output/EXPECTED1-UNIX.TXT
-dos2unix expected_output/EXPECTED1-UNIX.TXT actual_output/ACTUAL1.TXT
-diff expected_output/EXPECTED1-UNIX.TXT actual_output/ACTUAL1.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+# Initialize variable to store names of failed tests
+FAILED_TESTS=""
+
+# Run tests
+check_test "expected_output/EXPECTED1.TXT" "actual_output/ACTUAL1.TXT" "1"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 1"
 fi
 
-cp expected_output/EXPECTED2.TXT expected_output/EXPECTED2-UNIX.TXT
-dos2unix expected_output/EXPECTED2-UNIX.TXT actual_output/ACTUAL2.TXT
-diff expected_output/EXPECTED2-UNIX.TXT actual_output/ACTUAL2.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+check_test "expected_output/EXPECTED2.TXT" "actual_output/ACTUAL2.TXT" "2"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 2"
 fi
 
-cp expected_output/EXPECTED3.TXT expected_output/EXPECTED3-UNIX.TXT
-dos2unix expected_output/EXPECTED3-UNIX.TXT actual_output/ACTUAL3.TXT
-diff expected_output/EXPECTED3-UNIX.TXT actual_output/ACTUAL3.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+check_test "expected_output/EXPECTED3.TXT" "actual_output/ACTUAL3.TXT" "3"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 3"
 fi
 
-cp expected_output/EXPECTED4.TXT expected_output/EXPECTED4-UNIX.TXT
-dos2unix expected_output/EXPECTED4-UNIX.TXT actual_output/ACTUAL4.TXT
-diff expected_output/EXPECTED4-UNIX.TXT actual_output/ACTUAL4.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+check_test "expected_output/EXPECTED4.TXT" "actual_output/ACTUAL4.TXT" "4"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 4"
 fi
 
-cp expected_output/EXPECTED5A.TXT expected_output/EXPECTED5A-UNIX.TXT
-dos2unix expected_output/EXPECTED5A-UNIX.TXT actual_output/ACTUAL5A.TXT
-diff expected_output/EXPECTED5A-UNIX.TXT actual_output/ACTUAL5A.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+check_test "expected_output/EXPECTED5A.TXT" "actual_output/ACTUAL5A.TXT" "5A"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 5A"
 fi
 
-cp expected_output/EXPECTED5B.TXT expected_output/EXPECTED5B-UNIX.TXT
-dos2unix expected_output/EXPECTED5B-UNIX.TXT actual_output/ACTUAL5B.TXT
-diff expected_output/EXPECTED5B-UNIX.TXT actual_output/ACTUAL5B.TXT
-if [ $? -eq 0 ]
-then
-    echo "Test passed!"
-else
-    ERROR_COUNT=$((ERROR_COUNT+1))
-    echo "Test failed!"
+check_test "expected_output/EXPECTED5B.TXT" "actual_output/ACTUAL5B.TXT" "5B"
+if [ $? -ne 0 ]; then
+    ERROR_COUNT=$((ERROR_COUNT + 1))
+    FAILED_TESTS+=" 5B"
 fi
 
+# Output test results
+if [ $ERROR_COUNT -eq 0 ]; then
+    echo "All tests passed!"
+else
+    echo "$ERROR_COUNT tests failed: $FAILED_TESTS"
+fi
+
+# Exit with error count
 exit $ERROR_COUNT
