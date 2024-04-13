@@ -36,6 +36,24 @@ check_test() {
     fi
 }
 
+check_data() {
+    local expected_output="$1"
+    local actual_output="$2"
+    local test_name="$3"
+    local -n error_count_ref="$4"
+    local failed_tests_ref="$5"
+
+    cp "$expected_output.TXT" "$expected_output-UNIX.TXT"
+    dos2unix "$expected_output-UNIX.TXT" "$actual_output"
+    diff "$expected_output-UNIX.TXT" "$actual_output"
+    
+    if [ $? -ne 0 ]
+    then
+        ((error_count_ref++))
+        eval "$failed_tests_ref+=\" $test_name\""
+    fi
+}
+
 # Initialize error count variable
 ERROR_COUNT=0
 
@@ -49,6 +67,11 @@ check_test "input/input2.txt" "expected_output/EXPECTED2" "actual_output/ACTUAL2
 check_test "input/input3.txt" "expected_output/EXPECTED3" "actual_output/ACTUAL3.TXT" "3" ERROR_COUNT FAILED_TESTS
 check_test "input/input4.txt" "expected_output/EXPECTED4" "actual_output/ACTUAL4.TXT" "4" ERROR_COUNT FAILED_TESTS
 check_test "input/input5A.txt" "expected_output/EXPECTED5A" "actual_output/ACTUAL5A.TXT" "5A" ERROR_COUNT FAILED_TESTS
+
+check_data "expected_data/EXPECTED_MEMBER.TXT" "data/GroupA/members.txt" "MEMBER" ERROR_COUNT FAILED_TESTS
+check_data "expected_data/EXPECTED_TRANSACTION.TXT" "data/GroupA/transactions.txt" "TRANSACTION" ERROR_COUNT FAILED_TESTS
+check_data "expected_data/EXPECTED_GRPLIST.TXT" "data/groupList.txt" "GRPLIST" ERROR_COUNT FAILED_TESTS
+check_data "expected_data/EXPECTED_PIN.TXT" "data/pin.txt" "PIN" ERROR_COUNT FAILED_TESTS
 
 # Output test results
 if [ $ERROR_COUNT -eq 0 ]; then
