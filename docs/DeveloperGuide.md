@@ -599,7 +599,7 @@ an annotation recommending a command for managing debts effectively.
 Given below is an example usage scenario and how the Chart class behaves at each step:
 
 1. The user adds a few members to the group and performs transactions among them.
-2. The user enters the 'view chart' command to view the current balances of all members.
+2. The user enters the 'chart' command to view the current balances of all members.
 
 Code Snippet
 ```
