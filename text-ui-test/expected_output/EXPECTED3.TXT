@@ -18,4 +18,82 @@ Enter command: Authentication is already disabled.
 Enter command: Authentication enabled upon startup.
 Enter command: Enter your current PIN: Create your 6-digit PIN:
 PIN saved successfully! You can enter 'pin enable' to enable authentication upon startup.
-Enter command: 
+Enter command: Switching to group: GroupB
+Enter command: Enter command: Enter command: Enter command: Enter command: Enter command: Enter command: Alice: $2.00
+Bob: $6.00
+Charlie: -$8.00
+
+Enter command: 1.
+Lender: Alice
+Borrower 1: Bob Owed amount: 1.00
+
+2.
+Lender: Alice
+Borrower 1: Bob Owed amount: 2.00
+Borrower 2: Charlie Owed amount: 3.00
+
+3.
+Lender: Bob
+Borrower 1: Alice Owed amount: 4.00
+Borrower 2: Charlie Owed amount: 5.00
+
+
+Enter command: Enter command: Alice: $3.00
+Charlie: -$3.00
+
+Enter command: 1.
+Lender: Alice
+Borrower 1: Charlie Owed amount: 3.00
+
+
+Enter command: Enter command: Alice: $0.00
+Charlie: $0.00
+
+Enter command: No transactions found.
+Enter command: Enter command: Enter command: Alice: $0.00
+Charlie: $0.00
+
+Enter command: No transactions found.
+Enter command: Switching to group: GroupA
+Enter command: The following list of transactions matches with the time 01-01-2000 1800.
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: 1.00
+
+
+Enter command: The following list of transactions is after the time 10-01-2000 1800.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: 3.15
+
+
+Enter command: The following list of transactions is before the time 01-01-2005 1800.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: 3.15
+
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: 1.00
+
+
+Enter command: The following list of transactions is between the time 31-12-1999 0000 and 01-01-2005 0000.
+4.
+Lender: Dane
+Transaction time: 02-02-2000 1000
+Borrower 1: Esther Owed amount: 3.15
+
+5.
+Lender: Dane
+Transaction time: 01-01-2000 1800
+Borrower 1: Charlie Owed amount: 1.00
+
+
+Enter command: Dane has repaid Esther $3.85
+Dane has repaid Charlie $2.55
+Dane has no more debts!
+Enter command: Goodbye! Hope to see you again soon!
