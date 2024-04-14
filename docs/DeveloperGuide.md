@@ -516,8 +516,13 @@ PIN is correct.
 
 <ins> Usage Example </ins>
 
+The following diagram illustrates the sequence during PIN authentication.
+
 ![pinhandler longah.png](diagrams%2Fpinhandler%20longah.png)
 
+This diagram shows the sequence when the user resets their PIN.
+
+![pinreset.png](diagrams%2Fpinreset.png)
 
 Given below is an example usage scenario and how the PIN creation and authentication mechanism behaves at each step:
 
