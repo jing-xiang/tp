@@ -1,5 +1,5 @@
 @startuml
-participant User
+actor User
 participant ":PINHandler" as PINHandler
 
 User -> PINHandler: reset pin
