@@ -184,10 +184,6 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
-
-![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
-
 The following code segment outlines the use of `StorageHandler`.
 
 ```
@@ -754,7 +750,7 @@ Busy people with large transaction quantities among friends
 * Transaction - Payment made by ONE Lender on behalf of MULTIPLE Borrower, represented as a list of Subtransaction.
 * Subtransaction - Subset of Transaction, consists of ONE Lender and ONE Borrower.
 * Group - Discrete units each containing their respective lists of Member and Transaction.
-* Separator - "|" has been used to denote separator within this document but within the Storage related classes, the ASCII Unit Separator as denoted by ASCII 31 is used instead. This is defined within `StorageHandler`.
+* Separator - "\|" has been used to denote separator within this document but within the Storage related classes, the ASCII Unit Separator as denoted by ASCII 31 is used instead. This is defined within `StorageHandler`.
 
 ## Instructions for Testing
 
