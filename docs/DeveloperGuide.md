@@ -512,8 +512,13 @@ PIN is correct.
 
 <ins> Usage Example </ins>
 
+The following diagram illustrates the sequence during PIN authentication.
+
 ![pinhandler longah.png](diagrams%2Fpinhandler%20longah.png)
 
+This diagram shows the sequence when the user resets their PIN.
+
+![pinreset.png](diagrams%2Fpinreset.png)
 
 Given below is an example usage scenario and how the PIN creation and authentication mechanism behaves at each step:
 
@@ -523,19 +528,21 @@ authentication enabled status from the file. If no PIN exists, it prompts the us
 2. The user creates a new 6-digit PIN using the createPin method. The entered PIN is hashed using SHA-256 before 
 saving it to the file.
 
-3. The user closes the application and relaunches it. The PINHandler loads the saved PIN and authentication 
+3. The user enables authentication upon startup using the 'pin enable' command. The authenticationEnabled flag is set to True and saved to the file.
+
+4. The user closes the application and relaunches it. The PINHandler loads the saved PIN and authentication 
 enabled status from the file again.
 
-4. The user attempts to log in by entering their PIN. The authenticate method hashes the entered PIN and 
-compares it with the saved hashed PIN. If they match, the user is successfully authenticated.
+5. The user attempts to log in by entering their PIN. The authenticate method hashes the entered PIN and 
+compares it with the saved hashed PIN. If they match, the user is successfully authenticated. Otherwise, the user is denied access.
 
-5. The user decides to reset their PIN by entering their current PIN and creating a new one using the resetPin 
+6. The user decides to reset their PIN by entering their current PIN and creating a new one using the resetPin 
 method.
 
-6. The user disables authentication upon startup using the 'pin disable' command. The authenticationEnabled flag 
+7. The user disables authentication upon startup using the 'pin disable' command. The authenticationEnabled flag 
 is set to false and saved to the file.
 
-7. The user relaunches the application, and authentication is no longer required since it has been disabled. 
+8. The user relaunches the application, and authentication is no longer required since it has been disabled. 
 The user can proceed with the application and do any actions without entering a PIN.
 
 Code Snippet
