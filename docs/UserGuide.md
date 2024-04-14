@@ -209,6 +209,7 @@ Format: `add member [NAME]` OR `addm` OR `am`
 * The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
 * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`.
 * The name of the member is case-sensitive. i.e. 'Alice' and 'alice' are not considered the same member.
+* Names are limited to 50 characters.
 
 Example of usage:
 ```
