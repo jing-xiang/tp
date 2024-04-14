@@ -184,10 +184,6 @@ Data loading methods are merged in the *loadAllData* method while data saving me
 
 <ins>Usage Example</ins>
 
-The following diagram is a sequence diagram of the initialisation of `StorageHandler`. Here, it reads data from the 2 data storage files and creates `Member` and `Transaction` objects in the associated utility list objects.
-
-![StorageHandler Init Sequence Diagram](diagrams/StorageHandlerInitSequenceDiagram.png)
-
 The following code segment outlines the use of `StorageHandler`.
 
 ```
