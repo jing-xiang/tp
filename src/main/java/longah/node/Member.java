@@ -10,6 +10,7 @@ import longah.exception.ExceptionMessage;
  */
 public class Member {
     private static final int MAX_NAME_LENGTH = 50;
+    
     private String name;
     private double balance;
 

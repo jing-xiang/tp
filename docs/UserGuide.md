@@ -260,6 +260,7 @@ Format: `add group [GROUP_NAME]` OR `addg` OR `ag`
 * The entered group name should not be a duplicate of an existing group.
 * The entered group name should only contain alphanumeric characters, and no spaces are allowed.
 * The name of the group is case-sensitive. i.e. 'Tiktok' and 'tiktok' are not considered the same group.
+* Group names are limited to 50 characters.
 
 Example of usage:
 ```
