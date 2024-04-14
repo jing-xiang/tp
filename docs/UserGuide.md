@@ -209,6 +209,7 @@ Format: `add member [NAME]` OR `addm` OR `am`
 * The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
 * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`.
 * The name of the member is case-sensitive. i.e. 'Alice' and 'alice' are not considered the same member.
+* Names are limited to 50 characters.
 
 Example of usage:
 ```
@@ -259,6 +260,7 @@ Format: `add group [GROUP_NAME]` OR `addg` OR `ag`
 * The entered group name should not be a duplicate of an existing group.
 * The entered group name should only contain alphanumeric characters, and no spaces are allowed.
 * The name of the group is case-sensitive. i.e. 'Tiktok' and 'tiktok' are not considered the same group.
+* Group names are limited to 50 characters.
 
 Example of usage:
 ```
