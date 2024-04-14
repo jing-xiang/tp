@@ -92,10 +92,10 @@ A quick reference table for all commands is presented below. Certain commands ha
     - [Disabling the user PIN: `pin disable`](#disabling-the-user-pin-pin-disable)
     - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
     - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
-    - [Settle a user's debts: `settleup`](#settle-a-users-debts-settle-or-settleup)
+    - [Settle a user's debts: `settleup`](#settle-a-users-debts-settleup)
     - [Switching groups: `group`](#switching-groups-group)
     - [Filter transactions: `filter`](#filter-transactions-filter)
-    - [Views the balances of all members on a chart: `chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-chart)
+    - [Views the balances of all members on a chart: `chart`](#views-the-balances-of-all-members-on-a-chart-chart)
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
@@ -158,7 +158,7 @@ If all is well, LongAh will save the files in the following data structure durin
 └─tp.jar
 ```
 
-Note: It it not recommended to edit any data files manually. Corrupt lines of data will be ignored and overwritten over the course of the use of the application.
+Note: It is not recommended to edit any data files manually. Corrupt lines of data will be ignored and overwritten over the course of the use of the application.
 
 ### Data Editing
 
@@ -507,7 +507,6 @@ dg friends
     1. Tiktok
 
 Deleted group: friends
-
 ```
 
 ### Editing a member: `edit member`
@@ -684,7 +683,6 @@ Example of usage:
 
 ```
 
-
 ### Views the balances of all members on a chart: `chart`
 
 Shows a chart of the balances of all members in the group.
@@ -709,7 +707,7 @@ They are color-coded to show the balance status of each member.
 
 A separate tooltip will show the exact balance of each member.
 
-![viewChart.png](diagrams%2FviewChart.png)
+![viewChart.png](diagrams/viewChart.png)
 
 ### Exiting the application: `exit`
 
