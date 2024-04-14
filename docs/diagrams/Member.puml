@@ -7,10 +7,6 @@ class MemberList {
     +addMember(Member)
     +addMember(String)
     +addMember(String, double)
-    +isMember(Member): boolean
-    +getMember(String): Member
-    +getMemberBalance(String): double
-    +getMemberListSize(): int
     +editMemberName(String, String)
     +listMembers(): String
     +updateMembersBalance(TransactionList)
