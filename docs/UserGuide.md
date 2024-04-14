@@ -189,6 +189,14 @@ Format: `help` OR `?`
 Example of usage:
 ```
 help
+?
+    Here are the full list of commands available:
+
+    ADD commands: 
+    ____________________________________________________________
+    1. `add member [NAME]` - Add a new member to the group.
+    ...
+    ...
 ```
 
 ### Adding a member: `add member`
@@ -200,20 +208,21 @@ Format: `add member [NAME]` OR `addm` OR `am`
 * Name of new member should not be a duplicate of an existing member.
 * The entered name should only contain alphanumeric characters, no spaces or special characters are allowed.
 * We suggest using pascal case for names with spaces or special characters, i.e. Tan Xiao Hong, Alicia = `TanXiaoHongAlicia`.
-* The name of the member is case-insensitive. i.e. 'Alice' and 'alice' are considered the same member.
+* The name of the member is case-sensitive. i.e. 'Alice' and 'alice' are not considered the same member.
 
 Example of usage:
 ```
 add member Alice
 addm Bob
 am Charlie
+    Added member: Charlie
 ```
 
 ### Adding a transaction: `add transaction`
 
 Adds a new transaction to the list of transactions in LongAh!.
 
-Format: `add transaction [LENDER] t/[DATE IN dd-MM-YYYY HHmm] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `addt` OR `at`
+Format: `add transaction [LENDER] t/[DATE IN DD-MM-YYYY HHMM] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `addt` OR `at`
 * The transaction supports 1 or more borrower(s), each with custom borrowed amounts.
 * `t/` is the prefix for the transaction time, and should be followed by the transaction lender and before the name of the first borrower.
 * The transaction time is optional and can be omitted.
@@ -227,30 +236,41 @@ Example of usage:
 add transaction Alice p/Bob a/10
 addt Bob p/Alice a/5
 at Alice p/Bob a/7
+
 // Multiple Borrowers
+add transaction Alice p/Bob a/10 p/Charlie a/5
+
+// Dated Transaction
 add transaction Alice t/11-11-2000 2359 p/Bob a/10
+    Transaction added successfully!
+    Lender: alice
+    Transaction time: 11-11-2000 2359
+    Borrower 1: bob Owed amount: $10.00
 ```
 
 ### Adding a new group `add group`
 
-Adds a new group to LongAh! for you to manage expenses and debts separately.
+Adds a new group to LongAh! for you to manage expenses and debts separately for different groups of people.
 
 Format: `add group [GROUP_NAME]` OR `addg` OR `ag`
 
 * The Application will automatically prompt you to create a new group if this is your first time using LongAh!.
 * The Application will not automatically switch to the new group after adding. You can switch to the new group using the `group` command.
 * The entered group name should not be a duplicate of an existing group.
-* The entered group name should only contain alphanumeric characters, no spaces are allowed.
-* The name of the group is case-insensitive. i.e. 'Tiktok' and 'tiktok' are considered the same group.
+* The entered group name should only contain alphanumeric characters, and no spaces are allowed.
+* The name of the group is case-sensitive. i.e. 'Tiktok' and 'tiktok' are not considered the same group.
 
 Example of usage:
 ```
 add group Tiktok
+addg Tiktok
+ag Tiktok
+    Added group: Tiktok
 ```
 
 ### Listing all members: `list members`
 
-Shows a list of all current members in LongAh! along with their current balances.
+Shows a list of all current members in the group along with their current balances.
 
 Format: `list members` OR `listm` OR `lm`
 
@@ -265,6 +285,8 @@ add member bob
 add transaction alice p/bob a/5
 
 list members
+listm
+lm
     alice: $5.0
     bob: -$5.0
 ```
@@ -284,6 +306,8 @@ add member bob
 add transaction alice p/bob a/5
 
 list transactions
+listt
+lt
     1.
     Lender: alice
     Borrower 1: bob Owed amount: 5.00
@@ -304,9 +328,11 @@ add transaction alice p/bob a/3 p/charlie a/4
 add transaction charlie p/alice a/5 p/bob a/1
 
 list debts
+listd
+ld
     Best Way to Solve Debts:
-    bob owes alice $2.0
     bob owes charlie $2.0
+    bob owes alice $2.0
 ```
 
 ### Listing all groups: `list groups`
@@ -318,10 +344,13 @@ Format: `list groups` OR `listg` OR `lg`
 Example of usage:
 ```
 // assume that the group 'Tiktok' already exists
+
 add group Friends
 add group Family
 
 list groups
+listg
+lg
     1. Tiktok
     2. Friends
     3. Family
@@ -342,14 +371,16 @@ add transaction Alice p/Bob a/5
 add transaction Bob p/Alice a/3
 
 find transactions Alice
-Alice is a part of the following list of transaction(s).
-1.
-Lender: Alice
-Borrower 1: Bob Owed amount: $5.00
-
-2.
-Lender: Bob
-Borrower 1: Alice Owed amount: $3.00
+findt Alice
+ft Alice
+    Alice is a part of the following list of transaction(s).
+    1.
+    Lender: Alice
+    Borrower 1: Bob Owed amount: $5.00
+    
+    2.
+    Lender: Bob
+    Borrower 1: Alice Owed amount: $3.00
 ```
 
 ### Find Lender `find lender`
@@ -362,11 +393,14 @@ Format: `find lender [MEMBER]` OR `findl` OR `fl`
 Example of usage:
 ```
 // Continuing from above example
+
 find lender Alice
-Alice is a lender in the following list of transaction(s).
-1.
-Lender: Alice
-Borrower 1: Bob Owed amount: $5.00
+findl Alice
+fl Alice
+    Alice is a lender in the following list of transaction(s).
+    1.
+    Lender: Alice
+    Borrower 1: Bob Owed amount: $5.00
 ```
 
 ### Find Borrower `find borrower`
@@ -379,11 +413,14 @@ Format: `find borrower [MEMBER]` OR `findb` OR `fb`
 Example of usage:
 ```
 // Continuing from above example
+
 find borrower Alice
-Alice is a borrower in the following list of transaction(s).
-1.
-Lender: Bob
-Borrower 1: Alice Owed amount: $3.00
+findb Alice
+fb Alice
+    Alice is a borrower in the following list of transaction(s).
+    1.
+    Lender: Bob
+    Borrower 1: Alice Owed amount: $3.00
 ```
 
 ### Find Debts `find debts`
@@ -400,18 +437,19 @@ add member Charlie
 add transaction Alice p/Charlie a/3
 
 find debts Alice
-Bob owes Alice $2.0
-Charlie owes Alice $3.0
+    Bob owes Alice $2.0
+    Charlie owes Alice $3.0
 
 add transaction Charlie p/Alice a/10
 
 findd Alice
-Alice owes Charlie $5.0
+fd Alice
+    Alice owes Charlie $5.0
 ```
 
 ### Deleting a member: `delete member`
 
-Deletes a member from the list of members in LongAh!.
+Deletes a member from the list of members in the group.
 
 Format: `delete member [MEMBER]` OR `deletem` OR `dm`
 * The `MEMBER` should be an existing member.
@@ -421,12 +459,14 @@ Format: `delete member [MEMBER]` OR `deletem` OR `dm`
 Example of usage:
 ```
 delete member Alice
-    Deleted member: Charlie
+deletem Alice
+dm Alice
+    Deleted member: Alice
 ```
 
 ### Deleting a transaction: `delete transaction`
 
-Deletes a transaction from the list of transactions in LongAh!.
+Deletes a transaction from the list of transactions in the group.
 
 Format: `delete transaction [TRANSACTION_INDEX]` OR `deletet` OR `dt`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
@@ -437,6 +477,8 @@ the transaction that you want to delete.
 Example of usage: 
 ```
 delete transaction 3
+deletet 3
+dt 3
     Transaction #3 removed successfully.
     Lender: Alice
     Transaction time: 11-11-2000 2359
@@ -459,6 +501,8 @@ Example of usage:
 
 add group friends
 delete group friends
+deleteg friends
+dg friends
     Remaining groups:
     1. Tiktok
 
@@ -471,13 +515,14 @@ Deleted group: friends
 Edits the name of a member in the list of members in LongAh!.
 
 Format: `edit member [OLD_NAME] p/[NEW_NAME]` OR `editm` OR `em`
+* `p/` is the prefix for the new name of the member.
 * The `OLD_NAME` should be an existing member.
 * The `NEW_NAME` should not be a duplicate of an existing member.
-* All transactions involving the member will be updated.
+* All transactions involving the member will be updated to reflect the new name.
 
 Example of usage:
 ```
-edit member Alice Bob
+edit member Alice p/Bob
     Member name edited successfully! Alice is renamed to: Bob
 ```
 
@@ -488,7 +533,7 @@ Edits the details of a transaction in the list of transactions in LongAh!.
 Format: `edit transaction [TRANSACTION_INDEX] [LENDER] p/[BORROWER1] a/[AMOUNT] p/[BORROWER2] a/[AMOUNT] ...` OR `editt` OR `et`
 * The `TRANSACTION_INDEX` should be an existing transaction number.
 * The `LENDER` and `BORROWER(s)` should be an existing member.
-* Transaction date and time can similarly be editted or added through the same format as per [add dated transaction](#adding-a-dated-transaction-add-transaction)
+* Transaction date and time can similarly be edited or added through the same format as per [add transaction](#adding-a-transaction-add-transaction)
 * Allows for edits to the lender and the borrowers involved in the transaction, as well as the amount.
 * The transaction number can be found by using the `list transactions` command and taking the corresponding index.
 * All debts involving the transaction will be recalculated.
@@ -501,6 +546,8 @@ add member Charlie
 add transaction Alice p/Bob a/1
 
 edit transaction 1 Bob p/Alice a/3
+editt 1 Bob p/Alice a/3
+et 1 Bob p/Alice a/3
     Transaction #1 edited successfully.
     Lender: Bob
     Borrower 1: Alice Owed amount: $3.00
@@ -547,7 +594,10 @@ pin reset
 
 ### Clearing all transactions `clear`
 
-Clear all previous transactions logged in LongAh!. Members balances will be reset to 0.
+Clear all previous transactions logged in the group. Members balances will be reset to 0.
+
+* The application will prompt you to confirm the action before clearing all transactions.
+* This action cannot be undone.
 
 Format: `clear`
 
@@ -566,7 +616,7 @@ y
     All transactions have been cleared for this account.
 ```
 
-### Settle a user's debts: `settle` OR `settleup`
+### Settle a user's debts: `settleup`
 
 Settles all debts of the specified member with all other members. A transaction will be created to settle the debts and reset
 the debt balance of the specified member to 0, while updating the balance(s) of all relevant lender(s).
@@ -589,9 +639,11 @@ list debts
     bob owes charlie $3.0
 
 settleup bob
+settle bob
     bob has repaid alice $1.0
     Transaction added successfully!
     bob has repaid charlie $3.0
+    
     Transaction added successfully!
     Lender: bob
     Borrower 1: alice Owed amount: $1.00
@@ -668,6 +720,8 @@ Format: `exit` or `close`
 Example of usage:
 ```
 exit
+close
+    Goodbye! Hope to see you again soon!
 ```
 
 <div style="page-break-after: always;"></div>
