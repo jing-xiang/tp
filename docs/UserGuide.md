@@ -92,10 +92,10 @@ A quick reference table for all commands is presented below. Certain commands ha
     - [Disabling the user PIN: `pin disable`](#disabling-the-user-pin-pin-disable)
     - [Resetting user PIN: `pin reset`](#resetting-user-pin-pin-reset)
     - [Clearing all transactions `clear`](#clearing-all-transactions-clear)
-    - [Settle a user's debts: `settle` OR `settleup`](#settle-a-users-debts-settle-or-settleup)
+    - [Settle a user's debts: `settleup`](#settle-a-users-debts-settle-or-settleup)
     - [Switching groups: `group`](#switching-groups-group)
-    - [`Filter transactions`](#filter-transactions)
-    - [Views the balances of all members in the form of a chart: `chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-chart)
+    - [Filter transactions: `filter`](#filter-transactions-filter)
+    - [Views the balances of all members on a chart: `chart`](#views-the-balances-of-all-members-in-the-form-of-a-chart-chart)
     - [Exiting the application: `exit`](#exiting-the-application-exit)
   - [FAQ](#faq)
   - [Known Issues](#known-issues)
@@ -685,7 +685,7 @@ Example of usage:
 ```
 
 
-### Views the balances of all members in the form of a chart: `chart`
+### Views the balances of all members on a chart: `chart`
 
 Shows a chart of the balances of all members in the group.
 
