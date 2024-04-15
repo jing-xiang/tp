@@ -58,4 +58,4 @@ Given below are my contributions to the project.
 - Contributed to forum posts (examples: [1](https://github.com/nus-cs2113-AY2324S2/forum/issues/14), [2](https://github.com/nus-cs2113-AY2324S2/forum/issues/28)).
 
 - **Tools**:
-  - Integrated the `XChart` library for the `view chart` feature [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86).
+  - Integrated the `XChart` library for the `chart` feature [#86](https://github.com/AY2324S2-CS2113-T15-1/tp/pull/86).
